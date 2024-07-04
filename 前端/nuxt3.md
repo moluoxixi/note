@@ -1,0 +1,140 @@
+# vue中如何使用SSR的
+
+```javascript
+// 第 1 步：创建一个 Vue 实例
+const Vue = require('vue');
+const app = new Vue({
+  template: `<div>Hello World</div>`
+});
+// 第 2 步：创建一个 renderer
+const renderer = require('vue-server-renderer').createRenderer();
+// 第 3 步：将 Vue 实例渲染为 HTML
+renderer.renderToString(app, (err, html) => {
+  if (err) throw err;
+  console.log(html);
+  // => <div data-server-rendered="true">Hello World</div>
+});
+// 在 2.5.0+，如果没有传入回调函数，则会返回 Promise：
+renderer
+  .renderToString(app)
+  .then(html => {
+    console.log(html);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+```
+
+# 安装并启动nuxt
+
+## 创建项目
+
+打开 Visual Studio Code , 打开内置终端并输入下面命令创建一个 nuxt 项目：
+
+```
+npx nuxi init nuxt3-app
+```
+
+## 安装依赖
+
+```
+yarn
+or
+npm i
+```
+
+## 启动
+
+以 开发模式启动 nuxt:
+
+```
+yarn dev
+or
+npm run dev
+```
+
+# 页面配置
+
+| 属性名 | 描述 | 示例 | 
+| -- | -- | -- |
+| watchQuery | 用于监视query参数变化并在更改时执行组件方法 ( | watchQuery:true,    //监视所有query参数 | 
+| asyncData | 使得你能够在渲染 | asyncData({params}{ | 
+| fetch | 用于在渲染页面之前获取数据填充应用的状态树（store）。 | async fetch({ store, params }) { | 
+| head | 配置当前页面的head标签内容,使用 | head(){ | 
+| layout | 指定当前页面使用的布局 | layout(content){ | 
+| middleware | 指定页面的中间件，中间件会在页面渲染之前被调用 | middleware:'xxx',    //在pages或layouts中 | 
+| transition | 指定页面切换的过渡动效, 详情请参考 | transition:{name:'xx'} | 
+| scrollToTop | 用于判定渲染页面前是否需要将当前页面滚动至顶部。这个配置用于 | scrollToTop:true | 
+| validate | 用于校验当前路由是否有效 | validate({params}{ | 
+
+
+# 内置组件
+
+| 组件 | 描述 | 说明 | 
+| -- | -- | -- |
+| <nuxt/> | 用于显示pages中的组件 | nuxtChildKey:将什么作为<router-view/>,默认是$route.path | 
+| <nuxt-child/> | 用于在pages页面中,展示child.vue组件 |   | 
+| <nuxt-link/> | 可以理解为router-link | <NuxtLink to="{path:'/login',params:{参数键值对},query:{参数键值对}}" /> | 
+| <ClientOnly/> | 用于包裹仅用于客户端渲染,不需要服务端渲染的组件 | <ClientOnly>不需要ssr的内容</ClientOnly> | 
+
+
+# 目录结构
+
+| 目录 | 描述 | 示例 | 
+| -- | -- | -- |
+| .nuxt | 构建用于开发的程序,nuxt dev时会重新创建该目录 |   | 
+| .output | 构建用于生产的程序,nuxt build时会重新创建该目录 |   | 
+|  | 不需要构建编译的静态文件存放到static中,打包后会放在根目录 |   | 
+| components | 存放公共组件,Nuxt会自动引入并注册该目录下的所有组件 | 组件的名称将基于自己的路径和文件名，并删除重复的段，异步组件需要添加Lazy前缀，比如：  | 
+| layouts | 存放布局组件,Nuxt会自动引入并注册该目录下的所有组件 | layouts/default.vue | 
+| middleware | 存放中间件, | 中间件执行流程顺序： | 
+| pages | 存放路由组件,Nuxt会根据pages的目录结构自动生成vue-router的路由配置 | pages/user/one.vue    普通路由,对应path为  /user/one | 
+| composables | 存放公共方法,Nuxt会根据导出方式的不同,来注册对应名称的公共方法 | <template><div>{{ 公共方法名() }}</div></template> | 
+|  | 存放插件 |   | 
+
+
+# 拓展组件库
+
+使用
+
+## 定义
+
+```javascript
+import { join } from 'pathe'
+import { defineNuxtModule } from '@nuxt/kit'
+
+export default defineNuxtModule({
+  hooks: {
+    'components:dirs'(dirs) {
+      // Add ./components dir to the list
+      dirs.push({
+        path: join(__dirname, 'components'),
+        prefix: 'awesome',
+      })
+    },
+  },
+})
+```
+
+## 注册
+
+nuxt.config
+
+```
+export default {
+  buildModules: ['awesome-ui/nuxt'],
+}
+
+```
+
+## 使用
+
+```
+<template>
+  <div>
+    My <AwesomeButton>UI button</AwesomeButton>!
+    <awesome-alert>Here's an alert!</awesome-alert>
+  </div>
+</template>
+
+```
