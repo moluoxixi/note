@@ -100,7 +100,7 @@ export default {
 
 1. dire
 
-```
+```js
 有三个参数:
     err //错误对象
     instance //抛出错误的组件实例
@@ -123,7 +123,7 @@ export default {
 
 指定一个检查方法来识别原生自定义元素
 
-```
+```js
 // 将所有标签前缀为 `ion-` 的标签视为自定义元素
 app.config.compilerOptions.isCustomElement = (tag) => {
   return tag.startsWith('ion-')
@@ -137,10 +137,7 @@ app.config.compilerOptions.isCustomElement = (tag) => {
 一个用于定义自定义组件选项的合并策略的对象。
 
 - 类型
-
-ts
-
-```
+```ts
 interface AppConfig {
   optionMergeStrategies: Record<string, OptionMergeFunction>
 }
@@ -818,7 +815,7 @@ state.nested.bar++
 
 自定义的 ref，自由控制收集依赖和触发更新的时机
 
-```
+``` js
 <script setup>
 import { useDebouncedRef } from './debouncedRef'
 const text = useDebouncedRef('hello')
@@ -828,10 +825,10 @@ const text = useDebouncedRef('hello')
   {{text}}
   <input v-model="text" /> //绑定时要获取值,触发get,收集依赖,修改时,触发set,触发更新
 </template>
+​ ```
 ​
-​
-​
-/* - debouncedRef.js
+​``` js
+/* - debouncedRef.js*/
 import { customRef } from 'vue'
 //防抖demo,由于每次触发set会清空定时器,导致trigger不会触发,快速敲击时,仅最后一次敲击会延时300ms触发更新视图
 export function useDebouncedRef(value, delay = 200) {
@@ -852,7 +849,6 @@ export function useDebouncedRef(value, delay = 200) {
     }
   })
 }
-*/
 ```
 
 ### effectScope&getCurrentScope&onScopeDispose
