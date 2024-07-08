@@ -726,7 +726,7 @@ unRef(params)
 
 浅层作用形式的Ref
 
-只有根层级的属性即
+只有根层级的属性即 `仅value具有响应式`
 
 ```
 const a=shallowRef({a:1});
@@ -762,7 +762,7 @@ triggerRef(shallow) //触发副作用,打印 "Hello, universe"
 
 只有根层级的属性具有响应式。
 
-```
+```js
 const state = shallowReactive({
   foo: 1,
   nested: {
@@ -783,7 +783,7 @@ state.nested.bar++
 
 只有根层级的属性变为了只读。
 
-```
+```js
 const state = shallowReadonly({
   foo: 1,
   nested: {
@@ -817,8 +817,8 @@ const text = useDebouncedRef('hello')
 </template>
 ​ ```
 ​
-​``` js
-/* - debouncedRef.js*/
+```js
+​/* - debouncedRef.js */
 import { customRef } from 'vue'
 //防抖demo,由于每次触发set会清空定时器,导致trigger不会触发,快速敲击时,仅最后一次敲击会延时300ms触发更新视图
 export function useDebouncedRef(value, delay = 200) {
@@ -840,7 +840,6 @@ export function useDebouncedRef(value, delay = 200) {
   })
 }
 ```
-
 ### effectScope&getCurrentScope&onScopeDispose
 
 #### getCurrentScope
@@ -978,7 +977,7 @@ errorCaptured-->onErrorCaptured
 
 ## 注册pinia并使用全局配置
 
-```
+```js
 import {createApp} from 'vue';
 import { createPinia } from 'pinia';
 
@@ -1001,7 +1000,7 @@ app.use(pinia);
 
 ### 命名空间写法
 
-```
+```js
 import {defineStore} from 'pinia'
 const useCountStore = defineStore('小菠萝的名字',{//即命名空间
     state:()=>{
@@ -1022,7 +1021,7 @@ export default useCountStore;
 
 ### id 写法
 
-```
+```js
 import {defineStore} from 'pinia';
 const useCountStore=defineStore({
     //即命名空间
@@ -1051,7 +1050,7 @@ export default useCountStore;
 
 ## 访问store
 
-```
+```js
 import useCountStore from '定义store的文件路径';
 const store=useCountStore();
 
@@ -1071,7 +1070,7 @@ store.$reset()
 
 ## options API
 
-```
+```js
 import { mapWritableState } from 'pinia'
 import useCountStore from '定义store的文件路径'
 export default {
@@ -1097,7 +1096,7 @@ export default {
 
 相比 vue3 的 pinia 需要额外进行配置PiniaVuePlugin
 
-```
+```js
 import Vue from 'vue'
 import {createPinia,PiniaVuePlugin} from 'pinia'
 Vue.use(PiniaVuePlugin)
@@ -1167,7 +1166,7 @@ routes:[
 
 ```
 
-```
+```js
 const routes = [{
     path: '/new-route1',
     component: NewRouteComponent1,
@@ -1245,9 +1244,9 @@ params不能和path共存
 
 ## 声明式路由导航
 
-跳转路由使用
-
+跳转路由使用 `<router-link to="路由地址" />`
 <router-link to="{name:'路由名',params:{参数键值对},query:{参数键值对}}" />
+`<router-link to="{name:'路由名',params:{参数键值对},query:{参数键值对}}" />`
 
 对象写法需要在路由表中给想匹配的路由写 name
 
