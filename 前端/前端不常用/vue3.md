@@ -1,4 +1,4 @@
-```
+```js
 //初始化项目配置
 npm init vue@latest
 ```
@@ -48,9 +48,9 @@ app.unmount() 卸载组件
 
 - 类型
 
-ts
 
-```
+
+```ts
 interface App {
   provide<T>(key: InjectionKey<T> | symbol | string, value: T): this
 }
@@ -62,9 +62,8 @@ interface App {
 
 - 示例
 
-js
 
-```
+```js
 import { createApp } from 'vue'
 ​
 const app = createApp(/* ... */)
@@ -74,9 +73,8 @@ app.provide('message', 'hello')
 
 在应用的某个组件中：
 
-js
 
-```
+```js
 import { inject } from 'vue'
 ​
 export default {
@@ -160,9 +158,7 @@ type OptionMergeFunction = (to: unknown, from: unknown) => any
 
 - 示例
 
-js
-
-```
+```js
 const app = createApp({
   // 自身的选项
   msg: 'Vue',
@@ -201,7 +197,7 @@ app.mount('#app')
 
 ![](images/WEBRESOURCE11710939172414截图.png)
 
-```
+```js
 props:['val'],
 setup(props, context) {
     //props只能获取props配置项接收的prop
@@ -417,7 +413,7 @@ setup script中使用await表达式,会将setup变为async setup,此时组件需
 
 vue2的is绑定组件的name值,vue3的is绑定组件
 
-```
+```js
 <script setup>
     import Foo from './Foo.vue'
     import Bar from './Bar.vue'
@@ -437,7 +433,7 @@ vue2的is绑定组件的name值,vue3的is绑定组件
 
 请注意
 
-```
+```js
 <template>
   <ul>
     <template v-for="item in list">
@@ -459,7 +455,7 @@ const props = defineProps({
 
 ### 命名空间组件
 
-```
+```js
 * components.js
 import { ComA } from './ComA.vue';
 import { ComB } from './ComB.vue';
@@ -475,7 +471,7 @@ import { * as Form } from './components';
 
 局部自定义指令不需要显式注册,命名需要满足小驼峰
 
-```
+```js
 <script setup>
 const vMyDirective = {
   beforeMount: (el) => {
@@ -490,7 +486,7 @@ const vMyDirective = {
 
 如果指令是从别处导入的，可以通过重命名来使其符合命名规范：
 
-```
+```js
 <script setup>
 import { myDirective as vMyDirective } from './MyDirective.js'
 </script>
@@ -502,7 +498,7 @@ import { myDirective as vMyDirective } from './MyDirective.js'
 
 不能将其内容单独移动到外部的.js和.ts文件
 
-这意味着不能与src属性共存
+# 这意味着不能与src属性共存
 
 ## 响应式：核心
 
@@ -964,7 +960,7 @@ errorCaptured-->onErrorCaptured
 
 不能跨组件传送
 
-```
+```js
 <div id="teleport-target"></div>
 ​
 <teleport to="#teleport-target">
@@ -978,7 +974,7 @@ errorCaptured-->onErrorCaptured
 
 与react的类似
 
-```
+```js
 //vue3
 <Suspense>
     <template #fallback>
