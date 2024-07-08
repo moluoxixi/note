@@ -149,7 +149,7 @@ type OptionMergeFunction = (to: unknown, from: unknown) => any
 
 一些插件或库对自定义组件选项添加了支持 (通过注入全局 mixin)。这些选项在有多个不同来源时可能需要特殊的合并策略 (例如 mixin 或组件继承)。
 
-可以在 
+可以在 `app.config.optionMergeStrategies` 对象上以选项的名称作为 key，可以为一个自定义选项注册分配一个合并策略函数。
 
 合并策略函数分别接受在父实例和子实例上定义的该选项的值作为第一和第二个参数。
 
@@ -404,7 +404,7 @@ setup script中的expose,用于自定义暴露给父组件的内容
 
 ### 顶层await
 
-setup script中使用await表达式,会将setup变为async setup,此时组件需要使用
+setup script中使用await表达式,会将setup变为async setup,此时组件需要使用 [[#Suspense]] 组件包裹
 
 ### 动态组件
 
@@ -426,9 +426,9 @@ vue2的is绑定组件的name值,vue3的is绑定组件
 
 一个单文件组件可以通过它的文件名被其自己所引用。
 
-例如：名为 
+例如：名为 `FooBar.vue` 的组件可以在其模板中用引用它自己。
 
-请注意
+请注意 `这种方式相比于导入的组件优先级更低`。如果有具名的导入和组件自身推导的名字冲突了，可以为导入的组件添加别名
 
 ```js
 <template>
@@ -612,7 +612,7 @@ watch&watchEffect都有
 
 三者都有,仅在开发模式下有用
 
-依赖被
+依赖 `被追踪` 时触发,即get的时候
 
 onTrack?: (
 
@@ -620,29 +620,23 @@ onTrack?: (
 
 三者都有,仅在开发模式下有用
 
-依赖被
+依赖 `被更改` 时触发,即set的时候
 
-onTrigger?: (
-
+onTrigger?: (event: DebuggerEvent) => void
 #### 三者的共与异
 
 共:
 
 1. 都会在依赖变化时触发副作用
-
-1. 都具有onTrack与onTrigger
+2. 都具有onTrack与onTrigger
 
 异:
 
 1. watchEffect和computed会自动收集依赖,而watch需要指定
-
-1. 仅watch&watchEffect有flush配置项
-
-1. 仅watch&watchEffect会返回用于停止副作用的函数
-
-1. 仅computed有immediate和deep配置项
-
-1. 仅computed会返回只读的ref对象
+2. 仅watch&watchEffect有flush配置项
+3. 仅watch&watchEffect会返回用于停止副作用的函数
+4. 仅computed有immediate和deep配置项
+5. 仅computed会返回只读的ref对象
 
 ## 响应式：工具函数
 
