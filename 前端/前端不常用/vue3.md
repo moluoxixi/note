@@ -113,7 +113,7 @@ export default {
 
 ### app.config.performance
 
-设置此项为 
+设置此项为 ` true` 可以在浏览器开发工具的“性能/时间线”页中启用对组件初始化、编译、渲染和修补的性能表现追踪。
 
 ### app.config.globalProperties
 
@@ -490,13 +490,9 @@ import { myDirective as vMyDirective } from './MyDirective.js'
 ```
 
 ### 限制
-
-<script setup>
-
+`<script setup>` 中的代码依赖单文件组件的上下文。
 不能将其内容单独移动到外部的.js和.ts文件
-
-# 这意味着不能与src属性共存
-
+这意味着不能与src属性共存
 ## 响应式：核心
 
 ![](images/WEBRESOURCE31710939173057截图.png)
@@ -507,11 +503,11 @@ ref:   [https://cn.vuejs.org/api/reactivity-core.html#ref](https://cn.vuejs.org/
 
 reactive: [https://cn.vuejs.org/api/reactivity-core.html#reactive](https://cn.vuejs.org/api/reactivity-core.html#reactive)
 
-ref 接收
+ref 接收 `基本类型或对象` ,一般用来定义 `基本类型`
 
-reactive 
+reactive 接收 `对象`, 用来定义 `复杂数据类型`
 
-readonly 
+readonly 接收 `Proxy或普通对象`, 定义所有 `属性只读的对象`
 
 ref定义复杂数据类型时,会调用与reactive原理相同的方法,将创建的Proxy对象挂在value属性身上
 
@@ -529,9 +525,9 @@ const obj1=readonly({a:1}); //
 
 以定义的数据源listenState为依赖(指定依赖),在依赖变化时调用回调,根据配置项不同具有不同操作
 
-监听
+监听 `ref返回值.value` 或 ` reactive返回值 `
 
-监听
+监听 `reactive返回值` 时,会自动添加deep配置项
 
 如需监听对象中的某个属性,第一个参数传回调返回改属性
 
