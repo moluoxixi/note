@@ -1521,6 +1521,8 @@ loading: require('../src/assets/image/loading.gif'),
 //也可以用vue2的写法
 //const 组件名=() => import('路由组件所在路径');
 
+//如果路径中要使用变量使用下列xie'fa
+
 const 组件名=defineAsyncComponent(() => import('路由组件所在路径'));
 const routes = [
   {
