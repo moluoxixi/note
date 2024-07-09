@@ -1519,6 +1519,8 @@ loading: require('../src/assets/image/loading.gif'),
 
 ```js
 //也可以用vue2的写法
+//const 组件名=() => import('路由组件所在路径');
+
 const 组件名=defineAsyncComponent(() => import('路由组件所在路径'));
 const routes = [
   {
