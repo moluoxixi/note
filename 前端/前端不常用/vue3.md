@@ -1272,9 +1272,9 @@ route.replace({
 
 在要展示路由组件的地方写
 
-或
+或 `<router-view><keep-alive/></router-view>` 缓存路由组件,使组件不被销毁
 
-二级/多级路由就是在
+二级/多级路由就是在 `</router-view>` 对应的组件内再写 `</router-view>` 
 
 ## scrollBehavior
 
@@ -1453,9 +1453,9 @@ const router = new VueRuter({
 
 配置在组件内
 
-beforeRouterEnter 路由匹配解析完毕,组件即将开始创建时拦截,
+beforeRouterEnter 路由匹配解析完毕,组件即将开始创建时拦截, `不能获取 this ` (组件未复用)
 
-beforeRouterUpdate 路由组件开始创建,
+beforeRouterUpdate 路由组件开始创建, `可以获取 this `,但页面未更新时拦截(组件复用)
 
 beforeRouterLeave 组件创建完毕,即将离开时拦截(组件销毁)
 
@@ -1476,7 +1476,7 @@ export default {
 
 # 图片懒加载
 
-```
+```js
 npm i vue-lazyload@1 -S
 import {createApp} from 'vue'
 import App from './App.vue'
@@ -1497,7 +1497,7 @@ loading: require('../src/assets/image/loading.gif'),
 
 # 组件懒加载
 
-```
+```js
 <template>
     <异步组件名 />
 </template>
@@ -1517,7 +1517,7 @@ loading: require('../src/assets/image/loading.gif'),
 
 打包时忽略该路由组件当访问该路由时,该路由组件才会被单独打包成一个 js 文件,并加载
 
-```
+```js
 //也可以用vue2的写法
 const 组件名=defineAsyncComponent(() => import('路由组件所在路径'));
 const routes = [
@@ -1543,7 +1543,7 @@ xx|过滤器名(参数)
 
 Vue内都能用
 
-```
+```js
 //参数1代表xx,arg即过滤器字段传入的一个或多个参数
 Vue.filter('过滤器字段',(参数1,..arg)=>{})
 
@@ -1555,12 +1555,11 @@ Vue.filter('过滤器字段',(参数1,..arg)=>{})
 
 只在过滤器所在的组件内有用
 
-```
-//在配置项中添加filters属性
+```js
+// 在配置项中添加filters属性
 filters:{
     过滤器名(参数1,..arg){}
 }
-
 ```
 
 ## 自定义指令
@@ -1616,8 +1615,7 @@ app.directive('指令名',{
 
 ### 定义局部指令
 
-**一般不用**
-
+`一般不用`
 只在局部指令所在的组件内有用
 
 ```javascript
@@ -1661,7 +1659,7 @@ install(app,options){}
 
 ```
 
-# 获取DOM**/组件实例**
+# 获取DOM/组件实例
 
 options api用vue2的方式,composition api用useRef
 
