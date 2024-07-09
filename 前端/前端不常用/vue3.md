@@ -1518,11 +1518,14 @@ loading: require('../src/assets/image/loading.gif'),
 打包时忽略该路由组件当访问该路由时,该路由组件才会被单独打包成一个 js 文件,并加载
 
 ```js
-//也可以用vue2的写法
-//const 组件名=() => import('路由组件所在路径');
+//如果路径中要使用变量使用下列写法
+const trasenModules = import.meta.glob("../views/trasenPages/**/*.vue");
+const component = trasenModules[`../views/trasenPages${_dir}/index.vue`];
 
-//如果路径中要使用变量使用下列xie'fa
-
+//无变量写法
+//可以用vue2的写法
+const 组件名=() => import('路由组件所在路径');
+//vue3直接引用异步组件写法
 const 组件名=defineAsyncComponent(() => import('路由组件所在路径'));
 const routes = [
   {
