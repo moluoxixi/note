@@ -1855,7 +1855,7 @@ const emits=defineEmits<Emits>()
 
 ```
 
-### useAttrs
+### useAttrs&$attrs
 
 useAttrs 用于接收 defineProps 未接收的自定义属性以及所有自定义事件的函数
 
