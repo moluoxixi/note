@@ -324,9 +324,10 @@ setup script中的expose,用于自定义暴露给父组件的内容
 </script>
 ```
 
-#### useSlots&useAttrs
+#### useSlots&useAttrs&$attrs
 
 顾名思义,返回slots和attrs
+`$attrs` 和 `useAttrs()` 相当于 vue 2 的 `{...$attrs,...$listeners}` 
 
 ```javascript
 <script setup>
@@ -1858,6 +1859,7 @@ const emits=defineEmits<Emits>()
 ### useAttrs&$attrs
 
 useAttrs 用于接收 defineProps 未接收的自定义属性以及所有自定义事件的函数
+`$attrs` 和 `useAttrs()` 相当于 vue 2 的 `{...$attrs,...$listeners}` 
 
 ```javascript
 //返回Proxy对象
