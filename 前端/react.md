@@ -734,7 +734,7 @@ const MyComponent: FC = () => {
 
 ## Suspense
 
-Suspense 的作用与 [ErrorBounary](#ErrorBounary) 相似。Suspense 是当子组件抛出的Promise为padding时，切换呈现的加载 UI
+Suspense 的作用与 [ErrorBounary](##错误处理ErrorBounary) 相似。Suspense 是当子组件抛出的Promise为padding时，切换呈现的加载 UI
 
 ```
 <Suspense fallback={padding状态下显示的内容,可以是组件}>
@@ -753,13 +753,13 @@ NavLink与Link都是基于a标签封装的组件,用于跳转路由
 
 当这两组件被激活时,a标签会多一个aria-current="page"
 
-## **错误处理**ErrorBounary
+## 错误处理ErrorBounary
 
-回到Suspense?点我
+[回到Suspense?点我](#suspense)
 
-ErrorBounary
+ErrorBounary用于包装可能抛出错误的组件。 当子孙组件抛出错误（例如网络请求失败）时，切换呈现显示自定义错误 UI。
 
-```
+```js
 import React from 'react';
 class ErrorBounary extends React.Component{
   constructor(props) {
@@ -938,11 +938,11 @@ export default function thunk(...rest) {
 
 ### action传递过程
 
-调用store.dispatch(action)之后,action会逐个经过中间键中最后返回的
+调用store.dispatch(action)之后,action会逐个经过中间键中最后返回的action=>{...中间键逻辑;next(action)}函数处理,这个处理完通过next(action) 给下一个,如果没有下一个,放入state中
 
 ### 中间件原理
 
-```
+```js
 const store={
   dispatch:()=>{},
   getState:()=>{}
@@ -1082,7 +1082,7 @@ const Index = () => {
 
 返回一个async函数,用于await之后dispatch(action),来处理异步问题
 
-```
+```js
 import {createStore,combineReducers,applyMiddleware} from 'redux'
 import countReducer from '../reducers/countReducer';
 import {store} from xxxx;
@@ -1106,7 +1106,7 @@ store.dispatch(asyncAction);
 
 #### redux-thunk原理
 
-```
+```js
 //通过if (typeof action === "function")return action(dispatch, getState, ...rest);使其能够处理函数
 ​
 export default function thunk(...rest) {
@@ -1130,7 +1130,7 @@ export default function thunk(...rest) {
 
 返回payload是promise的action,或action本身是promise,来处理异步问题
 
-```
+```js
 import {createStore,combineReducers,applyMiddleware} from 'redux'
 import countReducer from '../reducers/countReducer';
 import {store} from xxxx;
@@ -1152,7 +1152,7 @@ store.dispatch(asyncAction(传递参数));
 
 #### redux-promise原理
 
-```
+```js
 import isPromise from 'is-promise';
 import { isFSA } from 'flux-standard-action';
 ​
