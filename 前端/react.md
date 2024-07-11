@@ -363,7 +363,7 @@ function App(props){
 
 这个对象会贯穿整个函数组件生命周期,组件渲染导致的重复调用**不会使其改变**
 
-[想看与createRef和其他ref的区别?](#ref)
+[想看与createRef和其他ref的区别?](#获取DOM/组件实例)
 
 ```js
 function Parent(props) {
@@ -1963,11 +1963,11 @@ react有多种获取ref的方式,各有千秋
 
 相关:
 
-useImperativeHandle
+[useImperativeHandle](#useImperativeHandle):用于自定义暴露的ref
 
-forwardRef
+[forwardRef](#forwardRef):用于获取函数组件内的ref
 
-useRef
+[useRef](#useRef):用于函数组件生成可贯穿整个生命周期的ref
 
 ## string ref
 
@@ -2001,7 +2001,7 @@ console.log(this.ipt)    //input
 
 组件渲染导致的重复调用
 
-看其与useRef的区别?
+[看其与useRef的区别?](#useRef)
 
 ```
 this.inputRef=React.createRef();
@@ -2015,17 +2015,17 @@ this.inputRef.current    //input
 
 ## 社区提出 craco 配置方式
 
-安装 
+安装 @craco/craco包
 
-将
+将package.json的script中的命令的react-scripts开头改为craco开头
 
-新建
+新建craco.config.js文件
 
 进行各项配置,配置与 webpack 方式相同
 
-使用 craco 开头的命令,webpack 会优先使用
+使用 craco 开头的命令,webpack 会优先使用craco的配置代替或新增webpack中的配置
 
-```
+```js
 devServer: {
     // 激活代理服务器
     host: '0.0.0.0', // 会映射多个域名地址
@@ -2052,7 +2052,7 @@ devServer: {
 
 直接在 package.json 中配置代理
 
-```
+```js
 'proxy':'代理的目标地址'
 //只能配置一个代理
 ```
@@ -2063,7 +2063,7 @@ devServer: {
 
 在 src 文件中新建
 
-```
+```js
 const {createProxyMiddleware} = require('http-proxy-middleware');
 const express=require('express');
 const app=express();
@@ -2094,28 +2094,28 @@ app.use('/api1',
 
 常用 componentDidMount()来做一些页面初始化时做的操作,如 Ajax 请求等
 
-| 函数 | 作用 | 
-| -- | -- |
-| constructor(){} | 组件实例产生时调用,即 | 
-| (弃用) | 组件即将挂载时被调用 | 
-| (新增) | 接收新 props 或 state 修改或强制更新(f 调用 orceUpdate)时被调用,返回值用来更新的 state, | 
-| render(){} | 渲染组件,第一次渲染过程中完成挂载 | 
-| React 更新 DOM 和 refs |   | 
-| componentDidMount(){} | 组件完成挂载后时被调用 | 
+| 函数                                                 | 作用                                                                                                            |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| constructor(){}                                    | 组件实例产生时调用,即**挂载前被调用**                                                                                         |
+| (弃用)componentWillMount(){}                         | **组件即将挂载时被调用**(18 已弃用该函数)                                                                                     |
+| (新增)static getDerivedStateFromProps(props,state){} | 接收新 props 或 state 修改或强制更新(f 调用 orceUpdate)时被调用,返回值用来更新的 state,**调用 forceUpdate 或 setState 或子组件接收新 props 时触发** |
+| render(){}                                         | **渲染组件**,第一次渲染过程中完成挂载                                                                                         |
+| React 更新 DOM 和 refs                                |                                                                                                               |
+| componentDidMount(){}                              | **组件完成挂载后时被调用**                                                                                               |
 
 
 ### 更新时(更新过程)
 
-| 函数 | 作用 | 
-| -- | -- |
-| (弃用) | 即将获得父组件传的值时被调用,即 | 
-| (新增) | 接收新 props 或 state 修改或强制更新(调用 forceUpdate)时被调用,返回值用来更新的 state,即 | 
-| (即将弃用) | 返回布尔值,控制 state 改变或接收新 props 后是否重新渲染---> | 
-| (弃用) | 页面即将更新时触发,即 | 
-| render() | 渲染组件 | 
-| (新增) | render 之后,真实 DOM 更新前调用 | 
-| React 更新 DOM 和 refs |   | 
-| componentDidUpedate(preprops,prestate,snapshot){} | 组件更新完成时调用 | 
+| 函数                                                 | 作用                                                                                                      |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| (弃用)componentWillReceiveProps()                    | 即将获得父组件传的值时被调用,即**子组件重新渲染时触发**(初始化时不执行)                                                                 |
+| (新增)static getDerivedStateFromProps(props,state){} | 接收新 props 或 state 修改或强制更新(调用 forceUpdate)时被调用,返回值用来更新的 state,即**调用 forceUpdate 或 setState 或子组件重新渲染时触发** |
+| (即将弃用)shouldComponentUpdate(){}                    | 返回布尔值,控制 state 改变或接收新 props 后是否重新渲染--->**子组件调用 forceUpdate 或 setState 时是否重新渲染当前组件**                     |
+| (弃用)                                               | 页面即将更新时触发,即**当前组件重新渲染前触发**                                                                              |
+| render()                                           | 渲染组件                                                                                                    |
+| (新增)                                               | **render 之后,真实 DOM 更新前调用**,用来记录 DOM 更新前的一些信息,返回值给 componentDidUpdate 的第三个参数接收                           |
+| React 更新 DOM 和 refs                                |                                                                                                         |
+| componentDidUpedate(preprops,prestate,snapshot){}  | **组件更新完成时调用**,snapshot 接收 getSnapshotBeforeUpdate()的返回值                                                 |
 
 
 ### 卸载时(卸载过程)
