@@ -365,7 +365,7 @@ function App(props){
 
 [想看与createRef和其他ref的区别?](#ref)
 
-```
+```js
 function Parent(props) {
     const childRef=useRef();
     //此时childRef的值为{current:null},在将来ref的值会返回给current,这个current是非响应式的,我们可以给current属性传响应式值让其拥有响应式
@@ -378,7 +378,7 @@ function Parent(props) {
 
 用于控制台显示调试信息的钩子
 
-```
+```js
 import { useState,useDebugValue } from 'react';
 function useFetchData(url) {
   // 使用 useDebugValue 提供控制台devtoolsFetchData hook的调试信息
@@ -401,7 +401,7 @@ export default function Test(props) {
 
 ### useImperativeHandle与forwardRef
 
-**useImperativeHandle**
+`useImperativeHandle` 会覆盖ref的默认行为,用于自定义暴露给ref的内容,常与 [forwardRef](#forwardRef) 同用
 
 forwardRef自定义暴露的ref内容
 
@@ -483,16 +483,16 @@ useRoutes
 
 location对象具有多个属性,用于获取
 
-| 属性 | 值(字符串) |   | 
-| -- | -- | -- |
-| location.pathname | /frontend | URL路径与文件名 | 
-| location.search | ?sort=newest | URL查询字符串 | 
-| location.hash | #content | 哈希地址 | 
-| location.key |   | 路由的key,不知道干嘛的 | 
-| location.state |   | 路由的状态 | 
+| 属性                | 值(字符串)       |               |
+| ----------------- | ------------ | ------------- |
+| location.pathname | /frontend    | URL路径与文件名     |
+| location.search   | ?sort=newest | URL查询字符串      |
+| location.hash     | #content     | 哈希地址          |
+| location.key      |              | 路由的key,不知道干嘛的 |
+| location.state    |              | 路由的状态         |
 
 
-```
+```js
 import {useLocation} from 'react-router-dom'
 function App(props){
     const location = useLocation();
@@ -504,7 +504,7 @@ function App(props){
 
 获取params参数
 
-```
+```js
 import {useLocation} from 'react-router-dom'
 function App(props){
     const params = useParams();
@@ -518,7 +518,7 @@ function App(props){
 
 基于URLSearchParams接口,监听location.search的变化,当触发setQueryParmas时更据入参创建新的URLSearchParams对象，再执行改变路由的方法，进而修改location对象
 
-```
+```js
 import {useSearchParams} from 'react-router-dom'
 function App(props){
     const [queryParams,setQueryParmas] = useSearchParams();
@@ -533,7 +533,7 @@ function App(props){
 
 ### useNavigate
 
-```
+```js
 import { useNavigate } from ‘react-router-dom’;
 function App(props){
     const navigate = useNavigate();
@@ -551,7 +551,7 @@ function App(props){
 
 根据路由表创建路由
 
-```
+```js
 import {useRoutes} from 'react-router-dom';
 import 路由表 from '...';
 function App(){
@@ -576,7 +576,7 @@ const useRoutes=(routes=[])=>{
 
 ### useHref
 
-```
+```js
 import { useHref } from 'react-router-dom';
 ​
 const params = { categoryId: 1 };
@@ -591,7 +591,7 @@ const href = useHref({ pathname: "/products", search: `?category=${params.catego
 
 **注意state刷新后会丢失,需要进行持久化存储**
 
-```
+```js
 import {useLocation} from 'react-router-dom';
 const location=useLocation();
 //location
@@ -618,7 +618,7 @@ const location=useLocation();
 
 自定义hooks
 
-```
+```js
 const useXxx=()=>{}
 ```
 
@@ -626,7 +626,7 @@ const useXxx=()=>{}
 
 ## memo
 
-想看缓存钩子比较不同?点击这里
+[想看缓存钩子比较不同?点击这里](#useMemo)
 
 memo函数的特点是:对组件接受的 props 属性进行浅比较,以确定是否需要render
 
