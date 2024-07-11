@@ -28,6 +28,8 @@ export default{
 
 namespaced用于开启命名空间,modules用于将store分成一个个小模块state 会合并为{模块名:模块的 state 对象}actions,mutations会直接添加到 store 身上
 
+**如果遇到同名的actions/mutations/getters,会发生命名冲突,需要开启namespaced**
+
 ```javascript
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -86,14 +88,14 @@ new Vue({
 
 ## Vuex.Store配置项
 
-| Vuex 的核心概念 | 是什么 | 怎么写 | 怎么用 |   | 
-| -- | -- | -- | -- | -- |
-| modules | 用于引入小 store,小 store 会合并为 store |   |   |   | 
-| namespaced | 命名空间,避免命名冲突 |   |   |   | 
-| state | 共享状态数据 | {状态 1:值,...} | 在 Vue 组件内通过 |   | 
-| getters | 用于简化状态数据操作 | { | 初始值} | 在 Vue 组件内通过 | 
-| mutations | 用于提供 | { | 通过 actions 里的方法中 | 两种思考方式: | 
-| actions | 用于将 vue 操作与 vuex 连接,actions 中的方法接收操作后提交给 mutations 进而修改 vuex 的状态 | {方法名 1(context,传的参数){},...} | Vue 组件内通过 | context 是一个对象,本质是 store 的阉割复制品,具有一些方法: | 
+| Vuex 的核心概念 | 是什么                                                              | 怎么写                         | 怎么用                                        |                                        |     |
+| ---------- | ---------------------------------------------------------------- | --------------------------- | ------------------------------------------ | -------------------------------------- | --- |
+| modules    | 用于引入小 store,小 store 会合并为 store                                   |                             |                                            |                                        |     |
+| namespaced | 命名空间,避免命名冲突                                                      |                             |                                            |                                        |     |
+| state      | 共享状态数据                                                           | {状态 1:值,...}                | 在 Vue 组件内通过 `this.$store.state.状态名 ` 获取状态值 |                                        |     |
+| getters    | 用于简化状态数据操作                                                       | {                           | 初始值}                                       | 在 Vue 组件内通过                            |     |
+| mutations  | 用于提供                                                             | {                           | 通过 actions 里的方法中                           | 两种思考方式:                                |     |
+| actions    | 用于将 vue 操作与 vuex 连接,actions 中的方法接收操作后提交给 mutations 进而修改 vuex 的状态 | {方法名 1(context,传的参数){},...} | Vue 组件内通过                                  | context 是一个对象,本质是 store 的阉割复制品,具有一些方法: |     |
 
 
 ## mapState/mapMutations/mapActions/mapGetters
