@@ -341,7 +341,7 @@ function App(props){
 }
 ```
 
-副作用钩子函数,用来替代类组件中以下三个生命周期钩子函数: `componentDidMount` `componentDidUpdate` `componentWillUnmount` 没写第二个参数时,相当于同时使用第一二个钩子(即 state 改变就调用) 写了第二个参数时,只有 `第二个数组参数中存放的 state改变时`,第一个参数回调才执行即 `写空数组只能在初始化阶段(DidMount)触发第一个参数回调函数第一个参数回调函数返回的回调函数就是第三个钩子函数,但略有不同,每次调用该 useEffect 函数时,都会将上一次调用 useEffect 时第一个参数回调函数返回的回调函数执行后销毁
+副作用钩子函数,用来替代类组件中以下三个生命周期钩子函数: `componentDidMount` `componentDidUpdate` `componentWillUnmount` 没写第二个参数时,相当于同时使用第一二个钩子(即 state 改变就调用) 写了第二个参数时,只有 `第二个数组参数中存放的 state改变时`,第一个参数回调才执行即 `写空数组只能在初始化阶段(DidMount)触发第一个参数回调函数` 第一个参数回调函数返回的回调函数就是第三个钩子函数,但略有不同, `每次调用该 useEffect 函数时,都会将上一次调用 useEffect 时第一个参数回调函数返回的回调函数执行后销毁`
 
 #### useLayoutEffect
 
@@ -361,9 +361,9 @@ function App(props){
 
 **仅用于函数式组件**
 
-这个对象会贯穿整个函数组件生命周期,组件渲染导致的重复调用
+这个对象会贯穿整个函数组件生命周期,组件渲染导致的重复调用**不会使其改变**
 
-想看与createRef和其他ref的区别?
+[想看与createRef和其他ref的区别?](#ref)
 
 ```
 function Parent(props) {
@@ -2145,7 +2145,7 @@ ReactDOM.render(虚拟DOM,作为根元素的DOM元素)//渲染根元素,react18�
 npx create-react-app 项目文件名
 ```
 
-# 1
+# Ng
 
 ## nigix
 
