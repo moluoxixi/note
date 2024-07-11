@@ -1,3 +1,4 @@
+
 # 初始化项目并下载
 
 ```js
@@ -110,14 +111,14 @@ export async function unmount() {
 }
 ```
 
-```
+```js
 server {
     listen 83;
     location ^~/middle/ {
-        proxy_pass http://192.168.18.228:9999/middle/;
+        proxy_pass http://192.168.18.228:9999/middle/; #开发时运行访问地址
     }
     location ^~/TSIDS/ {
-        proxy_pass http://192.168.18.228:9999/middle/;
+        proxy_pass http://172.18.120.209:3333/TSIDS/;
     }
 }
 当我nginx添加如上代理时,我访问localhost:83/middle/TSIDS实际上访问的是哪个地址,为什么
