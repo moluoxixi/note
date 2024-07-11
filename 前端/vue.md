@@ -221,9 +221,8 @@ vue-router
 
 在 src 文件夹内创建 router 文件夹,并在其内创建 index.js
 
-index.js 中
-
 ```javascript
+//index.js 中
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter) //声明并使用官方插件
@@ -244,7 +243,7 @@ export default new VueRouter({
 
 在 main.js 中注入 router,注入后,可以在任意 Vue 组件内通过 this.$router 获取路由器对象
 
-通过 this.$route 获取当前匹配的路由对象
+通过 `this.$route` 获取当前匹配的路由对象
 
 ```
 new Vue({
@@ -288,7 +287,7 @@ routes:[
 
 ```
 
-```
+```js
 const routes = [{
     path: '/new-route1',
     component: NewRouteComponent1,
@@ -366,10 +365,11 @@ params不能和path共存
 
 ## 声明式路由导航
 
-跳转路由使用
+跳转路由使用 `<router-link to="路由地址" />`
+
+`<router-link to="{name:'路由名',params:{参数键值对},query:{参数键值对}}" />`
 
 <router-link to="{name:'路由名',params:{参数键值对},query:{参数键值对}}" />
-
 对象写法需要在路由表中给想匹配的路由写 name
 
 对象写法传的 params 参数如果不在路由表中使用/:key 占位接收,就不会在路径上显示
@@ -378,11 +378,11 @@ params不能和path共存
 
 ## 编程式路由导航
 
-this.$router.push
+`this.$router.push` 跳转路由,并保留之前的记录
 
-this.$router.replace
+`this.$router.replace` 跳转路由,用现在的记录替换之前的记录
 
-this.$router.replace/push
+`this.$router.replace/push ` 的写法
 
 ```javascript
 this.$router.replace('路由地址')
@@ -394,16 +394,15 @@ this.$router.replace({
     params:{参数键值对}, //注意写params参数,需要在路由配置中命名路由参数（如 :name 或 :port）
     query:{参数键值对}
 })
-
 ```
 
 ## 展示路由
 
-在要展示路由组件的地方写
+在要展示路由组件的地方写 `</router-view>`
 
-或
+或 `<keep-alive><router-view/></keep-alive>` 缓存路由组件,使组件不被销毁
 
-二级/多级路由就是在
+二级/多级路由就是在对应的 `</router-view>` 组件内再写 `</router-view>`
 
 ## scrollBehavior
 
