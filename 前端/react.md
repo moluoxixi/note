@@ -638,7 +638,7 @@ memo函数的特点是:对组件接受的 props 属性进行浅比较,以确定�
 
 当导致父组件重新渲染的原因与子组件无关时,例如父组件的某个响应式状态A改变,而子组件不依赖A,这是没有意义的,这时候就需要缓存
 
-```
+```js
 const Child=memo((props)=>(组件));
 const Child=memo((props)=>(组件),(p,c)=>{...})
 
@@ -648,9 +648,9 @@ const Child=memo((props)=>(组件),(p,c)=>{...})
 
 因为jsx语法只支持返回一个值,因此我们想返回多个元素时,需要想办法将其包裹并返回,
 
-React.Fragment
+`React.Fragment` 组件用于想返回多个元素,但是不想额外创建 DOM 元素的情况。
 
-<React.Fragment>
+`<React.Fragment> </React.Fragment>` 等同于 `<></>`
 
 ```
 function Children(){
@@ -676,11 +676,11 @@ hello<h2>word</h2>
 
 ## forwardRef
 
-用于获取函数
+用于获取 `函数组件` 内的Dom元素或组件实例
 
-若需要自定义ref暴露的内容,请使用
+若需要自定义ref暴露的内容,请使用 [useImperativeHandle](#useImperativeHandle)
 
-```
+```js
 //Parent
 import {createRef,useRef} from 'react';
 import Child from './components/Child/index.tsx';
@@ -734,7 +734,7 @@ const MyComponent: FC = () => {
 
 ## Suspense
 
-Suspense 的作用与 
+Suspense 的作用与 [ErrorBounary](#ErrorBounary) 相似。Suspense 是当子组件抛出的Promise为padding时，切换呈现的加载 UI
 
 ```
 <Suspense fallback={padding状态下显示的内容,可以是组件}>
