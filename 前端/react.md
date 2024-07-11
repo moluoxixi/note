@@ -70,7 +70,7 @@ const Consumer=context.Consumer;
 
 函数式组件每次渲染时,内部代码都会被重新触发,类似以下示例:
 
-```
+```js
 //定义一个函数组件
 function App(props){
     //constructor代码
@@ -92,22 +92,21 @@ react具有三大状态管理hooks,分别是useState,useReducer,useContext
 #### useReducer
 
 是什么?
+`useReducer` 是一个用于状态管理的 hook api。
 
-useReducer
+`useReducer` 与 `reducer` 函数(即arr.reduce函数的回调) 有关
 
-useReducer
+`useReducer(reducer, initialState)` 接受2个参数，分别为 reducer 函数和初始状态
 
-useReducer(reducer, initialState)
-
-reducer(currentState, action)
+`reducer(currentState, action)` 也是接受2个参数，分别为当前状态和 action，返回一个 new state
 
 怎么用?
 
 useReducer(自定义的reducer函数,自定义的初始值ininState)
 
-返回 [新的响应式状态,reducer发送action的dispatch方法]
+返回 `[新的响应式状态,reducer发送action的dispatch方法]`
 
-```
+```js
 import React, { useReducer } from 'react'
 
 const initialState = 0
@@ -152,7 +151,7 @@ export default CounterOne
 
 #### useState
 
-useState是使用 
+`useState` 是使用 ` useReducer ` 构建的,用于替代 ` useReducer `
 
 ```javascript
 //immer是第三方包,要下载
@@ -177,12 +176,9 @@ setState(produce(state,(proxyState)=>{
 useContext用于多组件共享的状态
 
 1. 通过 React.createContext(对象)创建一个上下文对象并返回 
-
-1. 新创建的上下文对象上有一个 Provider 属性,该属性是一个组件,使用 Provider 组件的 value 属性接收共享数据
-
-1. 使用<新创建的上下文对象.Provider value={共享的数据}> 子组件若干 </新创建的上下文对象.Provider>使用该组件
-
-1. 该组件内的所有组件都可以使用 React.useContext(新创建的上下文对象)接收共享的数据
+2. 新创建的上下文对象上有一个 Provider 属性,该属性是一个组件,使用 Provider 组件的 value 属性接收共享数据
+3. 使用<新创建的上下文对象.Provider value={共享的数据}> 子组件若干 </新创建的上下文对象.Provider>使用该组件
+4. 该组件内的所有组件都可以使用 React.useContext(新创建的上下文对象)接收共享的数据
 
 例如我们可以将useReducer返回的state,dispatch通过value传递给子组件,让子组件可以跨组件修改状态,而无需层层prop传递
 
@@ -192,7 +188,7 @@ useContext用于多组件共享的状态
 
 发现状态更新后,强制更新,从而避免v18中并发渲染导致的画面撕裂问题
 
-```
+```js
 //api
 //useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot?);
 import { useSyncExternalStore } from "react";
@@ -233,11 +229,11 @@ useTransition 内更新的事件会采取 Concurrent 模式,
 
 startTransition内的callback导致的响应式更新会变成低优先级更新,
 
-Concurrent 模式下，
+Concurrent 模式下，**低优先级更新会被高优先级中断，此时，低优先级更新已经开始的协调会被清除，并且会被重置为未开始的状态**。
 
 当被重置后，导致 transition 更新只有在用户停止输入（或超过 5s）时才会得到有效的处理。
 
-```
+```js
 const [padding, startTransition] = useTransition(); //padding初始为false
 //不可以接收异步函数
 startTransition(()=>{})
@@ -264,7 +260,7 @@ const changeHandler = p => () => {
 
 ### 缓存钩子
 
-想看memo组件?点击这里
+[想看memo组件?点击这里](##memo)
 
 react具有两个缓存钩子,分别是
 
