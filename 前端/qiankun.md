@@ -1,13 +1,13 @@
 # 初始化项目并下载
 
-```
+```js
 npm init
 npm i qiankun -S
 ```
 
 # 下载所有依赖
 
-```
+```js
 //运行所有npm install:xxx格式的命令
 npm-run-all --serial install:*
 ​
@@ -43,7 +43,7 @@ registerMicroApps([
 
 ## 乾坤提供的globalState通信方式
 
-```
+```js
 //父应用通过在注册子应用时,添加props配置项,将actions传递给子应用,子应用则可脱离qiankun包
 import {initGlobalState , MicroAppStateActions } from 'qiankun';
 ​
@@ -59,7 +59,7 @@ actions.offGlobalStateChange();
 
 ## 事件流方式
 
-```
+```js
 //因为qiankun父子应用在同一个页面上,可以通过事件流进行通信
 //实例创建完毕后message不可变,如需要变化,需要重新创建事件实例
 new CustomEvent('eventdemo', { detail: message })
@@ -87,7 +87,7 @@ vue的scoped样式其实也有问题，
 
 # 生命周期
 
-```
+```js
 /**
  * bootstrap 只会在微应用初始化的时候调用一次，下次微应用重新进入时会直接调用 mount 钩子，不会再重复触发 bootstrap。
  * 通常我们可以在这里做一些全局变量的初始化，比如不会在 unmount 阶段被销毁的应用级别的缓存等。
@@ -114,10 +114,10 @@ export async function unmount() {
 server {
     listen 83;
     location ^~/middle/ {
-        proxy_pass 
+        proxy_pass http://192.168.18.228:9999/middle/;
     }
     location ^~/TSIDS/ {
-        proxy_pass 
+        proxy_pass http://192.168.18.228:9999/middle/;
     }
 }
 当我nginx添加如上代理时,我访问localhost:83/middle/TSIDS实际上访问的是哪个地址,为什么
