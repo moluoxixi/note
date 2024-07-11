@@ -1198,13 +1198,13 @@ react-redux在
 
 react-redux 通过 connect 方法返回 高阶组件的方式 将 store , props ,以及mapStateToProps,mapDispatchToProps的返回值 共同组成新的props传递给组件内部
 
-react-redux 无法创建store,通过redux库的
+react-redux 无法创建store,通过redux库的createStore(Reducers)创建并连接 store 与 reducers
 
 ![](images/WEBRESOURCE354c14b2e6aa66b039cbc4863b6d59b8截图.png)
 
 ### ts
 
-```
+```js
 import { TypedUseSelectorHook } from "react-redux";
 ​
 type stateType = ReturnType<typeof store.getState>; //定义state类型
@@ -1215,7 +1215,7 @@ type useSelectorType = TypedUseSelectorHook<stateType>; //定义useSelector类�
 
 React-Redux 提供的组件,使该容器内的所有组件都能使用 store 访问 store 中的数据
 
-```
+```js
 //Provider使用示例,store由redux库中的createStore创建而来
 //<Provider store={store} ><component /></Provider>
 ​
@@ -1232,9 +1232,9 @@ export const Provider=(props)=>{
 
 接收mapStateToProps和mapDispatchToProps,返回一个高阶组件,高阶组件接收 组件 返回容器组件,
 
-容器组件接收
+容器组件接收Provider传递的store和自身的属性ownProps并与mapStateToProps的返回值stateProps,mapDispatchToProps的返回值dispatchProps共同组成新的props传递给 compoent 这个真正渲染的组件
 
-```
+```js
 //mapStateToProps使用示例,如果不传,则connect不会订阅store变化
 //mapStateToProps订阅store变化,mapStateToProps的返回值是否变化决定组件才会重新渲染
 //const mapStateToProps=state=>state.count;
@@ -1300,7 +1300,7 @@ const connect = (mapStateToProps, mapDispatchToProps) => {
 
 ### useDispatch原理与使用
 
-```
+```js
 //use
 //const dispatch = useDispatch();
 //dispatch(action);
@@ -1316,7 +1316,7 @@ export const useDispatch = () => {
 
 ### useSelector原理与使用
 
-```
+```js
 //use
 //const count = useSelector((state) => state.count);
 
@@ -1331,7 +1331,7 @@ export const useSelector = (selector) => {
 
 ### useStore原理与使用
 
-```
+```js
 //use
 //const store=useStore();
 
@@ -1349,7 +1349,7 @@ export const useStore = () => {
 
 store来自其他库创建,例如redux的createStore创建
 
-```
+```js
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 //Counter只需在Provider内部即可,可以是任意后代组件,不一定要是子组件
@@ -1364,7 +1364,7 @@ ReactDOM.createRoot(document.getElementById("root")!).createRoot(
 
 counter组件
 
-```
+```js
 import { connect } from 'react-redux';
 ​
 function Counter(props) {
@@ -1403,7 +1403,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 ### ts
 
-```
+```js
 import {PayloadAction} from 'redux-toolkit'; //action中的payload类型
 type stringPayloadType=PayloadAction<string>; //定义一个类型是string的payload
 ```
@@ -1412,7 +1412,7 @@ type stringPayloadType=PayloadAction<string>; //定义一个类型是string的pa
 
 用于快速创建action的函数
 
-```
+```js
 //use
 //createAciton(type);
 
@@ -1426,7 +1426,7 @@ const createAciton=(type)=>{
 
 接收配置项,返回actions和reducer
 
-```
+```js
 //use
 //const countSlice=createSlice(config);
 
@@ -1460,7 +1460,7 @@ const createSlice=({ name, initialState, reducers })=> {
 
 ### configureStore原理与options
 
-```
+```js
 //use API
 configureStore({
     reducer, //接收一个reducer函数,在redux-tookit中是使用createSlice返回的对象中的reducer
@@ -1482,7 +1482,7 @@ const configureStore=({ reducer, middleware })=>{
 
 #### 定义store&action&reducer
 
-```
+```js
 //store/index.js
 import {configureStore,createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 
@@ -1540,7 +1540,7 @@ export {
 
 输出的counterSlice的结构
 
-```
+```js
 //注意不包含异步reducer,异步reducer由redux-tookit内的thunk中间件处理
 const counterSlice = {
   actions: {
@@ -1558,7 +1558,7 @@ const counterSlice = {
 
 #### 挂载共享数据store
 
-```
+```js
 import {createRoot} from 'react-dom/client';
 import { Provider } from 'react-redux';
 import {store} from './store/index.ts'; // 你的根 reducer
@@ -1575,7 +1575,7 @@ createRoot(document.getElementById("root")!).render(
 
 #### 传递action
 
-```
+```js
 //组件内部
 import { useDispatch,useSelector } from 'react-redux';
 import { myApi,actions } from '@store/index.js';
@@ -1608,7 +1608,7 @@ react-router 包含大部分核心功能,包括路由匹配算法,大部分的�
 
 react-router-dom 包括 react-router 的所有内容，并添加了一些特定于 DOM 的 API，包括 
 
-react-router-native 包括 react-router 的所有内容，并添加了一些特定于 React Native 的 API，包括 
+react-router-native 包括 react-router 的所有内容，并添加了一些特定于 React Native 的 API，包括 `<NativeRouter>` 和 `<Link>` 的原生版本
 
 ## 路由的基本使用
 
@@ -1764,7 +1764,7 @@ routeNav('路由地址')
 
 格式
 
-```
+```js
 //参数会被挂在localtion.search属性身上
 ​
 http:127.0.0.1:3000/home?q=123&w=234
@@ -1772,9 +1772,9 @@ http:127.0.0.1:3000/home?q=123&w=234
 
 在v6之前,都是通过自己写方法或者引入库处理location.serach,v6提供了新hooks用于处理queryparams
 
-原理是基于
+原理是基于[URLSearchParams](https://link.juejin.cn/?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FAPI%2FURLSearchParams)接口，先监听location.search变化，当触发setSearchParams时更据入参创建新的URLSearchParams对象，再执行改变路由的方法，进而修改location对象。
 
-```
+```js
 const [searchParams, setSearchParams] = useSearchParams()
 
 ```
@@ -1783,7 +1783,7 @@ const [searchParams, setSearchParams] = useSearchParams()
 
 在路由表中配置
 
-```
+```js
 {
     path:目标路由地址/:参数1.../:参数n
     element:<路由组件名/>
@@ -1795,7 +1795,7 @@ const [searchParams, setSearchParams] = useSearchParams()
 
 目标路由中
 
-```
+```js
 const {参数1,...参数n}=useParams();
 
 ```
