@@ -583,9 +583,9 @@ const router = new VueRuter({
 
 配置在组件内
 
-beforeRouterEnter 路由匹配解析完毕,组件即将开始创建时拦截,
+beforeRouterEnter 路由匹配解析完毕,组件即将开始创建时拦截, `不能获取 this` (组件未复用)
 
-beforeRouterUpdate 路由组件开始创建,
+beforeRouterUpdate 路由组件开始创建, `可以获取 this`,但页面未更新时拦截(组件复用)
 
 beforeRouterLeave 组件创建完毕,即将离开时拦截(组件销毁)
 
@@ -892,12 +892,12 @@ devServer: {
 
 provide/inject
 
-| 2自定义属性 | props,$attrs | 
-| -- | -- |
-| 2/3自定义事件 | $emit/$listeners/$on | 
-| 2自定义事件+自定义属性 | v-model , .sync | 
-| 3组件实例 | $refs,$parent,$children | 
-| 1非响应式 | provide/inject | 
+| 2自定义属性       | `props,$attrs`            |     |
+| ------------ | ------------------------- | --- |
+| 2/3自定义事件     | `$emit/$listeners/$on`    |     |
+| 2自定义事件+自定义属性 | `v-model , .sync`         |     |
+| 3组件实例        | `$refs,$parent,$children` |     |
+| 1非响应式        | `provide/inject`          |     |
 
 
 ## props 组件通信
@@ -1002,7 +1002,7 @@ this.$emit('自定义事件名',参数...);
 
 1. 必须能调用
 
-$on
+`$on和$emit`
 
 因此,Vue 实例是最佳人选
 
@@ -1172,14 +1172,10 @@ slot 向结构数据传递 props(仅限于作用域插槽):看起来是子向父
 给 html 标签使用 v-model='xx',看具体情况
 
 1. radio 和 checkbox 本身没有 value,需要手动写 value
-
-1. radio 收集的是其 value 值
-
-1. select 收集的是其选中的 option 的 value 值
-
-1. checkbox 成组使用时(多个 checkbox 绑定同一个数据),需要使用数组收集其 value 值,最终是选中的 checkbox 的 value 值组成的数组
-
-1. checkbox 单个使用时,收集的是其 checked 属性值
+2. radio 收集的是其 value 值
+3. select 收集的是其选中的 option 的 value 值
+4. checkbox 成组使用时(多个 checkbox 绑定同一个数据),需要使用数组收集其 value 值,最终是选中的 checkbox 的 value 值组成的数组
+5. checkbox 单个使用时,收集的是其 checked 属性值
 
 给组件标签使用 v-model='xx',默认情况下相当于
 
@@ -1197,17 +1193,17 @@ model:{
 
 父子之间
 
-<组件标签名 :自定义属性名.sync='xx' />
+`<组件标签名 :自定义属性名.sync='xx' />`
 
-等同于 
+等同于 `<组件标签名 :自定义属性名='xx' @update:自定义属性名='xx= value' />`
 
-update:自定义属性名
+update:自定义属性名共同作为一个自定义事件名
 
-组件内通过 
+组件内通过 `$emit('update:自定义属性名')` 触发
 
 多个属性组成的对象的写法
 
-:.sync 后的对象要定义好后赋值,不能直接在指令里写对象
+`:.sync` 后的对象要定义好后赋值,不能直接在指令里写对象
 
 ```javascript
 :.sync="{a:1}"    //报错
@@ -1215,13 +1211,13 @@ update:自定义属性名
 xx={a:1}
 ```
 
-<组件标签名 :.sync='xx' />
+`<组件标签名 :.sync='xx' />`
 
-xx --> {自定义属性名 1:'xx',自定义属性名 2:'xx'}
+xx --> `{自定义属性名 1:'xx',自定义属性名 2:'xx'}`
 
-等同于 
+等同于 `<组件标签名 :自定义属性名1='xx' @update:自定义属性名1='xx=value' :自定义属性名2='xx' @update:自定义属性名2='xx=value' />`
 
-## $attrs和$listeners
+## `$attrs` 和 `$listeners `
 
 $attrs
 
