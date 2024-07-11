@@ -1,3 +1,15 @@
+# 一些坑
+Vue 2 主应用挂载 vue 3 子应用 , vue 3 子应用路由切换出错
+https://github.com/umijs/qiankun/issues/2254
+```javascript
+// 解决方法
+router.beforeEach((to, from, next) => {  
+  if (_.isEmpty(history.state.current)) {  
+    _.assign(history.state, { current: from.fullPath });  
+  }  
+  next();
+});
+```
 
 # 初始化项目并下载
 
@@ -164,8 +176,7 @@ server {
 
 # vite特殊配置
 
-vite下依赖vite-plugin-qiankun包
-
+vite下依赖vite-plugin-qiankun包, 这个包的本质上是在 `eval` 函数内用 `dynamic import` 加载 es module
 除了注意事项中设置服务基础路径的配置外,还需要使用以下配置
 
 ```javascript
