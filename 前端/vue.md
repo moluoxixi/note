@@ -34,14 +34,16 @@ namespaced用于开启命名空间,modules用于将store分成一个个小模块
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-//处理操作
+//处理操作,可异步
+//通过$store.dispatch('方法名',参数)触发
 const actions={
     方法名({commit,state},传的参数){
         //注意,不需要带模块名
         commit('mutations中方法的名字',传给mutations中方法的参数)
     }
 };
-//修改状态
+//修改状态,仅同步
+//通过$store.commit('方法名',参数)触发
 const mutations={
     方法名(state,payload){
         //payload就是传的参数
@@ -50,6 +52,7 @@ const mutations={
 };
 const state={};
 //同vue的computed,简化数据操作
+//通过$store.getter获取,或者mapGetters
 const getters={
     方法名(state){
         return state.count;
@@ -95,7 +98,7 @@ new Vue({
 | modules    | 用于引入小 store,小 store 会合并为 store                                   |                             |                                                                                                                                    |                                                                                                                                |     |
 | namespaced | 命名空间,避免命名冲突                                                      |                             |                                                                                                                                    |                                                                                                                                |     |
 | state      | 共享状态数据                                                           | {状态 1:值,...}                | 在 Vue 组件内通过 `this.$store.state.状态名 ` 获取状态值                                                                                         |                                                                                                                                |     |
-| getters    | 用于简化状态数据操作                                                       | {方法名:(state)=>新数据}          | 初始值}                                                                                                                               | 在 Vue 组件内通过 `this.$store.getters.方法名` 获取 getters 里面方法的返回值                                                                      |     |
+| getters    | 用于简化状态数据操作                                                       | {方法名:(state)=>新数据}          |                                                                                                                                    | 在 Vue 组件内通过 `this.$store.getters.方法名` 获取 getters 里面方法的返回值                                                                      |     |
 | mutations  | 用于提供 `直接修改 state` 的方法不能出现在异步,循环和判断中进行操作 state                    | { 方法名 1(state,传的参数){},...}  | 通过 actions 里的方法中 `context.commit('方法名')` 触发 mutations 里的方法 <br>或Vue 组件内可以通过this.$sotre.commit('方法名')跳过 actions 直接触发 mutations 里的方法 | 两种思考方式:<br>1.有几个数据,就写几个修改数据的方法         <br>2.有几个修改数据的时机(如开始请求,请求完成),就写几个修改数据的方法                                                |     |
 | actions    | 用于将 vue 操作与 vuex 连接,actions 中的方法接收操作后提交给 mutations 进而修改 vuex 的状态 | {方法名 1(context,传的参数){},...} | Vue 组件内通过 `this.$store.dispatch('方法名',传的参数)` 触发 actions 里的方法                                                                       | context 是一个对象,本质是 store 的阉割复制品,具有一些方法:<br>context.commit('mutations里的方法名',传的参数)触发 mutations 里的方法 context.state.状态获取 state 里的状态 |     |
 
@@ -110,7 +113,7 @@ mapMutations 和 mapActions 是简化方法的操作,将 vuex 中的方法映射
 
 ### 数组写法
 
-```
+```js
 computed:{
     //...mapGetters(['方法名',...])
     ...mapState(['状态名',...])
@@ -161,7 +164,7 @@ methods:{
 
 ### 对象(取别名)写法
 
-```
+```js
 computed:{
     //...mapGetters({方法名的别名:'方法名',...})
     ...mapState({状态名的别名:'状态名',...})
@@ -180,7 +183,7 @@ computed:{
 
 替换 VueX 中的 Vuex.Store
 
-```
+```js
 import {createStore} from 'vuex';
 export createStore(config)
 
@@ -192,11 +195,10 @@ export createStore(config)
 
 返回 store 对象的函数
 
-```
+```js
 const store=useStore()
 store.commit()
 store.dispatch()
-
 ```
 
 # 响应式
@@ -204,17 +206,11 @@ store.dispatch()
 vue2数组因为一般情况下数据量很大,Object.defineProperty代理太消耗性能,因此提供七个方法提供响应式:
 
 - push
-
 - unshift
-
 - pop
-
 - shift
-
 - splice
-
 - sort
-
 - reverse
 
 # router
