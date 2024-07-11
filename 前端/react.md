@@ -7,8 +7,7 @@
 通常情况下,缓存用于需要昂贵计算量的情况下,比如虚拟列表,比如父组件更新但所有子组件的props未更新等
 
 ```
-
-
+https://juejin.cn/post/7146107198215553055
 ```
 
 所有耗时的组件应使用如下规范进行缓存:
@@ -31,7 +30,7 @@ context对象.Provider 的value传递共享数据，当value的值发生改变�
 
 jsx中使用context对象.Consumer组件接受共享状态，用法如下
 
-```
+```js
 import React, { createContext,useReducer,useCallback, useContext,useMemo,memo } from "react";
 const context=createContext({})；
 const Provider=context.Porvider;
@@ -157,7 +156,8 @@ useState是使用
 
 ```javascript
 //immer是第三方包,要下载
-import { produce } from immer;
+import { produce } from
+ immer;
 
 const [state,setState]=useState({a:{b:1}});
 setState(produce(state,(proxyState)=>{
@@ -1013,7 +1013,8 @@ reducer怎么使用&store怎么创建&多个reducer如何使用&中间件如何�
 import { combineReducers, createStore } from "redux";
 import thunk from 'redux-promise'
 //immer是第三方包,要下载
-import { produce } from immer;
+import { produce } from
+ immer;
 
 //定义reducer
  //preState是当前reducer对应的store的值,action是我们传递过来的参数

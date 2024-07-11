@@ -1223,27 +1223,27 @@ $attrs
 
 父子之间
 
-$attrs 会接收所有未被 props 接收的属性形成一个对象
+`$attrs` 会接收所有未被 `props` 接收的属性形成一个对象
 
-$attrs-->{自定义属性名 1:'xx',自定义属性名 2:'xx'}
+`$attrs ` --> `{自定义属性名 1: 'xx',自定义属性名 2: 'xx'}`
 
-v-bind="obj"
+`v-bind="obj"`
 
-v-bind="$attrs" --> :自定义属性名 1="xx" :自定义属性名 2='xx'
+`v-bind="$attrs"` --> `:自定义属性名 1="xx" :自定义属性名 2='xx'`
 
-$listeners
+`$listeners `
 
 子向父
 
-$lisnteners 会接收组件身上所有的自定义事件形成一个对象
+`$lisnteners` 会接收组件身上所有的自定义事件形成一个对象
 
-$lisnteners-->{自定义方法名 1:()=>{},自定义方法名 2:()=>{}}
+`$lisnteners` --> `{自定义方法名 1:()=>{},自定义方法名 2:()=>{}}`
 
-v-on="obj"
+`v-on="obj"`
 
-v-on="$listeners" --> :自定义方法名 1="xx" :自定义方法名 2='xx'
+`v-on="$listeners"` --> `:自定义方法名 1="xx" :自定义方法名 2='xx'`
 
-## ref 和$children和 ​$parent
+## `ref` 和 `$children` 和 ​ `$ parent `
 
 ref
 
