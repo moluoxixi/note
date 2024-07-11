@@ -260,7 +260,7 @@ const changeHandler = p => () => {
 
 ### 缓存钩子
 
-[想看memo组件?点击这里](##memo)
+[想看memo组件?点击这里](#memo)
 
 react具有两个缓存钩子,分别是
 
@@ -274,7 +274,7 @@ react具有两个缓存钩子,分别是
 
 当一个操作因为某种原因被重复执行（例如每次渲染都执行），我们需要将它放在useMemo中执行
 
-```
+```js
 const value=useMemo(()=>想缓存的值,[依赖的数据1,...])
 
 const sum = useMemo(()=>{
@@ -297,7 +297,7 @@ const sum = useMemo(()=>{
 
 导致子组件的props被更新。这时候memo会失效，这时就需要usecallback
 
-```
+```js
 const value=Callback(()=>fn(),[依赖的数据1,...])
 ```
 
@@ -308,20 +308,16 @@ const value=Callback(()=>fn(),[依赖的数据1,...])
 三者使用场景对比
 
 1. useEffect  DOM更新和渲染完毕后调用,用于页面数据处理工作
-
-1. useLayoutEffect   DOM更新完毕,浏览器渲染之前同步调用,
-
-**会阻塞浏览器渲染, 用于页面元素布局工作**
-
-1. useInsertionEffect  DOM更新前调用 用于插入动态样式
+2. useLayoutEffect   DOM更新完毕,浏览器渲染之前同步调用,**会阻塞浏览器渲染, 用于页面元素布局工作**
+3. useInsertionEffect  DOM更新前调用 用于插入动态样式
 
 调用先后以及执行顺序
 
-useInsertionEffect的回调在  
+useInsertionEffect的回调在 React的DOM更新函数 调用前调用
 
-useEeffect的回调在  
+useEeffect的回调在 React的DOM更新函数 执行完毕后调用回调
 
-useEeffect的回调在  
+useEeffect的回调在 React的DOM更新函数 执行完毕后将回调推入异步队列
 
 #### useEffect
 
@@ -329,7 +325,7 @@ useEeffect的回调在
 
 用于数据处理
 
-```
+```js
 import {useRffect,useState} from 'react';
 function App(props){
     let [count, setCount] = useState(0);
@@ -345,7 +341,7 @@ function App(props){
 }
 ```
 
-副作用钩子函数,用来替代类组件中以下三个生命周期钩子函数:
+副作用钩子函数,用来替代类组件中以下三个生命周期钩子函数: `componentDidMount` `componentDidUpdate` `componentWillUnmount` 没写第二个参数时,相当于同时使用第一二个钩子(即 state 改变就调用) 写了第二个参数时,只有 `第二个数组参数中存放的 state改变时`,第一个参数回调才执行即 `写空数组只能在初始化阶段(DidMount)触发第一个参数回调函数第一个参数回调函数返回的回调函数就是第三个钩子函数,但略有不同,每次调用该 useEffect 函数时,都会将上一次调用 useEffect 时第一个参数回调函数返回的回调函数执行后销毁
 
 #### useLayoutEffect
 
