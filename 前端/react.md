@@ -2111,9 +2111,9 @@ app.use('/api1',
 | (弃用)componentWillReceiveProps()                    | 即将获得父组件传的值时被调用,即**子组件重新渲染时触发**(初始化时不执行)                                                                 |
 | (新增)static getDerivedStateFromProps(props,state){} | 接收新 props 或 state 修改或强制更新(调用 forceUpdate)时被调用,返回值用来更新的 state,即**调用 forceUpdate 或 setState 或子组件重新渲染时触发** |
 | (即将弃用)shouldComponentUpdate(){}                    | 返回布尔值,控制 state 改变或接收新 props 后是否重新渲染--->**子组件调用 forceUpdate 或 setState 时是否重新渲染当前组件**                     |
-| (弃用)                                               | 页面即将更新时触发,即**当前组件重新渲染前触发**                                                                              |
+| (弃用)componentWillUpdate()                          | 页面即将更新时触发,即**当前组件重新渲染前触发**                                                                              |
 | render()                                           | 渲染组件                                                                                                    |
-| (新增)                                               | **render 之后,真实 DOM 更新前调用**,用来记录 DOM 更新前的一些信息,返回值给 componentDidUpdate 的第三个参数接收                           |
+| (新增)getSnapshotBeforeUpdate(){}                    | **render 之后,真实 DOM 更新前调用**,用来记录 DOM 更新前的一些信息,返回值给 componentDidUpdate 的第三个参数接收                           |
 | React 更新 DOM 和 refs                                |                                                                                                         |
 | componentDidUpedate(preprops,prestate,snapshot){}  | **组件更新完成时调用**,snapshot 接收 getSnapshotBeforeUpdate()的返回值                                                 |
 
@@ -2122,11 +2122,11 @@ app.use('/api1',
 
 componenWillUnmount()做一些收尾工作
 
-| 函数 | 作用 | 
-| -- | -- |
-| componentWillUnmount(){} | 组件即将被卸载时被调用 | 
-| (弃用) | 卸载组件 | 
-| (新增) | 卸载组件(18 的写法) | 
+| 函数                                          | 作用           |
+| ------------------------------------------- | ------------ |
+| componentWillUnmount(){}                    | 组件即将被卸载时被调用  |
+| (弃用)ReactDOM.unmountComponentAtNode(DOM 元素) | 卸载组件         |
+| (新增)ReactDOM.createRoot(DOM 元素).unmount()   | 卸载组件(18 的写法) |
 
 
 # 挂载到根元素并渲染
@@ -2141,7 +2141,7 @@ ReactDOM.render(虚拟DOM,作为根元素的DOM元素)//渲染根元素,react18�
 
 # 创建项目
 
-```
+```js
 npx create-react-app 项目文件名
 ```
 
@@ -2151,7 +2151,7 @@ npx create-react-app 项目文件名
 
 ### linux
 
-[用户名@操作系统 ~]  ~代表家目录,即当前用户所属的目录 (即/用户名,/是根目录,/下面有很多目录)
+`[用户名@操作系统 ~]`  ~代表家目录,即当前用户所属的目录 (即/用户名,/是根目录,/下面有很多目录)
 
 | pwd | 查看文件目录 | 
 | -- | -- |
