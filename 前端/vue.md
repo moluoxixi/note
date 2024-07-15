@@ -1068,10 +1068,9 @@ $emit
 ## 插槽 slot
 
 父向子
+父向子传递 props 作为作用域插槽的 scope
+子向父传递 html 作为 slot
 
-用于父向子传递结构数据
-
-slot 向结构数据传递 props(仅限于作用域插槽):看起来是子向父,其实还是父向子
 
 **一个插槽可以接收多个 template 的结构数据**
 
@@ -1097,7 +1096,9 @@ slot 向结构数据传递 props(仅限于作用域插槽):看起来是子向父
 <template>
     <父组件标签名>
         //这个v-slot:default可以省略,不写默认就是默认插槽
-        <template v-slot:default></template>
+        <template v-slot:default="scope">
+        	<span>{{scope.a}}</span>
+        </template>
     </父组件标签名>
 </template>
 ```
@@ -1106,7 +1107,7 @@ slot 向结构数据传递 props(仅限于作用域插槽):看起来是子向父
 
 ```javascript
 <template>
-    <slot>aaa</slot>
+    <slot :a='1'>aaa</slot>
 </template>
 ```
 
