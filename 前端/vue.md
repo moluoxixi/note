@@ -1070,6 +1070,7 @@ $emit
 父向子
 子向父传递 props 作为作用域插槽的 scope
 父向子传递 html 作为 slot
+slot 标签内的内容会作为不传递 slot 的 html 时的默认展示内容
 
 
 **一个插槽可以接收多个 template 的结构数据**
