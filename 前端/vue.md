@@ -1068,8 +1068,8 @@ $emit
 ## 插槽 slot
 
 父向子
-父向子传递 props 作为作用域插槽的 scope
-子向父传递 html 作为 slot
+子向父传递 props 作为作用域插槽的 scope
+父向子传递 html 作为 slot
 
 
 **一个插槽可以接收多个 template 的结构数据**
