@@ -43,7 +43,7 @@ registerMicroApps([
     name: 'react-app', 
     entry: '//http://192.168.211.180',  // 子应用的入口地址
     container: '#appContainer',         // 子应用挂在的容器元素
-    activeRule: '/react-app',           // 子应用的匹配规则
+    activeRule: '/react-app',           // 子应用的激活规则
     sandbox: true,                      // 是否启用沙箱隔离
     singular: true,                     // 是否启用微应用的独立运行时
     props: {},                          // 传递给子应用的数据,子应用通过mount生命周期接收
@@ -71,7 +71,7 @@ export default {
       container: this.$el, //容器节点  
       name: 'skywalking', //item.subAppName, //包名  
       entry: location.origin + '/skywalking',  
-      activeRule: this.$router.options.base + 'skywalking', //激活路由  
+      activeRule: this.$router.options.base + 'skywalking', // 激活微应用的路由规则，可选
       props: {  
         data: {  
           userInfo: global.userInfo,  
