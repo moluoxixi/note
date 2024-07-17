@@ -51,7 +51,57 @@ registerMicroApps([
   ...
 ])
 ```
-
+## 手动注册示例
+```js
+<template>  
+  <div class="skywalking-container height100"></div>  
+</template>  
+  
+<script>  
+import { loadMicroApp } from 'qiankun';  
+export default {  
+  name: 'index',  
+  data() {  
+    return {  
+      microApp: null  
+    };  
+  },  
+  mounted() {
+    this.microApp = loadMicroApp({  
+      container: this.$el, //容器节点  
+      name: 'skywalking', //item.subAppName, //包名  
+      entry: location.origin + '/skywalking',  
+      activeRule: this.$router.options.base + 'skywalking', //激活路由  
+      props: {  
+        data: {  
+          userInfo: global.userInfo,  
+          activeRule: this.$router.options.base + 'skywalking', //激活路由  
+          resource: window.resource  
+        },  
+        fn: {  
+          getTheme: () => {  
+            return this.$store.state.theme;  
+          }  
+        }  
+      }  
+    });  
+  },  
+  beforeDestroy() {  
+    this.microApp.unmount();  
+  }  
+};  
+</script>  
+  
+<style scoped lang="scss">  
+.skywalking-container {  
+  width: 100%;  
+  /deep/ > div {  
+    width: 100%;  
+    height: 100%;  
+  }  
+}  
+</style>
+```
 # 应用通信
 
 ## 乾坤提供的globalState通信方式
