@@ -48,13 +48,13 @@ vite将模块区分为 `依赖` 和 `源码`
 
 即不会变动的纯 JavaScript,例如组件库
 
-Vite 将会使用 [esbuild]([https://esbuild.github.io/](https://esbuild.github.io/)) [预构建依赖](https://cn.vitejs.dev/guide/dep-pre-bundling.html)。esbuild 使用 Go 编写，比JavaScript 编写的打包器 (webpack) 预构建依赖快 10-100 倍
+Vite 将会使用 [esbuild](https://esbuild.github.io/) [预构建依赖](https://cn.vitejs.dev/guide/dep-pre-bundling.html)。esbuild 使用 Go 编写，比JavaScript 编写的打包器 (**webpack**) 预构建依赖快 10-100 倍
 
 ## 源码
 
-并非直接是js的文件,而是需要编译的,例如JSX，CSS 或者 Vue/Svelte 组件,时常需要编辑
+并**非直接是js的文件,而是需要编译的**,例如JSX，CSS 或者 Vue/Svelte 组件,**时常需要编辑**
 
-Vite 以 [原生 ESM](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules)方式提供源码。
+Vite 以 [原生 ESM](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules) 方式提供源码。
 
 Vite 在浏览器请求源码时进行转换并按需提供源码,让浏览器接管打包的部分工作.
 
@@ -66,7 +66,7 @@ Vite 在浏览器请求源码时进行转换并按需提供源码,让浏览器�
 
 ![](images/WEBRESOURCE300bbe1722e34899f0a2c5353e096dbf95b061f2138caa9908a2aae552deff06.png)
 
-热更新HMR
+## 热更新HMR
 
 在 Vite 中，HMR 是在原生 ESM 上执行的。当编辑一个文件时，Vite 只需要精确地使已编辑的模块与其最近的 HMR 边界之间的链失活[[1]](https://cn.vitejs.dev/guide/why.html#footnote-1)（大多数时候只是模块本身），使得无论应用大小如何，HMR 始终能保持快速更新。
 

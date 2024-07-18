@@ -55,27 +55,27 @@ npm run dev
 
 # 页面配置
 
-| 属性名 | 描述 | 示例 | 
-| -- | -- | -- |
-| watchQuery | 用于监视query参数变化并在更改时执行组件方法 ( | watchQuery:true,    //监视所有query参数 | 
-| asyncData | 使得你能够在渲染 | asyncData({params}{ | 
-| fetch | 用于在渲染页面之前获取数据填充应用的状态树（store）。 | async fetch({ store, params }) { | 
-| head | 配置当前页面的head标签内容,使用 | head(){ | 
-| layout | 指定当前页面使用的布局 | layout(content){ | 
-| middleware | 指定页面的中间件，中间件会在页面渲染之前被调用 | middleware:'xxx',    //在pages或layouts中 | 
-| transition | 指定页面切换的过渡动效, 详情请参考 | transition:{name:'xx'} | 
-| scrollToTop | 用于判定渲染页面前是否需要将当前页面滚动至顶部。这个配置用于 | scrollToTop:true | 
-| validate | 用于校验当前路由是否有效 | validate({params}{ | 
+| 属性名         | 描述                                                                 | 示例                                                                       |
+| ----------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| watchQuery  | 用于监视query参数变化并在更改时执行组件方法 (asyncData, fetch, validate, layout, ...) | `watchQuery:true `, //监视所有query参数<br>`watchQuery:['aaa']`, //监视部分query参数 |
+| asyncData   | 使得你能够在渲染                                                           | asyncData({params}{                                                      |
+| fetch       | 用于在渲染页面之前获取数据填充应用的状态树（store）。                                      | async fetch({ store, params }) {                                         |
+| head        | 配置当前页面的head标签内容,使用                                                 | head(){                                                                  |
+| layout      | 指定当前页面使用的布局                                                        | layout(content){                                                         |
+| middleware  | 指定页面的中间件，中间件会在页面渲染之前被调用                                            | middleware:'xxx',    //在pages或layouts中                                   |
+| transition  | 指定页面切换的过渡动效, 详情请参考                                                 | transition:{name:'xx'}                                                   |
+| scrollToTop | 用于判定渲染页面前是否需要将当前页面滚动至顶部。这个配置用于                                     | scrollToTop:true                                                         |
+| validate    | 用于校验当前路由是否有效                                                       | validate({params}{                                                       |
 
 
 # 内置组件
 
-| 组件 | 描述 | 说明 | 
-| -- | -- | -- |
-| <nuxt/> | 用于显示pages中的组件 | nuxtChildKey:将什么作为<router-view/>,默认是$route.path | 
-| <nuxt-child/> | 用于在pages页面中,展示child.vue组件 |   | 
-| <nuxt-link/> | 可以理解为router-link | <NuxtLink to="{path:'/login',params:{参数键值对},query:{参数键值对}}" /> | 
-| <ClientOnly/> | 用于包裹仅用于客户端渲染,不需要服务端渲染的组件 | <ClientOnly>不需要ssr的内容</ClientOnly> | 
+| 组件            | 描述                        | 说明                                                             |     |
+| ------------- | ------------------------- | -------------------------------------------------------------- | --- |
+| <nuxt/>       | 用于显示pages中的组件             | nuxtChildKey:将什么作为<router-view/>,默认是$route.path                |     |
+| <nuxt-child/> | 用于在pages页面中,展示child.vue组件 |                                                                |     |
+| <nuxt-link/>  | 可以理解为router-link          | <NuxtLink to="{path:'/login',params:{参数键值对},query:{参数键值对}}" /> |     |
+| <ClientOnly/> | 用于包裹仅用于客户端渲染,不需要服务端渲染的组件  | <ClientOnly>不需要ssr的内容</ClientOnly>                             |     |
 
 
 # 目录结构
