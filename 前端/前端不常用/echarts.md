@@ -64,24 +64,24 @@ xAxis初始数据为undefined时,显示奇奇怪怪的,只能给xAxis初始数�
 
 多个[]
 
-| text | '',标题文本 | 
-| -- | -- |
-| textStyle | {},标题样式fontSize:18 | 
-| subtext | '',子标题文本 | 
-| subtextStyle | {},子标题样式 | 
-|   |   | 
-| link | 标题超链接 | 
-| target | 标题指定窗口超链接 | 
+| text         | '',标题文本            |
+| ------------ | ------------------ |
+| textStyle    | {},标题样式fontSize:18 |
+| subtext      | '',子标题文本           |
+| subtextStyle | {},子标题样式           |
+|              |                    |
+| link         | 标题超链接              |
+| target       | 标题指定窗口超链接          |
 
 
 ## legend
 
 {}
 
-| data | 表格头部的名字 | 
-| -- | -- |
-| orient | '',方向vertical,垂直 | 
-| top/left/right/bottom | 定位 | 
+| data                  | 表格头部的名字          |
+| --------------------- | ---------------- |
+| orient                | '',方向vertical,垂直 |
+| top/left/right/bottom | 定位               |
 
 
 ## xAxis+yAxis
@@ -96,13 +96,13 @@ x轴和y轴
 
 默认情况下:y轴为直轴,x为类轴
 
-| data | [],每个格子中间显示的值 | 
-| -- | -- |
-| show | false,不显示轴线 | 
-| boundaryGap | false,轴线两边不留白 | 
-| type | '',category指定为类轴 | 
-| min/max | number,最小值最大值 | 
-| axisTick | {},轴线刻度 | 
+| data        | [],每个格子中间显示的值    |
+| ----------- | ---------------- |
+| show        | false,不显示轴线      |
+| boundaryGap | false,轴线两边不留白    |
+| type        | '',category指定为类轴 |
+| min/max     | number,最小值最大值    |
+| axisTick    | {},轴线刻度          |
 
 
 ## series
@@ -113,22 +113,22 @@ x轴和y轴
 
 数据
 
-| name | '',对应legend的data名字 | 
-| -- | -- |
-| type | '',显示的类型,bar柱状图,line折线图,pie饼状图 | 
-| radius | [40%,70%],圆的内外半径百分比 | 
-| smooth | true,折线图变成曲线图 | 
-| labelLine | {} | 
-| data | [],直轴显示的数据 | 
-| areaStyle | 设置填充的颜色( | 
-| itemStyle | {},设置每个峰值的样式,opacity:0,隐藏峰值小圆点 | 
-| lineStyle | {},设置线条样式,opactiy:0,隐藏线条 | 
-| barWidth | number,每个柱的宽度 | 
-| color | 设置文本的颜色 | 
-| label | {},文本配置,formatter-->''|fn,自定义文本内容自定义文本内容 | 
-| labelLine | {},length:number | 
-|   |   | 
-|   |   | 
+| name      | '',对应legend的data名字             |                   |
+| --------- | ------------------------------ | ----------------- |
+| type      | '',显示的类型,bar柱状图,line折线图,pie饼状图 |                   |
+| radius    | [40%,70%],圆的内外半径百分比            |                   |
+| smooth    | true,折线图变成曲线图                  |                   |
+| labelLine | {}                             |                   |
+| data      | [],直轴显示的数据                     |                   |
+| areaStyle | 设置填充的颜色(图的颜色)                  |                   |
+| itemStyle | {},设置每个峰值的样式,opacity:0,隐藏峰值小圆点 |                   |
+| lineStyle | {},设置线条样式,opactiy:0,隐藏线条       |                   |
+| barWidth  | number,每个柱的宽度                  |                   |
+| color     | 设置文本的颜色                        |                   |
+| label     | {},文本配置,formatter-->''         | fn,自定义文本内容自定义文本内容 |
+| labelLine | {},length:number               |                   |
+|           |                                |                   |
+|           |                                |                   |
 
 
 ## tooltip
@@ -137,11 +137,11 @@ x轴和y轴
 
 提示
 
-| trigger | '',触发时机,Aixs滑到轴线上触发 | 
-| -- | -- |
-| confine | true,限制提示框在容器内 | 
-| position | fn(鼠标,x,x,x,大小){},返回相对echarts框定位坐标数组[x,y] | 
-| formatter | ''|fn,自定义文本内容 | 
+| trigger   | '',触发时机,Aixs滑到轴线上触发                       |
+| --------- | ----------------------------------------- |
+| confine   | true,限制提示框在容器内                            |
+| position  | fn(鼠标,x,x,x,大小){},返回相对echarts框定位坐标数组[x,y] |
+| formatter | ''\|\|fn, 自定义文本内容                         |
 
 
 ## grid
@@ -150,6 +150,6 @@ x轴和y轴
 
 网格
 
-| top/bottom/left/right | number,距离容器上下左右的距离,可以压缩绘制的图让它在容器内 | 
-| -- | -- |
-|   |   | 
+| top/bottom/left/right | number,距离容器上下左右的距离,可以压缩绘制的图让它在容器内 |
+| --------------------- | --------------------------------- |
+|                       |                                   |
