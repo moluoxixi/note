@@ -668,7 +668,7 @@ console.log((<any>Demo).prototype.$meta);
 
 ### 通过方法快速生成
 
-注意这里有**ExecutionContext类,具体看切换不同上下文**
+注意这里有**ExecutionContext类**,具体看[切换不同的上下文](#切换不同的上下文)
 
 ```javascript
 import { createParamDecorator, ExecutionContext,Controller,Get } from '@nestjs/common';
@@ -996,15 +996,12 @@ Nest 的解决方法是 **ArgumentHost 和 ExecutionContext 类。**
 
 1. **ArgumentHost类:**
 
-   1. **有getType方法可以获取当前的服务类型,**
-
-   **提供switchToHttp,swtichToWs,switchToRpc方法,用于获取不同服务的上下文对象**
+	1. **有getType方法可以获取当前的服务类型,**
+	2. **提供switchToHttp,swtichToWs,switchToRpc方法,用于获取不同服务的上下文对象**
 
 2. **ExecutionContext类:**
-
-  **继承于ArgumentHost类,**
-
-   **扩展了 getClass、getHandler 方法**
+	1. **继承于ArgumentHost类,**
+	2. **扩展了 getClass、getHandler 方法**
 
 **    **
 
@@ -1039,7 +1036,7 @@ export class AaaFilter implements ExceptionFilter {
 
 ## Guard中
 
-利用
+利用**ExecutionContext类**
 
 ```javascript
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
@@ -1065,7 +1062,7 @@ export class AaaGuard implements CanActivate {
 
 ## Inteceptor中
 
-利用
+利用**ExecutionContext类**
 
 ```javascript
 import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
@@ -1091,18 +1088,18 @@ nest在Reflect的基础上,扩展了一些用于metadata的方法
 
 而Reflector就是用来获取Reflect对象的
 
-| 方法 | 说明 | 类似于 | 
-| -- | -- | -- |
-| Reflect.defineMetadata(key, value, target) | 在对象上定义meta | target[key]=value | 
-| Reflect.defineMetadata(key, value, target, propertyKey) | 在对象的某个属性上定义meta | target[key][ | 
-| Reflect.getMetadata(key, target) | 获取meta | target[key] | 
-| Reflect.getMetadata(key, target, propertyKey) | 获取对象某个属性上定义的meta | target[key][ | 
-| 以下为原生方法 |   |   | 
-| Reflect.has(target,key) | 判断 | target | 
-| Reflect.has(target,key,value) | 设置对象属性的值 | target | 
-| Reflect.get(target,key) | 获取对象属性的值 | target | 
-| Reflect.apply(target,bindObj,args) | 调用fn,传入arg,并将fn的this改为bindObj | target | 
-| Reflect.construct(target,args) | 实例化fn,并传入arg列表 | new  | 
+| 方法                                                      | 说明                            | 类似于               |
+| ------------------------------------------------------- | ----------------------------- | ----------------- |
+| Reflect.defineMetadata(key, value, target)              | 在对象上定义meta                    | target[key]=value |
+| Reflect.defineMetadata(key, value, target, propertyKey) | 在对象的某个属性上定义meta               | target[key][      |
+| Reflect.getMetadata(key, target)                        | 获取meta                        | target[key]       |
+| Reflect.getMetadata(key, target, propertyKey)           | 获取对象某个属性上定义的meta              | target[key][      |
+| 以下为原生方法                                                 |                               |                   |
+| Reflect.has(target,key)                                 | 判断                            | target            |
+| Reflect.has(target,key,value)                           | 设置对象属性的值                      | target            |
+| Reflect.get(target,key)                                 | 获取对象属性的值                      | target            |
+| Reflect.apply(target,bindObj,args)                      | 调用fn,传入arg,并将fn的this改为bindObj | target            |
+| Reflect.construct(target,args)                          | 实例化fn,并传入arg列表                | new               |
 
 
 例子
@@ -1150,9 +1147,7 @@ export CccService{
 **只要满足下面示例里的函数,其实都是动态创建模块,nest约定了下列三种函数名:**
 
 - register/registerAsync：用一次模块传一次配置，一般是**随着请求动态或者参数动态变化的**
-
 - forRoot/forRootAsync：配置一次模块用多次，**全局并且固定了的配置**，比如用 forRoot 指定了数据库链接信息
-
 - forFeature/forFeatureAsync：**基于forRoot的固定配置再进行扩展配置**，比如用 forRoot 指定了数据库链接信息，再用 forFeature 指定某个模块访问哪个数据库和表。
 
 ## 怎么写
@@ -1198,7 +1193,7 @@ export class AppModule {}
 
 ### 构建包含约定方法的class
 
-这个class和上门手写的差不多
+这个class和上面手写的差不多
 
 ```javascript
 //..
