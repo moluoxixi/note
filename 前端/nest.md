@@ -253,9 +253,9 @@ export class AppModule implements NestModule{
 
 ## Guard
 
-**nest g **
+`nest g guard xxx`
 
-路由守卫
+路由守卫，用于在调用某个 路由(Controller或它里面的handler) 之前进行**权限验证，数据验证，异常处理**等
 
 返回 true 或者 false 来决定是否放行
 
@@ -319,7 +319,7 @@ function bootstrap(){
 }
 ```
 
-### **根模块**注入**使用**
+### 根模块注入使用
 
 会注入IOC容器,这样guard就可以注入其他provider
 
@@ -355,11 +355,11 @@ export class AppController {
 
 ## Interceptor&rxjs
 
-**nest g interceptor **
+`nest g interceptor xxx`
 
-拦截器
+拦截器，用于在处理请求的不同阶段添加额外的逻辑，常用于**日志记录，异常处理，数据转换，权限验证，性能优化，统一处理**等
 
-需要实现
+需要实现**NestInterceptor接口**
 
 ### **实现**
 
