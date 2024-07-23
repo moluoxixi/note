@@ -742,7 +742,7 @@ export class AppController{
 
 ## Global
 
-声明模块为全局模块,
+声明模块为全局模块,**全局模块内exports导出的服务可以被所有模块内直接注入**
 
 尽量少用，不然注入的很多 依赖(provider) 都不知道来源，会降低代码的可维护性。
 
@@ -762,7 +762,7 @@ export class AppModule{}
 
 ## Module
 
-nest g module xxx
+`nest g module xxx`
 
 声明nest中的模块
 
@@ -805,7 +805,7 @@ export class AppService{
 
 ## Controller
 
-nest g 
+`nest g controller xxx`
 
 ```javascript
 import {Controller} from '@nestjs/common';
@@ -817,7 +817,7 @@ export class AppController{}
 
 @Inject用于注入依赖,分为构造器注入和属性注入,
 
-NestJS 的依赖注入系统可以根据类型自动解析和注入依赖。
+NestJS 的依赖注入系统可以根据类型自动解析和注入依赖。**如果写了指定类型无需显示声明@inject**
 
 ```javascript
 import {Controller,Get} from '@nestjs/common';
@@ -899,14 +899,14 @@ handler 和 class 可以通过 @SetMetadata 指定 metadata：
 
 ![](images/WEBRESOURCE2fae8c680564f0d43ce734ac93dda11fstickPicture.png)
 
-## **Render**
+## Render
 
 返回的响应内容指定渲染引擎，不过这需要先这样设置：
 
 ![](images/WEBRESOURCE009fcc8434f9fed5f286a81fa0405213image.png)
 
 ```javascript
-javascript复制代码import { NestFactory } from '@nestjs/core';
+import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
@@ -930,7 +930,7 @@ bootstrap();
 当然，还需要安装模版引擎的包 hbs：
 
 ```css
-css复制代码npm install --save hbs
+npm install --save hbs
 
 ```
 
@@ -948,7 +948,7 @@ css复制代码npm install --save hbs
 
 ![](images/WEBRESOURCEdf7fc63446dc065570e9019e09fa32cdstickPicture.png)
 
-## **Param&Query&Body&**Headers&**Session&HostParm**
+## Param&Query&Body&Headers&Session&HostParm
 
 这些用法都一样,仅提供Headers的示例
 
@@ -970,7 +970,7 @@ css复制代码npm install --save hbs
 
 ## **UsePipes&UseInterceptors&UseFilters&Catch**
 
-见AOP架构
+见 [AOP架构](#AOP架构)
 
 - UseFilters用于声明ExceptionFilter应用范围
 
@@ -992,23 +992,25 @@ Nest 支持创建 HTTP 服务、WebSocket 服务，还有基于 TCP 通信的微
 
 不同类型的服务它能拿到的参数是不同的，比如 http 服务可以拿到 request、response 对象，而 ws 服务就没有，如何让 Guard、Interceptor、Exception Filter 跨多种上下文复用呢？
 
-Nest 的解决方法是
+Nest 的解决方法是 **ArgumentHost 和 ExecutionContext 类。**
 
-**ArgumentHost类:**
+1. **ArgumentHost类:**
 
-**    有getType方法可以获取当前的服务类型,**
+   1. **有getType方法可以获取当前的服务类型,**
 
-**    提供**
+   **提供switchToHttp,swtichToWs,switchToRpc方法,用于获取不同服务的上下文对象**
 
-**ExecutionContext类:**
+2. **ExecutionContext类:**
 
-**    继承于ArgumentHost类,**
+  **继承于ArgumentHost类,**
+
+   **扩展了 getClass、getHandler 方法**
 
 **    **
 
 ## ExceptionFilter中
 
-利用
+利用**ArgumentHost类**
 
 ```javascript
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
