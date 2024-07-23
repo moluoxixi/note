@@ -80,7 +80,8 @@ import { Module, OnApplicationBootstrap } from '@nestjs/common';
 @Module({
   // 模块的配置
 })
-export class AppModule implements OnModuleInit,OnApplicationBootstrap{
+export class AppModule implements OnModuleInit,OnApplicationBootstrap
+{
     onModuleInit(){}
     onApplicationBootstrap(){}
 }
@@ -100,7 +101,7 @@ export class AppModule implements OnModuleInit,OnApplicationBootstrap{
 
 - **退出这个模块的进程**
 
-**一般都是通过 moduleRef 取出一些 provider 来销毁，比如关闭连接，**
+**一般都是通过 moduleRef 取出一些 provider 来销毁，比如关闭连接**，moduleRef 就是当前模块的引用
 
 ```javascript
 import {moduleRef,NestFactory} from '@nestjs/core'
@@ -169,17 +170,17 @@ Nest 实现 AOP 的方式更多，一共有五种，包括 Middleware、Guard、
 
 ## Middleware
 
-**nest g **
+`nest g Middleware xxx`
 
-Middleware基于express，这种在 handler 
+Middleware基于express，这种**在 handler 前后**动态增加一些可复用的逻辑，就是 AOP 的切面编程的思想。
 
-常用于
+常用于**请求处理，路由处理，错误处理，权限验证**
 
 路由处理：在请求到达路由之前进行拦截，根据需要将请求重定向到其他路由，或者直接响应请求，而无需进一步处理。
 
 **需实现NestMiddleware接口**
 
-### **类式****实现**
+### 类式实现
 
 ```javascript
 //logMiddleware.ts
@@ -194,7 +195,7 @@ export class LogMiddleware implements NestMiddleware {
 }
 ```
 
-### 函数式**实现**
+### 函数式实现
 
 ```javascript
 //logMiddleware.ts
@@ -207,7 +208,7 @@ export function LogMiddleware(req: Request, res: Response, next: NextFunction) {
 
 ### **全局使用中间件**
 
-整个模块中都应用的中间件,通过 
+整个模块中都应用的中间件,通过 **模块实例.use**使用中间件
 
 ```javascript
 //main.ts
@@ -225,7 +226,7 @@ function bootstrap(){
 
 ### 路由使用中间件
 
-仅部分路由使用的中间件
+仅部分路由使用的中间件，**实现NestModule接口,重写configure方法配置中间件应用范围**
 
 ```javascript
 //app.module.ts
@@ -270,7 +271,8 @@ export class AppModule implements NestModule{
 
 ```javascript
 //my-auth.guard.ts
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+
 
 @Injectable()
 export class MyAuthGuard implements CanActivate {
@@ -292,7 +294,8 @@ context 是当前请求的各自信息，例如请求对象等，然后做一些
 ```javascript
 //my-auth.guard.ts
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
-
+
+
 export function myAuthGuard(
   context: ExecutionContext,
 ): boolean | Promise<boolean> {
@@ -1043,7 +1046,8 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class AaaGuard implements CanActivate {
-  constructor(private reflector: Reflector) {}
+  constructor(private reflector: Reflector) {}
+
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
@@ -1072,7 +1076,8 @@ export class LoginInterceptor implements NestInterceptor {
       const ctx = host.switchToHttp();
     } 
     else if(host.getType() === 'ws') {}
-    else if(host.getType() === 'rpc') {}
+    else if(host.getType() === 'rpc') {}
+
     return next.handle();
   }
 }
@@ -1157,7 +1162,8 @@ export CccService{
 import {DynamicModule,Module} from 'nest/common'
 export class BbbModule{
     //关键在于返回值里多出个module指向实际引入并实例化的module
-    static register(options:Record<string,any>):DynamicModule{
+    static register(options:Record<string,any>):DynamicModule
+{
         return {
             module:BbbModule,
             controllers:[BbbController],
@@ -1281,7 +1287,8 @@ export class MyLogger implements LoggerService {
 [transports.md](https://github.com/winstonjs/winston/blob/HEAD/docs/transports.md#winston-core)
 
 ```javascript
-import winston from 'winston';
+import winston from 'winston';
+
 const logger = winston.createLogger({
     level: 'debug',                         //打印的日志级别
     format: winston.format.simple(),        //日志格式
@@ -1444,7 +1451,8 @@ const cors = require('cors');
 const app = express()
 app.use(cors()); //处理跨域
 
-const upload = multer({ dest: 'uploads/' })//指定保存目录,这里会在根目录创建uploads目录存文件
+const upload = multer({ dest: 'uploads/' })
+//指定保存目录,这里会在根目录创建uploads目录存文件
 
 //upload.single用于接收formData的单个属性的单个文件
 app.post('/aaa', upload.single('aaa'), function (req, res, next) {
