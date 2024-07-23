@@ -1365,7 +1365,7 @@ oss服务器根据元数据分析结构,模拟了文件目录
 
 ## class-validator
 
-一般用来
+一般用来**校验参数**
 
 ```javascript
 import { Contains, IsDate, IsEmail, IsFQDN, IsInt, Length, Max, Min } from 'class-validator';
@@ -1400,19 +1400,14 @@ export class AppController{@Inject(AppService){
 
 ### nest写法
 
-需要先下载multer的ts包
+需要先下载multer的ts包 `npm install -D @types/multer`
 
-- FileInterceptor(name,options)                         用于单字段单文件
-
-- @UploadedFile()                                             用于单文件的file请求参数
-
-- FilesInterceptor(name,maxCount,options)	用于单字段多文件
-
-- FileFieldsInterceptor([{name,maxCount}]        用于多字段多文件
-
-- AnyFilesInterceptor(options)                            用于任意字段任意文件数
-
-- @UploadedFiles()                                           用于多文件的file请求参数
+- `FileInterceptor(name,options)`           用于单字段单文件
+- `@UploadedFile()`                       用于单文件的file请求参数
+- `FilesInterceptor(name,maxCount,options)`  用于单字段多文件
+- `FileFieldsInterceptor([{name,maxCount}])` 用于多字段多文件
+- `AnyFilesInterceptor(options)`            用于任意字段任意文件数
+- `@UploadedFiles()`                      用于多文件的file请求参数
 
 ```javascript
 @Post('ccc')
@@ -1430,15 +1425,11 @@ uploadFileFields(@UploadedFiles() files: { aaa?: Express.Multer.File[], bbb?: Ex
 
 ### express写法
 
-- const upload = multer(options)	目前只知道dest指定保存目录
-
-- upload.single(name)                        用于单字段单文件
-
-- upload.array(name,maxCount)        用于单字段多文件
-
-- upload.fields([{name,maxCount}]    用于多字段多文件
-
-- upload.any()					用于任意字段任意文件
+- `const upload = multer(options)`	   目前只知道dest指定保存目录
+- `upload.single(name)`                用于单字段单文件
+- `upload.array(name,maxCount)`         用于单字段多文件
+- `upload.fields([{name,maxCount}])`    用于多字段多文件
+- `upload.any()`					   用于任意字段任意文件
 
 ```javascript
 const express = require('express')
@@ -1485,4 +1476,4 @@ app.listen(3333);
 
 ## pm2
 
-见[工程化](note://WEB08809958f6f9e1f0e4b5b1697104a226)中服务管理
+见 [[gong'c]] 中服务管理
