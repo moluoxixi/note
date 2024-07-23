@@ -314,7 +314,7 @@ var c = Color.Green;
 
 ## 类型断言
 
-(xx as 类型)
+(xx as 类型)或(<类型>xx)
 
 有些情况下，变量的类型对于我们来说是很明确，但是TS编译器却并不清楚，此时，可以通过类型断言来告诉编译器变量的类型，断言有两种形式：
 
@@ -381,11 +381,10 @@ let point: Point = {
   x: 1,
   y: 1
 }
-复制代码
 
 ```
 
-在上面代码中我们先定义了 
+在上面代码中我们先定义了 `PartialPointX` 类型，接着使用 & 运算符创建一个新的 `Point` 类型，表示一个含有 x 和 y 坐标的点，然后定义了一个 `Point` 类型的变量并初始化。
 
 # 可选?
 
@@ -446,7 +445,7 @@ declare var $:(selector:string)=>any
 declare function myFunction(): void;
 ```
 
-```
+```js
 //当我们使用外部js模块时,外部js模块通常无法获取全局文件xx.d.ts中的类型定义,这时候就需要模块定义
 declare module "my-library" {
   export function doSomething(): void;
@@ -480,6 +479,7 @@ fn(2,{val:"",num:1})
 用来限制一个对象必须且只能拥有的属性/方法的工具
 
 接口（Interfaces）来定义对象的类型。
+**接口是对象的状态(属性)和行为(方法)的抽象(描述)**
 
 ## 属性合并
 
