@@ -361,7 +361,7 @@ export class AppController {
 
 需要实现**NestInterceptor接口**
 
-### **实现**
+### 实现
 
 ```javascript
 //login.interceptor
@@ -405,7 +405,7 @@ function bootstrap(){
 }
 ```
 
-### 根模块注入**使用**
+### 根模块注入使用
 
 会注入IOC容器,这样interceptor就可以注入其他provider
 
@@ -445,9 +445,9 @@ export class AppController {
 
 ## pipe
 
-常用于
+常用于**参数验证和转换** (其实就是把参数转换了一下,验证就是参数不满足条件时变成了报错)
 
-需要实现
+**需要实现PipeTransform 接口，并重写 transform 方法**
 
 ### 内置管道
 
@@ -478,7 +478,7 @@ export class ValidatePipe implements PipeTransform {
 }
 ```
 
-### 全局非注入**使用**
+### 全局非注入使用
 
 ```javascript
 //main.ts
@@ -493,7 +493,7 @@ function bootstrap(){
 }
 ```
 
-### 根模块注入**使用**
+### 根模块注入使用
 
 会注入IOC容器,这样pipe就可以注入其他provider
 
@@ -529,7 +529,7 @@ export class AppController {
 }
 ```
 
-## **ExceptionFilter**
+## ExceptionFilter
 
 异常过滤器用于捕获和处理应用程序中抛出的异常。
 
@@ -599,13 +599,13 @@ export class AppModule{}
 
 # 装饰器
 
-装饰器本质上是一个函数,通过
+装饰器本质上是一个函数,通过`@函数名`的形式调用它
 
 **Nest 的装饰器都是依赖 reflect-metadata 实现的**
 
 ## 自定义装饰器和合并多个装饰器
 
-Reflect.defineMetadata方法见
+Reflect.defineMetadata方法见**Metadata和Reflector**
 
 ```javascript
 import { applyDecorators,Controller, Get, UseGuards,Req } from '@nestjs/common';
@@ -668,7 +668,7 @@ console.log((<any>Demo).prototype.$meta);
 
 ### 通过方法快速生成
 
-注意这里有
+注意这里有**ExecutionContext类,具体看切换不同上下文**
 
 ```javascript
 import { createParamDecorator, ExecutionContext,Controller,Get } from '@nestjs/common';
@@ -740,7 +740,7 @@ export class AppController{
 
 - **@UseInterceptors**：路由级别使用 interceptor
 
-## **Global**
+## Global
 
 声明模块为全局模块,
 
