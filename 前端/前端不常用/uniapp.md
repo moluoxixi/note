@@ -18,7 +18,7 @@ vue create -p dcloudio/uni-preset-vue 项目文件名
 
 在项目根目录下随便建一个ts文件,新建一个puppet.ts，puppet：傀儡的意思
 
-tsconfig.json
+tsconfig.json：
 
 ```
 {
@@ -31,7 +31,7 @@ tsconfig.json
 
 ### pages.json和manifest.json报红
 
-因为在
+因为在json中是不能写注释的，而在jsonc是可以写注释的。
 
 
 # 小程序
