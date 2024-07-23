@@ -2,9 +2,9 @@
 
 将样式粒子化,变成一个个类名
 
-npm install -D tailwindcss postcss autoprefixer
+`npm install -D tailwindcss postcss autoprefixer`
 
-npx tailwindcss init -p
+`npx tailwindcss init -p`
 
 ## 基础示例
 
@@ -51,7 +51,9 @@ use
 @layer components{
     .btn-pramary{
         //@apply用于允许你应用Tailwind CSS中现有的样式值
-        @apply py-2 px-4 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none;
+        @apply py-2 px-4 text-white font-semibold
+ rounded-lg shadow-md
+ hover:bg-blue-700 focus:outline-none;
     }
 }
 ```
@@ -83,9 +85,11 @@ module.exports = plugin(function({ addUtilities }) {
 //tailwind.config.js
 
 /*@type {import('tailwindcss').Config}**/
-module.exports ={
+module.exports =
+{
     content:["./src/*/*.{js,jsx}"], //应用的文件
-    //引入上面的自定义插件
+    //引入上面的自定义插件
+
     plugins:[require('./guang.plugin')],
     theme:{
         extend:{
@@ -109,7 +113,8 @@ module.exports ={
 //tailwind.config.js
 
 /*@type {import('tailwindcss').Config}**/
-module.exports ={
+module.exports =
+{
     ...,
     //添加 prefix,但是所有的原子 class 都会加上 prefix
     prefix:'qianzui',
