@@ -191,10 +191,8 @@ rebase就是变基,下图中,将 branch1的 基点从节点2挪到了4
 办法1：【非常委婉型】
 
 1. 对于已经加入到暂存区中的文件，可以在暂存区中删除该文件
-
-​ 2. 然后再.gitignore中配置忽略
-
-​ 3. add和commit提交即可
+2. ​然后再.gitignore中配置忽略
+3. add和commit提交即可
 
 办法2：【简单粗暴型】
 
@@ -203,19 +201,26 @@ rebase就是变基,下图中,将 branch1的 基点从节点2挪到了4
 ## 免密登录
 
 1. 创建非对称加密对
+```
+//使用git终端在任意路径输入命令即可
+ssh-keygen -t rsa -C '邮箱'
+```
 
-3. 文件默认存储在家目录（c:/用户/用户名/.ssh）的 .ssh 文件夹中。
+2. 文件默认存储在家目录（c:/用户/用户名/.ssh）的 .ssh 文件夹中。
 
 - id_rsa 私钥
 - id_rsa.pub 公钥
 
-5. 将公钥（.pub）文件内容配置到账号的秘钥中
+3. 将公钥（.pub）文件内容配置到账号的秘钥中
 
 - 首页 -> 右上角头像-> settings -> SSH and GPG keys -> new SSH Key
 
-7. 克隆代码时，选择 ssh 模式进行克隆 （地址 在仓库首页 绿色 克隆的位置 选择 use ssh）
+4. 克隆代码时，选择 ssh 模式进行克隆 （地址在仓库首页绿色克隆的位置选择 use ssh）
+```
+git clone git@github.com/xiaohigh/team-repo-1.git
+```
 
-5.``ssh-keygen``命令常用参数：
+5. ``ssh-keygen`` 命令常用参数：
 
 - ``-t``：指定生成密钥的类型，默认使用RSA类型密钥。
 - ``-f``：指定生成密钥的文件名，默认``id_rsa``（私钥，公钥``id_rsa.pub``）
