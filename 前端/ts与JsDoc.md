@@ -99,7 +99,7 @@ class Guang extends Set{
 
 一种特殊类型的声明，它可以被附加到类声明、方法、属性或参数上，从而修改类的行为。装饰器是ES7的一个提案特性，TypeScript 提供了装饰器的实验性支持,但是js并未实现
 
-它的写法是一个函数,通过
+它的写法是一个函数,通过`@函数名`调用,可以进行封装,使它可以接受参数
 
 ## 成员装饰器
 
@@ -153,26 +153,26 @@ xx的父类就是xx可以赋值给这个类型
 
 xx的子类就是类型可以赋值给xx
 
-| 类型 | 例子 | 描述 | 
-| -- | -- | -- |
-| Any | x:any | 除unknown所有类型的父类 , 除never外所有类型的子类 一般禁用, | 
-| Unknown | x:unknown | 未知类型 , 类型安全的any , 除any外所有类型的父类 | 
-| Number | x:number | 任意数字 | 
-| String | x:string | 任意字符串 | 
-| Boolean | x:boolean | 布尔值true或false | 
-| 字面量 | x:'123' | 限制x的值为'123'等等,可以用联合类型限制多个值 | 
-| Array | x:Array<泛型> | 泛型和类型处可以写  | 
-| Set | x:Set<泛型> | 与数组泛型写法一致 | 
-| Map | x:Map<泛型1,泛型2> | 泛型1代表键,泛型2代表值 | 
-| Tuple | x:[string, number] | 元组，TS新增类型，指定长度和值的数组 | 
-| Symbol | x:symbol |   | 
-| Promise | x:Promise<promise的结果> |   | 
-| void | x:void | 空值 | 
-| Null | x:null |   | 
-| Undefined | x:undefined |   | 
-| Never | 没有值 | 无任何类型,由于js中仅报错情况下无返回值, | 
-| Enum | enum Color { | 枚举，TS中新增类型,键值相互映射的对象, | 
-| Function | 函数的包装类型 | ts有以下包装类型Number、String、Boolean、Symbol、Array、Function、Object | 
+| 类型        | 例子                                                                                  | 描述                                                                                                                       |
+| --------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Any       | x:any                                                                               | 除unknown所有类型的父类 , <br>除never外所有类型的子类<br> 一般禁用,<br>**任何类型都可以赋值给它(除了unknown)**，<br>**它也可以赋值给任何类型（除了 never）**               |
+| Unknown   | x:unknown                                                                           | 未知类型 , 类型安全的any , 除any外所有类型的父类                                                                                           |
+| Number    | x:number                                                                            | 任意数字                                                                                                                     |
+| String    | x:string                                                                            | 任意字符串                                                                                                                    |
+| Boolean   | x:boolean                                                                           | 布尔值true或false                                                                                                            |
+| 字面量       | x:'123'                                                                             | 限制x的值为'123'等等,可以用联合类型限制多个值                                                                                               |
+| Array     | x:Array<泛型>                                                                         | 泛型和类型处可以写 `类型 联合类型 类型别名 接口 泛型`                                                                                           |
+| Set       | x:Set<泛型>                                                                           | 与数组泛型写法一致                                                                                                                |
+| Map       | x:Map<泛型1,泛型2>                                                                      | 泛型1代表键,泛型2代表值                                                                                                            |
+| Tuple     | x:[string, number]                                                                  | 元组，TS新增类型，指定长度和值的数组                                                                                                      |
+| Symbol    | x:symbol                                                                            |                                                                                                                          |
+| Promise   | x:Promise<promise的结果>                                                               |                                                                                                                          |
+| void      | x:void                                                                              | 空值<br>**非严格模式**下undefined和null是任意类型的子类,任意类型都能赋值为null和undefined <br>**严格模式**下仅void能作为undefined子类,其他类型都不能赋值为null和undefined |
+| Null      | x:null                                                                              |                                                                                                                          |
+| Undefined | x:undefined                                                                         |                                                                                                                          |
+| Never     | 没有值                                                                                 | 无任何类型,由于js中仅报错情况下无返回值,<br>**用于错误类型**                                                                                     |
+| Enum      | enum Color {<br> Red = 1,<br> Green = 4 <br>} <br>Color[Red]-->1 <br>Color[1]-->Red | 枚举，TS中新增类型,键值相互映射的对象,<br>**用于数据字典**                                                                                      |
+| Function  | 函数的包装类型                                                                             | ts有以下包装类型Number、String、Boolean、Symbol、Array、Function、Object                                                              |
 
 
 ## never
@@ -1114,4 +1114,3 @@ dog.bark();
 
 ```
 
-# 装饰器
