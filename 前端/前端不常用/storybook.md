@@ -1,10 +1,12 @@
 # 初始化项目
 
-npx 
+```
+npx create-react-app --template typescript 项目名称
 
-npx 
+npx storybook@latest init 装在全局
 
-npx 
+npx storybook@latest -s init 装在本地
+```
 
 [https://storybook.js.org](https://storybook.js.org)
 
@@ -12,7 +14,7 @@ npx
 
 # **开造**
 
-storybook运行依赖.storybook下的配置文件,main.ts是主文件,
+storybook运行依赖.storybook下的配置文件,main.ts是主文件,**preview.ts是所有组件的公共配置**
 
 ![](images/WEBRESOURCE7ee8962166a5c47ddcadd2f677906154image.png)
 
