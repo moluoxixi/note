@@ -1025,7 +1025,10 @@ import { reactive, ref, computed } from "vue"
 import {defineStore} from 'pinia'
 const useCountStore = defineStore('小菠萝的名字',//即命名空间
     ()=>{
-    	 const 
+    	const state=reactive({});
+    	const abc=ref(false);
+    	const getter=computed(()=>abc);
+    	const getters={getter};
     	return {state,actions,getters}
     }
 )
