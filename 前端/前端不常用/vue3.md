@@ -1021,6 +1021,7 @@ export default useCountStore;
 ```
 ### 命名空间+setup 写法
 ```js
+import { reactive, ref, computed } from "vue"
 import {defineStore} from 'pinia'
 const useCountStore = defineStore('小菠萝的名字',//即命名空间
     ()=>{
