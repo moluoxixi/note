@@ -1019,7 +1019,17 @@ const useCountStore = defineStore('小菠萝的名字',{//即命名空间
 export default useCountStore;
 
 ```
-
+### 命名空间+setup 写法
+```js
+import {defineStore} from 'pinia'
+const useCountStore = defineStore('小菠萝的名字',//即命名空间
+    ()=>{
+    	 const 
+    	return {state,actions,getters}
+    }
+)
+export default useCountStore;
+```
 ### id 写法
 
 ```js
