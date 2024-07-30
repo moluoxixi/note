@@ -1975,6 +1975,28 @@ const a=inject('别名'[,默认值[,)
 
 ## 事件总线
 
+### mitt
+
+利用模块化实现全局事件总线
+
+```javascript
+//相当于vue2中的Vue.prototype.$bus=new Vue()
+type Event{
+    自定义事件名:回调函数接收的参数类型
+}
+export default mitt<Event>();
+```
+
+```javascript
+import mitt from 'mitt的路径'
+mitt.on('自定义事件',回调函数)
+mitt.emit('自定义事件',参数)
+```
+
+## $parent
+
+## V-model
+
 
 ## 生命周期
 
