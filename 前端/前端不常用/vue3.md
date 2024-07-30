@@ -1993,18 +1993,23 @@ mitt.on('自定义事件',回调函数)
 mitt.emit('自定义事件',参数)
 ```
 
-## $parent
+## $parent&. Sync&V-model
 
-## V-model
+`$parent` 被移除
+.sync 移除
+V-model 语法修改为. Sync 语法
 
+## 自定义指令和全局API的调整
 
+- **自定义指令**：Vue 3不再直接支持全局注册指令，需要将全局指令转换为局部指令，并在每个组件中单独导入和注册。
+- **全局API的调整**：Vue 3中全局API的使用方式有所变化。例如，`Vue.use()`、`Vue.prototype`等需要替换为`app.use()`、`app.config.globalProperties`等。
 ## 生命周期
 
-### 修改两个生命周期名字
+生命周期名字
 
-beforeDestory-->beforeUnmount
-
-destoryed-->unmount
+`beforeDestory` --> `beforeUnmount`
+`destoryed` --> `unmount`
+`beforeCreate` & `created` --> `setup()`
 
 ### 新增 setup 函数专用生命周期 hooks
 
