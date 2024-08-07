@@ -1973,7 +1973,7 @@ const a=inject('别名'[,默认值[,)
 
 # Vue2和vue3 options 区别
 ## 样式穿透
-`/deep/` 换为 `::v-deep`
+`/deep/` 换为 `::v-deep` 或 `:deep(子组件中的类名)`
 
 ## 事件总线
 
