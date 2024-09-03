@@ -6,16 +6,16 @@
 
 - volumes 是数据卷,数据卷就是把容器目录映射到本地目录,改本地目录就是改容器目录
 
-| 命令 | 说明 | 对应desktop的操作 | 
-| -- | -- | -- |
-| docker  | 一个容器查看日志/查看详情/启动/删除/停止 | containers指定容器点击 Logs界面/Inspect界面/启动/删除/停止 | 
-| docker pull nginx:latest | 拉一个镜像 | 在images中pull一个镜像(这里pull的nginx), | 
-| docker run --name nginx-test2 -p 80:80 -v /tmp/aaa:/usr/share/nginx/html -e KEY1=VALUE1 -d nginx:latest  | 运行容器, | 在images中点击run,填Optional settings的表单后run | 
-| docker ps -a | 列出容器列表 | 获取 | 
-| docker images |   | 获取images界面 | 
-| docker volume command | 用于管理 | 对应 | 
-| docker build |   | 打包, | 
-| docker build name:tag  |   | 在当前目录下打包成一个名为name,tag为tag的镜像 | 
+| 命令                                                                                                      | 说明                     | 对应desktop的操作                               |
+| ------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------------------ |
+| docker                                                                                                  | 一个容器查看日志/查看详情/启动/删除/停止 | containers指定容器点击 Logs界面/Inspect界面/启动/删除/停止 |
+| docker pull nginx:latest                                                                                | 拉一个镜像                  | 在images中pull一个镜像(这里pull的nginx),            |
+| docker run --name nginx-test2 -p 80:80 -v /tmp/aaa:/usr/share/nginx/html -e KEY1=VALUE1 -d nginx:latest | 运行容器,                  | 在images中点击run,填Optional settings的表单后run    |
+| docker ps -a                                                                                            | 列出容器列表                 | 获取                                         |
+| docker images                                                                                           |                        | 获取images界面                                 |
+| docker volume command                                                                                   | 用于管理                   | 对应                                         |
+| docker build                                                                                            |                        | 打包,                                        |
+| docker build name:tag                                                                                   |                        | 在当前目录下打包成一个名为name,tag为tag的镜像               |
 
 
 容器的 terminal 里执行命令，对应的是 docker exec ,

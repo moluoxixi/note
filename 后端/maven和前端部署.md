@@ -98,7 +98,8 @@ pom.xml
         <version>1.2.17</version>
         <!-- 依赖范围 -->
         <scope>runtime</scope>
-    </dependency>
+    </dependency>
+
 </dependencies>
 <!--打包方式
     默认：jar
@@ -109,14 +110,14 @@ pom.xml
 <packaging>jar/pom/war</packaging>
 ```
 
-| 依赖范围 | 描述 | 
-| -- | -- |
-| compile | 编译依赖范围，scope 元素的缺省值。使用此依赖范围的 Maven 依赖，对于三种 classpath 均有效，即该 Maven 依赖在上述三种 classpath 均会被引入。例如，log4j 在编译、测试、运行过程都是必须的。 | 
-| test | 测试依赖范围。使用此依赖范围的 Maven 依赖，只对测试 classpath 有效。例如，Junit 依赖只有在测试阶段才需要。 | 
-| provided | 已提供依赖范围。使用此依赖范围的 Maven 依赖，只对编译 classpath 和测试 classpath 有效。例如，servlet-api 依赖对于编译、测试阶段而言是需要的，但是运行阶段，由于外部容器已经提供，故不需要 Maven 重复引入该依赖。 | 
-| runtime | 运行时依赖范围。使用此依赖范围的 Maven 依赖，只对测试 classpath、运行 classpath 有效。例如，JDBC 驱动实现依赖，其在编译时只需 JDK 提供的 JDBC 接口即可，只有测试、运行阶段才需要实现了 JDBC 接口的驱动。 | 
-| system | 系统依赖范围，其效果与 provided 的依赖范围一致。其用于添加非 Maven 仓库的本地依赖，通过依赖元素 dependency 中的 systemPath 元素指定本地依赖的路径。鉴于使用其会导致项目的可移植性降低，一般不推荐使用。 | 
-| import | 导入依赖范围，该依赖范围只能与 dependencyManagement 元素配合使用，其功能是将目标 pom.xml 文件中 dependencyManagement 的配置导入合并到当前 pom.xml 的 dependencyManagement 中。 | 
+| 依赖范围     | 描述                                                                                                                                |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| compile  | 编译依赖范围，scope 元素的缺省值。使用此依赖范围的 Maven 依赖，对于三种 classpath 均有效，即该 Maven 依赖在上述三种 classpath 均会被引入。例如，log4j 在编译、测试、运行过程都是必须的。              |
+| test     | 测试依赖范围。使用此依赖范围的 Maven 依赖，只对测试 classpath 有效。例如，Junit 依赖只有在测试阶段才需要。                                                                 |
+| provided | 已提供依赖范围。使用此依赖范围的 Maven 依赖，只对编译 classpath 和测试 classpath 有效。例如，servlet-api 依赖对于编译、测试阶段而言是需要的，但是运行阶段，由于外部容器已经提供，故不需要 Maven 重复引入该依赖。  |
+| runtime  | 运行时依赖范围。使用此依赖范围的 Maven 依赖，只对测试 classpath、运行 classpath 有效。例如，JDBC 驱动实现依赖，其在编译时只需 JDK 提供的 JDBC 接口即可，只有测试、运行阶段才需要实现了 JDBC 接口的驱动。     |
+| system   | 系统依赖范围，其效果与 provided 的依赖范围一致。其用于添加非 Maven 仓库的本地依赖，通过依赖元素 dependency 中的 systemPath 元素指定本地依赖的路径。鉴于使用其会导致项目的可移植性降低，一般不推荐使用。          |
+| import   | 导入依赖范围，该依赖范围只能与 dependencyManagement 元素配合使用，其功能是将目标 pom.xml 文件中 dependencyManagement 的配置导入合并到当前 pom.xml 的 dependencyManagement 中。 |
 
 
 ## Maven工程的GAVP
@@ -159,15 +160,15 @@ GAV遵循一下规则：
 
 ## 打包命令
 
-| 命令 | 描述 | 
-| -- | -- |
-| mvn compile | 编译项目，生成编译后的文件保存在target目录下 | 
-| mvn package | 打包项目，生成jar或war文件,保存在 | 
-| mvn clean | 清理target目录(编译或打包后的项目结构) | 
-| mvn install | 打包后上传到maven本地仓库 | 
-| mvn deploy | 只打包，上传到maven私服仓库 | 
-| mvn site | 生成站点 | 
-| mvn test | 执行测试源码 | 
+| 命令          | 描述                        |
+| ----------- | ------------------------- |
+| mvn compile | 编译项目，生成编译后的文件保存在target目录下 |
+| mvn package | 打包项目，生成jar或war文件,保存在      |
+| mvn clean   | 清理target目录(编译或打包后的项目结构)   |
+| mvn install | 打包后上传到maven本地仓库           |
+| mvn deploy  | 只打包，上传到maven私服仓库          |
+| mvn site    | 生成站点                      |
+| mvn test    | 执行测试源码                    |
 
 
 ## idea配置与创建maven项目
@@ -177,12 +178,11 @@ GAV遵循一下规则：
 //idea可以配置本地maven,在设置中的maven配置中,设置目录为setting.xml的路径,
 //例如: D:\maven\conf\settings.xml
 
-
 ```
 
 ## maven项目目录
 
-```
+```java
 |-- pom.xml                               # Maven项目管理文件,描述项目依赖和构建配置等信息
 |-- src
     |-- main                              # 项目主要代码
@@ -239,39 +239,39 @@ GAV遵循一下规则：
 
 - 密码：查看 
 
-**E:\Server\nexus-3.61.0-02-win64\sonatype-work\nexus3\admin.password**
+`E:\Server\nexus-3.61.0-02-win64\sonatype-work\nexus3\admin.password`
 
 ### 仓库字段讲解
 
 ![](images/WEBRESOURCE06f3cca8e0ef585d97baba68940d5937img009.7f737ed7.png)
 
-| 仓库类型 | 说明 | 
-| -- | -- |
-| proxy | 某个远程仓库的代理 | 
-| group | 存放：通过 Nexus 获取的第三方 jar 包 | 
-| hosted | 存放：本团队其他开发人员部署到 Nexus 的 jar 包 | 
+| 仓库类型   | 说明                            |
+| ------ | ----------------------------- |
+| proxy  | 某个远程仓库的代理                     |
+| group  | 存放：通过 Nexus 获取的第三方 jar 包      |
+| hosted | 存放：本团队其他开发人员部署到 Nexus 的 jar 包 |
 
 
-| 仓库名称 | 说明 | 
-| -- | -- |
-| maven-central | Nexus 对 Maven 中央仓库的代理 | 
-| maven-public | Nexus 默认创建，供开发人员下载使用的组仓库 | 
-| maven-releases | Nexus 默认创建，供开发人员部署自己 jar 包的宿主仓库 要求 releases 版本 | 
-| maven-snapshots | Nexus 默认创建，供开发人员部署自己 jar 包的宿主仓库 要求 snapshots 版本 | 
+| 仓库名称            | 说明                                              |
+| --------------- | ----------------------------------------------- |
+| maven-central   | Nexus 对 Maven 中央仓库的代理                           |
+| maven-public    | Nexus 默认创建，供开发人员下载使用的组仓库                        |
+| maven-releases  | Nexus 默认创建，供开发人员部署自己 jar 包的宿主仓库 要求 releases 版本  |
+| maven-snapshots | Nexus 默认创建，供开发人员部署自己 jar 包的宿主仓库 要求 snapshots 版本 |
 
 
 ### 修改本地依赖仓库为nexus
 
 修改本地maven的核心配置文件settings.xml，设置新的本地仓库地址
 
-```
+```java
 <!-- 配置一个新的 Maven 本地仓库 -->
 <localRepository>D:/maven-repository-new</localRepository>
 ```
 
 把我们原来配置阿里云仓库地址的 mirror 标签改成下面这样：
 
-```
+```java
 <mirror>
     <id>nexus-mine</id>
     <mirrorOf>central</mirrorOf>
@@ -291,7 +291,7 @@ GAV遵循一下规则：
 
 maven工程中配置：
 
-```
+```java
 <distributionManagement>
     <snapshotRepository>
         <id>nexus-mine</id>
@@ -305,7 +305,7 @@ maven工程中配置：
 
 执行部署命令：
 
-```
+```java
 mvn deploy
 ```
 
@@ -313,7 +313,7 @@ mvn deploy
 
 maven工程中配置：
 
-```
+```java
 <repositories>
     <repository>
         <id>nexus-mine</id>
@@ -339,9 +339,9 @@ maven会将依赖缓存在仓库中,避免重复下载,同时可以放公司的�
 
 1. 节省外网带宽,避免重复下载,降低带宽压力
 
-1. 下载速度更快,位于私服,下载超快
+2. 下载速度更快,位于私服,下载超快
 
-1. 可部署第三方构件,例如公司的依赖,npm等
+3. 可部署第三方构件,例如公司的依赖,npm等
 
 ![](images/WEBRESOURCE316e546d2995cd278685cd8d2e88b54bimage-20231021164631791.png)
 
@@ -349,7 +349,7 @@ maven会将依赖缓存在仓库中,避免重复下载,同时可以放公司的�
 
 ## nginx命令
 
-```
+```java
 ./nginx #默认配置文件启动
 ./nginx -s reload #重启，加载默认配置文件
 ./nginx -c /usr/local/nginx/conf/nginx.conf #启动指定某个配置文件
@@ -364,7 +364,7 @@ maven会将依赖缓存在仓库中,避免重复下载,同时可以放公司的�
 
 ## 查看电脑端口是否被占用
 
-```
+```java
 netstat -ano | findStr 80 //cmd命令,查找80端口进程
 ```
 
@@ -376,7 +376,7 @@ nginx安装目录通常位于
 
 **前端资源统一部署在html下**
 
-```
+```java
 -nginx根目录
     -config 配置文件,主要是config下的nagix.conf
     -html   静态资源,存打包后的dist内的文件
@@ -395,7 +395,7 @@ unzip解压zip文件
 
 ls查看
 
-```
+```java
 yum install nginx //下载nginx
 cd /
 ls
