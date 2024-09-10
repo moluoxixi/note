@@ -22,7 +22,6 @@
 
 
 容器的 terminal 里执行命令，对应的是 docker exec ,
-
 ## Dockerfile
 
 文件名是固定的,就叫

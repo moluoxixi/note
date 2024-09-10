@@ -5,8 +5,11 @@
 - 使用最新的Typescript和Vue3进行开发。
 
 - 使用Ant Design of Vue UI库。
+- 代码结构必须是这样的：
 
-- 代码结构必须是这样的：<template></template><script setup lang="ts"></script><style scoped></style>。
+```
+<template></template><script setup lang="ts"></script><style scoped></style>。
+```
 
 - 使用 Ant Design Vue 的栅格系统：利用 Ant Design Vue 的 <a-row> 和 <a-col> 组件创建响应式布局。
 
