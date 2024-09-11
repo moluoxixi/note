@@ -1066,15 +1066,15 @@ StringTable(串池) : 存储直接赋值的字符串,字符串赋值时会去串
 
 一种可变字符序列,是字符串的缓冲区, 我们可以将其理解为是一种容器
 
-| 方法                                 | 说明                                       | 使用                                         |
-| ---------------------------------- | ---------------------------------------- | ------------------------------------------ |
-| public StringBuilder()             | 创建一个空的字符串缓冲区(容器)                         | new StringBuilder()                        |
-| public StringBuilder(String str)   | 创建一个字符串缓冲区, 并初始化好指定的参数内容                 | StringBuilder sb = new StringBuilder("AA") |
-| public StringBuilder append (任意类型) | 添加数据，并返回对象本身                             | sb.append(1)                               |
-| public StringBuilder reverse()     | 反转容器中的内容                                 | sb.reverse()                               |
-| public int  length()               | 返回长度 ( 字符出现的个数)                          | sb.length()                                |
-| public String toString()           | 通过toString()就可以实现把StringBuilder转换为String | sb.toString()                              |
-| public int  capacity()             | 返回当前容量                                   | sb.capacity()                              |
+| 方法                                   | 说明                                       | 使用                                           |
+| ------------------------------------ | ---------------------------------------- | -------------------------------------------- |
+| `public StringBuilder()`             | 创建一个空的字符串缓冲区(容器)                         | `new StringBuilder()`                        |
+| `public StringBuilder(String str)`   | 创建一个字符串缓冲区, 并初始化好指定的参数内容                 | `StringBuilder sb = new StringBuilder("AA")` |
+| `public StringBuilder append (任意类型)` | 添加数据，并返回对象本身                             | `sb.append(1)`                               |
+| `public StringBuilder reverse()`     | 反转容器中的内容                                 | `sb.reverse()`                               |
+| `public int length()`                | 返回长度 ( 字符出现的个数)                          | `sb.length()`                                |
+| `public String toString()`           | 通过toString()就可以实现把StringBuilder转换为String | `sb.toString()`                              |
+| `public int capacity()`              | 返回当前容量                                   | `sb.capacity()`                              |
 
 
 ### 内存分析
@@ -1116,13 +1116,13 @@ StringBuilder的toString方法会new String返回新的String对象
 
 可以理解为对象版js的join
 
-| 构造方法                                | 说明                                      | 使用                                            |
-| ----------------------------------- | --------------------------------------- | --------------------------------------------- |
-| public StringJoiner(间隔符号)           | 创建一个StringJoiner对象，指定拼接时的间隔符号           | new StringJoiner(",")                         |
-| public StringJoiner(间隔符号，开始符号，结束符号) | 创建一个StringJoiner对象，指定拼接时的间隔符号、开始符号、结束符号 | StringJoiner sj=new StringJoiner(",","[","]") |
-| public StringJoiner add(添加的内容)      | 添加数据,并返回对象本身                            | sj.add("A")                                   |
-| public int  length()                | 返回长度 ( 字符出现的个数)                         | sj.length()                                   |
-| public String toString()            | 返回开始符号+add内容被分割符号连接+结束符号拼成的字符串          | sj.toString()                                 |
+| 构造方法                                  | 说明                                      | 使用                                              |
+| ------------------------------------- | --------------------------------------- | ----------------------------------------------- |
+| `public StringJoiner(间隔符号)`           | 创建一个StringJoiner对象，指定拼接时的间隔符号           | `new StringJoiner(",")`                         |
+| `public StringJoiner(间隔符号，开始符号，结束符号)` | 创建一个StringJoiner对象，指定拼接时的间隔符号、开始符号、结束符号 | `StringJoiner sj=new StringJoiner(",","[","]")` |
+| `public StringJoiner add(添加的内容)`      | 添加数据,并返回对象本身                            | `sj.add("A")`                                   |
+| `public int length()`                 | 返回长度 ( 字符出现的个数)                         | `sj.length()`                                   |
+| `public String toString()`            | 返回开始符号+add内容被分割符号连接+结束符号拼成的字符串          | `sj.toString()`                                 |
 
 
 StringJoiner内存分析
@@ -1135,16 +1135,16 @@ StringJoiner内存分析
 
 数字运算的方法
 
-| 方法                                           | 说明                    | 使用                |
-| -------------------------------------------- | --------------------- | ----------------- |
-| public static int abs(int a)                 | 返回参数的绝对值              | Math.abs(-2)      |
-| public static double ceil(double a)          | 返回大于或等于参数的最小整数        | Math.ceil(23.45)  |
-| public static double floor(double a)         | 返回小于或等于参数的最大整数        | Math.floor(23.45) |
-| public static int round(float a)             | 按照四舍五入返回最接近参数的int类型的值 | Math.round(23.45) |
-| public static int max(int a,int b)           | 获取两个int值中的较大值         | Math.max(12, 45)  |
-| public static int min(int a,int b)           | 获取两个int值中的较小值         | Math.min(12 , 34) |
-| public static double pow (double a,double b) | 计算a的b次幂的值             | Math.pow(2,3)     |
-| public static double random()                | 返回一个[0.0,1.0)的随机值     | Math.random()     |
+| 方法                                             | 说明                    | 使用                  |
+| ---------------------------------------------- | --------------------- | ------------------- |
+| `public static int abs(int a)`                 | 返回参数的绝对值              | `Math.abs(-2)`      |
+| `public static double ceil(double a)`          | 返回大于或等于参数的最小整数        | `Math.ceil(23.45)`  |
+| `public static double floor(double a)`         | 返回小于或等于参数的最大整数        | `Math.floor(23.45)` |
+| `public static int round(float a)`             | 按照四舍五入返回最接近参数的int类型的值 | `Math.round(23.45)` |
+| `public static int max(int a,int b)`           | 获取两个int值中的较大值         | `Math.max(12, 45)`  |
+| `public static int min(int a,int b)`           | 获取两个int值中的较小值         | `Math.min(12 , 34)` |
+| `public static double pow (double a,double b)` | 计算a的b次幂的值             | `Math.pow(2,3)`     |
+| `public static double random()`                | 返回一个[0.0,1.0)的随机值     | `Math.random()`     |
 
 
 # 系统操作相关
@@ -1153,10 +1153,10 @@ StringJoiner内存分析
 
 系统操作的一些常用的方法
 
-| 方法                                                                                                  | 说明                                | 使用                                                |
-| --------------------------------------------------------------------------------------------------- | --------------------------------- | ------------------------------------------------- |
-| public static void exit(int status)                                                                 | 终止当前正在运行的Java虚拟机，0表示正常退出，非零表示异常退出 | System.exit(0)                                    |
-| public static native void arraycopy(Object src,  int  srcPos, Object dest, int destPos, int length) | 将数组的指定个数元素复制到目标数组                 | System.arraycopy(srcArray , 0 , desArray , 1 , 3) |
+| 方法                                                                                               | 说明                                | 使用                                          |
+| ------------------------------------------------------------------------------------------------ | --------------------------------- | ------------------------------------------- |
+| `public static void exit(int status)`                                                            | 终止当前正在运行的Java虚拟机，0表示正常退出，非零表示异常退出 | `System.exit(0)`                            |
+| `public static native void arraycopy(Object src,int srcPos, Object dest,int destPos,int length)` | 将数组的指定个数元素复制到目标数组                 | `System.arraycopy(srcArray,0,desArray,1,3)` |
 
 
 1. 如果目标数组从destPos开始不够装下拷贝个数的元素,会报错
@@ -1180,15 +1180,15 @@ System.arraycopy(srcArray , 0 , desArray , 1 , 3);
 
 Java中运行时对象，可以获取到程序运行时涉及到的一些信息
 
-| 方法                                  | 说明                       | 使用                                |
-| ----------------------------------- | ------------------------ | --------------------------------- |
-| public static Runtime getRuntime()  | 当前系统的运行环境对象              | Runtime rt = Runtime.getRuntime() |
-| public void exit(int status)        | 停止虚拟机                    | rt.exit()                         |
-| public int availableProcessors()    | 获得CPU的线程数                | rt.availableProcessors()          |
-| public long maxMemory()             | JVM能从系统中获取总内存大小（单位byte）  | rt.maxMemory()                    |
-| public long totalMemory()           | JVM已经从系统中获取总内存大小（单位byte） | rt.totalMemory()                  |
-| public long freeMemory()            | JVM剩余内存大小（单位byte）        | rt.freeMemory()                   |
-| public Process exec(String command) | 运行cmd命令                  | rt.exec("shutdown -s -t 3600")    |
+| 方法                                    | 说明                       | 使用                                  |
+| ------------------------------------- | ------------------------ | ----------------------------------- |
+| `public static Runtime getRuntime()`  | 当前系统的运行环境对象              | `Runtime rt = Runtime.getRuntime()` |
+| `public void exit(int status)`        | 停止虚拟机                    | `rt.exit()`                         |
+| `public int availableProcessors()`    | 获得CPU的线程数                | `rt.availableProcessors()`          |
+| `public long maxMemory()`             | JVM能从系统中获取总内存大小（单位byte）  | `rt.maxMemory()`                    |
+| `public long totalMemory()`           | JVM已经从系统中获取总内存大小（单位byte） | `rt.totalMemory()`                  |
+| `public long freeMemory()`            | JVM剩余内存大小（单位byte）        | `rt.freeMemory()`                   |
+| `public Process exec(String command)` | 运行cmd命令                  | `rt.exec("shutdown -s -t 3600")`    |
 
 
 ```java
@@ -1214,11 +1214,11 @@ Java中运行时对象，可以获取到程序运行时涉及到的一些信息
 
 **clone默认是浅克隆**
 
-| 方法(全没用,都要重写)                      | 说明                     | 使用            |
-| --------------------------------- | ---------------------- | ------------- |
-| public String toString()          | 返回该对象的字符串表示形式(可认为是地址值) | s1.toString() |
-| public boolean equals(Object obj) | 比较两个对象地址值是否相等,返回布尔值    | s1.equals(s2) |
-| protected Object clone()          | 对象克隆                   | s1.clone()    |
+| 方法(全没用,都要重写)                        | 说明                     | 使用              |
+| ----------------------------------- | ---------------------- | --------------- |
+| `public String toString()`          | 返回该对象的字符串表示形式(可认为是地址值) | `s1.toString()` |
+| `public boolean equals(Object obj)` | 比较两个对象地址值是否相等,返回布尔值    | `s1.equals(s2)` |
+| `protected Object clone()`          | 对象克隆                   | `s1.clone()`    |
 
 
 ```java
@@ -1239,12 +1239,12 @@ java中深拷贝,遇到String对象,不会创建新对象,会复用串池中的�
 
 ## Objects常用方法
 
-| 方法                                               | 说明                 | 使用                    |
-| ------------------------------------------------ | ------------------ | --------------------- |
-| public static String toString(Object o)          | 获取对象的字符串表现形式       | Objects.toString(s1)  |
-| public static boolean equals(Object a, Object b) | 先做非空判断,再比较两个对象是否相等 | Objects.equals(s1,s2) |
-| public static boolean isNull(Object obj)         | 判断对象是否为null        | Objects.isNull(s1)    |
-| public static boolean nonNull(Object obj)        | 判断对象是否不为null       | Objects.nonNull(s1)   |
+| 方法                                                 | 说明                 | 使用                      |
+| -------------------------------------------------- | ------------------ | ----------------------- |
+| `public static String toString(Object o)`          | 获取对象的字符串表现形式       | `Objects.toString(s1)`  |
+| `public static boolean equals(Object a, Object b)` | 先做非空判断,再比较两个对象是否相等 | `Objects.equals(s1,s2)` |
+| `public static boolean isNull(Object obj)`         | 判断对象是否为null        | `Objects.isNull(s1)`    |
+| `public static boolean nonNull(Object obj)`        | 判断对象是否不为null       | `Objects.nonNull(s1)`   |
 
 
 ### Objects.equals原理
@@ -1264,28 +1264,25 @@ java中深拷贝,遇到String对象,不会创建新对象,会复用串池中的�
 用于Long都装不下的时候的超大整型,理论上最大到42亿的21亿次方,基本上在内存撑爆之前，都无法达到这个上限
 
 - 如果BigInteger表示的数字没有超出long的范围，可以用静态方法valueOf获取。
-
 - 如果BigInteger表示的超出long的范围,或不清楚，可以用构造方法获取。
-
 - 对象一旦创建，BigInteger内部记录的值不能发生改变。
-
 - 只要进行计算都会产生一个新的BigInteger对象。
 
-| 方法                                                     | 说明                      | 使用                                                |
-| ------------------------------------------------------ | ----------------------- | ------------------------------------------------- |
-| public BigInteger(int num, Random rnd)                 | 获取随机大整数，范围：0 ~ 2^num-1  | BigInteger bd = new BigInteger(123, new Random()) |
-| (最常用)public BigInteger(String val)                     | 获取指定                    | BigInteger bd = new BigInteger("123")             |
-| public BigInteger(String val, int radix)               | 获取                      | BigInteger bd = new BigInteger("10", 2)           |
-| public static BigInteger valueOf(long val)             | 获取long范围内的bg对象          | BigInteger.valueOf(bd)                            |
-| public BigInteger add(BigInteger val)                  | 加法                      | bd.add(bd1)                                       |
-| public BigInteger subtract(BigInteger val)             | 减法                      | bd.subtract(bd1)                                  |
-| public BigInteger multiply(BigInteger val)             | 乘法                      | bd.multiply(bd1)                                  |
-| public BigInteger divide(BigInteger val)               | 除法                      | bd.divide(bd1)                                    |
-| public BigInteger[] divideAndRemainder(BigInteger val) | 除法，获取商和余数               | bd.divideAndRemainder(bd1)                        |
-| public  boolean equals(Object x)                       | 比较是否相同                  | bd.equals(bd1)                                    |
-| public  BigInteger pow(int exponent)                   | 次幂、次方                   | bd.pow(2)                                         |
-| public  BigInteger max/min(BigInteger val)             | 二者比较取最大/小               | bd.max/min(bd1)                                   |
-| public  int int/longValue(BigInteger val)              | 转为int/long类型整数，超出范围数据有误 | intValue.add(bd1)                                 |
+| 方法                                                       | 说明                      | 使用                                                  |
+| -------------------------------------------------------- | ----------------------- | --------------------------------------------------- |
+| `public BigInteger(int num, Random rnd)`                 | 获取随机大整数，范围：0 ~ 2^num-1  | `BigInteger bd = new BigInteger(123, new Random())` |
+| `(最常用)public BigInteger(String val)`                     | 获取指定                    | `BigInteger bd = new BigInteger("123")`             |
+| `public BigInteger(String val, int radix)`               | 获取                      | `BigInteger bd = new BigInteger("10", 2)`           |
+| `public static BigInteger valueOf(long val)`             | 获取long范围内的bg对象          | `BigInteger.valueOf(bd)`                            |
+| `public BigInteger add(BigInteger val)`                  | 加法                      | `bd.add(bd1)`                                       |
+| `public BigInteger subtract(BigInteger val)`             | 减法                      | `bd.subtract(bd1)`                                  |
+| `public BigInteger multiply(BigInteger val)`             | 乘法                      | `bd.multiply(bd1)`                                  |
+| `public BigInteger divide(BigInteger val)`               | 除法                      | `bd.divide(bd1)`                                    |
+| `public BigInteger[] divideAndRemainder(BigInteger val)` | 除法，获取商和余数               | `bd.divideAndRemainder(bd1)`                        |
+| `public boolean equals(Object x)`                        | 比较是否相同                  | `bd.equals(bd1)`                                    |
+| `public BigInteger pow(int exponent)`                    | 次幂、次方                   | `bd.pow(2)`                                         |
+| `public BigInteger max/min(BigInteger val)`              | 二者比较取最大/小               | `bd.max/min(bd1)`                                   |
+| `public int int/longValue(BigInteger val)`               | 转为int/long类型整数，超出范围数据有误 | `intValue.add(bd1)`                                 |
 
 
 ### BigInteger的valueOf原理
@@ -1300,7 +1297,7 @@ valueOf时,如果为-16~16,则直接返回存储的对应实例,否则才会new�
 
 数组的最大长度是int的长度,是21亿多
 
-bg存的数字会以被分割为多个32位一组的二进制数字,再转成十进制存在一个数组中,以一个属性代表正负,格式这样 [1,32位一组的数字,0],
+bg存的数字会以被分割为多个32位一组的二进制数字,再转成十进制存在一个数组中,以一个属性代表正负,格式这样 `[1,32位一组的数字,0]`,
 
 再将这个数组存在mag数组里面
 
@@ -1310,14 +1307,14 @@ bg存的数字会以被分割为多个32位一组的二进制数字,再转成十
 
 解决浮点型精度丢失问题
 
-| 方法                                                                        | 说明                | 使用                                       |
-| ------------------------------------------------------------------------- | ----------------- | ---------------------------------------- |
-| public BigDecimal(int/long/String val)                                    | 将xx类型转成BigDecimal | BigDecimal bd = new BigDecimal("0.3")    |
-| public BigDecimal add(BigDecimal value)                                   | 加法运算              | bd.add(b2)                               |
-| public BigDecimal subtract(BigDecimal value)                              | 减法运算              | bd.subtract(b2)                          |
-| public BigDecimal multiply(BigDecimal value)                              | 乘法运算              | bd.multiply(b2)                          |
-| public BigDecimal divide(BigDecimal value)                                | 除法运算,结果为无限循环小数会报错 | bd.divide(b2)                            |
-| public BigDecimal divide(BigDecimal divisor, int scale, int roundingMode) |                   | bd.divide(b2 , 2 , RoundingMode.HALF_UP) |
+| 方法                                                                          | 说明                | 使用                                         |
+| --------------------------------------------------------------------------- | ----------------- | ------------------------------------------ |
+| `public BigDecimal(int/long/String val)`                                    | 将xx类型转成BigDecimal | `BigDecimal bd = new BigDecimal("0.3")`    |
+| `public BigDecimal add(BigDecimal value)`                                   | 加法运算              | `bd.add(b2)`                               |
+| `public BigDecimal subtract(BigDecimal value)`                              | 减法运算              | `bd.subtract(b2)`                          |
+| `public BigDecimal multiply(BigDecimal value)`                              | 乘法运算              | `bd.multiply(b2)`                          |
+| `public BigDecimal divide(BigDecimal value)`                                | 除法运算,结果为无限循环小数会报错 | `bd.divide(b2)`                            |
+| `public BigDecimal divide(BigDecimal divisor, int scale, int roundingMode)` |                   | `bd.divide(b2 , 2 , RoundingMode.HALF_UP)` |
 
 
 ### divide演示
@@ -1518,29 +1515,29 @@ System.out.println("相差的纪元数:" + ChronoUnit.ERAS.between(birthDate, to
 
 ## System获取当前时间
 
-| 方法                                     | 说明                           | 使用                         |
-| -------------------------------------- | ---------------------------- | -------------------------- |
-| public static long currentTimeMillis() | 获取从1970年1月1日 00:00:00到现在的毫秒值 | System.currentTimeMillis() |
+| 方法                                       | 说明                           | 使用                           |
+| ---------------------------------------- | ---------------------------- | ---------------------------- |
+| `public static long currentTimeMillis()` | 获取从1970年1月1日 00:00:00到现在的毫秒值 | `System.currentTimeMillis()` |
 
 
 ## JDK8以前的垃圾
 
 ### 获取设置Date
 
-| 方法                             | 说明                           | 使用                                       |
-| ------------------------------ | ---------------------------- | ---------------------------------------- |
-| public Date()                  | 创建时间对象                       | Date date=new Date()                     |
-| public long getTime()          | 获取从1970年1月1日 00:00:00到现在的毫秒值 | date.getTime()                           |
-| public void setTime(long time) | 接收毫秒值,设置时间                   | date.setTime(System.currentTimeMillis()) |
+| 方法                               | 说明                           | 使用                                         |
+| -------------------------------- | ---------------------------- | ------------------------------------------ |
+| `public Date()                   | 创建时间对象                       | `Date date=new Date()`                     |
+| `public long getTime()`          | 获取从1970年1月1日 00:00:00到现在的毫秒值 | `date.getTime()`                           |
+| `public void setTime(long time)` | 接收毫秒值,设置时间                   | `date.setTime(System.currentTimeMillis())` |
 
 
 ### 格式化SimpleDateFormat
 
-| 方法                                      | 说明                         | 使用                                                               |
-| --------------------------------------- | -------------------------- | ---------------------------------------------------------------- |
-| public SimpleDateFormat(String pattern) | 格式化日期                      | SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss") |
-| public String format(Date date)         | 将Date对象按sdf的格式转换为字符串       | sdf.format(new Date(0L))                                         |
-| public Date parse(String source)        | 将符合sdf格式的字符串解析为Date对象,否则报错 | sdf.parse("2023-11-11 11:11:11")                                 |
+| 方法                                        | 说明                         | 使用                                                                 |
+| ----------------------------------------- | -------------------------- | ------------------------------------------------------------------ |
+| `public SimpleDateFormat(String pattern)` | 格式化日期                      | `SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")` |
+| `public String format(Date date)`         | 将Date对象按sdf的格式转换为字符串       | `sdf.format(new Date(0L))`                                         |
+| `public Date parse(String source)`        | 将符合sdf格式的字符串解析为Date对象,否则报错 | `sdf.parse("2023-11-11 11:11:11")`                                 |
 
 
 ```java
@@ -1561,12 +1558,12 @@ System.out.println(str2);//1970/1/1 上午8:00
 
 用于日期计算
 
-| 方法名                                   | 说明                           | 写法                                         |
-| ------------------------------------- | ---------------------------- | ------------------------------------------ |
-| public static Calendar getInstance()  | 获取一个它的子类GregorianCalendar对象。 | Calendar instance = Calendar.getInstance() |
-| public int get(int field)             | 获取某个字段的值。field参数表示获取哪个字段的值，  | instance.get(Calendar.YEAR)                |
-| public void set(int field,int value)  | 设置某个字段的值                     | instance.set(Calendar.YEAR, 1998);         |
-| public void add(int field,int amount) | 为某个字段增加/减少指定的值               | instance.add(Calendar.DAY_OF_MONTH, 200);  |
+| 方法名                                     | 说明                           | 写法                                           |
+| --------------------------------------- | ---------------------------- | -------------------------------------------- |
+| `public static Calendar getInstance()`  | 获取一个它的子类GregorianCalendar对象。 | `Calendar instance = Calendar.getInstance()` |
+| `public int get(int field)`             | 获取某个字段的值。field参数表示获取哪个字段的值，  | `instance.get(Calendar.YEAR)`                |
+| `public void set(int field,int value)`  | 设置某个字段的值                     | `instance.set(Calendar.YEAR, 1998)`          |
+| `public void add(int field,int amount)` | 为某个字段增加/减少指定的值               | `instance.add(Calendar.DAY_OF_MONTH, 200)`   |
 
 
 # 包装类
@@ -1589,13 +1586,9 @@ System.out.println(str2);//1970/1/1 上午8:00
 
 基本类型与对应的包装类对象之间，来回转换的过程称为”装箱“与”拆箱“：
 
-- 装箱
+- 装箱：从基本类型转换为对应的包装类对象。
 
-：从基本类型转换为对应的包装类对象。
-
-- 拆箱
-
-：从包装类对象转换为对应的基本类型。
+- 拆箱：从包装类对象转换为对应的基本类型。
 
 用Integer与 int为例：（看懂代码即可）
 
@@ -1631,9 +1624,8 @@ i = i + 5;//等号右边：将i对象转成基本数值(自动拆箱) i.intValue
 
 - 转换方式
 
-- 方式一：直接在数字后加一个空字符串
-
-- 方式二：通过String类静态方法valueOf()
+	- 方式一：直接在数字后加一个空字符串
+	- 方式二：通过String类静态方法valueOf()
 
 - 示例代码
 
@@ -1659,43 +1651,22 @@ public class IntegerDemo {
 
 除了Character类之外，其他所有包装类都具有parseXxx静态方法可以将字符串参数转换为对应的基本类型：
 
-- public static byte parseByte(String s)
-
-：将字符串参数转换为对应的byte基本类型。
-
-- public static short parseShort(String s)
-
-：将字符串参数转换为对应的short基本类型。
-
-- public static int parseInt(String s)
-
-**：将字符串参数转换为对应的int基本类型。**
-
-- public static long parseLong(String s)
-
-**：将字符串参数转换为对应的long基本类型。**
-
-- public static float parseFloat(String s)
-
-：将字符串参数转换为对应的float基本类型。
-
-- public static double parseDouble(String s)
-
-：将字符串参数转换为对应的double基本类型。
-
-- public static boolean parseBoolean(String s)
-
-：将字符串参数转换为对应的boolean基本类型。
+- public static byte parseByte(String s)：将字符串参数转换为对应的byte基本类型。
+- public static short parseShort(String s)：将字符串参数转换为对应的short基本类型。
+- public static int parseInt(String s)**：将字符串参数转换为对应的int基本类型。**
+- public static long parseLong(String s)**：将字符串参数转换为对应的long基本类型。**
+- public static float parseFloat(String s)：将字符串参数转换为对应的float基本类型。
+- public static double parseDouble(String s)：将字符串参数转换为对应的double基本类型。
+- public static boolean parseBoolean(String s)：将字符串参数转换为对应的boolean基本类型。
 
 代码使用（仅以Integer类的静态方法parseXxx为例）如：
 
-- 转换方式
+1. 转换方式
 
-- 方式一：先将字符串数字转成Integer，再调用valueOf()方法
+	- 方式一：先将字符串数字转成Integer，再调用valueOf()方法
+	- 方式二：通过Integer静态方法parseInt()进行转换
 
-- 方式二：通过Integer静态方法parseInt()进行转换
-
-- 示例代码
+2. 示例代码
 
 ```java
 public class IntegerDemo {
@@ -1763,19 +1734,19 @@ System.out.println(i10 == i11); //false
 
 4. 单向链表:每个元素都是独立的对象，在内存中是不连续的，每个元素包含存储的数据和下一个元素的地址。
 
-- 查询慢，无论查询哪个数据都要从头开始找。
-
-- 相比数据增删快，只需要改一下地址值，例如新增一个元素,将前一个元素的地址值指向这个新元素，新元素地址值指向下一个就行
-
-- `首`操作极快
+	- 查询慢，无论查询哪个数据都要从头开始找。
+	
+	- 相比数据增删快，只需要改一下地址值，例如新增一个元素,将前一个元素的地址值指向这个新元素，新元素地址值指向下一个就行
+	
+	- `首`操作极快
 
 5. 双向链表:与双向链表类似,但是每个元素存储的是 `[上一个元素的地址,数据,下一个元素的地址]`
 
-- `首尾`操作极快
-
-- 相比数据增删快
-
-- 相比单向链表查询快，因为结构的不同,可以双端查找
+	- `首尾`操作极快
+	
+	- 相比数据增删快
+	
+	- 相比单向链表查询快，因为结构的不同,可以双端查找
 
 6. 二叉树:每个节点最多有两个子节点,没有特点存储顺序
 
@@ -1840,13 +1811,11 @@ System.out.println(i10 == i11); //false
 1. 左子节点添加右子节点,需先局部左旋,再右旋
 
 - 局部左旋:将不平衡支点的左子节点作为支点进行左旋操作
-
 - 右旋:将不平衡支点降级,不平衡支点的左节点升级,并将不平衡支点的左节点的右子节点转移给不平衡支点当左子节点
 
 2. 右子节点添加左子节点,需先局部右旋,再左旋
 
 - 局部右旋:将不平衡支点的右子节点作为支点进行右旋操作
-
 - 左旋:将不平衡支点降级,不平衡支点的右节点升级,并将不平衡支点的右节点的左子节点转移给不平衡支点当右子节点
 
 ![](images/WEBRESOURCE8bff9f4fe8349aec1bac7f33372e99b3image-20231121223925056.png)
@@ -1865,11 +1834,11 @@ System.out.println(i10 == i11); //false
 
 ## 二叉树不同遍历
 
-前序遍历(
+前序遍历(父左右):20 18 16 19 23 22 24
 
-中序遍历(左
+中序遍历(左父右):16 18 19 20 22 23 24
 
-后序遍历(左右
+后序遍历(左右父):16 19 18 22 24 23 20
 
 层序遍历(从左到右,从上到下一层层遍历):20 18 23 16 19 22 24
 
@@ -1881,7 +1850,7 @@ System.out.println(i10 == i11); //false
 
 相当于js的数组
 
-集合
+集合**分为单列集合和双列集合**
 
 单列集合一次添加一个
 
@@ -1895,77 +1864,74 @@ System.out.println(i10 == i11); //false
 
 不可变集合不能添加,删除,修改,仅能查询
 
-| 方法 | 说明 | 示例 | 
-| -- | -- | -- |
-| static  | 创建一个指定元素的不可变List/Set集合 | List | 
-| static <K,V>Map<K,V>of(E...elements) | 创建一个键值对对象组成的不可变Map集合 | Map<String,String>list=Map.of(键1，值1,键2,值2,...) | 
+| 方法                                         | 说明                     | 示例                                                |
+| ------------------------------------------ | ---------------------- | ------------------------------------------------- |
+| `static <E> List/Set <E> of(E...elements)` | 创建一个指定元素的不可变List/Set集合 | `List<String> list=List.of("张三","李四")`            |
+| `static <K,V> Map <K,V> of(E...elements)`  | 创建一个键值对对象组成的不可变Map集合   | `Map<String,String> list=Map.of(键1，值1,键2,值2,...)` |
+|                                            |                        |                                                   |
 
 
 ## toArray
 
 用于将集合转换为数组
 
-| 方法 | 说明 | 示例 | 
-| -- | -- | -- |
-| toArray() | 返回一个包含集合所有元素的数组 | list.toArray() | 
-| toArray(T[] a) | 返回一个与指定数组类型相同的数组,包含集合的所有元素,如果指定数组的大小足够容纳集合中的元素，则将元素存储在指定数组中，否则，将创建一个新的数组并将元素存储在其中。 | list.toArray(new String[0]) | 
+| 方法             | 说明                                                                                 | 示例                          |
+| -------------- | ---------------------------------------------------------------------------------- | --------------------------- |
+| toArray()      | 返回一个包含集合所有元素的数组                                                                    | list.toArray()              |
+| toArray(T[] a) | 返回一个与指定数组类型相同的数组,包含集合的所有元素,如果指定数组的大小足够容纳集合中的元素，则将元素存储在指定数组中，否则，将创建一个新的数组并将元素存储在其中。 | list.toArray(new String[0]) |
 
 
 # 单列集合
 
 1. 如果想要集合中的元素可重复
 
-- 用ArrayList集合，基于数组的。（
+	- 用ArrayList集合，基于数组的。（**用的最多**)
 
-**用的最多**
+2. 如果想要集合中的元素可重复，而且当前的增删操作明显多于查询
 
-1. 如果想要集合中的元素可重复，而且当前的增删操作明显多于查询
+	- 用LinkedList集合，基于链表的。
 
-- 用LinkedList集合，基于链表的。
+3. 如果想对集合中的元素去重
 
-1. 如果想对集合中的元素去重
+	- 用HashSet集合，基于哈希表+单链表/红黑树。（**用的最多**)
 
-- 用HashSet集合，基于哈希表+单链表/红黑树。（
+4. 如果想对集合中的元素去重，而且保证存取顺序
 
-**用的最多**
+	- 用LinkedHashSet集合，基于哈希表+双链表，效率低于HashSet。
 
-1. 如果想对集合中的元素去重，而且保证存取顺序
+5. 如果想对集合中的元素进行排序
 
-- 用LinkedHashSet集合，基于哈希表+双链表，效率低于HashSet。
-
-1. 如果想对集合中的元素进行排序
-
-- 用TreeSet:集合，基于红黑树。后续也可以用List集合实现排序。
+	- 用TreeSet:集合，基于红黑树。后续也可以用List集合实现排序。
 
 ## Collection接口常用方法
 
-是单列集合的顶层
+是单列集合的顶层**接口**
 
-| 方法名 | 说明 | 使用(set是实例) | 
-| -- | -- | -- |
-| boolean add(E e) | 在集合末尾添加元素,返回是否成功 | set.add("你好") | 
-| boolean remove(Object o) | 从集合中移除指定的元素 | set.remove("你好") | 
-| boolean contains(Object o) | 判断集合中是否存在指定的元素, | set.contains("你好") | 
-| boolean isEmpty() | 判断集合是否为空 | set.isEmpty() | 
-| void clear() | 清空集合中的元素 | set.clear() | 
-| int size() | 返回集合的长度(元素的个数) | set.size() | 
+| 方法名                          | 说明                               | 使用(set是实例)           |
+| ---------------------------- | -------------------------------- | -------------------- |
+| boolean add(E e)             | 在集合末尾添加元素,返回是否成功                 | set.add("你好")        |
+| boolean remove(Object o)     | 从集合中移除指定的元素                      | set.remove("你好")     |
+| `boolean contains(Object o)` | 判断集合中是否存在指定的元素,**通过元素.equals判断** | `set.contains("你好")` |
+| boolean isEmpty()            | 判断集合是否为空                         | set.isEmpty()        |
+| void clear()                 | 清空集合中的元素                         | set.clear()          |
+| int size()                   | 返回集合的长度(元素的个数)                   | set.size()           |
 
 
 ## List接口常用方法
 
 添加的元素是有序、有索引、可重复
 
-| 方法名(标红的是方法重写) | 说明 | 使用(set是实例) | 
-| -- | -- | -- |
-| boolean add(int index,E e) | 添加元素,返回是否成功 | set.add(1,"你好") | 
-| E remove(int index) | 删除指定索引的元素,返回删除的元素 | set.remove(1) | 
-| E get(int index) | 获取指定索引的元素 | set.get(1) | 
-| E set(int index,E e) | 修改指定索引的元素,返回被修改的元素 | set.set(1,"你好") | 
+| 方法名(标红的是方法重写)                  | 说明                 | 使用(set是实例)      |
+| ------------------------------ | ------------------ | --------------- |
+| **boolean add(int index,E e)** | 添加元素,返回是否成功        | set.add(1,"你好") |
+| **E remove(int index)**        | 删除指定索引的元素,返回删除的元素  | set.remove(1)   |
+| E get(int index)               | 获取指定索引的元素          | set.get(1)      |
+| E set(int index,E e)           | 修改指定索引的元素,返回被修改的元素 | set.set(1,"你好") |
 
 
 ### Arraylist常用方法
 
-```
+```java
 ArrayList list= new ArrayList() //不做类型限制的
 //JDK7
 ArrayList<E> 变量名= new ArrayList<E>()
@@ -1974,16 +1940,16 @@ ArrayList<E> 变量名= new ArrayList<>()
 
 ```
 
-| 方法名 | 说明 | 使用 | 
-| -- | -- | -- |
-| public ArrayList(Object e) | 创建空列表 | ArrayList list= new ArrayList() | 
-| public ArrayList(Object e) | 当不指定泛型时,不做类型限制 | ArrayList list= new ArrayList(List.of("张三丰","张无忌")) | 
-| public ArrayList(E e) | E接收包装对象,代表类型 | ArrayList | 
+| 方法名                          | 说明             | 使用                                                    |
+| ---------------------------- | -------------- | ----------------------------------------------------- |
+| `public ArrayList(Object e)` | 创建空列表          | `ArrayList list= new ArrayList()`                     |
+| `public ArrayList(Object e)` | 当不指定泛型时,不做类型限制 | `ArrayList list= new ArrayList(List.of("张三丰","张无忌"))` |
+| `public ArrayList(E e)`      | E接收包装对象,代表类型   | `ArrayList`                                           |
 
 
 #### iterator
 
-```
+```java
 ArrayList<String> list = new ArrayList();
 //普通迭代器,ArrayList内部实现了一个内部类用于迭代,list.iterator()实际上是实例化这个类
 Iterator iter=list.iterator()
@@ -2032,11 +1998,11 @@ list.remove(i); //调用connection的remove,删除对应元素
 
 ### LinkedList常用方法
 
-| 方法名 | 说明 | 
-| -- | -- |
-| public void addFirst/Last(E e) | 在该列开头/末尾插入指定元素 | 
-| public E getFirst/Last() | 返回集合中的第一个/最后一个元素 | 
-| public E removeFirst/Last() | 移除集合的第一个/最后一个元素,并返回移除的元素 | 
+| 方法名                            | 说明                       |
+| ------------------------------ | ------------------------ |
+| public void addFirst/Last(E e) | 在该列开头/末尾插入指定元素           |
+| public E getFirst/Last()       | 返回集合中的第一个/最后一个元素         |
+| public E removeFirst/Last()    | 移除集合的第一个/最后一个元素,并返回移除的元素 |
 
 
 #### linkedList添加元素原理
@@ -2077,7 +2043,7 @@ JDK8之前：数组+链表JDK8开始：数组+链表/红黑树
 
 - 在小部分情况下，不同的属性值或者不同的地址值计算出米的哈希值也有可能一样（哈希碰撞)
 
-```
+```java
 //哈希碰撞
 System.out.println("abe".hashCode())://96354
 System.out.println("acD".hashCode());//96354
