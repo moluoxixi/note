@@ -1257,7 +1257,6 @@ java中深拷贝,遇到String对象,不会创建新对象,会复用串池中的�
 3.如果s1没有重写equals，则调用Object的equals比较地址值，如果重写了，就比较属性值。
 
 //Objects.isNull(s1)
-
 ```
 
 # 长整型BigInteger
