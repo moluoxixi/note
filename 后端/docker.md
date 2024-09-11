@@ -11,7 +11,7 @@
 
 | 命令                                                                                                      | 说明                     | 对应desktop的操作                               |
 | ------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------------------ |
-| docker `logs/ps/start/stop/rm` `容器 id/容器名称`                                                             | 一个容器查看日志/查看详情/启动/停止/删除 | containers指定容器点击 Logs界面/Inspect界面/启动/删除/停止 |
+| docker `logs/ps/start/stop/rm` `容器 id/容器名称`                                                             | 一个容器查看日志/查看详情/启动/停止/删除 | containers指定容器点击 Logs界面/Inspect界面/启动/停止/删除 |
 | docker pull nginx:latest                                                                                | 拉一个镜像                  | 在images中pull一个镜像(这里pull的nginx),            |
 | docker run --name nginx-test2 -p 80:80 -v /tmp/aaa:/usr/share/nginx/html -e KEY1=VALUE1 -d nginx:latest | 运行容器,                  | 在images中点击run,填Optional settings的表单后run    |
 | docker ps -a                                                                                            | 列出容器列表                 | 获取                                         |
