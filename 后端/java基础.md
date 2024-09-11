@@ -2054,9 +2054,9 @@ System.out.println("acD".hashCode());//96354
 
 HashSet
 
-**HashSet无索引**
+**HashSet无索引**:因为同一位置可能有多个元素组成的红黑树或者链表,索引没有意义,还是找不到指定元素
 
-**HashSet不重复**
+**HashSet不重复**:采用hasCode和equals比较,避免重复添加
 
 **注意,比较时如果是链表或者是红黑树,会全部比较直到有相同或者比较完毕**
 
@@ -2068,7 +2068,7 @@ HashSet
 
 采用双向链表,与上一个添加的元素间互相存储地址,实现双向链表,以此实现有序性
 
-结构: [null,当前元素的值,下一个存储元素的地址]->[上一个存储元素的地址,当前元素的值,null]
+结构: `[null,当前元素的值,下一个存储元素的地址]->[上一个存储元素的地址,当前元素的值,null]`
 
 ### TreeSet原理
 
@@ -2078,7 +2078,7 @@ HashSet
 
 方式一：Javabean类实现Comparable接口，指定比较规则方式二：创建集合时，自定义Comparator比较器对象，指定比较规则
 
-```
+```java
 //方式一:Javabean类实现Comparable接口，指定比较规则
 //重写Comparable接口的compareTo方法覆盖默认比较
 //此处泛型用于指定compareTo方法的形参类型
@@ -2102,7 +2102,7 @@ public class Student implements Comparable<Student>{
 
 ```
 
-```
+```java
 //方式二：创建集合时，自定义Comparator比较器对象，指定比较规则
 //指定排序的规则,正大存右负小存左0舍弃
 TreeSet<string>ts = new Treeset<>((o1,o2)->{
@@ -2119,25 +2119,25 @@ TreeSet<string>ts = new Treeset<>((o1,o2)->{
 
 ## Map接口常用方法
 
-是双列集合的顶层
+是双列集合的顶层**接口**
 
-Map.Entry
+`Map.Entry`是一个接口,代表键值对对象，定义了用于表示 Map 中的键值对的方法
 
-| 方法名 | 说明 | 使用(map是实例) | 
-| -- | -- | -- |
-| V put(K key,V value) | 添加元素 | map.put("张无忌", "赵敏") | 
-| V remove(Object key) | 根据键删除键值对元素 | map.remove("张无忌") | 
-| void clear() | 移除所有的键值对元素 | map.clear() | 
-| boolean containsKey/Value(Object key/value) | 判断集合是否包含指定的键/值 | map.containsKey("张无忌") | 
-| boolean isEmpty() | 判断集合是否为空 | map.isEmpty() | 
-| int size() | 集合的长度，也就是集合中键值对的个数 | map.size() | 
-| Set key/value/entrySet() | 获取键/值/键值对对象组成的单列集合,键值对对象身上有getKey/Value方法获取键/值 | map.entrySet() | 
-| get(Object key) | 分解键获取对应的值 | map.get("张无忌") | 
+| 方法名                                           | 说明                                             | 使用(map是实例)               |
+| --------------------------------------------- | ---------------------------------------------- | ------------------------ |
+| `V put(K key,V value)`                        | 添加元素                                           | `map.put("张无忌", "赵敏")`   |
+| `V remove(Object key)`                        | 根据键删除键值对元素                                     | `map.remove("张无忌")`      |
+| `void clear()`                                | 移除所有的键值对元素                                     | `map.clear()`            |
+| `boolean containsKey/Value(Object key/value)` | 判断集合是否包含指定的键/值                                 | `map.containsKey("张无忌")` |
+| `boolean isEmpty()`                           | 判断集合是否为空                                       | `map.isEmpty()`          |
+| `int size()`                                  | 集合的长度，也就是集合中键值对的个数                             | `map.size()`             |
+| `Set key/value/entrySet()`                    | 获取键/值/键值对对象组成的单列集合,键值对对象身上有getKey/Value方法获取键/值 | `map.entrySet()`         |
+| `get(Object key)`                             | 分解键获取对应的值                                      | `map.get("张无忌")`         |
 
 
 三种遍历方式
 
-```
+```java
 //创建集合对象
 Map<String, String> map = new HashMap<String, String>();
 
@@ -2178,7 +2178,7 @@ LinkedHashMap和TreeMap也是一样的道理
 
 # 集合工具类Connections
 
-```
+```java
 public static <T>void sort(List<T>list)
 排序
 public static <T>void sort(List<T>list,Comparator<T>c)
@@ -2196,18 +2196,18 @@ public static <T>void swap(List<?>list,int i,int j)
 
 ```
 
-| 方法(标红比较常用) | 说明 | 使用 | 
-| -- | -- | -- |
-| public static  | 批量添加元素 | Collections.addAll(集合, "Yellow", "Orange") | 
-| public static void shuffle(List<?>list) | 打乱List集合元素的顺序 | Collections.shuffle(集合) | 
-| public static  | 升序排序 | Collections.sort(集合) | 
-| public static  | 根据Comparator指定的规则排序 | Collections.sort(集合,(p,c)->{}) | 
-| public static  | 以二分查找法查找元素 | Collections.binarySearch(集合, 3) | 
-| public static  | 拷贝List1中的元素到List2 | Collections.copy(集合1, 集合2); | 
-| public static  | 使用指定的元素填充集合 | Collections.fill(集合, "New Value") | 
-| public static  | 根据默认的自然排序获取最大/小值 | Collections.max(集合) | 
-| public static  | 交换集合中指定位置的元素 | Collections.swap(集合, 0, 2) | 
 
+| 方法                                                                | 说明                  | 使用                                           |
+| ----------------------------------------------------------------- | ------------------- | -------------------------------------------- |
+| `(常用)public static <T>boolean addAll(Collection<T>,T...elements)` | 批量添加元素              | `Collections.addAll(集合, "Yellow", "Orange")` |
+| `(常用)public static void shuffle(List<?> list)`                    | 打乱List集合元素的顺序       | `Collections.shuffle(集合)`                    |
+| `public static <T>void sort(List<T> list)`                        | 升序排序                | `Collections.sort(集合)`                       |
+| `public static <T>void sort(List<T> list,Comparator<T> c)`        | 根据Comparator指定的规则排序 | `Collections.sort(集合,(p,c)->{})`             |
+| `public static <T>int binarySearch (List<T> list,T key)`          | 以二分查找法查找元素          | `Collections.binarySearch(集合, 3)`            |
+| `public static <T>void copy(List1<T> dest,List2<T> src)`          | 拷贝List1中的元素到List2   | `Collections.copy(集合1, 集合2)`                 |
+| `public static <T>void fill (List<T> list,T obj)`                 | 使用指定的元素填充集合         | `Collections.fill(集合, "New Value")`          |
+| `public static <T>void max/min(Collection<T> coll)`               | 根据默认的自然排序获取最大/小值    | `Collections.max(集合)`                        |
+| `public static <T>void swap(List<?> list,int i,int j)`            | 交换集合中指定位置的元素        | `Collections.swap(集合, 0, 2)`                 |
 
 # Stream流
 
@@ -2215,43 +2215,41 @@ public static <T>void swap(List<?>list,int i,int j)
 
 1. 获取Stream流
 
-- 创建一条流水线,并把数据放到流水线上准备进行操作
+	- 创建一条流水线,并把数据放到流水线上准备进行操作
 
 1. 中间方法
 
-- 流水线上的操作
-
-- 一次操作完毕之后,还可以继续进行其他操作
+	- 流水线上的操作
+	
+	- 一次操作完毕之后,还可以继续进行其他操作
 
 1. 终结方法
 
-- 一个Stream流只能有一个终结方法
-
-- 是流水线上的最后一个操作,操作完毕就不能再操作了
+	- 一个Stream流只能有一个终结方法
+	
+	- 是流水线上的最后一个操作,操作完毕就不能再操作了
 
 **生成Stream流的方式**
 
 1. Collection体系集合
 
-- 使用默认方法stream()生成流， default Stream
-
-<E>
+	- 使用默认方法stream()生成流，`default Stream<E> stream()`
 
 1. Map体系集合
 
-- 把Map转成Set集合，再利用Collection体系生成stream流
+	- 把Map转成Set集合，再利用Collection体系生成stream流
 
 1. 数组
 
-- 通过Arrays中的静态方法stream生成流
+	- 通过Arrays中的静态方法stream生成流
 
 1. 同种数据类型的多个数据
 
-- 通过Stream接口的静态方法of(T... values)生成流,Stream.of("hello", "world", "java")
+	- 通过Stream接口的静态方法of(T... values)生成流,`Stream.of("hello", "world", "java")`
 
 **代码演示**
 
-```
+```java
 public class StreamDemo {
     public static void main(String[] args) {
         //Collection体系的集合可以使用默认方法stream()生成流
@@ -2287,18 +2285,19 @@ public class StreamDemo {
 
 常见方法
 
-| 方法名 | 说明 | 
-| -- | -- |
-| Stream | 对流中的数据进行过滤 | 
-| Stream | 返回截取指定参数个数的数据组成的流 | 
-| Stream | 跳过指定参数个数的数据，返回由该流的剩余元素组成的流 | 
-| static  | 合并a和b两个流为一个流 | 
-| Stream | 将流中的元素通过equals方法去重后返回新的流 | 
+
+| 方法名                                               | 说明                         |
+| ------------------------------------------------- | -------------------------- |
+| `Stream <T> filter(Predicate predicate)`          | 对流中的数据进行过滤                 |
+| `Stream <T> limit(long maxSize)`                  | 返回截取指定参数个数的数据组成的流          |
+| `Stream <T> skip(long n)`                         | 跳过指定参数个数的数据，返回由该流的剩余元素组成的流 |
+| `static <T> Stream<T> concat(Stream a, Stream b)` | 合并a和b两个流为一个流               |
+| `Stream <T> distinct()`                           | 将流中的元素通过equals方法去重后返回新的流   |
 
 
 filter代码演示
 
-```
+```java
 public class MyStream3 {
     public static void main(String[] args) {
     ArrayList<String> list = new ArrayList<>(List.of("张三丰","王二麻子"));
@@ -2327,15 +2326,15 @@ public class MyStream3 {
 
 常见方法
 
-| 方法名 | 说明 | 
-| -- | -- |
-| void forEach(Consumer action) | 对此流的每个元素执行操作 | 
-| long count() | 返回此流中的元素数 | 
-| T toArray() | 把流变为长度与与元素个数等同的数组 | 
-| T toArray(IntFunction apply) | 把流变为指定长度的数组,长度不够会报错 | 
+| 方法名                           | 说明                  |
+| ----------------------------- | ------------------- |
+| void forEach(Consumer action) | 对此流的每个元素执行操作        |
+| long count()                  | 返回此流中的元素数           |
+| T toArray()                   | 把流变为长度与与元素个数等同的数组   |
+| T toArray(IntFunction apply)  | 把流变为指定长度的数组,长度不够会报错 |
 
 
-```
+```java
 //forEach演示
 list.stream().forEach((s)->{System.out.println(s)})
 //等于
@@ -2368,22 +2367,23 @@ Integer[]arr list.stream().toArray(new IntFunction<Integer[]>(){
 
 常用方法
 
-| 方法名 | 说明 | 
-| -- | -- |
-| R collect(Collector collector) | 把结果收集到集合中 | 
+| 方法名                              | 说明        |
+| -------------------------------- | --------- |
+| `R collect(Collector collector)` | 把结果收集到集合中 |
 
 
 工具类Collectors提供了具体的收集方式
 
-| 方法名 | 说明 | 
-| -- | -- |
-| public static  | 把流中的元素收集到List/Set集合中 | 
-| public static  Collector toMap(Function keyMapper,Function valueMapper) | 把流中的元素收集到Map集合中 | 
+| 方法名                                                                       | 说明                   |
+| ------------------------------------------------------------------------- | -------------------- |
+| `public static <T> Collector toList/Set()`                                | 把流中的元素收集到List/Set集合中 |
+| `public static  Collector toMap(Function keyMapper,Function valueMapper)` | 把流中的元素收集到Map集合中      |
+|                                                                           |                      |
 
 
 代码演示
 
-```
+```java
 // toList和toSet方法演示 
 public class MyStream7 {
     public static void main(String[] args) {
@@ -2412,44 +2412,41 @@ public class MyStream7 {
 # File
 
 ## 构造方法
-
-| 方法 | 说明 | 使用 | 
-| -- | -- | -- |
-| public File(String pathname) | 通过 | new File("D:\\aaa.txt") | 
-| public File(String parent, String child) | 通过拼接 | new File("d:\\aaa","bbb.txt") | 
-| public File(File parent, String child) | 通过 | new File(new File("d:\\aaa"),"bbb.txt") | 
-
+| 方法                                         | 说明                                 | 使用                                        |
+| ------------------------------------------ | ---------------------------------- | ----------------------------------------- |
+| `public File(String pathname)`             | 通过`转义后的绝对/相对路径`来创建文件对象             | `new File("D:\\aaa.txt")`                 |
+| `public File(String parent, String child)` | 通过拼接`转义后的父目录绝对/相对路径`和`子文件名`来创建文件对象 | `new File("d:\\aaa","bbb.txt")`           |
+| `public File(File parent, String child)`   | 通过`父文件对象`和`子文件名`来创建文件对象            | `new File(new File("d:\\aaa"),"bbb.txt")` |
 
 ## 获取功能的方法
 
-| 方法 | 说明 | 使用 | 
-| -- | -- | -- |
-| public String getAbsolutePath() | 获取文件的绝对路径，包括盘符（或根路径） | file.getAbsolutePath() | 
-| public String getPath() | 返回相对路径或绝对路径，取决于创建 | file.getPath() | 
-| public String getName() | 返回文件或目录的名称，取决于创建 | file.getName() | 
-| public long length() | 返回文件的长度(多少字节) | file.length() | 
-
+| 方法                                | 说明                                         | 使用                       |
+| --------------------------------- | ------------------------------------------ | ------------------------ |
+| `public String getAbsolutePath()` | 获取文件的绝对路径，包括盘符（或根路径）                       | `file.getAbsolutePath()` |
+| `public String getPath()`         | 返回相对路径或绝对路径，取决于创建`File`对象时传入的路径是相对路径还是绝对路径 | `file.getPath()`         |
+| `public String getName()`         | 返回文件或目录的名称，取决于创建`File`对象时传入的路径是文件路径还是文件夹路径 | `file.getName()`         |
+| `public long length()`            | 返回文件的长度(多少字节)                              | `file.length()`          |
 
 ## 判断功能的方法
 
-| 方法 | 说明 | 使用 | 
-| -- | -- | -- |
-| public boolean exists() | 判断创建 | file.exists() | 
-| public boolean isDirectory() | 创建 | file.isDirectory() | 
-| public boolean isFile() | 创建 | file.isFile() | 
 
+| 方法                             | 说明                             | 使用                   |
+| ------------------------------ | ------------------------------ | -------------------- |
+| `public boolean exists()`      | 判断创建`File`对象时传入的路径是否有文件或目录真实存在 | `file.exists()`      |
+| `public boolean isDirectory()` | 创建`File`对象时对应的路径是否是目录          | `file.isDirectory()` |
+| `public boolean isFile()`      | 创建`File`对象时对应的路径是否是文件          | `file.isFile()`      |
 
 ## 创建删除功能的方法
 
-| 方法 | 说明 | 使用 | 
-| -- | -- | -- |
-| public boolean createNewFile() | isFile为false时，创建一个新的空文件 | file.exists() | 
-| public boolean delete() | 删除文件对象对应的目录或者文件 | file.delete() | 
-| public boolean mkdir() | 创建 | file.mkdir() | 
-| public boolean mkdirs() | 创建 | file.mkdirs() | 
 
+| 方法                               | 说明                                                | 使用              |
+| -------------------------------- | ------------------------------------------------- | --------------- |
+| `public boolean createNewFile()` | isFile为false时，创建一个新的空文件                           | `file.exists()` |
+| `public boolean delete()`        | 删除文件对象对应的目录或者文件                                   | `file.delete()` |
+| `public boolean mkdir()`         | 创建`File`对象时传入的是单目录,则直接创建<br/>传入的是多级目录,则父目录要存在才能创建 | `file.mkdir()`  |
+| `public boolean mkdirs()`        | 创建`File`对象时传入的是多级目录,如果路径中的任何父目录不存在，都会被一并创建        | `file.mkdirs()` |
 
-```
+```java
 //如果parentDirectory目录不存在,则mkdirs能创建成功,mkdir会失败
 //如果如果parentDirectory目录存在,mkdirs,mkdir都能成功
 File directory = new File("parentDirectory/childDirectory");
@@ -2457,12 +2454,10 @@ File directory = new File("parentDirectory/childDirectory");
 ```
 
 ## 遍历目录的方法
-
-| 方法 | 说明 | 使用 | 
-| -- | -- | -- |
-| public String[] list() | 获取目录中的文件和子目录的名称组成的String数组 | file.list() | 
-| public File[] listFiles() | 获取获取目录中的文件和子目录的的File对象组成的数组 | file.listFiles() | 
-
+| 方法                          | 说明                          | 使用                 |
+| --------------------------- | --------------------------- | ------------------ |
+| `public String[] list()`    | 获取目录中的文件和子目录的名称组成的String数组  | `file.list()`      |
+| `public File[] listFiles()` | 获取获取目录中的文件和子目录的的File对象组成的数组 | `file.listFiles()` |
 
 # IO流
 
@@ -2474,10 +2469,10 @@ File directory = new File("parentDirectory/childDirectory");
 
 输出:将内存中的数据输出到文件中
 
-|   | 输入流 | 输出流 | 
-| -- | -- | -- |
-| 字节流 | 字节输入流 | 字节输出流 | 
-| 字符流 | 字符输入流 | 字符输出流 | 
+|                 |          **输入流**          |            输出流             |
+| :-------------: | :-----------------------: | :------------------------: |
+|  **字节流**写入byte  | 字节输入流<br/>**InputStream** | 字节输出流<br/>**OutputStream** |
+| **字符流**写入string |   字符输入流<br/>**Reader**    |    字符输出流<br/>**Writer**    |
 
 
 ## 字节流
@@ -2490,32 +2485,28 @@ File directory = new File("parentDirectory/childDirectory");
 
 是字节输出流的顶级父类,即超类
 
-| 方法 | 说明( | 使用FileOutputStream fos=new FileOutputStream("文件地址") | 
-| -- | -- | -- |
-| public void close() | 关闭此输出流,并释放与此流相关联的任何系统资源 | fos.close() | 
-| public void flush() | 用于将缓冲中的数据强制输出到目的地，而不是等到缓冲满了才输出。 | fos.flush() | 
-| public void write(byte[] b) | 将字节数组中的b.length个字节的数据写入输出流中 | fos.write({"A"}) | 
-| public void write(byte[] b, int off, int len) | 从off开始将字节数组中的数据的len个字节的数据读取出来并写入输出流 | fos.write({"A"},1,0) | 
-| public abstract void write(int b) | 将指定的字节写入输出流 | fos.write("A") | 
+| 方法                                              | 说明(**一个字节按ASCII编码对应一个元素**)                                            | 使用FileOutputStream fos=new FileOutputStream("文件地址") |
+| ----------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------- |
+| `public void close()`                           | 关闭此输出流,并释放与此流相关联的任何系统资源                                               | `fos.close()`                                       |
+| `public void flush()`                           | 用于将缓冲中的数据强制输出到目的地，而不是等到缓冲满了才输出。<br/>这对于确保及时地将数据写入到目标设备（如文件或网络连接）是很有用的 | `fos.flush()`                                       |
+| `public void write(byte[] b)`                   | 将字节数组中的b.length个字节的数据写入输出流中**,也就是全部数据**                               | `fos.write({"A"})`                                  |
+| `public void write(byte[] b, int off, int len)` | 从off开始将字节数组中的数据的len个字节的数据读取出来并写入输出流                                   | `fos.write({"A"},1,0)`                              |
+| `public abstract void write(int b)`             | 将指定的字节写入输出流                                                           | `fos.write("A")`                                    |
 
 
 ### FileOutputStream的方法
 
-OutputStream
+`OutputStream`的其中一个子类
 
 是文件输出流,用于将数据写入文件
 
-1. 参数可以是
-
-**转义后的绝对/相对路径**
-
-1. 文件不存在会在保证父级路径存在的情况下创建一个新的文件
-
-1. 文件已存在会清空文件内容,除非第二个参数为true才会续写
+1. **参数可以是`转义后的绝对/相对路径`或者`File对象`**
+2. **文件不存在会在保证父级路径存在的情况下创建一个新的文件**
+3. **文件已存在会清空文件内容,除非第二个参数为true才会续写**
 
 换行:
 
-```
+```java
 换行写：
 windows: \r\n
 Linux:   \n
@@ -2531,40 +2522,36 @@ java也可以实现换行，因为java在底层会补全。
 
 ```
 
-| 方法 | 说明 | 使用 | 
-| -- | -- | -- |
-| public FileOutputStream(File file) | 清空 | new FileOutputStream(new File("文件地址")) | 
-| public FileOutputStream(String name) | 清空 | new FileOutputStream("myio\\a.txt") | 
-| public FileOutputStream(File file, boolean append) | 创建用于写入 | new FileOutputStream(new File("文件地址"),true) | 
-| public FileOutputStream(String name, boolean append) | 创建 | new FileOutputStream("文件地址",true) | 
+| 方法                                                     | 说明                                                                      | 使用                                            |
+| ------------------------------------------------------ | ----------------------------------------------------------------------- | --------------------------------------------- |
+| `public FileOutputStream(File file)`                   | 清空**指定文件对象**所对应文件的数据<br/>并创建用于写入指定文件对象所对应文件的输出流                         | `new FileOutputStream(new File("文件地址"))`      |
+| `public FileOutputStream(String name)`                 | 清空**指定文件**的数据<br/>并创建指定文件的输出流                                           | `new FileOutputStream("myio\\a.txt")`         |
+| `public FileOutputStream(File file, boolean append)`   | 创建用于写入**指定文件对象**所对应文件的输出流<br/>append为true时输出内容追加<br/>append为false清空指定文件 | `new FileOutputStream(new File("文件地址"),true)` |
+| `public FileOutputStream(String name, boolean append)` | 创建**指定文件**的输出流<br/>append为true时输出内容追加<br/>append为false清空指定文件            | `new FileOutputStream("文件地址",true)`           |
 
 
 ### 字节输入流超类InputStream
 
 字节输入流
 
-| 方法 | 说明 | 使用(FileInputStream fis = new FileInputStream("文件地址")) | 
-| -- | -- | -- |
-| public void close() | 关闭输入流,释放相关系统资源 | fis.close() | 
-| public abstract int read() | 令输入流读取一个字节并提升为int类型输出,读取到末尾时，返回 | int read = fis.read() | 
-| public int read(byte[] b) | 令输入流读取  | fis.read(new byte[1024]) | 
+| 方法                           | 说明                                                       | 使用(FileInputStream fis = new FileInputStream("文件地址")) |
+| ---------------------------- | -------------------------------------------------------- | ----------------------------------------------------- |
+| `public void close()`        | 关闭输入流,释放相关系统资源                                           | `fis.close()`                                         |
+| `public abstract int read()` | 令输入流读取一个字节并提升为int类型输出,读取到末尾时，返回`-1`                      | `int read = fis.read()`                               |
+| `public int read(byte[] b)`  | 令输入流读取 `b.length` 个字节的数据，并存储在提供的字节数组 `b` 中。读取到末尾时，返回`-1` | `fis.read(new byte[1024])`                            |
 
 
 ### FileInputStream的方法
 
-文件输入流，从文件中
+文件输入流，从文件中**读取**字节
 
-1. 参数可以是
+1. **参数可以是`转义后的绝对/相对路径`或者`File对象`**
+2. **文件不存在则报错**
 
-**转义后的绝对/相对路径**
-
-1. 文件不存在则报错
-
-| 方法 | 说明 | 使用 | 
-| -- | -- | -- |
-| public FileInputStream(File file) | 读取 | new FileInputStream(new File("文件地址")) | 
-| public FileInputStream(String name) | 读取 | new FileInputStream("文件地址") | 
-
+| 方法                                    | 说明                         | 使用                                      |
+| ------------------------------------- | -------------------------- | --------------------------------------- |
+| `public FileInputStream(File file)`   | 读取**指定文件对象**所对应文件的数据并创建输入流 | `new FileInputStream(new File("文件地址"))` |
+| `public FileInputStream(String name)` | 读取**指定文件**所对应文件的数据并创建输入流   | `new FileInputStream("文件地址")`           |
 
 ## 字符流
 
@@ -2586,55 +2573,45 @@ java也可以实现换行，因为java在底层会补全。
 
 字符输入流用于读取字符信息到内存中
 
-| 方法 | 说明 | 使用FileReader fr = new FileReader("文件地址") | 
-| -- | -- | -- |
-| public void close() | 关闭输入流,释放相关系统资源 | fr.close() | 
-| public abstract int read() | 令输入流读取一个字符并提升为int类型输出,读取到末尾时，返回 | int read = fr.read() | 
-| public int read(byte[] b) | 令输入流读取  | fr.read(new byte[1024]) | 
-
+| 方法                           | 说明                                                       | 使用FileReader fr = new FileReader("文件地址") |
+| ---------------------------- | -------------------------------------------------------- | ---------------------------------------- |
+| `public void close()`        | 关闭输入流,释放相关系统资源                                           | `fr.close()`                             |
+| `public abstract int read()` | 令输入流读取一个字符并提升为int类型输出,读取到末尾时，返回`-1`                      | `int read = fr.read()`                   |
+| `public int read(byte[] b)`  | 令输入流读取 `b.length` 个字节的数据，并存储在提供的字节数组 `b` 中。读取到末尾时，返回`-1` | `fr.read(new byte[1024])`                |
 
 ### FileReader的方法
 
-1. 参数可以是
+1. **参数可以是`转义后的绝对/相对路径`或者`File对象`**
 
-**转义后的绝对/相对路径**
-
-| 方法 | 说明 | 使用 | 
-| -- | -- | -- |
-| FileReader(File file) | 创建用于读取指定文件对象所对应文件的输入流 | new FileReader(new File("文件地址")) | 
-| FileReader(String fileName) | 创建指定文件的输入流 | new FileReader("文件地址") | 
-
+| 方法                            | 说明                    | 使用                                 |
+| ----------------------------- | --------------------- | ---------------------------------- |
+| `FileReader(File file)`       | 创建用于读取指定文件对象所对应文件的输入流 | `new FileReader(new File("文件地址"))` |
+| `FileReader(String fileName)` | 创建指定文件的输入流            | `new FileReader("文件地址")`           |
 
 ### 字符输出流超类Writer
 
-| 方法 | 说明 | 使用FileWriter fw=new FileWriter("文件地址") | 
-| -- | -- | -- |
-| void write(int c) | 将指定的字节写入输出流 | fw.write(25105) | 
-| void write(char[] cbuf) | 将字节数组中的b.length个字节的数据写入输出流中 | fw.write({'a','b','c'}) | 
-| abstract  void write(char[] cbuf, int off, int len) | 从off开始将字节数组中的数据的len个字节的数据读取出来并写入输出流 | fw.write({'a','b','c'},0,3) | 
-| void write(String str) | 将字符串读取出来写入输出流 | fw.write("我测你的码") | 
-| void write(String str, int off, int len) | 从off开始将字符串中的len个字符读取出来写入输出流 | fw.write("我测你的码",0,4) | 
-| void flush() | 用于将缓冲区中的数据强制输出到目的地，而不是等到缓冲区满了才输出 | fw.flush() | 
-| void close() | 关闭此输出流,并释放与此流相关联的任何系统资源 | fw.close() | 
-
+| 方法                                                    | 说明                                      | 使用FileWriter fw=new FileWriter("文件地址") |
+| ----------------------------------------------------- | --------------------------------------- | -------------------------------------- |
+| `void write(int c)`                                   | 将指定的字节写入输出流                             | fw.write(25105)                        |
+| `void write(char[] cbuf)`                             | 将字节数组中的b.length个字节的数据写入输出流中**,也就是全部数据** | fw.write({'a','b','c'})                |
+| `abstract  void write(char[] cbuf, int off, int len)` | 从off开始将字节数组中的数据的len个字节的数据读取出来并写入输出流     | fw.write({'a','b','c'},0,3)            |
+| `void write(String str)`                              | 将字符串读取出来写入输出流                           | fw.write("我测你的码")                      |
+| `void write(String str, int off, int len)`            | 从off开始将字符串中的len个字符读取出来写入输出流             | fw.write("我测你的码",0,4)                  |
+| `void flush()`                                        | 用于将缓冲区中的数据强制输出到目的地，而不是等到缓冲区满了才输出        | fw.flush()                             |
+| `void close()`                                        | 关闭此输出流,并释放与此流相关联的任何系统资源                 | fw.close()                             |
 
 ### FileWriter的方法
 
-1. 参数可以是
+1. **参数可以是`转义后的绝对/相对路径`或者`File对象`**
+2. **文件不存在会在保证父级路径存在的情况下创建一个新的文件**
+3. **文件已存在会清空文件内容,除非第二个参数为true才会续写**
 
-**转义后的绝对/相对路径**
-
-1. 文件不存在会在保证父级路径存在的情况下创建一个新的文件
-
-1. 文件已存在会清空文件内容,除非第二个参数为true才会续写
-
-| 方法 | 说明 | 使用 | 
-| -- | -- | -- |
-| public FileWriter(File file) | 清空 | new FileWriter(new File("文件地址")) | 
-| public FileWriter(String name) | 清空 | new FileWriter("myio\\a.txt") | 
-| public FileWriter(File file, boolean append) | 创建用于写入 | new FileWriter(new File("文件地址"),true) | 
-| public FileWriter(String name, boolean append) | 创建 | new FileWriter("文件地址",true) | 
-
+|方法|说明|使用|
+|--|--|--|
+|public FileWriter(File file)|清空**指定文件对象**所对应文件的数据 并创建用于写入指定文件对象所对应文件的输出流|new FileWriter(new File("文件地址"))|
+|public FileWriter(String name)|清空**指定文件**的数据 并创建指定文件的输出流|`new FileWriter("myio\\a.txt")`|
+|public FileWriter(File file, boolean append)|创建用于写入**指定文件对象**所对应文件的输出流 append为true时输出内容追加 append为false清空指定文件|new FileWriter(new File("文件地址"),true)|
+|public FileWriter(String name, boolean append)|创建**指定文件**的输出流 append为true时输出内容追加 append为false清空指定文件|new FileWriter("文件地址",true)|
 
 # 多线程
 
@@ -2642,60 +2619,56 @@ java也可以实现换行，因为java在底层会补全。
 
 并发:
 
-	在同一时刻，有多个指令在
+​ 在同一时刻，有多个指令在**单个**线程上**交替**执行
 
 并行:
 
- 	在同一时刻，有多个指令在
-
+ 在同一时刻，有多个指令在**多个**线程上**同时**执行
 ## 进程和线程
 
 进程：是正在运行的程序
 
-	独立性：进程是一个能独立运行的基本单位，同时也是系统分配资源和调度的独立单位​	动态性：进程的实质是程序的一次执行过程，进程是动态产生，动态消亡的​	并发性：任何进程都可以同其他进程一起并发执行
+​    独立性：进程是一个能独立运行的基本单位，同时也是系统分配资源和调度的独立单位
+​    动态性：进程的实质是程序的一次执行过程，进程是动态产生，动态消亡的
+​    并发性：任何进程都可以同其他进程一起并发执行
 
 线程：是进程中的单个顺序控制流，是一条执行路径
 
-	单线程：一个进程如果只有一条执行路径，则称为单线程程序
+​    单线程：一个进程如果只有一条执行路径，则称为单线程程序
 
-	多线程：一个进程如果有多条执行路径，则称为多线程程序
-
+​    多线程：一个进程如果有多条执行路径，则称为多线程程序
 ## 实现多线程的三种方式
 
 ### Thread的方法
 
-| 方法名 | 说明 | 
-| -- | -- |
-| Thread(Runnable target) | 接收runnable接口实现类的实例,开启一个线程 | 
-| Thread(Runnable target, String name) | 接收runnable接口实现类的实例,开启一个线程并定义线程的别名 | 
-| void run() | 常被重写 | 
-| void start() | 使此线程开始执行，Java虚拟机会调用run方法() | 
-| Thread currentThread() | 获取当前正在运行的线程对应的Thread对象引用 | 
-| void  setName(String name) | 更改此线程的别名为参数name | 
-| String  getName() | 返回此线程的别名 | 
-| static void sleep(long millis) | 使当前正在执行的线程停留（暂停执行）指定的毫秒数 | 
-| final int getPriority() | 返回此线程的优先级 | 
-| final void setPriority(int newPriority) | 更改此线程的优先级线程默认优先级是5；线程优先级的范围是：1-10 | 
-| void setDaemon(boolean on) | 将此线程标记为守护线程，当所有用户线程执行完毕后，java虚拟机不会等待守护线程执行完毕，会直接退出 | 
-| public static void yield() | 出让/礼让线程,指一个线程在执行过程中，主动让出当前的 CPU 执行权，让其他具有相同或更高优先级的线程有机会运行( | 
-| public final void join() | 插入/插队线程,打断当前线程执行,将指定线程(注意这里不是静态,是实例方法)插入到当前线程之前执行( | 
-
+| 方法名                                     | 说明                                                                                                        |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Thread(Runnable target)                 | 接收runnable接口实现类的实例,开启一个线程                                                                                 |
+| Thread(Runnable target, String name)    | 接收runnable接口实现类的实例,开启一个线程并定义线程的别名                                                                         |
+| void run()                              | **常被重写**，在线程开启后，此方法将被调用执行                                                                                 |
+| void start()                            | 使此线程开始执行，Java虚拟机会调用run方法()                                                                                |
+| Thread currentThread()                  | 获取当前正在运行的线程对应的Thread对象引用                                                                                  |
+| void  setName(String name)              | 更改此线程的别名为参数name                                                                                           |
+| String  getName()                       | 返回此线程的别名                                                                                                  |
+| static void sleep(long millis)          | 使当前正在执行的线程停留（暂停执行）指定的毫秒数                                                                                  |
+| final int getPriority()                 | 返回此线程的优先级                                                                                                 |
+| final void setPriority(int newPriority) | 更改此线程的优先级线程默认优先级是5；线程优先级的范围是：1-10                                                                         |
+| void setDaemon(boolean on)              | 将此线程标记为守护线程，当所有用户线程执行完毕后，java虚拟机不会等待守护线程执行完毕，会直接退出<br/>即守护线程不影响java虚拟机退出，用于提供后台服务                         |
+| public static void yield()              | 出让/礼让线程,指一个线程在执行过程中，主动让出当前的 CPU 执行权，让其他具有相同或更高优先级的线程有机会运行(**即本来CPU被当前线程占用了,主动出让让几个线程包括当前这个线程公平竞争CPU使用权**) |
+| public final void join()                | 插入/插队线程,打断当前线程执行,将指定线程(注意这里不是静态,是实例方法)插入到当前线程之前执行(**即打断当前线程执行,执行指定线程**)                                   |
 
 ### 继承Thread类
 
 实现步骤
 
 - 定义一个继承Thread类的类,假设叫MyThread
-
 - 在MyThread类中重写run()方法
-
 - 实例化MyThread类
-
 - 利用MyThread实例调用start启动线程去触发run方法
 
 代码演示
 
-```
+```java
 public class MyThread extends Thread {
     @Override
     public void run() {
@@ -2715,26 +2688,20 @@ public class MyThreadDemo {
         my2.start();
     }
 }
-
 ```
-
 ### 实现Runnable接口
 
 Thread有两种构造方法,接受runnable接口,开启一个线程,返回一个新的Thread对象现步骤
 
 - 定义一个类假设叫MyRunnable实现Runnable接口
-
 - 在MyRunnable类中重写run()方法
-
 - 实例化MyRunnable类
-
 - 实例化Thread类，传入MyRunnable类的实例 作为Thread类构造方法的参数
-
 - 利用Thread类的实例调用start方法启动线程去触发run方法
 
 代码演示
 
-```
+```java
 public class MyRunnable implements Runnable {
     @Override
     public void run() {
@@ -2750,8 +2717,8 @@ public class MyRunnableDemo {
 
         //实例化Thread类，传入MyRunnable类的实例
         //Thread(Runnable target)
-		//Thread t1 = new Thread(my);
-		//Thread t2 = new Thread(my);
+        //Thread t1 = new Thread(my);
+        //Thread t2 = new Thread(my);
         //Thread(Runnable target, String name)
         Thread t1 = new Thread(my,"坦克");
         Thread t2 = new Thread(my,"飞机");
@@ -2761,30 +2728,20 @@ public class MyRunnableDemo {
         t2.start();
     }
 }
-
 ```
-
 ### FutureTask+实现callable接口
 
 实现步骤
 
 - 定义一个Callable接口的实现类MyCallable
-
 - 在MyCallable类中重写call()方法
-
 - 实例化MyCallable类
-
-- 实例化 
-
-Future的实现类FutureTask
-
+- 实例化 `Future的实现类FutureTask`，把MyCallable类的实例作为构造方法的参数
 - 实例化Thread类，把FutureTask类的实例作为构造方法的参数
-
 - Thread类的实例调用start启动线程并触发call方法
-
 - FutureTask类的实例调用get可以获取线程结束之后的结果即call方法的返回值。
 
-```
+```java
 //定义一个Callable接口的实现类MyCallable
 public class MyCallable implements Callable<String> {
     @Override
@@ -2817,75 +2774,37 @@ public class Demo {
         System.out.println(s);
     }
 }
-
 ```
 
 ## 线程生命周期
 
 1. 新建: 创建线程对象
-
-1. 就绪:有执行资格没有执行权(也就是可以抢CPU了)
-
-1. 运行:有执行资格有执行权(抢到了CPU)
-
-1. 阻塞/等待: 因为sleep等原因,导致当前线程不能执行了(让出CPU,等待阻塞/等待完毕重新抢CPU也就是回到第2步的状态)
-
-1. 终止:线程运行完毕
+2. 就绪:有执行资格没有执行权(也就是可以抢CPU了)
+3. 运行:有执行资格有执行权(抢到了CPU)
+4. 阻塞/等待: 因为sleep等原因,导致当前线程不能执行了(让出CPU,等待阻塞/等待完毕重新抢CPU也就是回到第2步的状态)
+5. 终止:线程运行完毕
 
 ## 线程安全
 
-1. 竞态条件（Race Condition）：
-
- 当两个或多个线程同时访问共享资源，并且最终的结果取决于线程执行的顺序时，就可能发生竞态条件。这可能导致意外的结果，因为线程的执行顺序是不确定的。
-
-1. 数据不一致性（Data Inconsistency）：
-
- 多线程环境下，由于线程之间的交互，共享数据的状态可能变得不一致。例如，一个线程正在修改某个共享变量的值，而另一个线程同时读取了这个值，但此时该值可能还未被修改完成。
-
-1. 死锁（Deadlock）：
-
- 死锁是指两个或多个线程因为争夺资源而互相等待的状态，导致程序无法继续执行。这种情况发生时，每个线程都在等待其他线程释放资源，形成了一个相互等待的循环。
-
-1. 资源争夺（Resource Contention）：
-
- 多个线程竞争有限的资源，可能导致性能下降或者程序的不稳定。
-
-1. 非原子性操作（Non-Atomic Operations）：
-
- 由于多线程交替执行，可能导致某个操作在执行的过程中被中断，导致了部分操作执行完而部分未执行的情况。
+1. **竞态条件（Race Condition）：** 当两个或多个线程同时访问共享资源，并且最终的结果取决于线程执行的顺序时，就可能发生竞态条件。这可能导致意外的结果，因为线程的执行顺序是不确定的。
+2. **数据不一致性（Data Inconsistency）：** 多线程环境下，由于线程之间的交互，共享数据的状态可能变得不一致。例如，一个线程正在修改某个共享变量的值，而另一个线程同时读取了这个值，但此时该值可能还未被修改完成。
+3. **死锁（Deadlock）：** 死锁是指两个或多个线程因为争夺资源而互相等待的状态，导致程序无法继续执行。这种情况发生时，每个线程都在等待其他线程释放资源，形成了一个相互等待的循环。
+4. **资源争夺（Resource Contention）：** 多个线程竞争有限的资源，可能导致性能下降或者程序的不稳定。
+5. **非原子性操作（Non-Atomic Operations）：** 由于多线程交替执行，可能导致某个操作在执行的过程中被中断，导致了部分操作执行完而部分未执行的情况。
 
 为了解决线程安全问题，可以采用以下一些手段：
 
-- 锁机制（Locking）：
-
- 使用锁来确保在同一时刻只有一个线程可以访问共享资源。Java 提供了 
-
-- 原子性操作（Atomic Operations）：
-
- 使用原子类（
-
-- 线程安全的数据结构：
-
- 使用线程安全的集合类（如 
-
-- 使用 
-
-**volatile**
-
-- 并发工具类：
-
- 使用 Java 的并发工具类，如 
-
-- 避免死锁：
-
- 设计良好的锁顺序、限制锁的持有时间、使用 
+- **锁机制（Locking）：** 使用锁来确保在同一时刻只有一个线程可以访问共享资源。Java 提供了 `synchronized` 关键字和 `ReentrantLock` 类来实现锁。
+- **原子性操作（Atomic Operations）：** 使用原子类（`AtomicInteger`、`AtomicLong` 等）来保证某些操作的原子性，避免竞态条件。
+- **线程安全的数据结构：** 使用线程安全的集合类（如 `ConcurrentHashMap`、`CopyOnWriteArrayList` 等）来替代普通的集合类。
+- **使用 `volatile` 关键字：** 通过 `volatile` 关键字来确保变量的可见性，避免线程从本地缓存中读取变量值。
+- **并发工具类：** 使用 Java 的并发工具类，如 `Semaphore`、`CountDownLatch`、`CyclicBarrier` 等，来协调多个线程的执行。
+- **避免死锁：** 设计良好的锁顺序、限制锁的持有时间、使用 `tryLock` 等方式可以减少死锁的发生。
 
 # 打包成exe
 
 1. 把所有代码打包成一个jar后缀的压缩包
-
-1. 把jar包转换成exe安装包
-
+2. 把jar包转换成exe安装包
 把第二步的exe，图片，JDK合在一起，变成最终的exe安装包
 
 # 第三方包
@@ -2898,7 +2817,6 @@ public class Demo {
 Gson gson=new Gson();
 String s = gson.toJson(要转换的对象)
 gson.formJson(s,要转换的对象对应的类.class)
-
 ```
 
 # 内置类
@@ -2913,17 +2831,16 @@ gson.formJson(s,要转换的对象对应的类.class)
 
 **等待终端输入指终端未执行完毕,等待用户输入**
 
-| 方法 | 作用 | 
-| -- | -- |
-| scan.hasNext() | 判断是否有输入 | 
-| scan.hasNextLine() | 判断是否有enter结尾的输入,基本没啥用 | 
-| scan.hasNext类型() | 判断是否有Xxx类型的输入, | 
-| scan.next() | 等待一次终端输入,接收第一个完整字符,会过滤掉输入有效字符前后字符,例如"   111  222"结果为"111" | 
-| scan.next类型() | 等待一次终端输入,接收该类型的第一个完整字符 | 
-| scan.nextLine() | 等待一次终端输入,接收直到按enter之前的所有输入结果 | 
+|方法|作用|
+|--|--|
+|scan.hasNext()|判断是否有输入|
+|scan.hasNextLine()|判断是否有enter结尾的输入,基本没啥用|
+|scan.hasNext类型()|判断是否有Xxx类型的输入,**类型要大写字母开头**|
+|scan.next()|等待一次终端输入,接收第一个完整字符,会过滤掉输入有效字符前后字符,例如"   111  222"结果为"111"|
+|scan.next类型()|等待一次终端输入,接收该类型的第一个完整字符**类型要大写字母开头**,会过滤掉输入有效字符前后所有字符,例如"   111  222"结果为"111"|
+|scan.nextLine()|等待一次终端输入,接收直到按enter之前的所有输入结果|
 
-
-```
+```java
 //demo
 import java.util.Scanner;
 public class ScannerDemo {
@@ -2931,11 +2848,10 @@ public class ScannerDemo {
         Scanner scan = new Scanner(System.in);
         // 判断是否还有输入
         if (scan.hasNextLine()) {
-        	//接收输入的字符
+            //接收输入的字符
             String str2 = scan.nextLine();
         }
         scan.close();
     }
 }
-
 ```
