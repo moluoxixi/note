@@ -45,20 +45,20 @@ dual代表临时表
 
 # 运算符
 
-| 运算符 | 运算符语法 | 说明 | 
-| -- | -- | -- |
-| AND |   | 与 | 
-| OR |   | 或 | 
-| NOT |   | 非 | 
-| IS NULL 或者 ISNULL | SELECT 列 FROM 表 WHERE 列 IS NULL | 为NULL则返回1，否则返回0 | 
-| IS NOT NULL | SELECT 列 FROM 表 WHERE 列 IS NOT NULL | 不为NULL则返回1，否则返回0 | 
-| 最小值LEAST | SELECT LEAST(price1, price2, ...)  | 取这些列中的最小值 | 
-| 最大值GREATEST | SELECT GREATEST(price1, price2, ...)  | 取这些列中的最大值 | 
-| 范围值BETWEEN AND | SELECT D FROM TABLE WHERE C BETWEEN A AND B | 当C大于或等于A，并且C小于或等于B时，结果为1，否则结果为0 | 
-| 是否存在IN | SELECT 列 FROM 表 WHERE 列 IN ('a','b') | 断给定的值是否是IN列表中的一个值 | 
-| 是否不存在NOT IN | SELECT 列 FROM 表 WHERE 列 NOT IN ('a','b') | 断给定的值是否不是IN列表中的一个值 | 
-| 模糊查询LIKE | SELECT job_id FROM jobs WHERE job_id LIKE ‘IT%‘; | “%”：匹配0个或多个字符。 | 
-| 指定转义符ESCAPE | SELECT job_id FROM jobs >WHERE job_id LIKE ‘IT$_%‘ escape ‘$‘; | 使$作为转义字符,即$等同于\ | 
+| 运算符               | 运算符语法                                                          | 说明                              |     |
+| ----------------- | -------------------------------------------------------------- | ------------------------------- | --- |
+| AND               |                                                                | 与                               |     |
+| OR                |                                                                | 或                               |     |
+| NOT               |                                                                | 非                               |     |
+| IS NULL 或者 ISNULL | SELECT 列 FROM 表 WHERE 列 IS NULL                                | 为NULL则返回1，否则返回0                 |     |
+| IS NOT NULL       | SELECT 列 FROM 表 WHERE 列 IS NOT NULL                            | 不为NULL则返回1，否则返回0                |     |
+| 最小值LEAST          | SELECT LEAST(price1, price2, ...)                              | 取这些列中的最小值                       |     |
+| 最大值GREATEST       | SELECT GREATEST(price1, price2, ...)                           | 取这些列中的最大值                       |     |
+| 范围值BETWEEN AND    | SELECT D FROM TABLE WHERE C BETWEEN A AND B                    | 当C大于或等于A，并且C小于或等于B时，结果为1，否则结果为0 |     |
+| 是否存在IN            | SELECT 列 FROM 表 WHERE 列 IN ('a','b')                           | 断给定的值是否是IN列表中的一个值               |     |
+| 是否不存在NOT IN       | SELECT 列 FROM 表 WHERE 列 NOT IN ('a','b')                       | 断给定的值是否不是IN列表中的一个值              |     |
+| 模糊查询LIKE          | SELECT job_id FROM jobs WHERE job_id LIKE ‘IT%‘;               | “%”：匹配0个或多个字符。                  |     |
+| 指定转义符ESCAPE       | SELECT job_id FROM jobs >WHERE job_id LIKE ‘IT$_%‘ escape ‘$‘; | 使$作为转义字符,即$等同于\                 |     |
 | 正则运算符REGEXP | SELECT job_id  FROM jobs WHERE job_id REGEXP 'IT.*'; | 返回所有 | 
 
 
