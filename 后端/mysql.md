@@ -384,7 +384,7 @@ SELECT 是先执行 FROM 这一步的。在这个阶段，如果是多张表联�
 
 ## DCL数据控制语言
 
-```
+```java
 //commit(提交) rollback(回滚) savapoint(暂存) grant(授权) revoke(回收权限)
 
 ```
@@ -394,24 +394,18 @@ SELECT 是先执行 FROM 这一步的。在这个阶段，如果是多张表联�
 ## 约束
 
 1. 表级约束 包含多列约束,在创建语句的最后单独定义
-
-1. 单列约束 约束跟在列定义后面
+2. 单列约束 约束跟在列定义后面
 
 分类:
 
 1. NOT NULL 非空约束，规定某个字段不能为空 
+2. UNIQUE 唯一约束，规定某个字段在整个表中是唯一的 
+3. PRIMARY KEY 主键(非空且唯一)约束 
+4. FOREIGN KEY 外键约束 
+5. CHECK 检查约束
+6. DEFAULT 默认值约束
 
-1. UNIQUE 唯一约束，规定某个字段在整个表中是唯一的 
-
-1. PRIMARY KEY 主键(非空且唯一)约束 
-
-1. FOREIGN KEY 外键约束 
-
-1. CHECK 检查约束
-
-1. DEFAULT 默认值约束
-
-```
+```mysql
 #[]代表可选
 CREATE TABLE 表名称(
     #非空约束
@@ -458,7 +452,7 @@ ALTER TABLE 表名称 MODIFY 列名 数据类型 UNIQUE KEY NOT NULL DEFAULT 默
 
 ### 创建视图
 
-```
+```mysql
 #注意:
 #1.查询语句可以查询视图,也可以查询多个表,也就是说,可以基于视图创建视图
 #2.查询语句中不能存在子查询
@@ -498,14 +492,14 @@ MySQL支持使用INSERT、UPDATE和DELETE语句对视图中的数据进行插入
 
 举例：UPDATE操作
 
-```
+```mysql
 UPDATE emp_tel SET tel = '13789091234' WHERE ename = '孙洪亮';
 
 ```
 
 举例：DELETE操作
 
-```
+```mysql
  DELETE FROM emp_tel WHERE ename = '孙洪亮';
 
 ```
@@ -515,17 +509,11 @@ UPDATE emp_tel SET tel = '13789091234' WHERE ename = '孙洪亮';
 要使视图可更新，视图中的行和底层基本表中的行之间必须存在 一对一 的关系。另外当视图定义出现如下情况时，视图不支持更新操作：
 
 - 在定义视图的时候指定了“ALGORITHM = TEMPTABLE”，视图将不支持INSERT和DELETE操作； 
-
 - 视图中不包含基表中所有被定义为非空又未指定默认值的列，视图将不支持INSERT操作； 
-
 - 在定义视图的SELECT语句中使用了 JOIN联合查询 ，视图将不支持INSERT和DELETE操作； 
-
 - 在定义视图的SELECT语句后的字段列表中使用了 数学表达式 或 子查询 ，视图将不支持INSERT，也 不支持UPDATE使用了数学表达式、子查询的字段值； 
-
 - 在定义视图的SELECT语句后的字段列表中使用 DISTINCT 、 聚合函数 、 GROUP BY 、 HAVING 、 UNION 等，视图将不支持INSERT、UPDATE、DELETE； 
-
 - 在定义视图的SELECT语句中包含了子查询，而子查询中引用了FROM后面的表，视图将不支持 INSERT、UPDATE、DELETE； 
-
 - 视图定义基于一个 不可更新视图 ； 常量视图。
 
 > 虽然可以更新视图数据，但总的来说，视图作为虚拟表 ，主要用于方便查询 ，不建议更新视图的数据。对视图数据的更改，都是通过对实际数据表里数据的操作来完成的。
@@ -535,7 +523,7 @@ UPDATE emp_tel SET tel = '13789091234' WHERE ename = '孙洪亮';
 
 方式1：使用CREATE OR REPLACE VIEW 子句修改视图
 
-```
+```mysql
 CREATE OR REPLACE VIEW empvu80
 (id_number, name, sal, department_id)
 AS
@@ -552,7 +540,7 @@ WHERE department_id = 80;
 
 修改视图的语法是：
 
-```
+```mysql
 ALTER VIEW 视图名称
 AS
 查询语句
@@ -562,19 +550,16 @@ AS
 ### 删除视图
 
 - 删除视图只是删除视图的定义，并不会删除基表的数据。 
-
 - 删除视图的语法是：
 
-```
+```mysql
 DROP VIEW IF EXISTS 视图名称;
-
 ```
 
 - 举例：
 
-```
+```mysql
 DROP VIEW empvu80;
-
 ```
 
 - 说明：基于视图a、b创建了新的视图c，如果将视图a或者视图b删除，会导致视图c的查询失败。这 样的视图c需要手动删除或修改，否则影响使用。
@@ -615,10 +600,9 @@ MySQL将用户对数据的 访问限制 在某些数据的结果集上，而这�
 
 ## 导入现有表数据
 
-```
+```mysql
 source 文件绝对路径
 source  D:/masqldb.sql
-
 ```
 
 ## 关系型数据库和非关系型数据库
@@ -629,7 +613,7 @@ source  D:/masqldb.sql
 
 ## 使mysql可以存中文
 
-```
+```mysql
 //如果是修改my.ini文件前建的数据库,通过如下方式修改
 alter database/table 数据库/表名 charset utf8
 
@@ -645,12 +629,11 @@ collation-server=utf8_general_ci
 //other
 show variables like 'character_%'; //查询字符集
 show variables like 'collation_%'; //查询字符集比较规则
-
 ```
 
 ## 可视化工具报密码格式错误
 
-```
+```mysql
 //因为MySQL8之前的版本中加密规则是mysql_native_password，在MySQL8之后，加密规则是caching_sha2_password
 
 //要么升级,要么把密码加密规则还原
@@ -658,7 +641,6 @@ show variables like 'collation_%'; //查询字符集比较规则
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';
 #刷新权限
 FLUSH PRIVILEGES;
-
 ```
 
 ## 面试知识
