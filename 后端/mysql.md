@@ -647,7 +647,7 @@ FLUSH PRIVILEGES;
 
 ### 说说你对DB、DBMS、SQL的理解
 
-```
+```mysql
 DB就是database,也就是数据库文件
 DBMS就是DB的管理工具
 SQL是一门语言
@@ -657,7 +657,7 @@ mysql数据库服务器中安装了mysql DBMS来管理和操作DB,使用的sql�
 
 ### 表和表记录之间的关联关系
 
-```
+```mysql
 ORM思想(了解)
 //也就是表的数据可以引用多个表的数据(n对n),也可以引用自己表中的数据(子引用)
 一对一,一对多,多对多,自引用
@@ -666,7 +666,7 @@ ORM思想(了解)
 
 ### 知道哪些非关系型数据库(了解)
 
-```
+```mysql
 redis
 
 ```
@@ -678,11 +678,8 @@ redis
 好处:
 
 - 1、简化操作，提高了sql语句的重用性，减少了开发程序员的压力。
-
 - 2、减少操作过程中的失误，提高效率。
-
 - 3、减少网络传输量（客户端不需要把所有的 SQL 语句通过网络发给服务器）。
-
 - 4、减少了 SQL 语句暴露在 网上的风险，也提高了数据查询的安全性。
 
 ## 存储过程
@@ -709,7 +706,7 @@ redis
 
 **语法：**
 
-```
+```mysql
 CREATE PROCEDURE 存储过程名(IN|OUT|INOUT 参数名 参数类型,...)
 [characteristics ...]
 BEGIN
@@ -723,20 +720,18 @@ END
 1、参数前面的符号的意思
 
 - IN ：当前参数为输入参数，也就是表示入参；
-
-存储过程只是读取这个参数的值。如果没有定义参数种类， 默认就是 IN ，表示输入参数。
-
+  
+  存储过程只是读取这个参数的值。如果没有定义参数种类， 默认就是 IN ，表示输入参数。
 - OUT ：当前参数为输出参数，也就是表示出参；
-
-执行完成之后，调用这个存储过程的客户端或者应用程序就可以读取这个参数返回的值了。
-
+  
+  执行完成之后，调用这个存储过程的客户端或者应用程序就可以读取这个参数返回的值了。
 - INOUT ：当前参数既可以为输入参数，也可以为输出参数。
 
 2、形参类型可以是 MySQL数据库中的任意类型。
 
 3、characteristics 表示创建存储过程时指定的对存储过程的约束条件，其取值信息如下：
 
-```
+```mysql
 LANGUAGE SQL
 | [NOT] DETERMINISTIC
 | { CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA }
@@ -746,27 +741,16 @@ LANGUAGE SQL
 ```
 
 - LANGUAGE SQL ：说明存储过程执行体是由SQL语句组成的，当前系统支持的语言为SQL。
-
 - [NOT] DETERMINISTIC ：指明存储过程执行的结果是否确定。DETERMINISTIC表示结果是确定 的。每次执行存储过程时，相同的输入会得到相同的输出。NOT DETERMINISTIC表示结果是不确定 的，相同的输入可能得到不同的输出。如果没有指定任意一个值，默认为NOT DETERMINISTIC。
-
 - { CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA } ：指明子程序使 用SQL语句的限制。
-
-- CONTAINS SQL表示当前存储过程的子程序包含SQL语句，但是并不包含读写数据的SQL语句；
-
-- NO SQL表示当前存储过程的子程序中不包含任何SQL语句； 
-
-- READS SQL DATA表示当前存储过程的子程序中包含读数据的SQL语句； 
-
-- MODIFIES SQL DATA表示当前存储过程的子程序中包含写数据的SQL语句。 
-
-- 默认情况下，系统会指定为CONTAINS SQL。
-
+  - CONTAINS SQL表示当前存储过程的子程序包含SQL语句，但是并不包含读写数据的SQL语句；
+  - NO SQL表示当前存储过程的子程序中不包含任何SQL语句； 
+  - READS SQL DATA表示当前存储过程的子程序中包含读数据的SQL语句； 
+  - MODIFIES SQL DATA表示当前存储过程的子程序中包含写数据的SQL语句。 
+  - 默认情况下，系统会指定为CONTAINS SQL。
 - SQL SECURITY { DEFINER | INVOKER } ：执行当前存储过程的权限，即指明哪些用户能够执行当前存储过程。
-
-- DEFINER 表示只有当前存储过程的创建者或者定义者才能执行当前存储过程；
-
-- INVOKER 表示拥有当前存储过程的访问权限的用户能够执行当前存储过程。
-
+  - DEFINER 表示只有当前存储过程的创建者或者定义者才能执行当前存储过程；
+  - INVOKER 表示拥有当前存储过程的访问权限的用户能够执行当前存储过程。
 - COMMENT 'string' ：注释信息，可以用来描述存储过程。
 
 4、存储过程体中可以有多条 SQL 语句，如果仅仅一条SQL 语句，则可以省略 BEGIN 和 END
