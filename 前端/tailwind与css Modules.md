@@ -1,6 +1,6 @@
 # tailwind
 
-将样式粒子化,变成一个个类名
+将样式粒子化,变成一个个类名,并在打包后只会保留使用的类名,其余会被摇掉
 
 `npm install -D tailwindcss postcss autoprefixer`
 
