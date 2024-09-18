@@ -719,33 +719,69 @@ el代表使用该指令的真实DOM元素
 ### vue2
 
 ```javascript
+// bind的值
+	<div v-example:foo.bar="baz">
+	binding:{ 
+		arg: 'foo',
+		modifiers: { bar: true }, //即.xx中的xx,例如 v-指令名.a.b,则为{a:true,b:true}
+		value: // =后面的值, 
+		oldValue: // 上一次的=后面的值,
+	}
+// 简写
+	// `mounted` 和 `updated`完全一样并且并不需要其他钩子。可简写为一个函数来定义指令
+	Vue.directive('指令名',(el, binding, vnode)=>{
+	
+	})
+
+
 //定义全局指令
-Vue.directive('指令名',{
-    bind(el,binding){},             //初次加载绑定的元素时发现有指令绑定时调用
-    inserted(el,binding){},         //绑定的元素插入到父节点时调用
-    update(el,binding){},           //当VNode更新时,调用,可理解为响应式数据更新
-    componentUpdated(el,binding){}, //当组件及其子组件的VNode全部更新后执行操作
-    unbind(el,binding){},           //指令与元素解绑时调用,例如元素/组件被销毁
-})
+	Vue.directive('指令名',{
+	    bind(el,binding, vnode){},             //初次加载绑定的元素时发现有指令绑定时调用
+	    inserted(el,binding, vnode){},         //绑定的元素插入到父节点时调用
+	    update(el,binding, vnode){},           //当VNode更新时,调用,可理解为响应式数据更新
+	    componentUpdated(el,binding, vnode){}, //当组件及其子组件的VNode全部更新后执行操作
+	    unbind(el,binding, vnode){},           //指令与元素解绑时调用,例如元素/组件被销毁
+	})
 
 ```
-
-简写
-
-```
-//当bind函数和update函数体中的逻辑代码相同时,可以简写为:
-Vue.directive('指令名',(el,binding)=>{})
-
-```
-
 ### vue3
 
 ```javascript
+// bind的值
+	<div v-example:foo.bar="baz">
+	binding:{ 
+		arg: 'foo',
+		modifiers: { bar: true }, //即.xx中的xx,例如 v-指令名.a.b,则为{a:true,b:true}
+		value: // =后面的值, 
+		oldValue: // 上一次的=后面的值,
+	}
+// 简写
+	// `mounted` 和 `updated`完全一样并且并不需要其他钩子。可简写为一个函数来定义指令
+	app.directive('指令名',(el, binding, vnode)=>{
+	
+	})
+
 //定义全局指令
-app.directive('指令名',{
-	//包含vue3除setup外的所有生命周期
-    mounted(el,binding, vnode, prevVNode){}
-})
+	app.directive('指令名',{
+		//包含vue3除setup外的所有生命周期
+	    // 在绑定元素的 attribute 前,或事件监听器应用前调用 
+	    created(el, binding, vnode) { 
+	    // 下面会介绍各个参数的细节 
+	    }, 
+	    // 在元素被插入到 DOM 前调用 
+	    beforeMount(el, binding, vnode) {}, 
+	    // 在绑定元素的父组件 
+	    // 及他自己的所有子节点都挂载完成后调用 
+	    mounted(el, binding, vnode) {}, 
+	    // 绑定元素的父组件更新前调用 
+	    beforeUpdate(el, binding, vnode, prevVnode) {}, 
+	    // 在绑定元素的父组件,及他自己的所有子节点都更新后调用 
+	    updated(el, binding, vnode, prevVnode) {}, 
+	    // 绑定元素的父组件卸载前调用 
+	    beforeUnmount(el, binding, vnode) {}, 
+	    // 绑定元素的父组件卸载后调用 
+	    unmounted(el, binding, vnode) {}
+	})
 
 ```
 

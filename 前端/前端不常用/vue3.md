@@ -467,27 +467,56 @@ import { * as Form } from './components';
 
 ### 自定义指令
 
-局部自定义指令不需要显式注册,命名需要满足小驼峰
-
 ```js
-<script setup>
-const vMyDirective = {
-  beforeMount: (el) => {
-    // 在元素上做些操作
-  }
-}
-</script>
-<template>
-  <h1 v-my-directive>This is a Heading</h1>
-</template>
-```
+// bind的值
+	<div v-example:foo.bar="baz">
+	binding:{ 
+		arg: 'foo',
+		modifiers: { bar: true }, //即.xx中的xx,例如 v-指令名.a.b,则为{a:true,b:true}
+		value: // =后面的值, 
+		oldValue: // 上一次的=后面的值,
+	}
+// 简写
+	// `mounted` 和 `updated`完全一样并且并不需要其他钩子。可简写为一个函数来定义指令
+	app.directive('指令名',(el, binding, vnode)=>{
+	
+	})
 
-如果指令是从别处导入的，可以通过重命名来使其符合命名规范：
+//定义全局指令
+	app.directive('指令名',{
+		//包含vue3除setup外的所有生命周期
+	    // 在绑定元素的 attribute 前,或事件监听器应用前调用 
+	    created(el, binding, vnode) { 
+	    // 下面会介绍各个参数的细节 
+	    }, 
+	    // 在元素被插入到 DOM 前调用 
+	    beforeMount(el, binding, vnode) {}, 
+	    // 在绑定元素的父组件 
+	    // 及他自己的所有子节点都挂载完成后调用 
+	    mounted(el, binding, vnode) {}, 
+	    // 绑定元素的父组件更新前调用 
+	    beforeUpdate(el, binding, vnode, prevVnode) {}, 
+	    // 在绑定元素的父组件,及他自己的所有子节点都更新后调用 
+	    updated(el, binding, vnode, prevVnode) {}, 
+	    // 绑定元素的父组件卸载前调用 
+	    beforeUnmount(el, binding, vnode) {}, 
+	    // 绑定元素的父组件卸载后调用 
+	    unmounted(el, binding, vnode) {}
+	})
 
-```js
-<script setup>
-import { myDirective as vMyDirective } from './MyDirective.js'
-</script>
+// setup函数局部注册
+	<script setup>
+		//需满足小驼峰,如果从外部引入,需要重命名满足小驼峰规范
+		import { myDirective as vMyDirective } from './MyDirective.js'
+		const vMyDirective = {
+		  beforeMount: (el) => {
+		    // 在元素上做些操作
+		  }
+		}
+	</script>
+	<template>
+	  <h1 v-my-directive>This is a Heading</h1>
+	</template>
 ```
 
 ### 限制
@@ -1555,98 +1584,6 @@ const routes = [
 
 # vue自定义
 
-## vue2自定义过滤器(vue3没有)
-
-xx|过滤器名
-
-xx|过滤器名(参数)
-
-### 定义全局过滤器
-
-Vue内都能用
-
-```js
-//参数1代表xx,arg即过滤器字段传入的一个或多个参数
-Vue.filter('过滤器字段',(参数1,..arg)=>{})
-
-```
-
-### 定义局部过滤器
-
-**一般不用局部过滤器**
-
-只在过滤器所在的组件内有用
-
-```js
-// 在配置项中添加filters属性
-filters:{
-    过滤器名(参数1,..arg){}
-}
-```
-
-## 自定义指令
-
-指令名不以v-开头,指令名必须全小写,使用v-指令名使用该指令
-
-el代表使用该指令的真实DOM元素
-
-### vue2和3中都有的binging属性
-
-```javascript
-{
-	value,           //这是指令的绑定值,例如指令是v-lazy="someValue"，value就是"someValue"
-	arg,             //这是指令的参数,例如指令是v-lazy:nb，arg就是"nb"
-	modifiers:obj,   //这是指令的修饰符,例如指令是v-lazy.nb，modifiers就是{nb:true}
-	oldValue,        //这是指令的前一个绑定值
-}
-
-```
-
-### vue2
-
-```javascript
-//定义全局指令
-Vue.directive('指令名',{
-    bind(el,binding){},             //初次加载绑定的元素时发现有指令绑定时调用
-    inserted(el,binding){},         //绑定的元素插入到父节点时调用
-    update(el,binding){},           //当VNode更新时,调用,可理解为响应式数据更新
-    componentUpdated(el,binding){}, //当组件及其子组件的VNode全部更新后执行操作
-    unbind(el,binding){},           //指令与元素解绑时调用,例如元素/组件被销毁
-})
-
-```
-
-简写
-
-```
-//当bind函数和update函数体中的逻辑代码相同时,可以简写为:
-Vue.directive('指令名',(el,binding)=>{})
-
-```
-
-### vue3
-
-```javascript
-//定义全局指令
-app.directive('指令名',{
-	//包含vue3除setup外的所有生命周期
-    mounted(el,binding, vnode, prevVNode){}
-})
-
-```
-
-### 定义局部指令
-
-`一般不用`
-只在局部指令所在的组件内有用
-
-```javascript
-//在配置项中添加directives属性
-directives:{
-    //写法同全局指令
-}
-```
-
 ## vue2/3自定义插件与使用
 
 ### 使用自定义插件
@@ -1683,13 +1620,13 @@ install(app,options){}
 
 # 获取DOM/组件实例
 
-options api用vue2的方式,composition api用useRef
+options api用vue2的方式,composition api用ref
 
 ```javascript
 <p ref='xx'></p>
 //setup函数中
-import {useRef} from 'vue'
-const xx=useRef()
+import {ref} from 'vue'
+const xx=ref()
 直接通过xx.value即可获取到
 ```
 
@@ -2001,9 +1938,9 @@ mitt.emit('自定义事件',参数)
 .sync 移除
 V-model 语法修改为. Sync 语法
 
-## 自定义指令和全局API的调整
+## 自定义指令/过滤器和全局API的调整
 
-- **自定义指令**：Vue 3不再直接支持全局注册指令，需要将全局指令转换为局部指令，并在每个组件中单独导入和注册。
+- **自定义指令**：自定义指令的生命周期改为，并在每个组件中单独导入和注册。
 - **全局API的调整**：Vue 3中全局API的使用方式有所变化。例如，`Vue.use()`、`Vue.prototype`等需要替换为`app.use()`、`app.config.globalProperties`等。
 ## 生命周期
 
