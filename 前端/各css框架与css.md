@@ -37,7 +37,7 @@ use
 <div class="text-[14px] bg-red-500 hover:text-[30px] md:bg-blue-500"></div>
 ```
 
-## @layer**扩展**&@apply复用
+## @layer扩展&@apply复用
 
 use
 
@@ -240,4 +240,85 @@ export default function() {
         <button className={styles.btn}>button1</button>
     </div>
 }
+```
+# sass
+```js
+//&代表父选择器
+	.a{
+		&.b{}
+	}
+	//编译为
+	.a.b{}
+
+//占位符%与继承@extend
+	//sass使用%定义占位符,占位符定义的css不会输出到css文件中,并可以使用@extend继承
+		%button-style{  
+			display: inline-block; 
+		}
+	
+	//sass使用@extend继承某些样式,或占位符样式
+	
+		//继承占位符样式
+			.button-primary {  
+				@extend %button-style;
+				background-color: red; 
+			}
+			//编译为
+			.button-primary {  
+				display: inline-block; 
+				background-color: red; 
+			}
+	
+		//继承css样式
+			.button{
+				color:red;
+				&-color{
+					@extend .button;
+					width:100%
+				}
+			}
+			//编译为
+			.button,.button-color{
+				color:red;
+			}
+			.button-color{
+				width:100%
+			}
+
+//$变量名 定义变量,#{变量名} 使用变量,@each,@if,@else循环与条件判断
+	//sass使用$符定义变量
+		 $button:"button";
+		 $list:(
+			 button:'button',
+			 primary:blue,
+			 debug:red,
+		 );
+	//@each遍历list,#{变量名使用变量}
+		@each $name,$value in $list{
+			.#{$name}:{
+				@if($name != button){
+					color:#{$value};
+				}
+				@else{
+					color:gray;
+				}
+			}
+		}
+		//编译为
+		.primary{
+			color:blue;
+		}
+		.debug{
+			color:red;
+		}
+		.button:{
+			color:gray;
+		}
+
+```
+
+# less
+
+```
+
 ```
