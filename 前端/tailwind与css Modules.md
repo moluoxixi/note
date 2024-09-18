@@ -51,9 +51,7 @@ use
 @layer components{
     .btn-pramary{
         //@apply用于允许你应用Tailwind CSS中现有的样式值
-        @apply py-2 px-4 text-white font-semibold
- rounded-lg shadow-md
- hover:bg-blue-700 focus:outline-none;
+        @apply py-2 px-4 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none;
     }
 }
 ```
@@ -85,11 +83,10 @@ module.exports = plugin(function({ addUtilities }) {
 //tailwind.config.js
 
 /*@type {import('tailwindcss').Config}**/
-module.exports =
-{
-    content:["./src/*/*.{js,jsx}"], //应用的文件
+module.exports ={
+    //应用的文件
+    content:["./src/*/*.{js,jsx,vue}"],
     //引入上面的自定义插件
-
     plugins:[require('./guang.plugin')],
     theme:{
         extend:{
