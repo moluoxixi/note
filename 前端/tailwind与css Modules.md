@@ -49,9 +49,12 @@ use
 
 //扩展components样式
 @layer components{
-    .btn-pramary{
+    .hover-and-other{
         //@apply用于允许你应用Tailwind CSS中现有的样式值
-        @apply py-2 px-4 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none;
+        @apply hover:bg-blue-700 focus:outline-none first:pt-0 last:pb-0;
+    }
+    .font-style{
+	    @apply py-2 px-4 font-semibold rounded-lg shadow-md;
     }
 }
 ```
@@ -77,18 +80,28 @@ module.exports = plugin(function({ addUtilities }) {
 })
 ```
 
-## **修改默认样式&修改配置**
+## 修改默认主题
 
 ```javascript
 //tailwind.config.js
 
 /*@type {import('tailwindcss').Config}**/
 module.exports ={
-    //应用的文件
-    content:["./src/*/*.{js,jsx,vue}"],
+    //指定需要应用tailwind css类名的文件所在路径
+    content:["./src/*/*.{js,jsx,vue}","./components/**/*.{html,js}"],
     //引入上面的自定义插件
     plugins:[require('./guang.plugin')],
     theme:{
+	    screens:{sm: '480px',},
+	    colors:{'blue': '#1fb6ff',gray: { 100: '#f7fafc'}},
+	    fontFamily:{sans: ['Graphik', 'sans-serif'],},
+	    fontSizes: {'xs': '.75rem',},
+	    spacing:{0: '0',},
+	    borderColor: (theme) => ({  
+	      ...theme('colors') // 你可以在这里添加额外的边框颜色  
+	    }),
+	    ... //其他主题配置
+		// 扩展设置
         extend:{
             padding:{
                 '1':'30px'   
