@@ -1517,8 +1517,8 @@ export default {
 };
 
 ```
-
-# 图片懒加载
+# 懒加载
+## 图片懒加载
 
 ```js
 npm i vue-lazyload@1 -S
@@ -1539,7 +1539,7 @@ loading: require('../src/assets/image/loading.gif'),
 </div>
 ```
 
-# 组件懒加载
+## 组件懒加载
 
 ```js
 <template>
@@ -1557,7 +1557,7 @@ loading: require('../src/assets/image/loading.gif'),
 </script>
 ```
 
-# 路由懒加载
+## 路由懒加载
 
 打包时忽略该路由组件当访问该路由时,该路由组件才会被单独打包成一个 js 文件,并加载
 
@@ -1582,39 +1582,15 @@ const routes = [
   },
 ```
 
-# vue自定义
 
-## vue2/3自定义插件与使用
-
-### 使用自定义插件
-
-Vue.use本质是在调用函数,函数式插件直接调用函数,对象式插件调用对象中的install函数
-
-Vue.use(自定义插件)
-
-### 自定义插件
-
-自定义插件分为函数式插件和对象式插件
+# 自定义插件
 
 ```javascript
-//函数式插件
-vue.use(install函数,options);
-//对象式插件
-vue.use({install,...},options);
+//使用插件并传递options
+app.use(install函数,options);
 
 //install函数,app是Vue实例
 install(app,options){}
-//install中options的属性
-{
-    components,  //全局组件
-    directives,  //全局指令
-    mixins,      //全局混入
-    methods,     //全局方法
-    filters,     //全局过滤器
-    config,      //全局配置
-    store,       //全局store实例
-    router,      //全局router实例
-}
 
 ```
 
@@ -1645,31 +1621,6 @@ import Bar from './Bar.vue'
   <component :is="someCondition ? Foo : Bar" />
 </template>
 ```
-
-# 配置代理
-
-```javascript
-//vite.config.ts
-server: {
-  host: '0.0.0.0', // 会映射多个域名地址
-  port: 8000, // 默认起始端口号
-  open: true, // 自动打开浏览器访问
-  proxy: {
-    '/app-dev': { // 代理所有以 '/app-dev'开头的请求路径
-      // 后台接口地址
-      target: '代理服务器访问的目标地址',
-      // 服务器得到的就不是当前应用的域名了, 而是后台的域名
-      changeOrigin: true,
-      // 重写路径: 去掉路径中开头的'/dev-api'
-      rewrite: (path) => path.replace(/^\/app-dev/, ''),
-      pathRewrite:{
-        '^/api-dev':''
-      }
-    },
-  },
-},
-```
-
 # vue动态class
 
 以下class里的值都来自于data
