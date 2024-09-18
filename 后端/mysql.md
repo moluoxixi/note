@@ -755,7 +755,7 @@ LANGUAGE SQL
 
 4、存储过程体中可以有多条 SQL 语句，如果仅仅一条SQL 语句，则可以省略 BEGIN 和 END
 
-```
+```mysql
 1. BEGIN…END：BEGIN…END 中间包含了多个语句，每个语句都以（;）号为结束符。
 2. DECLARE：DECLARE 用来声明变量，使用的位置在于 BEGIN…END 语句中间，而且需要在其他语句使用之前进
 行变量的声明。
@@ -766,7 +766,7 @@ LANGUAGE SQL
 
 5、需要设置新的结束标记
 
-```
+```mysql
 DELIMITER 新的结束标记
 
 ```
@@ -779,7 +779,7 @@ DELIMITER 新的结束标记
 
 示例：
 
-```
+```mysql
 DELIMITER $
 CREATE PROCEDURE 存储过程名(IN|OUT|INOUT 参数名 参数类型,...)
 [characteristics ...]
@@ -794,7 +794,7 @@ END $
 
 举例1：创建存储过程select_all_data()，查看 emps 表的所有数据
 
-```
+```mysql
 DELIMITER $
 CREATE PROCEDURE select_all_data()
 BEGIN
@@ -806,7 +806,7 @@ DELIMITER ;
 
 举例2：创建存储过程avg_employee_salary()，返回所有员工的平均工资
 
-```
+```mysql
 DELIMITER //
 CREATE PROCEDURE avg_employee_salary ()
 BEGIN
@@ -822,43 +822,39 @@ DELIMITER ;
 
 存储过程有多种调用方法。存储过程必须使用CALL语句调用，并且存储过程和数据库相关，如果要执行其他数据库中的存储过程，需要指定数据库名称，例如CALL dbname.procname。
 
-```
+```mysql
 CALL 存储过程名(实参列表)
-
 ```
 
 **格式：**
 
 1、调用in模式的参数：
 
-```
+```mysql
 CALL sp1('值');
-
 ```
 
 2、调用out模式的参数：
 
-```
+```mysql
 SET @name;
 CALL sp1(@name);
 SELECT @name;
-
 ```
 
 3、调用inout模式的参数：
 
-```
+```mysql
 SET @name=值;
 CALL sp1(@name);
 SELECT @name;
-
 ```
 
 ### 2) 代码举例 
 
 **举例1：**
 
-```
+```mysql
 DELIMITER //
 CREATE PROCEDURE CountProc(IN sid INT,OUT num INT)
 BEGIN
@@ -866,26 +862,23 @@ SELECT COUNT(*) INTO num FROM fruits
 WHERE s_id = sid;
 END //
 DELIMITER ;
-
 ```
 
 调用存储过程：
 
-```
+```mysql
 CALL CountProc (101, @num);
-
 ```
 
 查看返回结果：
 
-```
+```mysql
 SELECT @num;
-
 ```
 
-**举例2：**
+**举例2：**创建存储过程，实现累加运算，计算 1+2+…+n 等于多少。具体的代码如下：
 
-```
+```mysql
 DELIMITER //
 CREATE PROCEDURE `add_num`(IN n INT)
 BEGIN
@@ -900,7 +893,6 @@ END WHILE;
 SELECT sum;
 END //
 DELIMITER ;
-
 ```
 
 直接使用 CALL add_num(50); 即可。这里我传入的参数为 50，也就是统计 1+2+…+50 的积累之和。
@@ -917,14 +909,13 @@ DELIMITER ;
 
 语法格式：
 
-```
+```mysql
 CREATE FUNCTION 函数名(参数名 参数类型,...)
 RETURNS 返回值类型
 [characteristics ...]
 BEGIN
 函数体 #函数体中肯定有 RETURN 语句
 END
-
 ```
 
 说明：
@@ -941,9 +932,8 @@ END
 
 在MySQL中，存储函数的使用方法与MySQL内部函数的使用方法是一样的。换言之，用户自己定义的存储函数与MySQL内部函数是一个性质的。区别在于，存储函数是 用户自己定义 的，而内部函数是MySQL 的 开发者定义 的。
 
-```
+```mysql
 SELECT 函数名(实参列表)
-
 ```
 
 ### 3) 代码举例
@@ -952,7 +942,7 @@ SELECT 函数名(实参列表)
 
 创建存储函数，名称为email_by_name()，参数定义为空，该函数查询Abel的email，并返回，数据类型为字符串型。
 
-```
+```mysql
 DELIMITER //
 CREATE FUNCTION email_by_name()
 RETURNS VARCHAR(25)
@@ -962,21 +952,19 @@ BEGIN
 RETURN (SELECT email FROM employees WHERE last_name = 'Abel');
 END //
 DELIMITER ;
-
 ```
 
 调用：
 
-```
+```mysql
 SELECT email_by_name();
-
 ```
 
 **举例2：**
 
 创建存储函数，名称为email_by_id()，参数传入emp_id，该函数查询emp_id的email，并返回，数据类型 为字符串型。
 
-```
+```mysql
 DELIMITER //
 CREATE FUNCTION email_by_id(emp_id INT)
 RETURNS VARCHAR(25)
@@ -986,15 +974,13 @@ BEGIN
 RETURN (SELECT email FROM employees WHERE employee_id = emp_id);
 END //
 DELIMITER ;
-
 ```
 
 调用：
 
-```
+```mysql
 SET @emp_id = 102;
 SELECT email_by_id(@emp_id);
-
 ```
 
 **注意：**
@@ -1002,25 +988,22 @@ SELECT email_by_id(@emp_id);
 若在创建存储函数中报错“ you might want to use the less safe log_bin_trust_function_creators variable ”，有两种处理方法：
 
 - 方式1：
-
-加上必要的函数特性“[NOT] DETERMINISTIC”和“{CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA}”
-
+  
+  加上必要的函数特性“[NOT] DETERMINISTIC”和“{CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA}”
 - 方式2：
 
-```
+```mysql
 SET GLOBAL log_bin_trust_function_creators = 1;
-
 ```
 
 ### 4) 对比存储函数与存储过程
 
-|   | 关键字 | 调用语法 | 返回值 | 应用场景 | 
-| -- | -- | -- | -- | -- |
-| 存储过程 | PROCEDURE | CALL 存储过程() | 理解为有0个或多个 | 一般用于更新 | 
-| 存储函数 | FUNCTION | SELECT 函数 () | 只能是一个 | 一般用于查询结果为一个值并返回时 | 
+||关键字|调用语法|返回值|应用场景|
+|--|--|--|--|--|
+|存储过程|PROCEDURE|CALL 存储过程()|理解为有0个或多个|一般用于更新|
+|存储函数|FUNCTION|SELECT 函数 ()|只能是一个|一般用于查询结果为一个值并返回时|
 
-
-此外，
+此外，**存储函数可以放在查询语句中使用，存储过程不行**。反之，存储过程的功能更加强大，包括能够 执行对表的操作（比如创建表，删除表等）和事务操作，这些功能是存储函数不具备的。
 
 ## 5. 存储过程和函数的查看、修改、删除
 
@@ -1032,26 +1015,23 @@ MySQL存储了存储过程和函数的状态信息，用户可以使用SHOW STAT
 
 1. 使用SHOW CREATE语句查看存储过程和函数的创建信息
 
-```
+```mysql
 SHOW CREATE {PROCEDURE | FUNCTION} 存储过程名或函数名
-
 ```
 
-1. 使用SHOW STATUS语句查看存储过程和函数的状态信息
+2. 使用SHOW STATUS语句查看存储过程和函数的状态信息
 
-```
+```mysql
 SHOW {PROCEDURE | FUNCTION} STATUS [LIKE 'pattern']
-
 ```
 
-1. 从information_schema.Routines表中查看存储过程和函数的信息
+3. 从information_schema.Routines表中查看存储过程和函数的信息
 
 MySQL中存储过程和函数的信息存储在information_schema数据库下的Routines表中。可以通过查询该表的记录来查询存储过程和函数的信息。其基本语法形式如下：
 
-```
+```mysql
 SELECT * FROM information_schema.Routines
 WHERE ROUTINE_NAME='存储过程或函数的名' [AND ROUTINE_TYPE = {'PROCEDURE|FUNCTION'}];
-
 ```
 
 说明：如果在MySQL数据库中存在存储过程和函数名称相同的情况，最好指定ROUTINE_TYPE查询条件来 指明查询的是存储过程还是函数。
@@ -1060,49 +1040,88 @@ WHERE ROUTINE_NAME='存储过程或函数的名' [AND ROUTINE_TYPE = {'PROCEDURE
 
 修改存储过程或函数，不影响存储过程或函数功能，只是修改相关特性。使用ALTER语句实现。
 
-```
+```mysql
 ALTER {PROCEDURE | FUNCTION} 存储过程或函数的名 [characteristic ...]
-
 ```
 
 其中，characteristic指定存储过程或函数的特性，其取值信息与创建存储过程、函数时的取值信息略有不同。
 
-```
+```mysql
 { CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA }
 | SQL SECURITY { DEFINER | INVOKER }
 | COMMENT 'string'
-
 ```
 
 - CONTAINS SQL ，表示子程序包含SQL语句，但不包含读或写数据的语句。 
-
 - NO SQL ，表示子程序中不包含SQL语句。 
-
 - READS SQL DATA ，表示子程序中包含读数据的语句。 
-
 - MODIFIES SQL DATA ，表示子程序中包含写数据的语句。 
-
 - SQL SECURITY { DEFINER | INVOKER } ，指明谁有权限来执行。 
-
-- DEFINER ，表示只有定义者自己才能够执行。 
-
-- INVOKER ，表示调用者可以执行。 
-
+  - DEFINER ，表示只有定义者自己才能够执行。 
+  - INVOKER ，表示调用者可以执行。
 - COMMENT 'string' ，表示注释信息。
 
 > 修改存储过程使用ALTER PROCEDURE语句，修改存储函数使用ALTER FUNCTION语句。但是，这两 个语句的结构是一样的，语句中的所有参数也是一样的。
-
 
 ### 3) 删除
 
 删除存储过程和函数，可以使用DROP语句，其语法结构如下：
 
-```
+```mysql
 DROP {PROCEDURE | FUNCTION} [IF EXISTS] 存储过程或函数的名
-
 ```
 
 ## 6. 关于存储过程使用的争议
+
+### 1) 优点
+
+1、存储过程可以一次编译多次使用。存储过程只在创建时进行编译，之后的使用都不需要重新编译， 这就提升了 SQL 的执行效率。
+
+2、可以减少开发工作量。将代码 封装 成模块，实际上是编程的核心思想之一，这样可以把复杂的问题 拆解成不同的模块，然后模块之间可以 重复使用 ，在减少开发工作量的同时，还能保证代码的结构清 晰。 
+
+3、存储过程的安全性强。我们在设定存储过程的时候可以 设置对用户的使用权限 ，这样就和视图一样具 有较强的安全性。 
+
+4、可以减少网络传输量。因为代码封装到存储过程中，每次使用只需要调用存储过程即可，这样就减 少了网络传输量。 
+
+5、良好的封装性。在进行相对复杂的数据库操作时，原本需要使用一条一条的 SQL 语句，可能要连接 多次数据库才能完成的操作，现在变成了一次存储过程，只需要 连接一次即可 。
+
+### 2) 缺点
+
+> 阿里开发规范 【强制】禁止使用存储过程，存储过程难以调试和扩展，更没有移植性。
+
+1、可移植性差。存储过程不能跨数据库移植，比如在 MySQL、Oracle 和 SQL Server 里编写的存储过 程，在换成其他数据库时都需要重新编写。 
+
+2、调试困难。只有少数 DBMS 支持存储过程的调试。对于复杂的存储过程来说，开发和维护都不容 易。虽然也有一些第三方工具可以对存储过程进行调试，但要收费。 
+
+3、存储过程的版本管理很困难。比如数据表索引发生变化了，可能会导致存储过程失效。我们在开发 软件的时候往往需要进行版本管理，但是存储过程本身没有版本控制，版本迭代更新的时候很麻烦。 
+
+4、它不适合高并发的场景。高并发的场景需要减少数据库的压力，有时数据库会采用分库分表的方式，而且对可扩展性要求很高，在这种情况下，存储过程会变得难以维护， 增加数据库的压力 ，显然就不适用了。
+
+### 3) 小结
+
+存储过程既方便，又有局限性。尽管不同的公司对存储过程的态度不一，但是对于我们开发人员来说， 不论怎样，掌握存储过程都是必备的技能之一。
+
+# 第16章_变量、流程控制与游标
+
+在MySQL数据库的存储过程和函数中，可以使用变量来存储查询或计算的中间结果数据，或者输出最终的结果数据。
+
+## 1. 变量
+
+在MySQL数据库的存储过程和函数中，可以使用变量来存储查询或计算的中间结果数据，或者输出最终 的结果数据。 
+
+在 MySQL 数据库中，变量分为 系统变量 以及 用户自定义变量 。
+
+### 1) 系统变量
+
+**系统变量分类**
+
+变量由系统定义，不是用户定义，属于 服务器 层面。启动MySQL服务，生成MySQL服务实例期间， MySQL将为MySQL服务器内存中的系统变量赋值，这些系统变量定义了当前MySQL服务实例的属性、特 征。这些系统变量的值要么是 编译MySQL时参数 的默认值，要么是 配置文件 （例如my.ini等）中的参数 值。大家可以通过网址 https://dev.mysql.com/doc/refman/8.0/en/server-systemvariables.html 查看MySQL文档的系统变量。
+
+系统变量分为全局系统变量（需要添加 global 关键字）以及会话系统变量（需要添加 session 关键字），有时也把全局系统变量简称为全局变量，有时也把会话系统变量称为local变量。如果不写，默认会话级别。静态变量（在 MySQL 服务实例运行期间它们的值不能使用 set 动态修改）属于特殊的全局系统变量。
+
+每一个MySQL客户机成功连接MySQL服务器后，都会产生与之对应的会话。会话期间，MySQL服务实例会在MySQL服务器内存中生成与该会话对应的会话系统变量，这些会话系统变量的初始值是全局系统变量值的复制。如下图：
+![[Pasted image 20240918171737.png]]
+6. 关于存储过程使用的争议
 
 ### 1) 优点
 
@@ -2771,7 +2790,7 @@ LAG(expr,n)函数返回当前行的前n行的expr的值。
 
 举例：查询goods数据表中前一个商品价格与当前商品价格的差值。
 
-```
+```mysql
 mysql> SELECT id, category, NAME, price, pre_price, price - pre_price AS diff_price
 -> FROM (
 -> SELECT id, category, NAME, price,LAG(price,1) OVER w AS pre_price
@@ -2794,7 +2813,6 @@ mysql> SELECT id, category, NAME, price, pre_price, price - pre_price AS diff_pr
 | 8 | 户外运动 | 山地自行车 | 1399.90 | 799.90 | 600.00 |
 +----+---------------+------------+---------+-----------+------------+
 12 rows in set (0.00 sec)
-
 ```
 
 **2．LEAD(expr,n)函数**
@@ -2803,7 +2821,7 @@ LEAD(expr,n)函数返回当前行的后n行的expr的值。
 
 举例：查询goods数据表中后一个商品价格与当前商品价格的差值。
 
-```
+```mysql
 mysql> SELECT id, category, NAME, behind_price, price,behind_price - price AS
 diff_price
 -> FROM(
@@ -2826,7 +2844,6 @@ diff_price
 | 8  | 户外运动       | 山地自行车   | NULL       | 1399.90 | NULL |
 +----+---------------+------------+--------------+---------+------------+
 12 rows in set (0.00 sec)
-
 ```
 
 #### 4) 首尾函数
@@ -2837,7 +2854,7 @@ FIRST_VALUE(expr)函数返回第一个expr的值。
 
 举例：按照价格排序，查询第1个商品的价格信息。
 
-```
+```mysql
 mysql> SELECT id, category, NAME, price, stock,FIRST_VALUE(price) OVER w AS
 first_price
 -> FROM goods WINDOW w AS (PARTITION BY category_id ORDER BY price);
@@ -2858,7 +2875,6 @@ first_price
 | 8  | 户外运动       | 山地自行车 | 1399.90 | 2500 | 59.90 |
 +----+---------------+------------+---------+-------+-------------+
 12 rows in set (0.00 sec)
-
 ```
 
 **LAST_VALUE(expr)函数**
@@ -2867,7 +2883,7 @@ LAST_VALUE(expr)函数返回最后一个expr的值。
 
 举例：按照价格排序，查询最后一个商品的价格信息。
 
-```
+```mysql
 mysql> SELECT id, category, NAME, price, stock,LAST_VALUE(price) OVER w AS last_price
 -> FROM goods WINDOW w AS (PARTITION BY category_id ORDER BY price);
 +----+---------------+------------+---------+-------+------------+
@@ -2887,7 +2903,6 @@ mysql> SELECT id, category, NAME, price, stock,LAST_VALUE(price) OVER w AS last_
 | 8  | 户外运动       | 山地自行车 | 1399.90 | 2500 | 1399.90 |
 +----+---------------+------------+---------+-------+------------+
 12 rows in set (0.00 sec)
-
 ```
 
 #### 5) 其他函数
@@ -2896,7 +2911,7 @@ mysql> SELECT id, category, NAME, price, stock,LAST_VALUE(price) OVER w AS last_
 
 NTH_VALUE(expr,n)函数返回第n个expr的值。 举例：查询goods数据表中排名第2和第3的价格信息。
 
-```
+```mysql
 mysql> SELECT id, category, NAME, price,NTH_VALUE(price,2) OVER w AS second_price,
 -> NTH_VALUE(price,3) OVER w AS third_price
 -> FROM goods WINDOW w AS (PARTITION BY category_id ORDER BY price);
@@ -2917,7 +2932,6 @@ mysql> SELECT id, category, NAME, price,NTH_VALUE(price,2) OVER w AS second_pric
 | 8  | 户外运动       | 山地自行车 | 1399.90 | 399.90 | 399.90 |
 +----+---------------+------------+---------+--------------+-------------+
 12 rows in set (0.00 sec)
-
 ```
 
 **2．NTILE(n)函数**
@@ -2926,7 +2940,7 @@ NTILE(n)函数将分区中的有序数据分为n个桶，记录桶编号。
 
 举例：将goods表中的商品按照价格分为3组。
 
-```
+```mysql
 mysql> SELECT NTILE(3) OVER w AS nt,id, category, NAME, price
 -> FROM goods WINDOW w AS (PARTITION BY category_id ORDER BY price);
 +----+----+---------------+------------+---------+
@@ -2946,7 +2960,6 @@ mysql> SELECT NTILE(3) OVER w AS nt,id, category, NAME, price
 | 3  | 8  | 户外运动       | 山地自行车 | 1399.90 |
 +----+----+---------------+------------+---------+
 12 rows in set (0.00 sec)
-
 ```
 
 ### 5) 小结
@@ -2963,18 +2976,17 @@ mysql> SELECT NTILE(3) OVER w AS nt,id, category, NAME, price
 
 普通公用表表达式的语法结构是：
 
-```
+```mysql
 WITH CTE名称
 AS （子查询）
 SELECT|DELETE|UPDATE 语句;
-
 ```
 
 普通公用表表达式类似于子查询，不过，跟子查询不同的是，它可以被多次引用，而且可以被其他的普 通公用表表达式所引用。
 
 举例：查询员工所在的部门的详细信息。
 
-```
+```mysql
 mysql> SELECT * FROM departments
 -> WHERE department_id IN (
 -> SELECT DISTINCT department_id
@@ -2996,12 +3008,11 @@ mysql> SELECT * FROM departments
 |     110       | Accounting       | 205        | 1700        |
 +---------------+------------------+------------+-------------+
 11 rows in set (0.00 sec)
-
 ```
 
 这个查询也可以用普通公用表表达式的方式完成：
 
-```
+```mysql
 mysql> WITH emp_dept_id
 -> AS (SELECT DISTINCT department_id FROM employees)
 -> SELECT *
@@ -3023,20 +3034,18 @@ mysql> WITH emp_dept_id
 |      110      | Accounting       | 205        | 1700        | 110           |
 +---------------+------------------+------------+-------------+---------------+
 11 rows in set (0.00 sec)
-
 ```
 
 例子说明，公用表表达式可以起到子查询的作用。以后如果遇到需要使用子查询的场景，你可以在查询 之前，先定义公用表表达式，然后在查询中用它来代替子查询。而且，跟子查询相比，公用表表达式有 一个优点，就是定义过公用表表达式之后的查询，可以像一个表一样多次引用公用表表达式，而子查询 则不能。
 
-### 2)  递归公用表表达式
+###  2)  递归公用表表达式
 
 递归公用表表达式也是一种公用表表达式，只不过，除了普通公用表表达式的特点以外，它还有自己的特点，就是可以调用自己。它的语法结构是：
 
-```
+```mysql
 WITH RECURSIVE
 CTE名称 AS （子查询）
 SELECT|DELETE|UPDATE 语句;
-
 ```
 
 递归公用表表达式由 2 部分组成，分别是种子查询和递归查询，中间通过关键字 UNION [ALL]进行连接。 这里的种子查询，意思就是获得递归的初始值。这个查询只会运行一次，以创建初始数据集，之后递归 查询会一直执行，直到没有任何新的查询数据产生，递归返回。
@@ -3048,11 +3057,8 @@ SELECT|DELETE|UPDATE 语句;
 如果用我们之前学过的知识来解决，会比较复杂，至少要进行 4 次查询才能搞定：
 
 - 第一步，先找出初代管理者，就是不以任何别人为管理者的人，把结果存入临时表； 
-
 - 第二步，找出所有以初代管理者为管理者的人，得到一个下属集，把结果存入临时表； 
-
 - 第三步，找出所有以下属为管理者的人，得到一个下下属集，把结果存入临时表。 
-
 - 第四步，找出所有以下下属为管理者的人，得到一个结果集。
 
 如果第四步的结果集为空，则计算结束，第三步的结果集就是我们需要的下下属集了，否则就必须继续 进行第四步，一直到结果集为空为止。比如上面的这个数据表，就需要到第五步，才能得到空结果集。 而且，最后还要进行第六步：把第三步和第四步的结果集合并，这样才能最终获得我们需要的结果集。
@@ -3060,16 +3066,14 @@ SELECT|DELETE|UPDATE 语句;
 如果用递归公用表表达式，就非常简单了。我介绍下具体的思路。
 
 - 用递归公用表表达式中的种子查询，找出初代管理者。字段 n 表示代次，初始值为 1，表示是第一 代管理者。
-
 - 用递归公用表表达式中的递归查询，查出以这个递归公用表表达式中的人为管理者的人，并且代次 的值加 1。直到没有人以这个递归公用表表达式中的人为管理者了，递归返回。
-
 - 在最后的查询中，选出所有代次大于等于 3 的人，他们肯定是第三代及以上代次的下属了，也就是 下下属了。这样就得到了我们需要的结果集。
 
 这里看似也是 3 步，实际上是一个查询的 3 个部分，只需要执行一次就可以了。而且也不需要用临时表 保存中间结果，比刚刚的方法简单多了。
 
 代码实现：
 
-```
+```mysql
 WITH RECURSIVE cte
 AS
 (
@@ -3080,7 +3084,6 @@ SELECT a.employee_id,a.last_name,a.manager_id,n+1 FROM employees AS a JOIN cte
 ON (a.manager_id = cte.employee_id) -- 递归查询，找出以递归公用表表达式的人为领导的人
 )
 SELECT employee_id,last_name FROM cte WHERE n >= 3;
-
 ```
 
 总之，递归公用表表达式对于查询一个有共同的根节点的树形结构数据，非常有用。它可以不受层级的 限制，轻松查出所有节点的数据。如果用其他的查询方式，就比较复杂了。
