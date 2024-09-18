@@ -130,7 +130,90 @@ module.exports =
     prefix:'qianzui',
 }
 ```
+## 动态主题切换
 
+```js
+//tailwind默认支持暗黑主题切换
+	//1.在html/body上写一个属性用于控制主题
+		<body data-theme="dark" />
+		
+	//2.定义tailwind.config.ts
+		module.exports = {
+			//当某个元素上具有data-mode="dark"属性时,该元素及其子孙元素会应用暗黑主题
+			darkMode: ['selector', '[data-mode="dark"]'],
+			...
+		} 
+		
+	// 3.定义主题切换函数,用于切换主题
+		export const changeTheme = (theme: string) => {
+			document.body.setAttribute('data-mode', theme);
+		};
+
+// 通过自定义变量手动实现
+	// 1.在html/body上写一个属性用于控制主题
+		<body data-theme="dark" />
+		
+	// 2.定义各主题下自定义变量的值
+		//../theme1.css
+		html[data-theme="theme1"] {
+			--color-primary: #f98866;
+			--color-secondary: #80bd9e;
+			--color-buttons: #89da59;
+			--color-typography: #ff320e;
+		}
+		
+		
+		// ../theme2.css
+		html[data-theme="theme2"] {
+			--color-primary: #f4cc70;
+			--color-secondary: #6ab187;
+			--color-buttons: #de7a22;
+			--color-typography: #20948b;
+		}
+	
+	// 3.在主样式文件中引入主题文件与tailwind
+		// ../style/main.css
+		@tailwind base;
+		@tailwind components;
+		@tailwind utilities;
+		
+		@layer base {
+			html { //默认主题
+				--color-primary: #4285f4;
+				--color-secondary: #34a853;
+				--color-buttons: #fbbc05;
+				--color-typography: #ea4335;
+			}
+			@import "themes/theme1.css";
+			@import "themes/theme2.css";
+		}
+	
+	// 4.设置tailwind,以使用这些css变量
+			// tailwind.config.ts
+			module.exports = {
+			    content: [
+			      './src/view/**/*.{js,ts,jsx,tsx,vue}',
+			    ],
+			    theme: {
+			      extend: {
+			        colors: {
+			          primary: 'var(--color-primary)',
+			          secondary: 'var(--color-secondary)',
+			          buttons: 'var(--color-buttons)',
+			          typography: 'var(--color-typography)',
+			        },
+			      },
+			    },
+			    plugins: [],
+		  };
+	
+	// 5.定义主题切换函数,用于切换主题
+		// ../theme/main.ts
+		export const changeTheme = (theme: string) => {
+		  document.body?.setAttribute("data-theme", theme);
+		};
+
+```
 # css Modules
 
 基于postcss
