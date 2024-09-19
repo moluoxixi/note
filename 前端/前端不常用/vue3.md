@@ -384,22 +384,19 @@ setup script中的expose,用于自定义暴露给父组件的内容
 #### defineModel 3.4+
 
 ```javascript
+//v-model的语法糖
+<template>
+	<input v-model="model" />
+</template>
 <script setup lang="ts">
      /* global defineModel */
-    // 声明 "modelValue" prop，由父组件通过 v-model 使用
+    // v-model语法糖,相当于声明prop的"modelValue",和@update:modelValue
     const model = defineModel()
-    // 或者：声明带选项的 "modelValue" prop
-    const model = defineModel({ type: String })
     
-    
-    // 在被修改时，触发 "update:modelValue" 事件
-    model.value = "hello"
-    
-    
-    // 声明 "count" prop，由父组件通过 v-model:count 使用
-    const count = defineModel("count")
-    // 或者：声明带选项的 "count" prop
-    const count = defineModel("count", { type: Number, default: 0 })
+    const model = defineModel({ type: String,defalut:'' })
+
+	//相当于声明prop的"title",和@update:title,外部使用v-model:title
+	const model = defineModel('title',{ type: String,defalut:'' })
 </script>
 ```
 
