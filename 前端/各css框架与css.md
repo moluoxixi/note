@@ -247,8 +247,9 @@ export default function() {
 //@import 将外部样式以类css的方式导入,与css的区别是在编译阶段进行,不会产生多次请求
 	@import 'variables';
 	//@use 用于将外部sass以模块的形式导入
-		// 1.定义一些变量,'variables.sass'
-		 $primary-color: blue; $font-stack: Helvetica, sans-serif;
+		// 1.使用@forward定义需要暴露的成员(变量,mixin等),没有使用@forward时默认暴露没有使用 `@private` 标记的成员
+		    //'variables.sass'
+			$primary-color: blue; $font-stack: Helvetica, sans-serif;
 		// 2.使用as关键字定义命名空间,可使用with覆盖模块中的变量值(只是重写变量的值,并没有改变模块中原本变量的值)
 		@use 'variables的路径' as vars with ( $primary-color: #333,);
 		body { color: vars.$primary-color; font-family: vars.$font-stack; }
