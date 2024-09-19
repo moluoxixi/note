@@ -243,12 +243,17 @@ export default function() {
 ```
 # sass
 ```js
-//&代表父选择器
-	.a{
-		&.b{}
-	}
-	//编译为
-	.a.b{}
+//@import,@use,@forward
+//@import 将外部样式以类css的方式导入,与css的区别是在编译阶段进行,不会产生多次请求
+	@import 'variables';
+	//@use 用于将外部sass以模块的形式导入
+		// 1.定义一些变量,'variables.sass'
+		 $primary-color: blue; $font-stack: Helvetica, sans-serif;
+		// 2.使用as关键字定义命名空间,可使用with覆盖模块中的变量值(只是重写变量的值,并没有改变模块中原本变量的值)
+		@use 'variables的路径' as vars with ( $primary-color: #333,);
+		body { color: vars.$primary-color; font-family: vars.$font-stack; }
+		//编译为
+		body { color: #333; font-family:  Helvetica, sans-serif; }
 
 //@mixin&@include
 	@mixin button-style($padding, $background, $border: 1px solid #ccc) {  
@@ -343,6 +348,13 @@ export default function() {
 		font-weight: bold;
 		background-color:black;
 	}
+
+//&代表父选择器
+	.a{
+		&.b{}
+	}
+	//编译为
+	.a.b{}
 ```
 
 # less
