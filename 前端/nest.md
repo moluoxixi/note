@@ -92,13 +92,9 @@ export class AppModule implements OnModuleInit,OnApplicationBootstrap
 ## 销毁阶段生命周期
 
 - 当一个模块被销毁时（通常是在应用程序关闭时），Nest会按照依赖注入容器中组件的销毁顺序，依次调用所有实现了 **OnModuleDestroy** 接口的组件的 **onModuleDestroy** 方法。
-
 - 当模块销毁完毕后，nest应用即将关闭前，Nest会按照依赖注入容器中组件的销毁顺序，依次调用所有实现了 **beforeApplicationShutdown** 接口的组件的 **beforeApplicationShutdown** 方法，这个方法一般情况下仅主模块(根模块)会写。
-
 - **停止所有服务**
-
 - 服务停掉后，nest应用正式关闭，Nest会按照依赖注入容器中组件的销毁顺序，依次调用所有实现了 **oneApplicationShutdown** 接口的组件的 **oneApplicationShutdown** 方法，这个方法一般情况下仅主模块(根模块)会写。
-
 - **退出这个模块的进程**
 
 **一般都是通过 moduleRef 取出一些 provider 来销毁，比如关闭连接**，moduleRef 就是当前模块的引用

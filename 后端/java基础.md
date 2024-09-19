@@ -66,7 +66,7 @@ ctrl+f12 //查看当前类中的方法/属性/内部类等 m是方法 f是属性
 
 指的是程序在执行过程中，出现的非正常的情况，最终会导致JVM的非正常停止
 
-异常的根类是
+异常的根类是java.lang.Throwable，其下有两个子类：java.lang.Error与java.lang.Exception，Error代表系统异常,给sun公司用的,雨我无瓜,平常所说的异常指java.lang.Exception
 
 运行时异常：RuntimeException及其子类，编译阶段不会出现异常提醒。运行时出现的异常（如：数组索引越界异常）编译时异常：编译阶段就会出现异常提醒的。（如：日期解析异常)
 
@@ -92,13 +92,7 @@ try{
 
 - 浮点数不能用来表示精确的值，如货币；
 
-- 一般来说
-
-**浮点数加F为float,不加为double**
-
-double>float>long>int>short>byte
-
- 
+- 一般来说**浮点数加F为float,不加为double**,double>float>long>int>short>byte
 
 1. 整数类型：
 
@@ -147,7 +141,7 @@ double>float>long>int>short>byte
 
 ## 隐式转换
 
-又称**自动类型提升**
+又称`自动类型提升`
 
 1. 取值范围小的数据，和取值范围大的数据进行
 
@@ -190,15 +184,10 @@ D
 
 包通常使用所在公司域名的倒置：com.atgvigv.XXX。
 
-包本质上是文件夹,使用
+包本质上是文件夹,使用`.`指明目录的层次,每多一个`.`代表多一层文件夹
 
-- java.lang
-
--打包基础的类
-
-- java.io
-
--包含输入输出功能的函数
+- **java.lang**-打包基础的类
+- **java.io**-包含输入输出功能的函数
 
 ### package
 
@@ -253,16 +242,11 @@ import com.runoob.MyClass; //引入包中的指定类
 ## 泛型
 
 1. 用于统一数据类型。
-
 2. 把类型确定从运行期间提前到了编译期间，避免了强制类型转换可能出现的异常。
-
-3. 不能写基本数据类型,因为添加到集合中时,会被转成包装类
-
+3. **不能写基本数据类型,因为添加到集合中时,会被转成包装类**
 4. 指定泛型后,可以传该泛型指定泛型和其子类类型
-
 5. 未指定时,默认是Object
-
-6. java中支持?代表未知的泛型
+6. **java中支持?代表未知的泛型**
 
 ```java
 class 类名<泛型别名>{}
@@ -278,14 +262,9 @@ class 类名<泛型别名1 extends 泛型别名2>{}
 
 ## 源文件声明规则
 
-- 一个源文件中
-
-**只能有一个 public 类**,但可以有多个非 public 类
-
+- 一个源文件中**只能有一个 public 类**但可以有多个非 public 类
 - 源文件的名称应该和 public 类的类名保持一致。例如：源文件中 public 类的类名是 Employee，那么源文件应该命名为Employee.java。
-
 - 如果一个类定义在某个包中，那么 package 语句应该在源文件的首行。
-
 - 如果源文件包含 import 语句，那么应该放在 package 语句和类定义之间。如果没有 package 语句，那么 import 语句应该在源文件中最前面。
 
 ## 内存
@@ -294,15 +273,11 @@ jdk8以前,方法区和堆是连在一起的
 
 从8开始,将方法区移除改为独立的元空间
 
-1. 栈
-
-2. 堆
-
-3. 方法区,存储可运行的class文件
-
-4. 本地方法栈,JVM操作系统功能时使用,与我们无关
-
-5. 寄存器,CPU使用,与我们无关
+1. **栈**
+2. **堆**
+3. **方法区**,存储可运行的class文件
+4. **本地方法栈**,JVM操作系统功能时使用,与我们无关
+5. **寄存器**,CPU使用,与我们无关
 
 ## 数组
 
@@ -310,7 +285,7 @@ jdk8以前,方法区和堆是连在一起的
 
 定义格式如下,使用下标取值
 
-java中用{}代表数组,对应js的 `[]`
+java中用`{}`代表数组,对应js的 `[]`
 
 ```java
 //简化格式
@@ -338,16 +313,11 @@ int[] a= new int[]{ 11，22，33 };
 特点:
 
 1. 成员变量
-
-- 只能是常量,默认用public修饰,常见写法public static final 类型 变量名
-
+   - 只能是常量,默认用public修饰,常见写法public static final 类型 变量名
 2. 成员方法
-
-- 只能是抽象方法,默认用public修饰,如果是抽象方法,还会默认abstract
-
-- JDK8新增default方法和static方法
-
-- JDK9新增私有方法,用于抽离默认方法和静态方法中公共的部分
+   - 只能是抽象方法,默认用public修饰,如果是抽象方法,还会默认abstract
+   - JDK8新增default方法和static方法
+   - JDK9新增私有方法,用于抽离默认方法和静态方法中公共的部分
 
 ### 接口的多继承
 
@@ -372,7 +342,7 @@ class A implements 接口名{
 
 ### 函数式接口
 
-一种特殊的接口，只包含一个抽象方法。可以使用注解 
+一种特殊的接口，只包含一个抽象方法。可以使用注解 `@FunctionalInterface` 明确声明。常用于 Lambda 表达式和方法引用。
 
 ```java
 @FunctionalInterface
@@ -384,7 +354,7 @@ interface MyFunctionalInterface {
 
 ### 单方法接口
 
-仅包含一个抽象方法,和多个 
+仅包含一个抽象方法,和多个 `default` 方法、`static` 方法
 
 ```java
 interface MyInterface {
@@ -397,7 +367,8 @@ interface MyInterface {
 
 ### 标记性接口
 
-若一个接口没有定义任何方法,表示这个接口是标记性接口,用于传达一些关于类能力或属性的信息,例如
+若一个接口没有定义任何方法,表示这个接口是标记性接口,用于传达一些关于类能力或属性的信息,
+例如`Serializable` 接口和 `Cloneable` 接口
 
 ```java
 interface Serializable {}
@@ -428,12 +399,10 @@ a.show();///Dog--show方法
 
 lambda表达式:
 
-根据“可推导就是可省略”的原则
+根据**可推导就是可省略**的原则
 
 1. 省略函数式接口实例化和方法名,根据参数类型调用接口中对应的方法
-
 2. 可省略形参类型,仅留参数与函数体
-
 3. 参数只有一个时,可以省略括号
 
 ```java
@@ -485,10 +454,8 @@ TreeSet<string>ts = new Treeset<>(new Comparator<String>(){
 **有以下必要条件**
 
 1. 使用方法引用处,**必须是函数式接口**
-
-2. 被引用方法必须存在,可以是java内置的
-
-3. 被引用方法,**形参和返回值需要跟接口方法的形参和返回值一致**
+2. **被引用方法必须存在**,可以是java内置的
+3. 被引用方法**形参和返回值需要跟接口方法的形参和返回值一致**
 
 ```java
 // ::是方法引用符
@@ -539,8 +506,7 @@ Integer[]arr new ArrayList().stream().toArray(new IntFunction<Integer[]>(){
 
 ## 命名规范
 
-1. 如果使用了设计模式,建议使用类名+设计模式命名,例如LoginProxy
-
+1. **如果使用了设计模式,建议使用类名+设计模式命名,例如LoginProxy**
 2. 接口类不要加修饰符
 
 ## Service/DAO层命名规范
@@ -550,27 +516,18 @@ Service层主要负责业务逻辑的处理
 DAO层负责数据的访问和存储
 
 1. get 用于获取单个对象
-
 2. list 用于获取多个对象
-
 3. count 用于获取统计值
-
 4. save（推荐）或insert 用于插入
-
 5. remove（推荐）或delete 用于删除
-
 6. update 用于修改
-
 ## 工具类
 
 用于做一些操作的工具人,简化其他类的操作
 
 - 提供通用的、可重用的功能，如数学运算、日期处理、字符串操作等。
-
 - 包含静态方法，不需要实例化对象即可调用。
-
 - 通常构造方法私有化,因为它不需要创建对象
-
 - 通常不包含状态（成员变量），方法的参数和返回值足以完成任务。
 
 ## 测试类
@@ -621,22 +578,16 @@ public class A{
 类的构造函数有以下几个特点：
 
 1. this指向实例,通过this访问成员
-
-2. 构造函数的**名称必须与类名相同**
-
-3. 构造函数默认返回当前实例,它无需也不能指定返回类型
-
-4. 构造函数**可以有一个或多个参数，用于初始化对象的属性**
-
-5. 如果**没有显式地定义构造函数，则Java会提供一个无参的默认构造函数，这个函数不执行除super外的任何操作**
-
-6. 如果**定义了一个或多个构造函数，则Java不会提供默认构造函数。此时需要无参的构造函数，需要显式地定义它**
-
-7. 提供多个构造函数时,称为构造方法重载,java根据new 类时传参不同调用不同的构造方法
+2. 构造函数的**名称必须与类名相同**。
+3. **构造函数默认返回当前实例,它无需也不能指定返回类型**。
+4. 构造函数**可以有一个或多个参数，用于初始化对象的属性**。
+5. 如果**没有显式地定义构造函数，则Java会提供一个无参的默认构造函数，这个函数不执行除super外的任何操作**。
+6. 如果**定义了一个或多个构造函数，则Java不会提供默认构造函数。此时需要无参的构造函数，需要显式地定义它**。
+7. **提供多个构造函数时,称为构造方法重载,java根据new 类时传参不同调用不同的构造方法**
 
 构造函数的主要作用是创建对象并初始化其属性。当创建一个类的新对象时，Java会自动调用该类的构造函数来初始化对象。
 
-作用: **确保对象在创建时具有正确的状态和属性值**
+作用: **确保对象在创建时具有正确的状态和属性值**。
 
 ```java
 //new构造函数的格式: 构造函数名 实例名 = new 构造函数名(参数)
@@ -664,9 +615,10 @@ public class Employee {
 JDK16之前内部类不能定义静态变量，JDK16开始才行
 
 分为:
-
-成员内部类:
-可以用修饰符修饰,写在成员位置,就是类的最前面静态内部类:使用static修饰的内部类,不依赖于外部类的实例，可以直接通过外部类名访问，而无需创建外部类的实例。局部内部类:定义在方法内或者局部块内的类,使用完就销毁匿名内部类(有用):通过将类的代码块传递给接口,实现无名字的内部类
+1. 成员内部类:可以用修饰符修饰,写在成员位置,就是类的最前面
+2. 静态内部类:使用static修饰的内部类,不依赖于外部类的实例，可以直接通过外部类名访问，而无需创建外部类的实例。
+3. 局部内部类:定义在方法内或者局部块内的类,使用完就销毁
+4. 匿名内部类(有用):通过将类的代码块传递给接口,实现无名字的内部类
 
 ```java
 // 定义一个简单的接口
@@ -758,11 +710,8 @@ enum 枚举类类名{
  用于保护对类、变量、对象、方法和构造方法的访问
 
 - default (默认，什么也不写) 同一包内可见
-
 - public (公共的) 所有类可见,
-
 - protected (受保护的) 同一包内的类和所有子类可见
-
 - private (私有的)  同一类内可见
 
 **用public定义的类,名称要与文件名保持一致**
@@ -782,22 +731,16 @@ enum 枚举类类名{
 ### 非访问控制修饰符
 
 - static (静态):仅能访问静态成员,在类加载时调用
-
 - final (常量/最终类/最终方法):不可变,修饰类时,类不可继承
-
 - abstract (抽象):强制方法重写
-
 - synchronized(同步): **同一时间只能被一个线程访问**
 
 ### 静态和非静态的区别
 
-- 静态方法属于类,非静态方法属于实例
-
-- 静态方法只能访问静态方法/属性,非静态方法可以访问所有方法/属性
-
-- 静态方法没有this,非静态方法具有this
-
-- 静态属性/方法在类加载中创建,存在堆内存的静态区中(JDK7以前和非静态变量一块在方法区里),非静态方法在实例化时创建
+- **静态方法属于类,非静态方法属于实例**
+- **静态方法只能访问静态方法/属性,非静态方法可以访问所有方法/属性**
+- **静态方法没有this,非静态方法具有this**
+- **静态属性/方法在类加载中创建,存在堆内存的静态区中(JDK7以前和非静态变量一块在方法区里),非静态方法在实例化时创建**
 
 ### 静态代码块
 
@@ -841,7 +784,7 @@ abstract class AbstractClass {
 
 # 面向对象
 
-面向 : 拿/找
+面向 : `拿/找`
 
 对象 : 干活的东西
 
@@ -856,14 +799,9 @@ abstract class AbstractClass {
 final修饰类时,类不可继承
 
 1. java中所有的类都直接或间接继承于Object类
-
 2. 子类只能访问父类的非私有成员
-
 3. 子类继承父类所有非私有和私有的成员,但是私有的不能访问,可以通过特权方法访问私有变量
-
-4. 子类不继承父类的构造函数,子类构造函数通过super(参数)调用父类的构造函数,如果
-
-**没写会默认添加个无参的super(),写了则不添加**
+4. 子类不继承父类的构造函数,子类构造函数通过super(参数)调用父类的构造函数,如果**没写会默认添加个无参的super(),写了则不添加**
 
 ```java
 public class Student extends Person{}
@@ -944,13 +882,9 @@ dog instanceof Dog
 
 ```
 
-多态的优点
+多态的优点:动态绑定,运行时才确定实例的实际类型
 
-1. 动态绑定,运行时才确定实例的实际类型
-
-多态的弊端
-
-1. 当使用继承实现多态时,不能调用子类的特有功能(子类中定义的,父类没有)
+多态的弊端:当使用继承实现多态时,不能调用子类的特有功能(子类中定义的,父类没有)
 
 ```java
 //因为动态绑定的特点,编译时无法确定a的类型是Dog,而父类中又没有niHao方法,会报错
@@ -981,18 +915,13 @@ children.Nihao();
 | public static void sort(数组)                   | 按照升序进行数组排序                | Arrays.sort(numbers)                |
 | public static void sort(数组，排序规则)              | 根据指定规则的返回值排序,负放前面,0或正数放后面 | Arrays.sort((p,c)=>{return p-c})    |
 
-
 二分查找法的前提：
 
 1. 数组中的元素必须是有序，数组中的元素必须是升序的
-
 2. 如果要查找的元素是存在的，那么返国的是真实的索引
-
 3. 如果要查找的元素是不存在的，返回的是 负插入点减1( -插入点 - 1)
-
-	- 插入点是指,这个查找的元素如果插入到数组中,应该在哪个索引位置,插入点就是几
-	
-	- 例如数组{1,2,3} 则Arrays.binarySearch(arr,4)得到的是插入点3,再取反-1,是-4
+   - 插入点是指,这个查找的元素如果插入到数组中,应该在哪个索引位置,插入点就是几
+   - 例如数组{1,2,3} 则Arrays.binarySearch(arr,4)得到的是插入点3,再取反-1,是-4
 
 sort示例
 
@@ -1031,7 +960,7 @@ Arrays.sort(arr,new Comparator<Integer>(){
 | public String substring(int beginIndex, int endIndex)  | 根据开始和结束索引做截取, 包含头不包含尾 | str.substring(7, 12)                       |
 | public String replace(旧值,新值)                           | 将指定字符替换另外一个字符         | str.replace("Java", "World")               |
 | public String[] split(String regex)                    | 以指定字符切割为字符数组          | "A,B".split(",")-->["A","B"]               |
-| public byte[]                                          | 将指定字符转成字节数组           | str.getBytes()                             |
+| public byte[] **getBytes**()                           | 将指定字符转成字节数组           | str.getBytes()                             |
 
 
 ```java
@@ -1078,13 +1007,9 @@ StringTable(串池) : 存储直接赋值的字符串,字符串赋值时会去串
 
 
 ### 内存分析
-
 1. 普通的字符串拼接,会在编译阶段直接拼接,会复用串池的字符串
-
 2. 使用变量的字符串拼接,会调用StringBuilder,产生sb对象,最后toString再new一个String对象出来
-
 3. 使用StringBuilder直接拼接,由于只会调用一次StringBuilder和它的toString方法,减少了多余的String对象和sb对象
-
 4. StringBuilder默认只有16字节数容量,当存储超过16字节时,会开辟新的空间,新空间是原来的两倍+2,如果扩容后还不够,就会按存储的实际字节数扩容,最后将之前的内容拷贝过来并将新添加的内容存起来
 
 ```java
@@ -1157,11 +1082,8 @@ StringJoiner内存分析
 | ------------------------------------------------------------------------------------------------ | --------------------------------- | ------------------------------------------- |
 | `public static void exit(int status)`                                                            | 终止当前正在运行的Java虚拟机，0表示正常退出，非零表示异常退出 | `System.exit(0)`                            |
 | `public static native void arraycopy(Object src,int srcPos, Object dest,int destPos,int length)` | 将数组的指定个数元素复制到目标数组                 | `System.arraycopy(srcArray,0,desArray,1,3)` |
-
-
 1. 如果目标数组从destPos开始不够装下拷贝个数的元素,会报错
-
-1. arraycopy允许将 子类类型的值 赋值给 父类类型的目标数组,但最好不要这么做,类型会很混乱
+2. **arraycopy允许将 子类类型的值 赋值给 父类类型的目标数组,但最好不要这么做,类型会很混乱**
 
 ```java
 // 定义源数组
@@ -1212,7 +1134,7 @@ Java中运行时对象，可以获取到程序运行时涉及到的一些信息
 
 **以下三个方法都能使用alt+insert快捷重写,但是clone需要被拷贝的对象所对应的类实现Cloneable接口**
 
-**clone默认是浅克隆**
+**clone默认是浅克隆**,如需深克隆需要另外实现
 
 | 方法(全没用,都要重写)                        | 说明                     | 使用              |
 | ----------------------------------- | ---------------------- | --------------- |
@@ -1268,21 +1190,22 @@ java中深拷贝,遇到String对象,不会创建新对象,会复用串池中的�
 - 对象一旦创建，BigInteger内部记录的值不能发生改变。
 - 只要进行计算都会产生一个新的BigInteger对象。
 
-| 方法                                                       | 说明                      | 使用                                                  |
-| -------------------------------------------------------- | ----------------------- | --------------------------------------------------- |
-| `public BigInteger(int num, Random rnd)`                 | 获取随机大整数，范围：0 ~ 2^num-1  | `BigInteger bd = new BigInteger(123, new Random())` |
-| `(最常用)public BigInteger(String val)`                     | 获取指定                    | `BigInteger bd = new BigInteger("123")`             |
-| `public BigInteger(String val, int radix)`               | 获取                      | `BigInteger bd = new BigInteger("10", 2)`           |
-| `public static BigInteger valueOf(long val)`             | 获取long范围内的bg对象          | `BigInteger.valueOf(bd)`                            |
-| `public BigInteger add(BigInteger val)`                  | 加法                      | `bd.add(bd1)`                                       |
-| `public BigInteger subtract(BigInteger val)`             | 减法                      | `bd.subtract(bd1)`                                  |
-| `public BigInteger multiply(BigInteger val)`             | 乘法                      | `bd.multiply(bd1)`                                  |
-| `public BigInteger divide(BigInteger val)`               | 除法                      | `bd.divide(bd1)`                                    |
-| `public BigInteger[] divideAndRemainder(BigInteger val)` | 除法，获取商和余数               | `bd.divideAndRemainder(bd1)`                        |
-| `public boolean equals(Object x)`                        | 比较是否相同                  | `bd.equals(bd1)`                                    |
-| `public BigInteger pow(int exponent)`                    | 次幂、次方                   | `bd.pow(2)`                                         |
-| `public BigInteger max/min(BigInteger val)`              | 二者比较取最大/小               | `bd.max/min(bd1)`                                   |
-| `public int int/longValue(BigInteger val)`               | 转为int/long类型整数，超出范围数据有误 | `intValue.add(bd1)`                                 |
+|方法|说明|使用|
+|--|--|--|
+|public BigInteger(int num, Random rnd)|获取随机大整数，范围：0 ~ 2^num-1|BigInteger bd = new BigInteger(123, new Random())|
+|(最常用)public BigInteger(String val)|获取指定**纯数字字符串**的大整数|BigInteger bd = new BigInteger("123")|
+|public BigInteger(String val, int radix)|获取**对应进制写法的纯数字字符串**转成十进制后的大整数|BigInteger bd = new BigInteger("10", 2)|
+|public static BigInteger valueOf(long val)|获取long范围内的bg对象|BigInteger.valueOf(bd)|
+|public BigInteger add(BigInteger val)|加法|bd.add(bd1)|
+|public BigInteger subtract(BigInteger val)|减法|bd.subtract(bd1)|
+|public BigInteger multiply(BigInteger val)|乘法|bd.multiply(bd1)|
+|public BigInteger divide(BigInteger val)|除法|bd.divide(bd1)|
+|public BigInteger[] divideAndRemainder(BigInteger val)|除法，获取商和余数|bd.divideAndRemainder(bd1)|
+|public  boolean equals(Object x)|比较是否相同|bd.equals(bd1)|
+|public  BigInteger pow(int exponent)|次幂、次方|bd.pow(2)|
+|public  BigInteger max/min(BigInteger val)|二者比较取最大/小|bd.max/min(bd1)|
+|public  int int/longValue(BigInteger val)|转为int/long类型整数，超出范围数据有误|intValue.add(bd1)|
+
 
 
 ### BigInteger的valueOf原理
@@ -1526,7 +1449,7 @@ System.out.println("相差的纪元数:" + ChronoUnit.ERAS.between(birthDate, to
 
 | 方法                               | 说明                           | 使用                                         |
 | -------------------------------- | ---------------------------- | ------------------------------------------ |
-| `public Date()                   | 创建时间对象                       | `Date date=new Date()`                     |
+| `public Date()`                  | 创建时间对象                       | `Date date=new Date()`                     |
 | `public long getTime()`          | 获取从1970年1月1日 00:00:00到现在的毫秒值 | `date.getTime()`                           |
 | `public void setTime(long time)` | 接收毫秒值,设置时间                   | `date.setTime(System.currentTimeMillis())` |
 
@@ -1558,13 +1481,12 @@ System.out.println(str2);//1970/1/1 上午8:00
 
 用于日期计算
 
-| 方法名                                     | 说明                           | 写法                                           |
-| --------------------------------------- | ---------------------------- | -------------------------------------------- |
-| `public static Calendar getInstance()`  | 获取一个它的子类GregorianCalendar对象。 | `Calendar instance = Calendar.getInstance()` |
-| `public int get(int field)`             | 获取某个字段的值。field参数表示获取哪个字段的值，  | `instance.get(Calendar.YEAR)`                |
-| `public void set(int field,int value)`  | 设置某个字段的值                     | `instance.set(Calendar.YEAR, 1998)`          |
-| `public void add(int field,int amount)` | 为某个字段增加/减少指定的值               | `instance.add(Calendar.DAY_OF_MONTH, 200)`   |
-
+|方法名|说明|写法|
+|--|--|--|
+|public static Calendar getInstance()|获取一个它的子类GregorianCalendar对象。|Calendar instance = Calendar.getInstance()|
+|public int get(int field)|获取某个字段的值。field参数表示获取哪个字段的值，<br/>可以使用Calender中定义的常量来表示：<br/>Calendar.YEAR : 年<br/>Calendar.MONTH ：月 **Calendar的月份值是0-11**<br/>Calendar.DAY_OF_MONTH：月中的日期<br/>Calendar.HOUR：小时<br/>Calendar.MINUTE：分钟<br/>Calendar.SECOND：秒<br/>Calendar.DAY_OF_WEEK：星期 **返回1--7，分别表示："星期日","星期一","星期二",...,"星期六"**|instance.get(Calendar.YEAR)|
+|public void set(int field,int value)|设置某个字段的值|instance.set(Calendar.YEAR, 1998);|
+|public void add(int field,int amount)|为某个字段增加/减少指定的值|instance.add(Calendar.DAY_OF_MONTH, 200);|
 
 # 包装类
 
@@ -1623,7 +1545,6 @@ i = i + 5;//等号右边：将i对象转成基本数值(自动拆箱) i.intValue
 ### 基本类型转换为String
 
 - 转换方式
-
 	- 方式一：直接在数字后加一个空字符串
 	- 方式二：通过String类静态方法valueOf()
 
@@ -1651,22 +1572,20 @@ public class IntegerDemo {
 
 除了Character类之外，其他所有包装类都具有parseXxx静态方法可以将字符串参数转换为对应的基本类型：
 
-- public static byte parseByte(String s)：将字符串参数转换为对应的byte基本类型。
-- public static short parseShort(String s)：将字符串参数转换为对应的short基本类型。
-- public static int parseInt(String s)**：将字符串参数转换为对应的int基本类型。**
-- public static long parseLong(String s)**：将字符串参数转换为对应的long基本类型。**
-- public static float parseFloat(String s)：将字符串参数转换为对应的float基本类型。
-- public static double parseDouble(String s)：将字符串参数转换为对应的double基本类型。
-- public static boolean parseBoolean(String s)：将字符串参数转换为对应的boolean基本类型。
+- `public static byte parseByte(String s)`：将字符串参数转换为对应的byte基本类型。
+- `public static short parseShort(String s)`：将字符串参数转换为对应的short基本类型。
+- **`public static int parseInt(String s)`：将字符串参数转换为对应的int基本类型。**
+- **`public static long parseLong(String s)`：将字符串参数转换为对应的long基本类型。**
+- `public static float parseFloat(String s)`：将字符串参数转换为对应的float基本类型。
+- `public static double parseDouble(String s)`：将字符串参数转换为对应的double基本类型。
+- `public static boolean parseBoolean(String s)`：将字符串参数转换为对应的boolean基本类型。
 
 代码使用（仅以Integer类的静态方法parseXxx为例）如：
 
-1. 转换方式
-
-	- 方式一：先将字符串数字转成Integer，再调用valueOf()方法
-	- 方式二：通过Integer静态方法parseInt()进行转换
-
-2. 示例代码
+- 转换方式
+  - 方式一：先将字符串数字转成Integer，再调用valueOf()方法
+  - 方式二：通过Integer静态方法parseInt()进行转换
+- 示例代码
 
 ```java
 public class IntegerDemo {
@@ -1726,47 +1645,29 @@ System.out.println(i10 == i11); //false
 
 是为了更方便的使用和管理数据
 
-1. 栈: 先进后出,单向单口,如杯子
-
-2. 队列: 先进先出,单向双口,如管道
-
-3. 数组: 连续的空间,便于查找元素,但删除新增缓慢,因为要移动其它元素保证连续性,例如往中间插入一个元素,后面的元素全部要后移
-
-4. 单向链表:每个元素都是独立的对象，在内存中是不连续的，每个元素包含存储的数据和下一个元素的地址。
-
-	- 查询慢，无论查询哪个数据都要从头开始找。
-	
-	- 相比数据增删快，只需要改一下地址值，例如新增一个元素,将前一个元素的地址值指向这个新元素，新元素地址值指向下一个就行
-	
-	- `首`操作极快
-
-5. 双向链表:与双向链表类似,但是每个元素存储的是 `[上一个元素的地址,数据,下一个元素的地址]`
-
-	- `首尾`操作极快
-	
-	- 相比数据增删快
-	
-	- 相比单向链表查询快，因为结构的不同,可以双端查找
-
-6. 二叉树:每个节点最多有两个子节点,没有特点存储顺序
-
-7. 二叉查找树:比根节点小存左边,大存右边
-
-8. 平衡二叉树:通过旋转保证树的平衡,任意节点左右子树高度不超过1,也就是左右子节点存满才能存下一层,不能有一层以上的单节点(即父节点下的单个子节点连单个孙节点)
-
-9. 红黑树:又称平衡二叉B树
+1. **栈**:  先进后出,单向单口,如杯子
+2. **队列**: 先进先出,单向双口,如管道
+3. **数组**: 连续的空间,便于查找元素,但删除新增缓慢,因为要移动其它元素保证连续性,例如往中间插入一个元素,后面的元素全部要后移
+4. **单向链表**:每个元素都是独立的对象，在内存中是不连续的，每个元素包含存储的数据和下一个元素的地址。
+   - 查询慢，无论查询哪个数据都要从头开始找。
+   - 相比数据增删快，只需要改一下地址值，例如新增一个元素,将前一个元素的地址值指向这个新元素，新元素地址值指向下一个就行
+   - 首操作极快
+5. **双向链表**:与双向链表类似,但是每个元素存储的是 `[上一个元素的地址,数据,下一个元素的地址]`
+   - 首尾操作极快
+   - 相比数据增删快
+   - 相比单向链表查询快，因为结构的不同,可以双端查找
+6. **二叉树**:每个节点最多有两个子节点,没有特点存储顺序
+7. **二叉查找树**:比根节点小存左边,大存右边
+8. **平衡二叉树**:通过旋转保证树的平衡,任意节点左右子树高度不超过1,也就是左右子节点存满才能存下一层,不能有一层以上的单节点(即父节点下的单个子节点连单个孙节点)
+9. **红黑树**:又称平衡二叉B树
 
 ## 红黑树规则
 
-1. 节点只能是黑色或者红色
-
-2. 根节点必须是黑色
-
-3. 叶节点是黑色的，如果一个节点没有子节点或者父节点，则该节点相应的指针属性值为Nil,这些Nil视为叶节点，每个叶节点是黑色的
-
-4. 两个红色节点不能相连，如果某一个节点是红色，那么它的子节点必须是黑色
-
-5. 任意节点到其所有后代叶节点的简单路径上，黑色节点数量相同，简单路径指单向路径，即左左左，右右右之类，不能是左左右
+1. **节点只能是黑色或者红色**
+2. **根节点必须是黑色**
+3. **叶节点是黑色的**，如果一个节点没有子节点或者父节点，则该节点相应的指针属性值为Nil,这些Nil视为叶节点，每个叶节点是黑色的
+4. **两个红色节点不能相连**，如果某一个节点是红色，那么它的子节点必须是黑色
+5. **任意节点到其所有后代叶节点的简单路径上，黑色节点数量相同**，简单路径指单向路径，即左左左，右右右之类，不能是左左右
 
 **旋转时,丢掉叶子节点,旋转完毕后再添加**
 
@@ -1794,9 +1695,9 @@ System.out.println(i10 == i11); //false
 
 或右子节点添加右子节点,例如下图右子节点11添加右子节点12
 
-右子节点添加右子节点,需左旋,将
+右子节点添加右子节点,需左旋,将`不平衡支点`降级,`不平衡支点的右节点`升级,并将`不平衡支点的右节点`的`左子节点`转移给`不平衡支点`当`右子节点`
 
-左子节点添加左子节点,需右旋,将
+左子节点添加左子节点,需右旋,将`不平衡支点`降级,`不平衡支点的左节点`升级,并将`不平衡支点的左节点`的`右子节点`转移给`不平衡支点`当`左子节点`
 
 ![](images/WEBRESOURCE15db4d292e291d5f836c2e361e36ee2eimage-20231121220925660.png)
 
@@ -1809,14 +1710,11 @@ System.out.println(i10 == i11); //false
 不同侧节点一次旋转无法完成,如下图,需要先回旋,再进行旋转
 
 1. 左子节点添加右子节点,需先局部左旋,再右旋
-
-- 局部左旋:将不平衡支点的左子节点作为支点进行左旋操作
-- 右旋:将不平衡支点降级,不平衡支点的左节点升级,并将不平衡支点的左节点的右子节点转移给不平衡支点当左子节点
-
+   - **局部左旋**:将`不平衡支点`的`左子节点`作为支点进行左旋操作
+   - **右旋**:将`不平衡支点`降级,`不平衡支点的左节点`升级,并将`不平衡支点的左节点`的`右子节点`转移给`不平衡支点`当`左子节点`
 2. 右子节点添加左子节点,需先局部右旋,再左旋
-
-- 局部右旋:将不平衡支点的右子节点作为支点进行右旋操作
-- 左旋:将不平衡支点降级,不平衡支点的右节点升级,并将不平衡支点的右节点的左子节点转移给不平衡支点当右子节点
+   - **局部右旋**:将`不平衡支点`的`右子节点`作为支点进行右旋操作
+   - **左旋**:将`不平衡支点`降级,`不平衡支点的右节点`升级,并将`不平衡支点的右节点`的`左子节点`转移给`不平衡支点`当`右子节点`
 
 ![](images/WEBRESOURCE8bff9f4fe8349aec1bac7f33372e99b3image-20231121223925056.png)
 
@@ -1834,11 +1732,11 @@ System.out.println(i10 == i11); //false
 
 ## 二叉树不同遍历
 
-前序遍历(父左右):20 18 16 19 23 22 24
+前序遍历(**父**左右):20 18 16 19 23 22 24
 
-中序遍历(左父右):16 18 19 20 22 23 24
+中序遍历(左**父**右):16 18 19 20 22 23 24
 
-后序遍历(左右父):16 19 18 22 24 23 20
+后序遍历(左右**父**):16 19 18 22 24 23 20
 
 层序遍历(从左到右,从上到下一层层遍历):20 18 23 16 19 22 24
 
@@ -1884,24 +1782,15 @@ System.out.println(i10 == i11); //false
 # 单列集合
 
 1. 如果想要集合中的元素可重复
-
-	- 用ArrayList集合，基于数组的。（**用的最多**)
-
+   - 用ArrayList集合，基于数组的。（**用的最多**）
 2. 如果想要集合中的元素可重复，而且当前的增删操作明显多于查询
-
-	- 用LinkedList集合，基于链表的。
-
+   - 用LinkedList集合，基于链表的。
 3. 如果想对集合中的元素去重
-
-	- 用HashSet集合，基于哈希表+单链表/红黑树。（**用的最多**)
-
+   - 用HashSet集合，基于哈希表+单链表/红黑树。（**用的最多**）
 4. 如果想对集合中的元素去重，而且保证存取顺序
-
-	- 用LinkedHashSet集合，基于哈希表+双链表，效率低于HashSet。
-
+   - 用LinkedHashSet集合，基于哈希表+双链表，效率低于HashSet。
 5. 如果想对集合中的元素进行排序
-
-	- 用TreeSet:集合，基于红黑树。后续也可以用List集合实现排序。
+   - 用TreeSet:集合，基于红黑树。后续也可以用List集合实现排序。
 
 ## Collection接口常用方法
 
@@ -1940,12 +1829,11 @@ ArrayList<E> 变量名= new ArrayList<>()
 
 ```
 
-| 方法名                          | 说明             | 使用                                                    |
-| ---------------------------- | -------------- | ----------------------------------------------------- |
-| `public ArrayList(Object e)` | 创建空列表          | `ArrayList list= new ArrayList()`                     |
-| `public ArrayList(Object e)` | 当不指定泛型时,不做类型限制 | `ArrayList list= new ArrayList(List.of("张三丰","张无忌"))` |
-| `public ArrayList(E e)`      | E接收包装对象,代表类型   | `ArrayList`                                           |
-
+|方法名|说明|使用|
+|--|--|--|
+|public ArrayList(Object e)|创建空列表|ArrayList list= new ArrayList()|
+|public ArrayList(Object e)|当不指定泛型时,不做类型限制|ArrayList list= new ArrayList(List.of("张三丰","张无忌"))|
+|public ArrayList(E e)|E接收包装对象,代表类型|ArrayList<String> list= new ArrayList<>(List.of("张三丰","张无忌"))|
 
 #### iterator
 
@@ -1982,7 +1870,7 @@ while(it.hasNext()){
 
 #### 小demo
 
-```
+```java
 //1.创建集合并添加元素
 List<Integer>list new ArrayList<>();
 list.add(1);
@@ -2025,22 +1913,19 @@ TreeSet可排序
 
 #### 哈希表组成
 
-JDK8之前：数组+链表JDK8开始：数组+链表/红黑树
+JDK8之前：数组+链表
+JDK8开始：数组+链表/红黑树
 
 #### 哈希值
 
 - 根据hashCode方法算出来的int类型的整数
-
 - 该方法定义在Objecta类中，所有对象都可以调用，默认使用地址值进行计算
-
 - 一般情况下，会重写hashCode方法，利用对象内部的属性值计算哈希值
 
 #### 对象的哈希值特点
 
 - 如果没有重写hashCode方法，不同对象计算出的哈希值是不同的
-
 - 如果已经重写hashcode方法，不同的对象只要属性值相同，计算出的哈希值就是一样的
-
 - 在小部分情况下，不同的属性值或者不同的地址值计算出米的哈希值也有可能一样（哈希碰撞)
 
 ```java
@@ -2051,8 +1936,7 @@ System.out.println("acD".hashCode());//96354
 ```
 
 #### HashSet原理
-
-HashSet
+`HashSet` 使用了 `HashMap` 的实现(也就是哈希表)作为其底层数据结构
 
 **HashSet无索引**:因为同一位置可能有多个元素组成的红黑树或者链表,索引没有意义,还是找不到指定元素
 
@@ -2071,12 +1955,13 @@ HashSet
 结构: `[null,当前元素的值,下一个存储元素的地址]->[上一个存储元素的地址,当前元素的值,null]`
 
 ### TreeSet原理
-
 底层采用红黑树
 
-对于数值类型：Integer,Double,默认按值从小到大的顺序进行排序对于字符、字符串类型：默认从左到右按字符的ASCII值比较每个字符,发现不相等时,中断比较,小的去左边,大的去右边,例如"aac"默认是比"ab"小的,会挂在"ab"的左节点
+对于数值类型：Integer,Double,默认按值从小到大的顺序进行排序
+对于字符、字符串类型：默认从左到右按字符的ASCII值比较每个字符,发现不相等时,中断比较,小的去左边,大的去右边,例如"aac"默认是比"ab"小的,会挂在"ab"的左节点
 
-方式一：Javabean类实现Comparable接口，指定比较规则方式二：创建集合时，自定义Comparator比较器对象，指定比较规则
+方式一：Javabean类实现Comparable接口，指定比较规则
+方式二：创建集合时，自定义Comparator比较器对象，指定比较规则
 
 ```java
 //方式一:Javabean类实现Comparable接口，指定比较规则
@@ -2121,7 +2006,7 @@ TreeSet<string>ts = new Treeset<>((o1,o2)->{
 
 是双列集合的顶层**接口**
 
-`Map.Entry`是一个接口,代表键值对对象，定义了用于表示 Map 中的键值对的方法
+`Map.Entry` 是一个接口,代表键值对对象，定义了用于表示 `Map` 中的键值对的方法
 
 | 方法名                                           | 说明                                             | 使用(map是实例)               |
 | --------------------------------------------- | ---------------------------------------------- | ------------------------ |
@@ -2214,37 +2099,23 @@ public static <T>void swap(List<?>list,int i,int j)
 **Stream流的三类方法**
 
 1. 获取Stream流
-
-	- 创建一条流水线,并把数据放到流水线上准备进行操作
-
-1. 中间方法
-
-	- 流水线上的操作
-	
-	- 一次操作完毕之后,还可以继续进行其他操作
-
-1. 终结方法
-
-	- 一个Stream流只能有一个终结方法
-	
-	- 是流水线上的最后一个操作,操作完毕就不能再操作了
+   - 创建一条流水线,并把数据放到流水线上准备进行操作
+2. 中间方法
+   - 流水线上的操作
+   - 一次操作完毕之后,还可以继续进行其他操作
+3. 终结方法
+   - 一个Stream流只能有一个终结方法
+   - 是流水线上的最后一个操作,操作完毕就不能再操作了
 
 **生成Stream流的方式**
 
 1. Collection体系集合
-
 	- 使用默认方法stream()生成流，`default Stream<E> stream()`
-
-1. Map体系集合
-
+2. Map体系集合
 	- 把Map转成Set集合，再利用Collection体系生成stream流
-
-1. 数组
-
+3. 数组
 	- 通过Arrays中的静态方法stream生成流
-
-1. 同种数据类型的多个数据
-
+4. 同种数据类型的多个数据
 	- 通过Stream接口的静态方法of(T... values)生成流,`Stream.of("hello", "world", "java")`
 
 **代码演示**
