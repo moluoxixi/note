@@ -241,20 +241,27 @@ export default function() {
     </div>
 }
 ```
-# sass
+# scss&sass
 ```js
-//@import,@use,@forward
-//@import 将外部样式以类css的方式导入,与css的区别是在编译阶段进行,不会产生多次请求
-	@import 'variables';
-	//@use 用于将外部sass以模块的形式导入
-		// 1.使用@forward定义需要暴露的成员(变量,mixin等),没有使用@forward时默认暴露没有使用 `@private` 标记的成员
-		    //'variables.sass'
-			$primary-color: blue; $font-stack: Helvetica, sans-serif;
-		// 2.使用as关键字定义命名空间,可使用with覆盖模块中的变量值(只是重写变量的值,并没有改变模块中原本变量的值)
-		@use 'variables的路径' as vars with ( $primary-color: #333,);
-		body { color: vars.$primary-color; font-family: vars.$font-stack; }
-		//编译为
-		body { color: #333; font-family:  Helvetica, sans-serif; }
+sass就是scss去掉{}和;
+
+//@forward 用于转发另一个模块的成员,@use 用于将外部sass以模块的形式导入
+	//1.在'src/list.sass'中定义一些变量
+		$color: blue;@mixin a{}
+	//2.在'src/bootstrap.scss`中转发
+		@forward "src/list";               //直接转发
+		@forward "src/list" as list-*      //转发,并给所有成员添加`list-`前缀
+		@forward "src/list" hide $color,a  //隐藏部分成员
+		@forward "src/list" show $color    //仅展示部分成员
+		@forwar "src/list" as list-* with( //转发添加前缀并覆盖部分变量
+			$color:red !default,
+		)
+	//3.其他文件使用@use引入bootstrap模块
+	@use "src/bootstrap" as bootstrap;  
+	li {
+		@include bootstrap.a;      //转发不添加前缀时 
+		@include bootstrap.list-a; //转发添加前缀时
+	}
 
 //@mixin&@include
 	@mixin button-style($padding, $background, $border: 1px solid #ccc) {  
@@ -356,10 +363,22 @@ export default function() {
 	}
 	//编译为
 	.a.b{}
+
+//@import 不建议使用 将外部样式以类css的方式导入,与css的区别是在编译阶段进行,不会产生多次请求
+	@import 'variables';
 ```
 
 # less
 
 ```js
+//使用@定义变量
+	@变量名
 
+//混入无需定义,直接用css样式作为混入
+	.a{
+		color:red
+	}
+	.b{
+		.a()
+	}
 ```
