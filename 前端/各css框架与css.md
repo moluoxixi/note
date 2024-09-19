@@ -295,13 +295,14 @@ export default function() {
 				width:100%
 			}
 
-//$变量名 定义变量,#{变量名} 使用变量,@each,@if,@else循环与条件判断
+//$变量名 定义变量,#{变量名} 插值,@each,@if,@else循环与条件判断
 	//sass使用$符定义变量
 		 $button:"button";
+		 $red:red;
 		 $list:(
 			 button:'button',
 			 primary:blue,
-			 debug:red,
+			 debug:$red,
 		 );
 	//@each遍历list,#{变量名使用变量}
 		@each $name,$value in $list{
@@ -325,6 +326,23 @@ export default function() {
 			color:gray;
 		}
 
+//属性嵌套
+	.funky {
+	  font: 20px/24px {
+	    family: fantasy;
+	    weight: bold;
+	  }
+	  background{
+		  color:black;
+	  }
+	}
+	//编译为
+	.funky {
+		font: 20px/24px;
+		font-family: fantasy;
+		font-weight: bold;
+		background-color:black;
+	}
 ```
 
 # less
