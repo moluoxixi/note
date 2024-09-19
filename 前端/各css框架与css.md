@@ -250,6 +250,16 @@ export default function() {
 	//编译为
 	.a.b{}
 
+//@mixin&@include
+	@mixin button-style($padding, $background, $border: 1px solid #ccc) {  
+	  padding: $padding;  
+	  background-color: $background;  
+	  border: $border;  
+	} 
+	.button-primary {  
+	  @include button-style(10px, blue, 2px solid black);  
+	}  
+
 //占位符%与继承@extend
 	//sass使用%定义占位符,占位符定义的css不会输出到css文件中,并可以使用@extend继承
 		%button-style{  
@@ -319,6 +329,6 @@ export default function() {
 
 # less
 
-```
+```js
 
 ```
