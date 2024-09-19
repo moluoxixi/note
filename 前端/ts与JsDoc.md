@@ -314,7 +314,7 @@ var c = Color.Green;
 
 ## 类型断言
 
-(xx as 类型)或(<类型>xx)
+`xx as 类型`或`<类型>xx`
 
 有些情况下，变量的类型对于我们来说是很明确，但是TS编译器却并不清楚，此时，可以通过类型断言来告诉编译器变量的类型，断言有两种形式：
 
@@ -371,7 +371,7 @@ let type:number|string;
 
 ## 交叉&
 
-在 TypeScript 中交叉类型是将多个类型合并为一个类型。通过 
+在 TypeScript 中交叉类型是将多个类型合并为一个类型。通过 `&` 运算符可以将现有的多种类型叠加到一起成为一种类型，它包含了所需的所有类型的特性。
 
 ```javascript
 type PartialPointX = { x: number; };
@@ -429,13 +429,13 @@ const obj:a={
 
 # 类型(变量/模块)声明declare
 
-执行命令 tsc xx.ts --declaration ,ts编译后,会生成xxx.d.ts和js产物
+执行命令 `tsc xx.ts --declaration `,`ts`编译后,会生成`xxx.d.ts`和`js`产物
 
-xxx.d.ts就是全局类型声明,也可以手动写这种文件
+`xxx.d.ts`就是全局类型声明,也可以手动写这种文件
 
-ts执行时,遇到未定义类型的变量或方法时,会去ts所在目录下查找所有的xxx.d.ts文件,在文件中查找该未定义类型的变量或方法
+`ts`执行时,遇到未定义类型的变量或方法时,会去ts所在目录下查找所有的`xxx.d.ts`文件,在文件中查找该未定义类型的变量或方法
 
-在ts文件所在目录下新建xxx.d.ts文件,内容如下:
+在ts文件所在目录下新建`xxx.d.ts`文件,内容如下:
 
 ```javascript
 //xxx.d.ts文件中定义的是全局变量、函数、接口、模块和类型定义,declare也可用于定义局部的
@@ -832,15 +832,14 @@ type Result = Awaited<ReturnType<typeof getPromise>> // string 类型
 
 ## 访问修饰符
 
-通过访问修饰符定义的成员最终都挂载在实例身上,在类和子类中通过
 
 1. public公有属性（默认值），可以通过类、子类和实例中访问和修改
 
-1. protected受保护的属性 ，可以通过类、子类中访问和修改
+2. protected受保护的属性 ，可以通过类、子类中访问和修改
 
-1. private私有属性 ，可以在类中访问和修改 , 2022年js添加 
+3. private私有属性 ，可以在类中访问和修改 , 2022年js添加 
 
-#成员
+js中`#`成员 代表私有属性
 
 ## 静态修饰符
 

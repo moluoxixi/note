@@ -487,7 +487,7 @@ location对象具有多个属性,用于获取
 | ----------------- | ------------ | ------------- |
 | location.pathname | /frontend    | URL路径与文件名     |
 | location.search   | ?sort=newest | URL查询字符串      |
-| location.hash     | #content     | 哈希地址          |
+| location.hash     | `#content`   | 哈希地址          |
 | location.key      |              | 路由的key,不知道干嘛的 |
 | location.state    |              | 路由的状态         |
 
