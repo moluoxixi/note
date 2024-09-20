@@ -396,6 +396,14 @@ setup script中的expose,用于自定义暴露给父组件的内容
     const model = defineModel({ type: String,defalut:'' })
 
 	//相当于声明prop的"title",和@update:title,外部使用v-model:title
+	const props=defineProps({
+		title:{type:String,default:''}
+	})
+	const emits=defineEmits(['update:title'])
+	const model=computed({
+		get:()=>props.title,
+		set:(v)=>emits('update:title',v)
+	})
 	const model = defineModel('title',{ type: String,defalut:'' })
 </script>
 ```
