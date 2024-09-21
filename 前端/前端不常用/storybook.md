@@ -1,11 +1,11 @@
 # 初始化项目
 
-```
+```js
 npx create-react-app --template typescript 项目名称
-
-npx storybook@latest init 装在全局
-
-npx storybook@latest -s init 装在本地
+//装在全局
+npx storybook@latest init
+//装在本地
+npx storybook@latest -s init
 ```
 
 [https://storybook.js.org](https://storybook.js.org)
