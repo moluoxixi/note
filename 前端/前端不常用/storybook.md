@@ -47,7 +47,9 @@ src
 | args:{...}            | 传递给组件的参数                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | argTypes:{...}        | 配置传递给组件的参数的控制器行为, 默认根据参数类型/默认值自动生成对应控制器类型<br>argTypes:{<br>  //参数描述, 默认取 jsdoc 中的描述<br>  description: '背景',<br>  //控制器行为, 只写 type 时可简写为 control: type 类型 <br>    //常见类型有:  text, number, color, date,range, radio, select, inline-radio, inline-radio, object,<br>  control: 'select',<br>  //参数值隐射<br>  mapping:{参数: 隐射的值, 可以是 jsx}<br>}<br>                                                                                                                    |
 | parameters:{...}      | 全局参数配置<br>parameters:{<br>  //组件的布局方式, centered 垂直水平居中, fullscreen 占满全屏, padded (默认) 组件周围填充空白<br>  layout: 'centered'<br>  //组件的背景<br>  backgrounds: [{<br>    default: 'dark',  <br>    values:[{name: 'dark',value: ' #333 '}]<br>  }],<br>  docs: {<br>    description: {  <br>      component: '',  //组件的描述<br>      story: '测试',  //单个 story 的描述<br>    },<br>  },  <br>  // 自定义参数, 给部分插件使用  <br>  customParameter: {  <br>    key: 'value',  <br>  },<br>} |
-|                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| loaders:any           | 用来请求初始化数据, 会打断渲染, 可以是对象, 数组或单个函数,<br>最终 promise 解析后的值作为 loaded 的值<br>loaders: async () => {<br>	await '假装 fetch'<br>	return {list: [111]}<br>},<br>                                                                                                                                                                                                                                                                                                              |
+| render (args, meta){} | 自定义渲染组件,, 常用于根据 meta 中的数据进行渲染<br>render(args: ButtonProps,meta:metaType){<br>     //meta.loaded loaders数组中 函数的返回值组成的对象<br>     return <Button {...args}{...meta.loaded} /><br>},                                                                                                                                                                                                                                                                                 |
+| play (meta){}         | 组件渲染完毕就会调用, 常用于测试                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 meta 中这些配置项, 除了 title, 都可以写到 preview. ts 中作为全局配置
 
@@ -68,18 +70,16 @@ const meta: metaType = {
   	layout: 'centered' //组件的布局方式,centered垂直水平居中,fullscreen占满全屏,padded(默认)组件周围填充空白
   },
   
-  //可以用render自定义组件,一般返回组件,vue可返回组件配置项
+  //自定义渲染组件,vue返回配置项即可,常用于根据meta中的数据进行渲染
   render(args:ButtonProps,meta:metaType){
      //meta.loaded loaders数组中 函数的返回值组成的对象
-     return <Button {...args} />
+     return <Button {...args}{...meta.loaded} />
   },
-  //打断渲染,用来请求初始化数据
-  loaders: [
-    async () => {
-      await '假装 fetch'
-      return {list: [111]}
-    },
-  ],
+  //打断渲染,用来请求初始化数据,可以是对象,数组或单个函数,最终promise解析后的值作为loaded的值
+  loaders: async () => {
+	await '假装 fetch'
+	return {list: [111]}
+  },
   //组件渲染完毕就会执行,常用来测试
   async play(meta:metaType){
       //断言函数,判断meta.args.backgroundColor==='green',结果会在控制台显示
@@ -118,7 +118,7 @@ export const Small: Story = {
   },  
 };
 ```
-## Button组件
+## 组件示例
 
 ```javascript
 // Button/index.tsx
