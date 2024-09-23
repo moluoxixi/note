@@ -34,17 +34,20 @@ src
 
 
 ## story 配置
-`.storybook/preview.js` 是所有 story 的公共配置
-`*/组件名.stories.*` 中的 meta 对象是某个组件下 story 的公共配置
+`.storybook/preview.js` 是所有 story 的公共配置,**需要 export default 导出**
+`*/组件名.stories.*` 中的 meta 对象是某个组件下 story 的公共配置, **需要 export default 导出**
+`*/组件名.stories.*` 中的独立导出的对象是某个组件下 story 的配置, **需要 export 变量名 导出**
 
+根据 story>meta>preview 的原则覆盖合并
 
-| 配置                        | 说明                                                                                                                                                                                                                               |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| (组件 meta 特有)title         | 组件显示在页面中的名称                                                                                                                                                                                                                      |
-| (组件 meta 特有)component: 组件 | 应该使用哪个组件                                                                                                                                                                                                                         |
-| args:{...}                | 传递给组件的参数                                                                                                                                                                                                                         |
-| argTypes:{...}            | 配置传递给组件的参数的控制器行为, 默认根据参数类型/默认值自动生成对应控制器类型<br>{<br>  control:{ //控制器行为, 只写 type 时可简写为 control: type 类型<br>    type: 'select', //radio, range,date, select, object, <br>    options: ['small', 'medium', 'large'],<br>  }<br>}<br> |
-|                           |                                                                                                                                                                                                                                  |
+| 配置                    | 说明                                                                                                                                                                                                                                                                                                                              |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| (meta 特有)title        | 组件显示在页面中的名称                                                                                                                                                                                                                                                                                                                     |
+| (meta 特有)component:组件 | 应该使用哪个组件                                                                                                                                                                                                                                                                                                                        |
+| args:{...}            | 传递给组件的参数                                                                                                                                                                                                                                                                                                                        |
+| argTypes:{...}        | 配置传递给组件的参数的控制器行为, 默认根据参数类型/默认值自动生成对应控制器类型<br>argTypes:{<br>  //参数描述, 默认取 jsdoc 中的描述<br>  description: '背景',<br>  //控制器行为, 只写 type 时可简写为 control: type 类型 <br>    //常见类型有: radio, inline-radio, range, date, select, inline-radio, color, object,<br>  control: 'select',<br>  //参数值隐射<br>  mapping:{参数: 隐射的值, 可以是 jsx}<br>}<br> |
+| parameters:{...}      | 全局参数配置<br>parameters:{<br>  layout: 'centered'   //组件的布局方式, centered 垂直水平居中, fullscreen 占满全屏,padded (默认) 组件周围填充空白<br>  backgrounds: [{      //组件的背景<br>    default: 'dark',  <br>    values:[{name: 'dark',value: ' #333 '}]<br>  }],<br>}                                                                                      |
+|                       |                                                                                                                                                                                                                                                                                                                                 |
 
 meta 中这些配置项, 除了 title, 都可以写到 preview. ts 中作为全局配置
 
