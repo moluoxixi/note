@@ -35,6 +35,30 @@ src
 ## 主文件配置
 `.storybook/main.js` 配置 storybook 使用的插件以及文件
 
+```js
+import type { StorybookConfig } from "@storybook/react-vite";  
+  
+const config: StorybookConfig = {
+  //从那些目录解析stories
+  stories: ["../src/**/*.mdx", "../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)"],  
+  //使用的插件
+  addons: [  
+    // '@storybook/addon-docs',  
+    // "@storybook/addon-onboarding",
+    // "@storybook/addon-links",
+    //提供Toolbars(顶部工具栏),controls组件控制台,docs组件文档,viewport不同分辨率视口,Source,action
+    "@storybook/addon-essentials",
+    // "@chromatic-com/storybook",  
+    // "@storybook/addon-interactions",
+  ],  
+  framework: {  
+    name: "@storybook/react-vite",  
+    options: {},  
+  },  
+};  
+export default config;
+```
+
 ## story 配置
 `.storybook/preview.js` 是所有 story 的公共配置,**需要 export default 导出**
 `*/组件名.stories.*` 中的 meta 对象是某个组件下 story 的公共配置, **需要 export default 导出**
