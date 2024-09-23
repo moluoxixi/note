@@ -15,7 +15,7 @@ npx storybook@latest -s init
 
 # **开造**
 
-storybook运行依赖.storybook下的配置文件,main.ts是主文件,**preview.ts是所有组件的公共配置**
+storybook运行依赖.storybook下的配置文件,main.ts是主文件,**preview.ts是所有 story 的公共配置**
 
 ![](images/WEBRESOURCE7ee8962166a5c47ddcadd2f677906154image.png)
 
@@ -32,40 +32,19 @@ src
             index.tsx
 ```
 
-## Button组件
 
-```javascript
-// Button/index.tsx
-import React from 'react';
-import './index.css';
+## story 配置
+`.storybook/preview.js` 是所有 story 的公共配置
+`*/组件名.stories.*` 中的 meta 对象是某个组件下 story 的公共配置
 
-export interface ButtonProps {
-  /** 你好,xxxxx */
-  primary?: boolean;
-  backgroundColor?: string;
-  size?: 'small' | 'medium' | 'large';
-  label?: string;
-  onClick?: () => void;
-}
 
-/** Primary UI component for user interaction */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
-  return (<button
-      style={{ backgroundColor }}
-      {...props}
-    >{label}</button>);
-};
-```
+| 配置                | 说明                                                |
+| ----------------- | ------------------------------------------------- |
+| (组件 meta 特有)title | 组件显示在页面中的名称                                       |
+| args:{...}        | 传递给组件的参数                                          |
+| argTypes:{...}    | 配置传递给组件的参数应该用哪些控制器类型, 默认根据参数类型/默认值自动生成对应控制器类型<br> |
 
-## Button的stories配置
-
-meta中这些配置项,除了title,都可以写到preview.ts中作为全局配置
+meta 中这些配置项, 除了 title, 都可以写到 preview. ts 中作为全局配置
 
 ```javascript
 // Button/Button.stories.ts
@@ -79,7 +58,7 @@ const meta: metaType = {
   title:'Example/Primary', //显示的名称
   tags:['autodocs'], //生成上图的Docs那个所有story的组合文档
   args:{}, //传递给组件的参数
-  argTypes:{}, //补充未写注释且未写参数默认值时的参数描述
+  argTypes:{}, //配置传递给组件的参数应该用哪些控制器类型, 默认根据参数类型/默认值自动生成对应控制器类型
   parameters: { //组件参数
   	layout: 'centered' //组件的布局方式,centered垂直水平居中,fullscreen占满全屏,padded(默认)组件周围填充空白
   },
@@ -134,3 +113,34 @@ export const Small: Story = {
   },  
 };
 ```
+## Button组件
+
+```javascript
+// Button/index.tsx
+import React from 'react';
+import './index.css';
+
+export interface ButtonProps {
+  /** 你好,xxxxx */
+  primary?: boolean;
+  backgroundColor?: string;
+  size?: 'small' | 'medium' | 'large';
+  label?: string;
+  onClick?: () => void;
+}
+
+/** Primary UI component for user interaction */
+export const Button = ({
+  primary = false,
+  size = 'medium',
+  backgroundColor,
+  label,
+  ...props
+}: ButtonProps) => {
+  return (<button
+      style={{ backgroundColor }}
+      {...props}
+    >{label}</button>);
+};
+```
+
