@@ -76,10 +76,13 @@ import { Button,ButtonProps } from './index';
 type metaType=Meta<typeof Button>;
 //Button下所有story的公共配置
 const meta: metaType = {
-  title:'Example/Primary', //Example/显示的名称
-  tags:['autodocs'], //生成上图的Docs那个组合文档
+  title:'Example/Primary', //显示的名称
+  tags:['autodocs'], //生成上图的Docs那个所有story的组合文档
   args:{}, //传递给组件的参数
-  argTypes:{}, //补充未写注释,未写默认值的arg描述
+  argTypes:{}, //补充未写注释且未写参数默认值时的参数描述
+  parameters: { //组件参数
+  	layout: 'centered' //组件的布局方式,centered垂直水平居中,fullscreen占满全屏,padded(默认)组件周围填充空白
+  },
   
   //可以用render自定义组件,一般返回组件,vue可返回组件配置项
   render(args:ButtonProps,meta:metaType){
@@ -102,8 +105,32 @@ const meta: metaType = {
 export default meta;
 
 type Story = StoryObj<typeof Button>;
-//导出的变量会成为Button下的一个story,见上图
-export const Primary: Story = {
-  args: {}
+
+//导出的变量会成为Button下的单个story,见上图
+export const Primary: Story = {  
+  args: {  
+    primary: true,  
+    label: 'Button',  
+  },  
+};  
+  
+export const Secondary: Story = {  
+  args: {  
+    label: 'Button',  
+  },  
+};  
+  
+export const Large: Story = {  
+  args: {  
+    size: 'large',  
+    label: 'Button',  
+  },  
+};  
+  
+export const Small: Story = {  
+  args: {  
+    size: 'small',  
+    label: 'Button',  
+  },  
 };
 ```
