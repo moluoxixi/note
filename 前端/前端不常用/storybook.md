@@ -1,7 +1,8 @@
 # 初始化项目
 
 ```js
-npx create-react-app --template typescript 项目名称
+//不需要这个
+//npx create-react-app --template typescript 项目名称
 //装在全局
 npx storybook@latest init
 //装在本地
