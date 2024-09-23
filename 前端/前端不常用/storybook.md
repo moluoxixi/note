@@ -32,6 +32,8 @@ src
             index.tsx
 ```
 
+## 主文件配置
+`.storybook/main.js` 配置 storybook 使用的插件以及文件
 
 ## story 配置
 `.storybook/preview.js` 是所有 story 的公共配置,**需要 export default 导出**
