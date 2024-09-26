@@ -1,4 +1,4 @@
-```
+```ts
 {
   /*
         //tsconfig.json是ts编译器的配置文件，ts编译器根据它的配置来编译ts文件
@@ -17,11 +17,10 @@
     // "exclude": ["./src/index.ts"],  //表示不对index.ts文件进行编译
     // "files": []
 ​
-/*
-      
+ 
   "compilerOptions": {
-    "target": "ES6",
-    "module": "system",
+    "target": "ES6",//指定要编译的ts文件编译成什么版本的js,默认为ES3
+    "module": "commonjs",//指定使用什么模块化
     // "lib": [],
     "outDir": "./dish",
     "outFile": "./dish/app.js",
@@ -55,7 +54,7 @@
 
 ### module
 
-指定使用什么个是来进行，模块化，它有这几个值：
+指定使用什么模块化，它有这几个值：
 
 'none', 'commonjs', 'amd','system', 'umd', 'es6', 'es2015', 'es2020', 'es2022', 'esnext', 'node12', 'nodenext'. 
 
@@ -79,7 +78,22 @@ module:"system"
 
 ### alwaysStrict
 
-（strict严格的）js有一种严格模式，也就是比之前的语法更加严谨  浏览器运行的效率更好，我们在单独的js文件中在文件开头部分添加一个“use strict”  表示了我们开启了js的严格模式，而在ts中使用alwaysStrict来进行开启，默认为false  12.noImplicitAny（implicit：隐式）检查隐式的any类型，我们不提倡使用any类型，更不提倡使用隐式的any  此时我们可以将noImplicitAny改为true来对隐式的any类型进行检查  13.noImplicitThis检查不明确的this类型，我们知道在单独的函数（也就是函数外边没有指定以的对象）时  在函数体调用this,这个this指向window，当我们在指定以对象的里面调用this,此时这个this指向我们定义  的对象，  比如：  function fn(this){    alert(this)  }  若是函数是在指定义对象外调用，这this指向window  若是函数是在指定义对象里面调用，这this指向这个对象  此时我们可以在函数的形参部分进行声明明确的类型  function fn(this: window){    alert(this)  }
+```
+（strict严格的）js有一种严格模式，也就是比之前的语法更加严谨,浏览器运行的效率更好，
+我们在单独的js文件中在文件开头部分添加一个“use strict” 表示了我们开启了js的严格模式，
+而在ts中使用alwaysStrict来进行开启，默认为false
+
+noImplicitAny（implicit：隐式）检查隐式的any类型，我们不提倡使用any类型，更不提倡使用隐式的any,
+此时我们可以将noImplicitAny改为true来对隐式的any类型进行检查
+
+noImplicitThis检查不明确的this类型，
+我们知道在单独的函数（也就是函数外边没有指定的对象）时 在函数体调用this,这个this指向window，
+当我们在指定对象的里面调用this,此时这个this指向我们定义的对象， 比如： function fn(this){ alert(this) } 
+
+若是函数是在指定对象外调用，这this指向window 
+若是函数是在指定对象里面调用，这this指向这个对象 
+此时我们可以在函数的形参部分进行声明明确的类型 function fn(this: window){ alert(this) }
+```
 
 ### strictNullChecks
 
@@ -153,4 +167,3 @@ alwaysStrict:"false",
 "outFile": "./dish/app.js",
 ```
 
-### 
