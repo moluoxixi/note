@@ -8,7 +8,46 @@
 
 ## 基础示例
 
+
 首先要在主文件的.css文件中声明:
+```js
+-->1.下载tailwind并初始化
+	npm install -D tailwindcss
+	npx tailwindcss init
+	
+-->2.tailwind.scss中声明引用的样式类型
+	/*基础样式*/  
+	@tailwind base;  
+	/*组件样式*/  
+	@tailwind components;  
+	/*实用程序样式*/  
+	@tailwind utilities;
+
+//3.base.scss中引入tailwind.scss,同时写一些公共的样式
+     @import "tailwind.css";
+
+//4.tailwind.config.js中声明生效范围,主题,插件
+	/** @type {import('tailwindcss').Config} */
+	 module.exports = {
+	   //生效的范围
+	   content: ["./src/**/*.{vue}"],
+	   //主题
+	   theme: {
+	     extend: {},
+	   },
+	   //插件
+	   plugins: [],
+	 }
+
+//5.监听使用,动态生成main.css
+	npx tailwindcss -i ./src/assets/styles/base.scss -o ./src/assets/styles/main.css --watch 
+
+//6.main.js中引入main.css
+	import './assets/styles/main.css'
+	import {createApp} from 'vue'  
+	import App from './App.vue'
+	createApp(App).mount('#app')
+```
 
 ```css
 //App.css
@@ -80,6 +119,20 @@ module.exports = plugin(function({ addUtilities }) {
 })
 ```
 
+## 添加 prefix 避免和自定义 class 重名
+
+```javascript
+//tailwind.config.js
+
+/*@type {import('tailwindcss').Config}**/
+module.exports =
+{
+    ...,
+    //添加 prefix,但是所有的原子 class 都会加上 prefix
+    prefix:'qianzui',
+}
+```
+
 ## 修改默认主题
 
 ```javascript
@@ -114,20 +167,6 @@ module.exports ={
             }        
         }
     }
-}
-```
-
-## 添加prefix避免和自定义class重名
-
-```javascript
-//tailwind.config.js
-
-/*@type {import('tailwindcss').Config}**/
-module.exports =
-{
-    ...,
-    //添加 prefix,但是所有的原子 class 都会加上 prefix
-    prefix:'qianzui',
 }
 ```
 ## 动态主题切换
@@ -241,6 +280,7 @@ export default function() {
     </div>
 }
 ```
+
 # scss&sass
 ```js
 sass就是scss去掉{}和;
