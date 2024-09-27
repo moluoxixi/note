@@ -1,15 +1,13 @@
-## 核心组成
+# tauri
+前端部分：依赖系统内置 Webview 组件。例如，在 Windows 上使用 Edge/Webview2，在 macOS 上使用 WebKit，在 Linux 上使用 WebKitGTK。
 
-前端部分：依赖系统内置Webview组件。例如，在Windows上使用Edge/Webview2，在macOS上使用WebKit，在Linux上使用WebKitGTK。
+后端部分：采用 rust 编写，负责与操作系统交互、处理系统事件、安全控制和 API 调用。
 
-后端部分：采用rust编写，负责与操作系统交互、处理系统事件、安全控制和API调用。
+> v8 将 js 转成机器码执行, 且具有多种优化策略
+> webview 基于 webkit 引擎, 在执行 js 上性能不佳
 
-> v8将js转成机器码执行,且具有多种优化策略
-> webview基于webkit引擎,在执行js上性能不佳
-
-
-## 项目构建及相关依赖下载
-https://tauri.app/zh-cn/v1/guides/getting-started/prerequisites
+预先准备:https://tauri.app/zh-cn/v1/guides/getting-started/prerequisites
+前端 api:https://tauri.app/zh-cn/v1/api/js/
 
 ```js
 -->1.下载rust
@@ -31,7 +29,7 @@ https://tauri.app/zh-cn/v1/guides/getting-started/prerequisites
 	//一个前端包,提供一些类node的方法以供前端直接调用
 	npm install @tauri-apps/api
 
--->rust写函数,前端接收
+-->4.rust写函数,前端接收
 	//src/server/demo.rs
 	//固定声明,
 	#[tauri::command]  
@@ -42,16 +40,18 @@ https://tauri.app/zh-cn/v1/guides/getting-started/prerequisites
      fn main() {
        //创建 Tauri 应用构建器
        tauri::Builder::default()
-         //设置调用处理器
+         //invoke_handler(tauri::generate_handler![处理器名]  ,设置greet为调用处理器,抛给前端调用
          .invoke_handler(tauri::generate_handler![greet])
+         //运行应用
          .run(tauri::generate_context!())
+         //错误处理
          .expect("error while running tauri application");
      }
 
 	//前端页面中
 	import { invoke } from '@tauri-apps/api'  
 	const demo=async ()=> {  
-		//调用rust抛出的方法
+		//调用rust抛出的处理器方法
 		const res=aawit invoke('greet', { name: 'World' }) 
   		console.log(res) // "Hello, World!"！  
 	}
