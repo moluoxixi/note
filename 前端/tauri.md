@@ -40,8 +40,9 @@ https://tauri.app/zh-cn/v1/guides/getting-started/prerequisites
 	}
 
      fn main() {
-       //
+       //创建 Tauri 应用构建器
        tauri::Builder::default()
+         //设置调用处理器
          .invoke_handler(tauri::generate_handler![greet])
          .run(tauri::generate_context!())
          .expect("error while running tauri application");
