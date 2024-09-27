@@ -51,12 +51,18 @@
 	./node_modules/.bin/electron .
 
 -->5.打包
-	npm install --save-dev @electron-forge/cli  
-	npx electron-forge import
-	//执行完毕后会在package.json的scripts中添加三条指令
-	"start": "electron-forge start",  
-	"package": "electron-forge package",  
-	"make": "electron-forge make"
+
+	-->vite-plugin-electron/simple
+			
+		
+		
+	-->electron-forge,使用make
+		npm install --save-dev @electron-forge/cli  
+		npx electron-forge import
+		//执行完毕后会在package.json的scripts中添加三条指令
+		"start": "electron-forge start",  
+		"package": "electron-forge package",  
+		"make": "electron-forge make"
 	
 	npm run make
 ```
