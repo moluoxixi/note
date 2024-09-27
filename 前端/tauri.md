@@ -27,6 +27,32 @@ https://tauri.app/zh-cn/v1/guides/getting-started/prerequisites
 	rustup self uninstall
 	rustc --version
 	
--->
+-->3.下载相关依赖
+	//一个前端包,提供一些类node的方法以供前端直接调用
+	npm install @tauri-apps/api
+
+-->rust写函数,前端接收
+	//src/server/demo.rs
+	//固定声明,
+	#[tauri::command]  
+	fn greet(name: &str) -> String {  
+		format!("Hello, {}!", name)  
+	}
+
+     fn main() {
+       //
+       tauri::Builder::default()
+         .invoke_handler(tauri::generate_handler![greet])
+         .run(tauri::generate_context!())
+         .expect("error while running tauri application");
+     }
+
+	//前端页面中
+	import { invoke } from '@tauri-apps/api'  
+	const demo=async ()=> {  
+		//调用rust抛出的方法
+		const res=aawit invoke('greet', { name: 'World' }) 
+  		console.log(res) // "Hello, World!"！  
+	}
   
 ```
