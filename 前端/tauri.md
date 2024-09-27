@@ -55,5 +55,36 @@
 		const res=aawit invoke('greet', { name: 'World' }) 
   		console.log(res) // "Hello, World!"！  
 	}
+
+-->打包
+	//默认使用当前机器的体系进行打包(操作系统+位数等)
+	npm run tauri build
+	//如果需要编译为其他系统用的,需要--target和对应的插件,例如
+	tauri build --target i686-pc-windows-msvc
   
 ```
+
+
+# 打包方式
+```js
+//tauri.config.json
+{
+  "tauri": {
+    "bundle": {
+      "windows": {
+        "webviewInstallMode": {
+          "type": "downloadBootstrapper" //指定打包方式,详情见下表
+        }
+      }
+    }
+  }
+}
+```
+
+| 安装方式                                                                                                 | 是否需要联网 | 附加安装包大小 | 备注                                                       |
+| :--------------------------------------------------------------------------------------------------- | :----- | :------ | :------------------------------------------------------- |
+| [`downloadBootstrapper`](https://tauri.app/zh-cn/v1/guides/building/windows#downloaded-bootstrapper) | 是      | 0MB     | `Default`  <br>导致安装程序大小较小，但不建议通过`.msi`文件进行 Windows 7 部署。 |
+| [`embedBootstrapper`](https://tauri.app/zh-cn/v1/guides/building/windows#embedded-bootstrapper)      | 是      | ~1.8MB  | 更好地支持 Windows 7 上的`.msi`安装程序。                            |
+| [`offlineInstaller`](https://tauri.app/zh-cn/v1/guides/building/windows#offline-installer)           | 否      | ~127MB  | 嵌入 WebView2 安装程序。推荐用于离线环境。                               |
+| [`fixedVersion`](https://tauri.app/zh-cn/v1/guides/building/windows#fixed-version)                   | 否      | ~180MB  | 嵌入固定的 WebView2 版本。                                       |
+| [`skip`](https://tauri.app/zh-cn/v1/guides/building/windows#skipping-installation)                   | 否      | 0MB     | ⚠️不推荐  <br>不要将 WebView2 作为 Windows 安装程序的一部分安装。           |
