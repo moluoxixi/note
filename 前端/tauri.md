@@ -12,19 +12,21 @@
 https://tauri.app/zh-cn/v1/guides/getting-started/prerequisites
 
 ```js
--->window下载
-  winget install --id Rustlang.Rustup
-  //或者去官网下载https://www.rust-lang.org/tools/install
+-->1.下载rust
+	-->window下载
+		  winget install --id Rustlang.Rustup
+		  //或者去官网下载https://www.rust-lang.org/tools/install
+	
+	-->macOS下载
+		  xcode-select --install
+		  curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf \| sh
+		
 
--->macOS下载
-  xcode-select --install
-  curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf \| sh
-
--->rust更新/卸载/查看版本号
-  rustup update
-  rustup self uninstall
-  rustc --version
-
+-->2.rust更新/卸载/查看版本号
+	rustup update
+	rustup self uninstall
+	rustc --version
+	
 -->
   
 ```

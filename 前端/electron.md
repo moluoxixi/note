@@ -4,7 +4,7 @@
 
 ```javascript
 //npm create vue 项目名
--->1.下载electorn包
+-->1.下载electorn,及其依赖包
 	npm install --save-dev electron
 
 -->2.package.json的scripts添加electron启动命令
