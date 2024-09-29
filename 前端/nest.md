@@ -37,6 +37,9 @@
 # 命令
 
 ```javascript
+//需要先下载脚手架
+npm i -g @nestjs/cli
+
 //nest g xxx xx命令,还可以设置以下常见选项
     //--no-flat 不创建子目录,生成的应用放在当前目录中
     //--spec    生成应用时顺便生成对应的测试文件
