@@ -11,22 +11,7 @@
 
 首先要在主文件的.css文件中声明:
 ```js
--->1.下载tailwind并初始化
-	npm install -D tailwindcss
-	npx tailwindcss init
-	
--->2.tailwind.scss中声明引用的样式类型
-	/*基础样式*/  
-	@tailwind base;  
-	/*组件样式*/  
-	@tailwind components;  
-	/*实用程序样式*/  
-	@tailwind utilities;
-
-//3.base.scss中引入tailwind.scss,同时写一些公共的样式
-     @import "tailwind.css";
-
-//4.tailwind.config.js中声明生效范围,主题,插件
+-->1.tailwind.config.js中声明生效范围,主题,插件
 	/** @type {import('tailwindcss').Config} */
 	 module.exports = {
 	   //生效的范围
@@ -39,18 +24,40 @@
 	   plugins: [],
 	 }
 
-//5.监听使用,动态生成main.css
-	npx tailwindcss -i ./src/assets/styles/base.scss -o ./src/assets/styles/main.css --watch 
+-->2.tailwind.scss中声明引用的样式类型
+	/*基础样式*/  
+	@tailwind base;  
+	/*组件样式*/  
+	@tailwind components;  
+	/*实用程序样式*/  
+	@tailwind utilities;
 
-//6.main.js中引入main.css
-	import './assets/styles/main.css'
-	import {createApp} from 'vue'  
-	import App from './App.vue'
-	createApp(App).mount('#app')
+-->vite项目
+	-->3.下载依赖并初始化后直接run dev就行,vite会自动引入postcss.config.js
+		npm install -D tailwindcss postcss autoprefixer
+		npx tailwindcss init -p
+
+-->非vite的普通项目
+
+	-->3.下载tailwind并初始化
+		npm install -D tailwindcss
+		npx tailwindcss init
+	
+	-->4.base.scss中引入tailwind.scss,同时写一些公共的样式
+	     @import "tailwind.css";
+	
+	-->5.监听使用,动态生成main.css
+		npx tailwindcss -i ./src/assets/styles/base.scss -o ./src/assets/styles/main.css --watch 
+	
+	-->6.main.js中引入main.css
+		import './assets/styles/main.css'
+		import {createApp} from 'vue'  
+		import App from './App.vue'
+		createApp(App).mount('#app')
 ```
 
 ```css
-//App.css
+/** tailwind.css */
 @tailwind base;       //基础样式
 @tailwind components; //组件样式
 @tailwind utilities;  //实用程序样式
