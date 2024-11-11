@@ -351,6 +351,7 @@ maven会将依赖缓存在仓库中,避免重复下载,同时可以放公司的�
 
 ```java
 ./nginx #默认配置文件启动
+./nginx -t #测试配置是否正确
 ./nginx -s reload #重启，加载默认配置文件
 ./nginx -c /usr/local/nginx/conf/nginx.conf #启动指定某个配置文件
 ./nginx -s stop #停止 #关闭进程
