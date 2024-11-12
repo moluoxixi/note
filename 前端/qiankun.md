@@ -1,5 +1,5 @@
 # 一些坑
-Vue 2 主应用挂载 vue 3 子应用 , vue 3 子应用路由切换出错
+## vue 3 作为子应用,路由切换出现 undefined
 https://github.com/umijs/qiankun/issues/2254
 ```javascript
 // 解决方法
@@ -10,7 +10,27 @@ router.beforeEach((to, from, next) => {
   next();
 });
 ```
-
+## 子应用部分元素挂载在 body 上
+```js
+// 将子应用appendBody的元素,挂载到子应用根元素身上  
+const proxy = (container) => {  
+  console.log(document.body.appendChild);  
+  if (document.body.appendChild.__isProxy__) return;  
+  const revocable = Proxy.revocable(document.body.appendChild, {  
+    apply (target, thisArg, [node]) {  
+      if (container) {  
+        container.appendChild(node);  
+      } else {  
+        target.call(thisArg, node);  
+      }  
+    }  
+  });  
+  if (revocable.proxy) {  
+    document.body.appendChild = revocable.proxy;  
+  }  
+  document.body.appendChild.__isProxy__ = true;  
+};
+```
 # 初始化项目并下载
 
 ```js
