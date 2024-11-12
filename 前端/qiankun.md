@@ -44,9 +44,19 @@ registerMicroApps([
     entry: '//http://192.168.211.180',  // 子应用的入口地址
     container: '#appContainer',         // 子应用挂在的容器元素
     activeRule: '/react-app',           // 子应用的激活规则
-    sandbox: true,                      // 是否启用沙箱隔离
+    
     singular: true,                     // 是否启用微应用的独立运行时
     props: {},                          // 传递给子应用的数据,子应用通过mount生命周期接收
+    //sandbox: true,                      // 是否启用沙箱隔离
+    sandbox: {
+      // 开启严格样式隔离,其实就是给每个子项目的根元素attachShadow,并将子项目挂载在这个影子节点上
+      // 导致的问题:一些第三方库的样式会丢失,因为他们可能期望挂载的body上,还有些样式依赖body什么的
+      strictStyleIsolation: true,
+	  // scoped隔离,会给每个子应用的样式添加div[data-qiankun]=${appName} 前缀
+	  // 导致的问题: 样式权重会受到影响,需要提前规避
+	  experimentalStyleIsolation: true,
+      
+    },
   },
   ...
 ])
