@@ -31,6 +31,37 @@ const proxy = (container) => {
   document.body.appendChild.__isProxy__ = true;  
 };
 ```
+## 子应用开启experimentalStyleIsolation后, 若存在样式覆盖, 会导致样式解析失败
+```js
+//experimentalStyleIsolation用于样式隔离,会给全局style加上div[data-qiankun=`${appName}`] 前缀
+
+// element-plus中,部分样式覆盖导致qiankun的style解析失败导致样式丢失  
+// 例如border:var(--el-border-color); border-left:0;
+//例如:
+.residentdoctor-button{
+	border-color: var(--residentdoctor-button-border-color);
+	border-left: 0;
+}
+
+//解析为:
+div[data-qiankun="residentdoctor"] .residentdoctor-button {
+    border-top-style: ;
+    border-top-width: ;
+    border-right-style: ;
+    border-right-width: ;
+    border-bottom-style: ;
+    border-bottom-width: ;
+    border-left-style: ;
+    border-left-width: ;
+    border-image-source: ;
+    border-image-slice: ;
+    border-image-width: ;
+    border-image-outset: ;
+    border-image-repeat: ;
+
+	border-left:0;
+}
+```
 # 初始化项目并下载
 
 ```js
@@ -50,7 +81,7 @@ npm-run-all --serial install:*
 "install:sub-react": "cd sub-react && npm i",
 ```
 
-# 主应用&微应用**注册方式**
+# 主应用&微应用注册方式
 
 ```javascript
 //任何一个项目都可以作为主应用,在主应用中,用对应元素作为容器容纳子应用
@@ -72,7 +103,7 @@ registerMicroApps([
       // 开启严格样式隔离,其实就是给每个子项目的根元素attachShadow,并将子项目挂载在这个影子节点上
       // 导致的问题:一些第三方库的样式会丢失,因为他们可能期望挂载的body上,还有些样式依赖body什么的
       strictStyleIsolation: true,
-	  // scoped隔离,会给每个子应用的样式添加div[data-qiankun]=${appName} 前缀
+	  // scoped隔离,会给每个子应用的样式添加div[data-qiankun=`${appName}`] 前缀
 	  // 导致的问题: 样式权重会受到影响,需要提前规避
 	  experimentalStyleIsolation: true,
       
