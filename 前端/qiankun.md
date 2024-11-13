@@ -2,6 +2,9 @@
 ## vue 3 作为子应用,路由切换出现 undefined
 https://github.com/umijs/qiankun/issues/2254
 ```javascript
+// vue3作为子应用,路由来回切换会出现undefined(好像是跳子路由)
+
+
 // 解决方法
 router.beforeEach((to, from, next) => {  
   if (_.isEmpty(history.state.current)) {  
@@ -12,6 +15,9 @@ router.beforeEach((to, from, next) => {
 ```
 ## 子应用部分元素挂载在 body 上
 ```js
+//一些ui库会将元素添加到body中,会导致这部分元素样式丢失
+
+//解决方案:
 // 将子应用appendBody的元素,挂载到子应用根元素身上  
 const proxy = (container) => {  
   console.log(document.body.appendChild);  
@@ -62,30 +68,29 @@ div[data-qiankun="residentdoctor"] .residentdoctor-button {
 	border-left:0;
 }
 ```
-# 初始化项目并下载
+## 子应用开启 experimentalStyleIsolation 后, 局部样式未添加前缀, 会导致权重问题
 
 ```js
-npm init
-npm i qiankun -S
+//experimentalStyleIsolation用于样式隔离,会给全局style加上div[data-qiankun=`${appName}`] 前缀
+//但是<style scoped></script>中的样式不会添加
 ```
+## scoped 样式冲突
 
-# 下载所有依赖
+vue 的 scoped 样式其实也有问题，
 
+它是通过. vue 文件基于项目根目录的相对路径 path+文件名进行计算 hash 值的，
+
+当主子应用中同时存在一个 path 和文件名相同时的. vue 文件，
+
+它的 data-v-XXXXX 算出来就是一样的，此时样式还是会冲突
+# 乾坤配置
+
+## 主应用注册并启动
+通常主应用会做登录和菜单功能, 点击菜单的同时通过路由动态切换子应用
 ```js
-//运行所有npm install:xxx格式的命令
-npm-run-all --serial install:*
-​
-//例如
-"install:main": "cd main && npm i",
-"install:sub-vue": "cd sub-vue && npm i",
-"install:sub-react": "cd sub-react && npm i",
-```
-
-# 主应用&微应用注册方式
-
-```javascript
+import { loadMicroApp, start, registerMicroApps } from 'qiankun'
 //任何一个项目都可以作为主应用,在主应用中,用对应元素作为容器容纳子应用
-qiankun通过s配置项中activeRule加载对应子路由的entry
+//qiankun通过配置项中activeRule加载对应子路由的entry
 ​
 //手动注册可激活任意子应用,未满足匹配规则的也会在激活状态               调用loadMicroApp,接收一个对象
 //自动注册只能激活当前匹配子应用,未满足匹配规则且不是手动注册的会被销毁   调用registerMicroApps,接收对象组成的数组
@@ -95,77 +100,283 @@ registerMicroApps([
     entry: '//http://192.168.211.180',  // 子应用的入口地址
     container: '#appContainer',         // 子应用挂在的容器元素
     activeRule: '/react-app',           // 子应用的激活规则
-    
-    singular: true,                     // 是否启用微应用的独立运行时
     props: {},                          // 传递给子应用的数据,子应用通过mount生命周期接收
-    //sandbox: true,                      // 是否启用沙箱隔离
-    sandbox: {
-      // 开启严格样式隔离,其实就是给每个子项目的根元素attachShadow,并将子项目挂载在这个影子节点上
-      // 导致的问题:一些第三方库的样式会丢失,因为他们可能期望挂载的body上,还有些样式依赖body什么的
-      strictStyleIsolation: true,
-	  // scoped隔离,会给每个子应用的样式添加div[data-qiankun=`${appName}`] 前缀
-	  // 导致的问题: 样式权重会受到影响,需要提前规避
-	  experimentalStyleIsolation: true,
-      
-    },
+    
   },
   ...
 ])
+registerMicroApps([app])  
+start({  
+	singular: true,                     // 是否启用微应用的独立运行时
+	prefetch: true, // 开启预加载关掉  
+	//sandbox: true,                      // 是否启用沙箱隔离
+	sandbox: {
+		 // 开启严格样式隔离,其实就是给每个子项目的根元素attachShadow,并将子项目挂载在这个影子节点上
+		 // 导致的问题:一些第三方库的样式会丢失,因为他们可能期望挂载的body上,还有些样式依赖body什么的
+		 strictStyleIsolation: true,
+		// scoped隔离,会给每个子应用的样式添加div[data-qiankun=`${appName}`] 前缀
+		// 导致的问题: 样式权重会受到影响,需要提前规避
+		experimentalStyleIsolation: true,
+	},
+})
 ```
-## 手动注册示例
+
+## 子应用注入生命周期
+### vue2
+
 ```js
-<template>  
-  <div class="skywalking-container height100"></div>  
-</template>  
-  
-<script>  
-import { loadMicroApp } from 'qiankun';  
-export default {  
-  name: 'index',  
-  data() {  
-    return {  
-      microApp: null  
-    };  
-  },  
-  mounted() {
-    this.microApp = loadMicroApp({  
-      container: this.$el, //容器节点  
-      name: 'skywalking', //item.subAppName, //包名  
-      entry: location.origin + '/skywalking',  
-      activeRule: this.$router.options.base + 'skywalking', // 激活微应用的路由规则，可选
-      props: {  
-        data: {  
-          userInfo: global.userInfo,  
-          activeRule: this.$router.options.base + 'skywalking', //激活路由  
-          resource: window.resource  
-        },  
-        fn: {  
-          getTheme: () => {  
-            return this.$store.state.theme;  
-          }  
-        }  
+//main.js
+import Vue form 'vue';
+import { getRouter } from './router';
+import App from './App.vue';
+import store from './store';
+let app;
+
+/**  
+ * @param container 主应用下发的props中的container,也就是子应用的根节点  
+ * 将子应用appendBody的元素,挂载到子应用根元素身上  
+ * 用于解决乾坤子应用开启如下样式隔离方案后,添加到body的元素样式失效  
+ * sandbox: {  
+ *    以下配置项只能开启一个,另一个要为false  
+ *    strictStyleIsolation: true,        //严格模式,其实就是给子应用根节点改造为shadowRoot,也就是套上shadowDom  
+ *    experimentalStyleIsolation: true,  //样式隔离,就是给子应用的全局样式加上div[data-qiankun=`${appName}`],会导致scoped中的样式权重变低  
+ * },  
+ */
+const proxy = (container) => {
+  if (document.body.appendChild.__isProxy__) return;  
+  const revocable = Proxy.revocable(document.body.appendChild, {  
+    apply (target, thisArg, [node]) {  
+      if (container) {  
+        container.appendChild(node);  
+      } else {  
+        target.call(thisArg, node);  
       }  
-    });  
-  },  
-  beforeDestroy() {  
-    this.microApp.unmount();  
+    }  
+  });  
+  if (revocable.proxy) {  
+    document.body.appendChild = revocable.proxy;  
   }  
-};  
-</script>  
+  document.body.appendChild.__isProxy__ = true;  
+};
+
+function render(props) {  
+	const { container } = props;  
+	proxy(container)  
+	
+	const router = getRouter(props);
+	app = new Vue({  
+		router,  
+		store,  
+		render: h => h(App)  
+	})
+	if(container){  
+		const root = container.querySelector('#app');  
+		app.mount(root);  
+	}else{  
+		app.mount('#app')  
+	}  
+}
+if (!window.__POWERED_BY_QIANKUN__) {  
+  render({});  
+}else{
+	/**
+	 * bootstrap 只会在微应用初始化的时候调用一次，下次微应用重新进入时会直接调用 mount 钩子，不会再重复触发 bootstrap。
+	 * 通常我们可以在这里做一些全局变量的初始化，比如不会在 unmount 阶段被销毁的应用级别的缓存等。
+	 */
+	export async function bootstrap() {}
+	/** 应用每次进入都会调用 mount 方法，通常我们在这里触发应用的渲染方法 */
+	export async function mount(props) {
+	  render(props);
+	}
+	/** 可选生命周期钩子，仅使用 loadMicroApp 方式加载微应用时生效 */
+	export async function update(props) {}
+	​
+	/**  应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例*/
+	export async function unmount() {
+	  app.$destroy()
+	}
+}
+```
+### vue3
+```js
+// main.js
+
+// 引入vue,样式等
+...
+import App from './App.vue'  
   
-<style scoped lang="scss">  
-.skywalking-container {  
-  width: 100%;  
-  /deep/ > div {  
-    width: 100%;  
-    height: 100%;  
+import getRouter from './router'  
+  
+let app;  
+  
+/**  
+ * @param container 主应用下发的props中的container,也就是子应用的根节点  
+ * 将子应用appendBody的元素,挂载到子应用根元素身上  
+ * 用于解决乾坤子应用开启如下样式隔离方案后,添加到body的元素样式失效  
+ * sandbox: {  
+ *    以下配置项只能开启一个,另一个要为false  
+ *    strictStyleIsolation: true,        //严格模式,其实就是给子应用根节点改造为shadowRoot,也就是套上shadowDom  
+ *    experimentalStyleIsolation: true,  //样式隔离,就是给子应用的全局样式加上div[data-qiankun=`${appName}`],会导致scoped中的样式权重变低  
+ * },  
+ */
+const proxy = (container) => {
+  if (document.body.appendChild.__isProxy__) return;  
+  const revocable = Proxy.revocable(document.body.appendChild, {  
+    apply (target, thisArg, [node]) {  
+      if (container) {  
+        container.appendChild(node);  
+      } else {  
+        target.call(thisArg, node);  
+      }  
+    }  
+  });  
+  if (revocable.proxy) {  
+    document.body.appendChild = revocable.proxy;  
   }  
+  document.body.appendChild.__isProxy__ = true;  
+};  
+
+function render(props) {  
+  const { container } = props;  
+  proxy(container)  
+  app = createApp(App);  
+  // 注册指令  
+  directives(app)  
+  // 注册组件  
+  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {  
+    app.component(key, component)  
+  }  
+  const pinia = createPinia()  
+  pinia.use(piniaPluginPersistedstate)  
+  app.provide('getUtils', utils)  
+  app.use(pinia)  
+  
+  // 测试主题变更  
+  // const themeStore = useThemeStore()  
+  // themeStore.setTheme('red');  const router = getRouter(props);  
+
+  const router = getRouter(props);
+  app.use(router)  
+  app.use(ElementPlus)  
+  if(container){  
+    const root = container.querySelector('#app');  
+    app.mount(root);  
+  }else{  
+    app.mount('#app')  
+  }  
+}
+
+// 独立运行时  
+if (!qiankunWindow.__POWERED_BY_QIANKUN__) {  
+  render({});  
+}else{  
+	renderWithQiankun({  
+		/** 应用每次进入都会调用 mount 方法，通常我们在这里触发应用的渲染方法 */
+		mount (props) {  
+			render(props);  
+		},
+		/**
+			* bootstrap 只会在微应用初始化的时候调用一次，下次微应用重新进入时会直接调用 mount 钩子，不会再重复触发 bootstrap。
+			* 通常我们可以在这里做一些全局变量的初始化，比如不会在 unmount 阶段被销毁的应用级别的缓存等。
+		*/
+		bootstrap () {},
+		/** 可选生命周期钩子，仅使用 loadMicroApp 方式加载微应用时生效 */
+		update(props){},
+		/**  应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例*/
+		unmount (props) {  
+			app.unmount();  
+			app = null;  
+		},  
+	});  
+}
+```
+## 子应用设置服务基础路径
+
+### vue2
+
+```javascript
+//vue.config.js或webpack.config.js中
+module.exports = {
+  //publicPath将服务本来是 http://172.18.120.209:3333/的变为 http://172.18.120.209:3333/TSIDS/
+  publicPath: `/TSIDS/`,
+  ...,
+}
+```
+
+### 如果是 vite
+
+```javascript
+import qiankun from "vite-plugin-qiankun";
+export default ({ mode }: ConfigEnv): UserConfig => {
+    return {
+        //publicPath将服务本来是 http://172.18.120.209:3333/的变为 http://172.18.120.209:3333/skywalking/
+        base: "/skywalking/",,
+        plugins:[
+            qiankun("skywalking", {
+              useDevMode: true, // 开发环境必须配置
+            }),
+        ]
+    }
+}
+```
+
+## 子应用设置路由
+### vue2
+```js
+import VueRouter from 'vue-router';
+const routes=[]
+export const getRouter = function(props) {  
+  let base = '';  
+  if (window.__POWERED_BY_QIANKUN__) {  
+    base = props.data.activeRule || '/';  
+  } else {  
+    base = process.env.BASE_URL;
+  }  
+  const router = new VueRouter({  
+    base,  
+    mode:'history',  
+    routes  
+  });
+```
+### vue3
+
+```js
+import { createRouter, createWebHistory } from 'vue-router'  
+import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
+import { isEmpty,assign } from 'radash'
+
+const routes= []
+
+function getRouter(props) {  
+  let base;  
+  const routes=_.cloneDeep(Routes);  
+  if (qiankunWindow.__POWERED_BY_QIANKUN__) {  
+    const { activeRule } = props.data;  
+    ... 
+    base = activeRule;  
+  }  
+  else {  
+    base = '/residentdoctor'  
+  }  
+  const router = createRouter({  
+    history: createWebHistory(base),  
+    routes  
+  })
+
+	
+  router.beforeEach((to, from, next) => {
+      _.assign(history.state, { current: from.fullPath })  
+    }  
+    next()  
+  })  
+  return router  
 }  
-</style>
+  
+export default getRouter
 ```
 # 应用通信
 
-## 乾坤提供的globalState通信方式
+## 乾坤提供的 globalState 通信方式
 
 ```js
 //父应用通过在注册子应用时,添加props配置项,将actions传递给子应用,子应用则可脱离qiankun包
@@ -199,57 +410,7 @@ beforeDestroy() {
 ​
 ```
 
-# scoped样式冲突
-
-vue的scoped样式其实也有问题，
-
-它是通过.vue文件基于项目根目录的相对路径path+文件名进行计算hash值的，
-
-当主子应用中同时存在一个path和文件名相同时的.vue文件，
-
-它的data-v-XXXXX算出来就是一样的，此时样式还是会冲突
-
-# 生命周期
-
-```js
-/**
- * bootstrap 只会在微应用初始化的时候调用一次，下次微应用重新进入时会直接调用 mount 钩子，不会再重复触发 bootstrap。
- * 通常我们可以在这里做一些全局变量的初始化，比如不会在 unmount 阶段被销毁的应用级别的缓存等。
- */
-export async function bootstrap() {}
-/** 应用每次进入都会调用 mount 方法，通常我们在这里触发应用的渲染方法 */
-export async function mount(props) {
-  console.log('基座下发的能力：', props);
-  // 可通过 props.getGlobalState() 获取基座下发的数据
-  // props.setGlobalState({user: {name: ''}}) 改变全局的数据
-  // props.onGlobalStateChange 监听全局数据的变化
-  render();
-}
-/** 可选生命周期钩子，仅使用 loadMicroApp 方式加载微应用时生效 */
-export async function update(props) {}
-​
-/**  应用每次 切出/卸载 会调用的方法，通常在这里我们会卸载微应用的应用实例*/
-export async function unmount() {
-  ReactDOM.unmountComponentAtNode(document.getElementById('root'));
-}
-```
-
-```js
-server {
-    listen 83;
-    location ^~/middle/ {
-        proxy_pass http://192.168.18.228:9999/middle/; #开发时运行访问地址
-    }
-    location ^~/TSIDS/ {
-        proxy_pass http://172.18.120.209:3333/TSIDS/;
-    }
-}
-当我nginx添加如上代理时,我访问localhost:83/middle/TSIDS实际上访问的是哪个地址,为什么
-​
-​
-```
-
-# 如何在本地连上远程的主应用(壳子)
+# 如何在本地连上远程的主应用 (壳子)
 
 ```javascript
 远程主项目在http://192.168.18.228:9999/middle/
@@ -285,116 +446,4 @@ server {
 
 ![](images/WEBRESOURCE8d9068a993116e9724ff3ffbc7061099bee332e41f444312d6ddf44eaaa60403.png)
 
-# vite特殊配置
 
-vite下依赖vite-plugin-qiankun包, 这个包的本质上是在 `eval` 函数内用 `dynamic import` 加载 es module
-除了注意事项中设置服务基础路径的配置外,还需要使用以下配置
-
-```javascript
-//main.ts
-import { renderWithQiankun, qiankunWindow } from "vite-plugin-qiankun/dist/helper";
-import { createApp } from "vue";
-import App from "./App.vue";
-
-const app = createApp(App);
-//利用qiankunWindow替代window
-if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
-  mountApp({});
-}
-//利用renderWithQiankun来写qiankun的生命周期钩子
-renderWithQiankun({
-  mount(props) {
-    mountApp(props);
-  },
-  bootstrap() {},
-  update() {},
-  unmount() {
-    app?.unmount();
-  },
-});
-
-async function mountApp(props: any) {
-  app.use(router).mount("#app");
-}
-```
-
-# 注意事项
-
-## 统一打包规范并配置子项目端口号
-
-```
-//所有项目需要统一打包规范为umd
-​
-//vue,子项目的根目录中vue.config.js配置
-configureWebpack: {
-    output: {
-      // 把子应用打包成 umd 库格式
-      library: `${name}-[name]`,
-      libraryTarget: 'umd', //统一规范为umd
-      jsonpFunction: `webpackJsonp_${name}`
-    }
-  },
-  devServer: {
-    port: process.env.VUE_APP_PORT, //指定端口号
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
-}
-​
-//react怎么做到的等会百度
-```
-
-## 配置子应用确保资源和路由正常
-
-### 设置应用的基础路径
-
-```
-//仅history路由需要
-//子应用的src下新建public-path.js,添加如下代码
-if (window.__POWERED_BY_QIANKUN__) {
-    // eslint-disable-next-line
-    //乾坤为确保微应用中的资源能够正确加载,提供的基础路径
-    __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__
-}
-if (process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line
-    __webpack_public_path__ = `//localhost:${process.env.VUE_APP_PORT}${process.env.BASE_URL}`
-}
-```
-
-### 设置服务基础路径
-
-如果是vue2那种
-
-```javascript
-//vue.config.js或webpack.config.js中
-module.exports = {
-  //publicPath将服务本来是 http://172.18.120.209:3333/的变为 http://172.18.120.209:3333/TSIDS/
-  publicPath: `/TSIDS/`,
-  ...,
-}
-```
-
-如果是vite
-
-```javascript
-import qiankun from "vite-plugin-qiankun";
-export default ({ mode }: ConfigEnv): UserConfig => {
-    return {
-        //publicPath将服务本来是 http://172.18.120.209:3333/的变为 http://172.18.120.209:3333/skywalking/
-        base: "/skywalking/",,
-        plugins:[
-            qiankun("skywalking", {
-              useDevMode: true, // 开发环境必须配置
-            }),
-        ]
-    }
-}
-```
-
-### 设置路由基础路径
-
-```
-//路由基础路径添加
-baseUrl=window.__POWERED_BY_QIANKUN__?props.data.activeRule : process.env.BASE_URL //是乾坤环境用当前子应用的activeRule,否则用环境变量的基础路径
-```
