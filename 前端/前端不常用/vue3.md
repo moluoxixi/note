@@ -2,6 +2,32 @@
 //初始化项目配置
 npm init vue@latest
 ```
+# 设置动态ref并获取(类似$refs)
+```html
+<template>
+	<div v-for="(item,index) in list" :ref="(el: refItem)=> setRef(el,item)" :key"item.name"></div>
+</template>
+<script setup>
+	import {reactive} from 'vue';
+
+	const list = reactive([
+		// 假设列表项包含name属性
+		{ name: 'item1' },
+		{ name: 'item2' },
+		// ...
+	]);
+	
+	const formRefs=reactive({});
+
+	const setRef=(el,item)=>{
+		formRefs[item.name}]=el;
+	}
+	
+	const getRef=(name)=>{
+		return formRefs[name]
+	}
+</script>
+```
 
 # 神奇的extends与mixins
 
