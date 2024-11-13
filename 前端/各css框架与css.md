@@ -196,8 +196,8 @@ module.exports ={
 		};
 
 // 通过自定义变量手动实现
-	// 1.在html/body上写一个属性用于控制主题
-		<body data-theme="dark" />
+	// 1.在html写一个属性用于控制主题
+		<html data-theme="dark" />
 		
 	// 2.定义各主题下自定义变量的值
 		//../theme1.css
