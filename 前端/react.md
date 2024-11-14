@@ -678,7 +678,7 @@ hello<h2>word</h2>
 
 用于获取 `函数组件` 内的Dom元素或组件实例
 
-若需要自定义ref暴露的内容,请使用 [useImperativeHandle](#useImperativeHandle)
+若需要自定义ref暴露的内容,请使用  [useImperativeHandle](#useImperativeHandle与forwardRef)
 
 ```js
 //Parent
@@ -1963,7 +1963,7 @@ react有多种获取ref的方式,各有千秋
 
 相关:
 
-[useImperativeHandle](#useImperativeHandle):用于自定义暴露的ref
+[useImperativeHandle](#useImperativeHandle与forwardRef):用于自定义暴露的ref
 
 [forwardRef](#forwardRef):用于获取函数组件内的ref
 
