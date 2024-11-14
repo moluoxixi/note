@@ -73,6 +73,42 @@ div[data-qiankun="residentdoctor"] .residentdoctor-button {
 ```js
 //experimentalStyleIsolation用于样式隔离,会给全局style加上div[data-qiankun=`${appName}`] 前缀
 //但是<style scoped></script>中的样式不会添加
+
+
+// 解决方案: 写一个vite插件,在每个scoped的样式上加上相同的前缀即可
+
+// ./plugins/vite-plugin-add-scoped-css-prefix.js
+function addScopedCssPrefixPostBuildPlugin(prefixAttr) {  
+  return {  
+    name: 'add-scoped-css-prefix',  
+    transform(code, id) {  
+      if (id.includes('scoped')&& id.includes('.vue')) {  
+        const transformedCode = `${code}${prefixAttr}{${code}}`;  
+        return transformedCode  
+      }  
+    }  
+  }  
+}
+
+import { defineConfig, loadEnv } from 'vite'  
+import vue from '@vitejs/plugin-vue'  
+import vueJsx from '@vitejs/plugin-vue-jsx'  
+import qiankun from "vite-plugin-qiankun";  
+  
+import scopedCssPrefixPlugin from './plugins/vite-plugin-add-scoped-css-prefix.js';  
+// https://vitejs.dev/config/  
+export default defineConfig((mode) => {  
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }  
+  return {  
+    plugins: [  
+      vue(),  
+      scopedCssPrefixPlugin("div[data-qiankun='residentdoctor']"), // 传入你想要添加的前缀  
+      ...
+    ],  
+    ...
+  }  
+})
+
 ```
 ## scoped 样式冲突
 
