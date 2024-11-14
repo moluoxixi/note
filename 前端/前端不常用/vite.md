@@ -187,6 +187,44 @@ await Promise.all(
 	writeFile(dataPath, JSON.stringify(data, null, 2));
 
 ```
+
+# 书写插件
+https://cn.vitejs.dev/guide/api-plugin
+
+## 插件顺序[​](https://cn.vitejs.dev/guide/api-plugin#plugin-ordering)
+
+一个 Vite 插件可以额外指定一个 `enforce` 属性（类似于 webpack 加载器）来调整它的应用顺序。`enforce` 的值可以是`pre` 或 `post`。解析后的插件将按照以下顺序排列：
+
+- Alias
+- 带有 `enforce: 'pre'` 的用户插件
+- Vite 核心插件
+- 没有 enforce 值的用户插件
+- Vite 构建用的插件
+- 带有 `enforce: 'post'` 的用户插件
+- Vite 后置构建插件（最小化，manifest，报告）
+
+## 通用钩子[​](https://cn.vitejs.dev/guide/api-plugin#universal-hooks)
+
+在开发中，Vite 开发服务器会创建一个插件容器来调用 [Rollup 构建钩子](https://rollupjs.org/plugin-development/#build-hooks)，与 Rollup 如出一辙。
+以下钩子在服务器启动时被调用：
+
+- [`options`](https://rollupjs.org/plugin-development/#options)
+- [`buildStart`](https://rollupjs.org/plugin-development/#buildstart)
+
+以下钩子会在每个传入模块请求时被调用：
+
+- [`resolveId`](https://rollupjs.org/plugin-development/#resolveid)
+- [`load`](https://rollupjs.org/plugin-development/#load)
+- [`transform`](https://rollupjs.org/plugin-development/#transform)
+
+它们还有一个扩展的 `options` 参数，包含其他特定于 Vite 的属性。你可以在 [SSR 文档](https://cn.vitejs.dev/guide/ssr.html#ssr-specific-plugin-logic) 中查阅更多内容。
+
+一些 `resolveId` 调用的 `importer` 值可能是根目录下的通用 `index.html` 的绝对路径，这是由于 Vite 非打包的开发服务器模式无法始终推断出实际的导入者。对于在 Vite 的解析管道中处理的导入，可以在导入分析阶段跟踪导入者，提供正确的 `importer` 值。
+
+以下钩子在服务器关闭时被调用：
+
+- [`buildEnd`](https://rollupjs.org/plugin-development/#buildend)
+- [`closeBundle`](https://rollupjs.org/plugin-development/#closebundle)
 # 环境变量
 
 默认情况下:
