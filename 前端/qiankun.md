@@ -83,11 +83,12 @@ div[data-qiankun="residentdoctor"] .residentdoctor-button {
 function addScopedCssPrefixPostBuildPlugin(prefixAttr) {  
   return {  
     name: 'add-scoped-css-prefix',  
-    transform(code, id) {  
-      if (id.includes('scoped')&& id.includes('.vue')) {  
-        const transformedCode = `${code}${prefixAttr}{${code}}`;  
-        return transformedCode  
-      }  
+    transform(code, id) {
+		if(!prefixAttr)return code;
+		if (id.includes('scoped')&& id.includes('.vue')) {
+			const transformedCode = `${code}${prefixAttr}{${code}}`;  
+			return transformedCode  
+		}  
     }  
   }  
 }
@@ -112,11 +113,63 @@ export default defineConfig((mode) => {
 })
 
 ```
-## 部分样式丢失
+## 使用 css 变量,部分样式丢失
 
 ```js
-// qiankun会把样式
+// 当使用css缩写,并且使用了css var,在该样式之后存在它的子属性,则会导致样式丢失
+// 仅在使用 styleNode.textContent=styleNode.sheet.cssRules[0].cssText 时存在
+
+// 例如:
+html{
+	--test:red;
+}
+.a{
+	background: var(--test, blue);
+	background-color: red;
+}
+//解析为:
+.a{
+	background-image: ;
+	background-position-x: ;
+	background-position-y: ;
+	background-size: ;
+	background-repeat: ;
+	background-attachment: ;
+	background-origin: ;
+	background-clip: ;
+	background-color: red;
+}
+
+
+<head>
+	<style>  
+			html{  
+					--test: red  
+			}  
+	</style>  
+</head>  
+<body>  
+<div class="ddd1">  
+        22222  
+</div>  
+<script>  
+	const textNode = document.createTextNode(`  
+		.ddd1 {
+			background: var(--test, blue); 
+			background-color: red;
+		}
+	`);  
+  const styleNode = document.createElement('style');  
+  
+  styleNode.appendChild(textNode);  
+  document.body.append(styleNode);  
+  
+  const rule = styleNode.sheet.cssRules[0];  
+  styleNode.textContent = rule.cssText;
+</script>
 ```
+乾坤源码部分:
+![[Pasted image 20241114160854.png]]
 ## scoped 样式冲突
 
 vue 的 scoped 样式其实也有问题，
