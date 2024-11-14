@@ -38,6 +38,8 @@ const proxy = (container) => {
 };
 ```
 ## 子应用开启experimentalStyleIsolation后, 若存在样式覆盖, 会导致样式解析失败
+暂无解决方案
+
 ```js
 //experimentalStyleIsolation用于样式隔离,会给全局style加上div[data-qiankun=`${appName}`] 前缀
 
