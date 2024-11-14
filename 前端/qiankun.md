@@ -112,6 +112,11 @@ export default defineConfig((mode) => {
 })
 
 ```
+## 部分样式丢失
+
+```js
+// qiankun会把样式
+```
 ## scoped 样式冲突
 
 vue 的 scoped 样式其实也有问题，
