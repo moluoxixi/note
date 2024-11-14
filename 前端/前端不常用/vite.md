@@ -191,7 +191,22 @@ await Promise.all(
 # 书写插件
 https://cn.vitejs.dev/guide/api-plugin
 
-## 插件顺序[​](https://cn.vitejs.dev/guide/api-plugin#plugin-ordering)
+## 示例
+```js
+export default function(options){
+	...,
+	return {
+		name:'插件的名称',
+		enforce:'可选,插件执行顺序',
+		...钩子,
+	}
+}
+```
+
+## 插件调用顺序 [​](https://cn.vitejs.dev/guide/api-plugin#plugin-ordering)
+
+
+执行顺序:
 
 一个 Vite 插件可以额外指定一个 `enforce` 属性（类似于 webpack 加载器）来调整它的应用顺序。`enforce` 的值可以是`pre` 或 `post`。解析后的插件将按照以下顺序排列：
 
@@ -203,28 +218,52 @@ https://cn.vitejs.dev/guide/api-plugin
 - 带有 `enforce: 'post'` 的用户插件
 - Vite 后置构建插件（最小化，manifest，报告）
 
-## 通用钩子[​](https://cn.vitejs.dev/guide/api-plugin#universal-hooks)
+## 常见钩子
+### ## 通用钩子
+也就是 rollup 构建钩子, Vite 开发服务器会创建一个插件容器来调用 [Rollup 构建钩子](https://rollupjs.org/plugin-development/#build-hooks):
+1. buildStart () : 构建前调用, 用于构建前做一些准备工作
+2. buildEnd () : 构建结束后调用, 处理构建完成后的逻辑，如输出日志、生成报告等。
+3. resolveId (source, importer): 解析模块时调用, 参数 `source` 是模块路径或内容，`importer` 是请求该模块的模块路径。可以用于自定义模块解析逻辑。
+4. load (id): 加载模块内容时调用。参数 `id` 是模块 ID。可以用于自定义模块内容的加载逻辑。
+5. transform (source, id): 模块内容加载完毕调用, 用于自定义模板内容, 并返回新的模板内容。参数 `source` 是模块内容，`id` 是模块 ID。
 
-在开发中，Vite 开发服务器会创建一个插件容器来调用 [Rollup 构建钩子](https://rollupjs.org/plugin-development/#build-hooks)，与 Rollup 如出一辙。
-以下钩子在服务器启动时被调用：
+### Vite 独有钩子 
 
-- [`options`](https://rollupjs.org/plugin-development/#options)
-- [`buildStart`](https://rollupjs.org/plugin-development/#buildstart)
+1. **configResolved (config)**
+    - 在 Vite 配置被解析后调用。
+    - 参数 `config` 是最终的 Vite 配置对象。
+    - 可以用于修改配置或基于配置进行一些初始化操作。
+2. **configChanged (changed)**
+    - 在 Vite 配置发生变化时调用。
+    - 参数 `changed` 是一个对象，包含发生变化的配置项。
+    - 可以用于处理配置变化后的逻辑。
+1. **transformIndexHtml (html, url)**
+    - 在转换 index. html 文件时调用。
+    - 参数 `html` 是 HTML 内容，`url` 是 HTML 文件的 URL。
+    - 可以用于自定义 index. html 的转换逻辑，如插入脚本、修改标题等。
+2. **handleHotUpdate (ctx)**
+    - 在处理热更新时调用。
+    - 参数 `ctx` 包含热更新的相关信息。
+    - 可以用于自定义热更新的处理逻辑。
+3. **serverStart (server)**
+    - 在开发服务器启动时调用。
+    - 参数 `server` 是开发服务器的实例。
+    - 可以用于自定义开发服务器的行为，如添加中间件、监听事件等。
+4. **serverStop ()**
+    - 在开发服务器停止时调用。
+    - 可以用于处理服务器停止后的逻辑，如清理资源等。
+5. **configureServer (server)**
+    - 在配置开发服务器时调用。
+    - 参数 `server` 是开发服务器的配置对象。
+    - 可以用于自定义开发服务器的配置，如添加中间件配置等。
+6. **optimizeDeps (deps)**
+    - 在优化依赖项时调用。
+    - 参数 `deps` 是依赖项的信息。
+    - 可以用于自定义依赖项的优化逻辑。
 
-以下钩子会在每个传入模块请求时被调用：
 
-- [`resolveId`](https://rollupjs.org/plugin-development/#resolveid)
-- [`load`](https://rollupjs.org/plugin-development/#load)
-- [`transform`](https://rollupjs.org/plugin-development/#transform)
 
-它们还有一个扩展的 `options` 参数，包含其他特定于 Vite 的属性。你可以在 [SSR 文档](https://cn.vitejs.dev/guide/ssr.html#ssr-specific-plugin-logic) 中查阅更多内容。
 
-一些 `resolveId` 调用的 `importer` 值可能是根目录下的通用 `index.html` 的绝对路径，这是由于 Vite 非打包的开发服务器模式无法始终推断出实际的导入者。对于在 Vite 的解析管道中处理的导入，可以在导入分析阶段跟踪导入者，提供正确的 `importer` 值。
-
-以下钩子在服务器关闭时被调用：
-
-- [`buildEnd`](https://rollupjs.org/plugin-development/#buildend)
-- [`closeBundle`](https://rollupjs.org/plugin-development/#closebundle)
 # 环境变量
 
 默认情况下:
