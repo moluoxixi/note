@@ -102,7 +102,7 @@ export default defineConfig((mode) => {
   return {  
     plugins: [  
       vue(),  
-      scopedCssPrefixPlugin("div[data-qiankun='residentdoctor']"), // 传入你想要添加的前缀  
+      scopedCssPrefixPlugin("div[data-qiankun='residentdoctor']"), // 传入你想要添加的前缀,这个前缀需要与子应用注册时的name相同
       ...
     ],  
     ...
