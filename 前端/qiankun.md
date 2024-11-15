@@ -6,6 +6,7 @@ https://github.com/umijs/qiankun/issues/2254
 
 
 // 解决方法
+import { isEmpty,assign } from 'radash'
 router.beforeEach((to, from, next) => {  
   if (_.isEmpty(history.state.current)) {  
     _.assign(history.state, { current: from.fullPath });  
@@ -388,13 +389,16 @@ if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
 ```
 ## 子应用设置服务基础路径
 
+基础路径需要与 activeRule 相同, 用于主应用匹配子应用并激活, 和 nginx 代理
 ### vue2
 
 ```javascript
-//vue.config.js或webpack.config.js中
+// vue.config.js或webpack.config.js中
+
+// 基础路径需要与 activeRule 相同, 用于主应用匹配子应用并激活, 和 nginx 代理
 module.exports = {
-  //publicPath将服务本来是 http://172.18.120.209:3333/的变为 http://172.18.120.209:3333/TSIDS/
-  publicPath: `/TSIDS/`,
+  //publicPath将服务本来是 http://172.18.120.209:3333/的变为 http://172.18.120.209:3333/residentdoctor/
+  publicPath: `/residentdoctor/`,
   ...,
 }
 ```
@@ -402,13 +406,16 @@ module.exports = {
 ### vite
 
 ```javascript
+// vite.cofing.js
+
+// 基础路径需要与 activeRule 相同, 用于主应用匹配子应用并激活, 和 nginx 代理
 import qiankun from "vite-plugin-qiankun";
 export default ({ mode }: ConfigEnv): UserConfig => {
     return {
-        //publicPath将服务本来是 http://172.18.120.209:3333/的变为 http://172.18.120.209:3333/skywalking/
-        base: "/skywalking/",,
+        //publicPath将服务本来是 http://172.18.120.209:3333/的变为 http://172.18.120.209:3333/residentdoctor/
+        base: "/residentdoctor/",,
         plugins:[
-            qiankun("skywalking", {
+            qiankun("residentdoctor", {
               useDevMode: true, // 开发环境必须配置
             }),
         ]

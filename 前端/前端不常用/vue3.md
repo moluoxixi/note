@@ -1995,6 +1995,5 @@ app.mount('#root')//挂载根节点
 之后的webpack配置是隐藏的,使用serve启动
 
 ```
-npm i @vue/cli -g
-vue create 项目文件名
+npm create vue@latest
 ```
