@@ -399,7 +399,7 @@ module.exports = {
 }
 ```
 
-### 如果是 vite
+### vite
 
 ```javascript
 import qiankun from "vite-plugin-qiankun";
@@ -420,11 +420,13 @@ export default ({ mode }: ConfigEnv): UserConfig => {
 ### vue2
 ```js
 import VueRouter from 'vue-router';
-const routes=[]
+const routes=[...]
 export const getRouter = function(props) {  
   let base = '';  
   if (window.__POWERED_BY_QIANKUN__) {  
-    base = props.data.activeRule || '/';  
+    const { activeRule='/' } = props.data;  
+    ... 
+    base = activeRule;
   } else {  
     base = process.env.BASE_URL;
   }  
@@ -441,13 +443,13 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 import { isEmpty,assign } from 'radash'
 
-const routes= []
+const routes= [...]
 
 function getRouter(props) {  
   let base;  
   const routes=_.cloneDeep(Routes);  
   if (qiankunWindow.__POWERED_BY_QIANKUN__) {  
-    const { activeRule } = props.data;  
+    const { activeRule='/' } = props.data;  
     ... 
     base = activeRule;  
   }  
