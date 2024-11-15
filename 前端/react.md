@@ -18,9 +18,7 @@ https://juejin.cn/post/7146107198215553055
 
 使用useMemo缓存传递给子组件的对象
 
-使用createContext(默认值)创建context对象
-
-context对象.Provider 的value传递共享数据，当value的值发生改变时，所有依赖该数据的组件会重新渲染  //共享状态组件
+使用createContext(默认值)创建context对象 , context对象.Provider 的value传递共享数据，当value的值发生改变时，所有依赖该数据的组件会重新渲染  //共享状态组件
 
 使用useReducer/useState创建共享状态,与修改共享状态的方法
 
