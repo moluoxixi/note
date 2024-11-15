@@ -592,7 +592,7 @@ const obj1=readonly({a:1}); //
 
 如需监听对象中的某个属性,第一个参数传回调返回改属性
 
-```
+```js
 watch(listenState,changeHandler,options);
 //回调形式可用于监视单个属性
 watch(()=>listenState,changeHandler,options);
@@ -600,7 +600,7 @@ watch(()=>listenState,changeHandler,options);
 
 demo
 
-```
+```js
 const val=ref(1);
 //c,p的值是val.value的值
 watch(val,(c,p)=>{},{immidiate:true,...});
