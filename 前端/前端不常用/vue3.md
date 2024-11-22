@@ -1582,8 +1582,8 @@ loading: require('../src/assets/image/loading.gif'),
         loader: () => import('./views/home.vue'),
         delay: 200,
         timeout: 3000,
-        error: ErrorComponent, //错误UI组件
-        loading: LoadingComponent //加载UI组件
+        errorComponent: ErrorComponent, //错误UI组件
+        loadingComponent: LoadingComponent //加载UI组件
     })
 </script>
 ```
