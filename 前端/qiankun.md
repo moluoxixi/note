@@ -1,4 +1,5 @@
 # 一些坑
+![[453422804453667002c2d737fab1617.png]]
 ## vue 3 作为子应用,路由跳转使不同子应用来回切换,vue3子应用多次挂载问题
 https://github.com/umijs/qiankun/issues/2254
 ```javascript
