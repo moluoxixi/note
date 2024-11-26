@@ -1,8 +1,8 @@
 # 一些坑
-## vue 3 作为子应用,路由切换出现 undefined
+## vue 3 作为子应用,路由跳转使不同子应用来回切换,vue3子应用多次挂载问题
 https://github.com/umijs/qiankun/issues/2254
 ```javascript
-// vue3作为子应用,路由来回切换会出现undefined(好像是跳子路由)
+// 路由跳转使不同子应用来回切换,vue3子应用多次挂载问题
 
 
 // 解决方法
