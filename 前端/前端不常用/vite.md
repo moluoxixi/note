@@ -14,7 +14,7 @@ vite将代码分为源码和依赖两块,依赖是指node module中的第三方�
 	5. 项目根路径
 	6. 路径解析配置
 	7. 自定义资源类型
-2. 依赖扫描:如果没有命中缓存(即关键信息有变化),会使用`esbuildScanPlugin`从入口文件出发扫描项目使用到的依赖,然后调用Esbuild的build方法进行预打包也就是build函数的write配置项指定为false,不写入磁盘,**由于不写入磁盘,预打包速度非常快**,最后将预打包的信息输出到控制台
+2. 依赖扫描:如果缓存判断两次hash值不一样(代表关键信息变化了),会使用`esbuildScanPlugin`从入口文件出发扫描项目使用到的依赖,然后调用Esbuild的build方法进行预打包也就是build函数的write配置项指定为false,不写入磁盘,**由于不写入磁盘,预打包速度非常快**,最后将预打包的信息输出到控制台
 3. 依赖打包(将依赖转换为esModule):依赖扫描完毕后,正式调用build方法进行依赖打包,将打包信息(`build返回值.metafile`)写入`_metadata.json`
 	1. 将node_modules下非esmodule的处理为esmodule，
 	2. 最后将他们进行打包变成一个esmodule模块(结果缓存在node_modules/.vite中)
