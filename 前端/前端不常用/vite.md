@@ -3,7 +3,10 @@
 vite是基于es module(script type:module&import)实现的，
 
 vite将代码分为源码和依赖两块,依赖是指node module中的第三方包(不会变),源码是指开发的代码(时刻会变)
-
+```js
+//函数调用顺序
+startServer -> runOptimize -> optimizeDeps -> scanImports -> esbuild.build
+```
 **预构建:**
 在 `启服务(npm run dev等)` 的时候,仅执行预构建操作,会经过`缓存判断`,`依赖扫描`,`依赖打包`三个阶段:
 1. 缓存判断:Vite在每次预构建之后会将一些关键信息写入到`_metadata.json`文件中，下次构建时,使用这些信息计算hash值和当前信息计算的hash值进行对比,判断是否使用缓存,关键信息是指:
