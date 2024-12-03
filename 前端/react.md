@@ -915,7 +915,7 @@ const combineReducers=(reducers)=>{
 
 **applyMiddleware 里有一段 middleware({getState, dispatch})(store.dispatch) 代码这段代码执行完毕后返回一个接收action的函数,用于接收store.dispatch传递过来的action**
 
-```
+```js
 //rest是在调用中间键时自己传递的参数  applyMiddleware(thunk(参数1,...))
 export default function thunk(...rest) {
   // 返回一个中间键函数
