@@ -619,6 +619,15 @@ const location=useLocation();
 ```js
 const useXxx=()=>{}
 ```
+# React.Children
+React.Children用来操作children，它有 map、forEach、toArray、only、count 等方法。
+
+相比于 children直接调用,例如children.map,
+
+它有如下不同:
+1. 用数组的方法不会对 children 做拍平，而 React.Children 会将children里的虚拟dom拍平为一层
+2. 用数组的方法不能做排序，因为 children 的元素是只读的，而用 React.Children.toArray 转成数组就可以了
+3. 用数组的方法需要声明 children 为 ReactNode[]类型，这样就必须传入多个元素才行，而React.Children 不用
 
 # React组件
 
