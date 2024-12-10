@@ -31,8 +31,10 @@ renderer
 
 打开 Visual Studio Code , 打开内置终端并输入下面命令创建一个 nuxt 项目：
 
-```
-npx nuxi init nuxt3-app
+```js
+//新建
+npx create-nuxt-app <项目名>
+npx nuxt init nuxt3-app
 ```
 
 ## 安装依赖
