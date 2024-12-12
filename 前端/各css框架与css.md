@@ -32,39 +32,31 @@
 	/*实用程序样式*/  
 	@tailwind utilities;
 
--->vite项目
+-->3.vite项目https://www.tailwindcss.cn/docs/guides/vite
 	-->3.下载依赖并初始化后直接run dev就行,vite会自动引入postcss.config.js
 		npm install -D tailwindcss postcss autoprefixer
 		npx tailwindcss init -p
 
--->非vite的普通项目
+-->3.非vite的普通项目
 
-	-->3.下载tailwind并初始化
+	-->1.下载tailwind并初始化
 		npm install -D tailwindcss
 		npx tailwindcss init
 	
-	-->4.base.scss中引入tailwind.scss,同时写一些公共的样式
+	-->2.base.scss中引入tailwind.scss,同时写一些公共的样式
 	     @import "tailwind.css";
 	
-	-->5.监听使用,动态生成main.css
+	-->3.监听使用,动态生成main.css
 		npx tailwindcss -i ./src/assets/styles/base.scss -o ./src/assets/styles/main.css --watch 
 	
-	-->6.main.js中引入main.css
+	-->4.main.js中引入main.css
 		import './assets/styles/main.css'
 		import {createApp} from 'vue'  
 		import App from './App.vue'
 		createApp(App).mount('#app')
 ```
 
-```css
-/** tailwind.css */
-@tailwind base;       //基础样式
-@tailwind components; //组件样式
-@tailwind utilities;  //实用程序样式
-```
-
 use
-
 ```css
 .aaa {
     background: red;
