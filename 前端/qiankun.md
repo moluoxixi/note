@@ -39,7 +39,7 @@ const proxy = (container) => {
 };
 ```
 ## 子应用开启experimentalStyleIsolation后, 若存在样式覆盖, 会导致样式解析失败
-暂无解决方案
+暂无解决方案,只能强写样式覆盖错误样式
 
 ```js
 //experimentalStyleIsolation用于样式隔离,会给全局style加上div[data-qiankun=`${appName}`] 前缀
@@ -71,6 +71,22 @@ div[data-qiankun="residentdoctor"] .residentdoctor-button {
 	border-left:0;
 }
 ```
+
+
+```js
+//fixQiankun.scss
+//将这个文件引入放在element样式引入之后,
+.el-button {  
+  border: 1px solid var(--border-color-1);  
+  &--text{  
+    border-color: transparent;  
+  }  
+}  
+  
+.el-radio-button__inner {  
+  border: 1px solid var(--border-color-1);  
+}
+```
 ## 子应用开启 experimentalStyleIsolation 后, 局部样式未添加前缀, 会导致权重问题
 
 ```js
@@ -81,17 +97,17 @@ div[data-qiankun="residentdoctor"] .residentdoctor-button {
 // 解决方案: 写一个vite插件,在每个scoped的样式上加上相同的前缀即可
 
 // ./plugins/addScopedCssPrefixPostBuildPlugin.js
-export default function addScopedCssPrefixPostBuildPlugin({ prefixScoped, oldPrefix, newPrefix}) {
+export default function addScopedCssPrefixPostBuildPlugin({ prefixScoped, oldPrefix, newPrefix }) {  
   return {  
     name: 'add-prefixScoped-or-changePrefix-css',  
     transform(code, id) {  
       if (!prefixScoped && !oldPrefix && !newPrefix) return  
       if (id.includes('node_modules')) return  
+  
+      const cssLangs = ['css', 'scss', 'less', 'stylus', 'styl']  
       let newCode = code  
-        // 给template的class和style修改前缀  
       if (id.endsWith('.vue')) {  
-        function changeHtmlClassPrefix (htmlString, oldPrefix, newPrefix) {  
-          // 匹配style和class开头的任意样式或者_normalizeClass|_normalizeStyle函数  
+        function changeHtmlClassPrefix(htmlString, oldPrefix, newPrefix) {  
           const regex = new RegExp(  
             `(class|style)\\s*:\\s*((["']((${oldPrefix}\\b)-).*["'])|((_normalizeClass|_normalizeStyle)\\(.*(${oldPrefix}\\b)-.*\\)))`,  
             'g'  
@@ -103,8 +119,8 @@ export default function addScopedCssPrefixPostBuildPlugin({ prefixScoped, oldPre
   
         newCode = changeHtmlClassPrefix(newCode, oldPrefix, newPrefix)  
       }  
-      // 给scoped样式修改前缀,并添加指定选择器包裹,例如.a{}变为div[data-qiankun='residentdoctor'] .a{}  
-      else if (id.includes('.vue') && id.includes('scoped')) {  
+      // else if (id.includes('.vue') && id.includes('scoped')) {  
+      else if (cssLangs.some((lang) => id.endsWith(`.${lang}`))) {  
         if (oldPrefix && newPrefix) {  
           function changeSelectorPrefix(cssString, oldPrefix, newPrefix) {  
             const regex = new RegExp(  
@@ -127,7 +143,7 @@ export default function addScopedCssPrefixPostBuildPlugin({ prefixScoped, oldPre
     }  
   }  
 }
-
+// vite-config.js
 import { defineConfig, loadEnv } from 'vite'  
 import vue from '@vitejs/plugin-vue'  
 import vueJsx from '@vitejs/plugin-vue-jsx'  
@@ -138,7 +154,7 @@ import addScopedCssPrefixPostBuildPlugin from './plugins/addScopedCssPrefixPostB
 export default defineConfig((mode) => {  
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }  
   return {  
-    plugins: [  
+	plugins: [  
 		vue(),
 		addScopedCssPrefixPostBuildPlugin({  
 		  prefixScoped: "div[data-qiankun='residentdoctor']",  
@@ -146,8 +162,8 @@ export default defineConfig((mode) => {
 		  newPrefix: 'residentdoctor'   // 传入你想要添加的前缀,这个前缀需要与子应用注册时的name相同
 		}),
 		...
-    ],  
-    ...
+	],  
+	...
   }  
 })
 
