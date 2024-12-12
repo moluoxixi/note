@@ -93,7 +93,6 @@ div[data-qiankun="residentdoctor"] .residentdoctor-button {
 //experimentalStyleIsolation用于样式隔离,会给全局style加上div[data-qiankun=`${appName}`] 前缀
 //但是<style scoped></script>中的样式不会添加
 
-
 // 解决方案: 写一个vite插件,在每个scoped的样式上加上相同的前缀即可
 
 // ./plugins/addScopedCssPrefixPostBuildPlugin.js
@@ -166,7 +165,6 @@ export default defineConfig((mode) => {
 	...
   }  
 })
-
 ```
 ## 使用 css 变量,部分样式丢失
 
