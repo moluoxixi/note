@@ -7,6 +7,16 @@
 - [ ] lazy-load
 - [ ] useCookie,useHover,useScrolling
 - [ ] useSize,useHover,useTimeout,useWhyDidYouUpdate,useCountDown
-- [ ] react-spring ✅ 2024-12-12
+- [ ] react-spring
+- [ ] message
+- [ ] popover
+- [ ] colorPicker
+- [ ] onBoarding 漫游组件
+- [ ] upload
+- [ ] form
+- [ ] keepalive
+- [ ] 拖拽组件
+- [ ] playground
+- [ ] 低代码
 
 # plan微前端
