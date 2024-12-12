@@ -262,7 +262,7 @@ start({
 ### 声明子应用QIANKUN_APP
 ```js
 //.env
-// 该名称必须与子应用的activeRule名称相同
+// 该名称必须与子应用的entry名称相同
 VITE_QIANKUN_APP_NAME = 'residentdoctor'
 ```
 ## 子应用注入生命周期
