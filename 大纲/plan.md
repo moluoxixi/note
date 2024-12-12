@@ -3,11 +3,10 @@
 # planReact
 - [x] space组件  ✅ 2024-12-10
 - [x] 三种简单组件(copy,mutationObserver,Portal) vue仅使用copy  ✅ 2024-12-10
-- [ ] watermark组件
+- [x] watermark组件
 - [ ] lazy-load
 - [ ] useCookie,useHover,useScrolling
 - [ ] useSize,useHover,useTimeout,useWhyDidYouUpdate,useCountDown
-- [ ] react-spring
+- [ ] react-spring ✅ 2024-12-12
 
 # plan微前端
-- [ ] test

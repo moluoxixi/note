@@ -261,19 +261,26 @@ module.exports ={
 
 ```
 # css Modules
-
-基于postcss
-
-
+基于[postcss-modules](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fmadyankin%2Fpostcss-modules "https://github.com/madyankin/postcss-modules")
 1. Module.Css (module 是一种约定, 表示需要开启 css 模块化).
-2. 他会将你的所有类名进行一定规则的替换 (将 footer 替换成 `_footer_i 22 st_1`)
-3. 同时创建一个映像对象{ footer: “`_footer_i 22 st_1`” }
-4. 将替换过后的内容塞进 style 标签里然后放入到 head 标签中.
-5. 将 componentA. Moudle. Css 内容进行全部抹除，替换成 JS 脚本.
-6. 将创建的映射对象在脚本中进行默认导出.
+2. 他会将你的所有类名进行一定规则的替换 (将`类名`改为 `类名_hash值`)
+3. 同时创建一个映像对象并默认导出`export default{ 类名: 类名_hash值,... }`
+4. 将替换过后的内容塞进 style 标签里然后放入到 head 标签中,
+5. 将默认导出的映射对象路径替换`xxx.module.css`的路径,
 
+例如:
+```css
+/*button.module.css*/
+.btn-wrapper {
+    padding: 20px;
+}
 
-css Modues会将.module.css文件编译成这个样子
+.btn {
+    background: blue;
+}
+
+```
+css Modues会将`button.module.css`文件编译成这个样子
 
 ![](images/WEBRESOURCE2e01d5001b00b663c689e9ca71f89b9cimage.png)
 
