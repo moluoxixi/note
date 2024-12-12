@@ -220,8 +220,9 @@ vue 的 scoped 样式其实也有问题，
 
 它的 data-v-XXXXX 算出来就是一样的，此时样式还是会冲突
 # 乾坤配置
+## 主应用
 
-## 主应用注册并启动
+### 主应用注册并启动
 通常主应用会做登录和菜单功能, 点击菜单的同时通过路由动态切换子应用
 ```js
 import { loadMicroApp, start, registerMicroApps } from 'qiankun'
@@ -257,6 +258,13 @@ start({
 })
 ```
 
+## 子应用
+### 声明子应用QIANKUN_APP
+```js
+//.env
+// 该名称必须与子应用的activeRule名称相同
+VITE_QIANKUN_APP_NAME = 'residentdoctor'
+```
 ## 子应用注入生命周期
 ### vue2
 
@@ -437,7 +445,7 @@ if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
 // 基础路径需要与 activeRule 相同, 用于主应用匹配子应用并激活, 和 nginx 代理
 module.exports = {
   //publicPath将服务本来是 http://172.18.120.209:3333/的变为 http://172.18.120.209:3333/residentdoctor/
-  publicPath: `/residentdoctor/`,
+  publicPath: `/${process.env.VITE_QIANKUN_APP_NAME}`,
   ...,
 }
 ```
@@ -450,11 +458,12 @@ module.exports = {
 // 基础路径需要与 activeRule 相同, 用于主应用匹配子应用并激活, 和 nginx 代理
 import qiankun from "vite-plugin-qiankun";
 export default ({ mode }: ConfigEnv): UserConfig => {
+	const VITE_QIANKUN_APP_NAME=process.env.VITE_QIANKUN_APP_NAME
     return {
         //publicPath将服务本来是 http://172.18.120.209:3333/的变为 http://172.18.120.209:3333/residentdoctor/
-        base: "/residentdoctor/",,
+        base: `/${VITE_QIANKUN_APP_NAME}$`,
         plugins:[
-            qiankun("residentdoctor", {
+            qiankun(VITE_QIANKUN_APP_NAME, {
               useDevMode: true, // 开发环境必须配置
             }),
         ]
@@ -497,14 +506,14 @@ function getRouter(props) {
   if (qiankunWindow.__POWERED_BY_QIANKUN__) {  
     const { activeRule='/' } = props.data;  
     ... 
-    base = activeRule;  
+    base = activeRule;
   }  
   else {  
-    base = '/residentdoctor'  
+    base = `/${import.meta.env.VITE_QIANKUN_APP_NAME}`  
   }  
   const router = createRouter({  
     history: createWebHistory(base),  
-    routes  
+    routes
   })
 
 	
