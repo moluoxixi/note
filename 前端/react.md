@@ -1614,7 +1614,6 @@ react-router
 react-router 包含大部分核心功能,包括路由匹配算法,大部分的核心组件和钩子函数
 
 react-router-dom 包括 react-router 的所有内容，并添加了一些特定于 DOM 的 API，包括 
-
 react-router-native 包括 react-router 的所有内容，并添加了一些特定于 React Native 的 API，包括 `<NativeRouter>` 和 `<Link>` 的原生版本
 
 ## 路由的基本使用
@@ -1649,12 +1648,12 @@ root.render(
 写路由配置表并导出
 ```js
 //router/index.ts
+import Button form './components/button'
 export const routes=[
     {
-        path:'路由地址',
-        element:组件标签,
+        path:'/',
+        element:<Button/>,
         children:[{
-            子路由属性值,
             ...
         }]
     }
@@ -1665,8 +1664,9 @@ export const routes=[
 ### 导入路由表并使用
 ```js
 //App.tsx
-import {useRoutes} from 'react-router-dom';
-import 路由表 from '...';
+//有一些版本需要从react-router-dom引入
+import {useRoutes} from 'react-router';
+import {routes} from '...';
 function App(){
     return (
         <div>
@@ -1692,7 +1692,8 @@ const useRoutes=(routes=[])=>{
 ### 展示路由
 要展示路由的组件中写入
 ```js
-import {Outlet} from 'react-router-dom';
+//有一些版本需要从react-router-dom引入
+import {Outlet} from 'react-router';
 <div>
     //Outlet等同于vue的router-view,就是显示路由的地方,outlet组件内的outlet就是子路由,以此类推
     <Outlet></Outlet>
@@ -1706,9 +1707,9 @@ import {Outlet} from 'react-router-dom';
 
 引入
 
-```
-import {NavLink,Link} from 'react-router-dom';
-
+```js
+//有一些版本需要从react-router-dom引入
+import {NavLink,Link} from 'react-router';
 ```
 
 link 标签的用法
