@@ -6,7 +6,7 @@
 
 `npx tailwindcss init -p`
 
-## 基础示例
+## 常用示例
 
 
 首先要在主文件的.css文件中声明:
@@ -18,19 +18,42 @@
 	   content: ["./src/**/*.{vue}"],
 	   //主题
 	   theme: {
-	     extend: {},
+		 //修改tailwind内置的css类
+		 ...
+	     extend: {
+		     //扩展一些类
+		     ...
+	     },
 	   },
 	   //插件
 	   plugins: [],
 	 }
 
--->2.tailwind.scss中声明引用的样式类型
+-->2.tailwind.scss中声明引用的样式类型,并通过@layer和@apply扩展一些实用class
 	/*基础样式*/  
 	@tailwind base;  
 	/*组件样式*/  
 	@tailwind components;  
 	/*实用程序样式*/  
 	@tailwind utilities;
+
+	@layer base {  
+	//  .your-custom-class {  
+	//    @apply ...;
+	//  }
+	}  
+	
+	@layer components {  
+	//  .your-custom-class {  
+	//    @apply ...;
+	//  }
+	}  
+	
+	@layer utilities {  
+	//  .your-custom-class {  
+	//    @apply ...;
+	//  }
+	}
 
 -->3.vite项目https://www.tailwindcss.cn/docs/guides/vite
 	-->1.下载依赖并初始化后直接run dev就行,vite会自动引入postcss.config.js
@@ -86,18 +109,15 @@ use
 //等同于
 <div class="text-[14px] bg-red-500 hover:text-[30px] md:bg-blue-500"></div>
 ```
-
-## @layer扩展&@apply复用
-
-use
-
+## 定制化配置内容
+### @layer扩展&@apply复用扩展一些css类
 ```css
-//App.css
+/*tailwind.css*/
 @tailwind base;       //基础样式
 @tailwind components; //组件样式
 @tailwind utilities;  //实用程序样式
 
-//扩展components样式
+/*扩展components样式*/
 @layer components{
     .hover-and-other{
         //@apply用于允许你应用Tailwind CSS中现有的样式值
@@ -109,7 +129,7 @@ use
 }
 ```
 
-## 自定义插件扩展样式
+### 自定义插件扩展css类
 
 主要用于多项目复用
 
@@ -130,21 +150,21 @@ module.exports = plugin(function({ addUtilities }) {
 })
 ```
 
-## 添加 prefix 避免和自定义 class 重名
+### 添加 prefix 避免和自定义 class 重名
 
 ```javascript
 //tailwind.config.js
 
 /*@type {import('tailwindcss').Config}**/
-module.exports =
-{
+module.exports ={
     ...,
-    //添加 prefix,但是所有的原子 class 都会加上 prefix
-    prefix:'qianzui',
+    //添加 prefix,但是所有的原子 class 都会加上 prefix,
+    //因此使用时也需要加上
+    prefix:'wl-',
 }
 ```
 
-## 修改默认主题
+### 修改默认主题
 
 ```javascript
 //tailwind.config.js
@@ -180,7 +200,7 @@ module.exports ={
     }
 }
 ```
-## 动态主题切换
+### 动态主题切换
 
 ```js
 //tailwind默认支持暗黑主题切换
