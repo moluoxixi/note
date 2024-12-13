@@ -37,7 +37,10 @@
 		npm install -D tailwindcss postcss autoprefixer
 		npx tailwindcss init -p
 
-	-->2.vite.config.js中引入插件,tailwindcss本身也作为一个postcss插件
+	-->2.base.scss中引入tailwind.scss,同时写一些公共的样式
+	     @import "tailwind.css";
+	 
+	-->3.vite.config.js中引入插件,tailwindcss本身也作为一个postcss插件
 		export default defineConfig({
 			..., 
 			css:{  
