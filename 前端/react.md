@@ -1622,10 +1622,8 @@ react-router-native 包括 react-router 的所有内容，并添加了一些特�
 **多级路由和二级路由写法一样,一层层往下套**
 
 ### 注册路由模式
-
-主文件中写入,一般是index.js/main.js
-
 ```javascript
+// src/main.ts
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -1648,12 +1646,9 @@ root.render(
 ```
 
 ### 路由表
-
-route目录下index.tsx
-
 写路由配置表并导出
-
-```
+```js
+//router/index.ts
 export const routes=[
     {
         path:'路由地址',
@@ -1665,14 +1660,11 @@ export const routes=[
     }
     ...
 ]
-
 ```
 
 ### 导入路由表并使用
-
-根组件内
-
-```
+```js
+//App.tsx
 import {useRoutes} from 'react-router-dom';
 import 路由表 from '...';
 function App(){
@@ -1698,10 +1690,8 @@ const useRoutes=(routes=[])=>{
 ```
 
 ### 展示路由
-
 要展示路由的组件中写入
-
-```
+```js
 import {Outlet} from 'react-router-dom';
 <div>
     //Outlet等同于vue的router-view,就是显示路由的地方,outlet组件内的outlet就是子路由,以此类推
