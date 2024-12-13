@@ -33,9 +33,18 @@
 	@tailwind utilities;
 
 -->3.vite项目https://www.tailwindcss.cn/docs/guides/vite
-	-->3.下载依赖并初始化后直接run dev就行,vite会自动引入postcss.config.js
+	-->1.下载依赖并初始化后直接run dev就行,vite会自动引入postcss.config.js
 		npm install -D tailwindcss postcss autoprefixer
 		npx tailwindcss init -p
+
+	-->2.vite.config.js中引入插件,tailwindcss本身也作为一个postcss插件
+		export default defineConfig({
+			..., 
+			css:{  
+			postcss:{  
+			  plugins: [tailwindcss, autoprefixer()]  
+			}  
+		}
 
 -->3.非vite的普通项目
 
