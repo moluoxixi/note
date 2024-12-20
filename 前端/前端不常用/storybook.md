@@ -101,11 +101,11 @@ const meta: metaType = {
      //meta.loaded loaders数组中 函数的返回值组成的对象
      return <Button {...args}{...meta.loaded} />
   },
-  //加载时运行,用来请求基础数据
+  //加载时运行,用来请求基础数据,不晓得有啥用
   loaders: [
-	async () => {
-		await '假装 fetch'
-		return {list: [111]}
+	async ({args,...rest}) => {
+		const obj=await '假装 fetch'
+		return {args:{...args,...obj},...rest}
 	}
   ],
   //组件渲染完毕就会执行,常用来测试
