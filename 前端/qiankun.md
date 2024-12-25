@@ -96,41 +96,43 @@ div[data-qiankun="residentdoctor"] .residentdoctor-button {
 // 解决方案: 写一个vite插件,在每个scoped的样式上加上相同的前缀即可
 
 // ./plugins/addScopedCssPrefixPostBuildPlugin.js
+// 修改html中前缀的函数
+function changeHtmlClassPrefix (htmlString, oldPrefix, newPrefix) {  
+  const regex = new RegExp(  
+    `(class|style)\\s*:\\s*((["']((${oldPrefix}\\b)-).*["'])|((_normalizeClass|_normalizeStyle)\\(.*(${oldPrefix}\\b)-.*\\)))`,  
+    'g'  
+  )  
+  return htmlString.replace(regex, (match, p1, offset, string) => {  
+    return match.replace(oldPrefix, newPrefix)  
+  })  
+}  
+
+// 修改css中前缀的函数
+function changeSelectorPrefix (cssString, oldPrefix, newPrefix) {  
+  const regex = new RegExp(  
+    `(\\.${oldPrefix}\\b|\#${oldPrefix}\\b|\--${oldPrefix}\\b)`,  
+    'g'  
+  )  
+  return cssString.replace(regex, (match, p1, offset, string) => {  
+    return match.replace(oldPrefix, newPrefix)  
+  })  
+}  
+  
 export default function addScopedCssPrefixPostBuildPlugin({ prefixScoped, oldPrefix, newPrefix }) {  
   return {  
     name: 'add-prefixScoped-or-changePrefix-css',  
     transform(code, id) {  
-      if (!prefixScoped && !oldPrefix && !newPrefix) return  
+      if (!oldPrefix || !newPrefix) return  
       if (id.includes('node_modules')) return  
   
       const cssLangs = ['css', 'scss', 'less', 'stylus', 'styl']  
       let newCode = code  
       if (id.endsWith('.vue')) {  
-        function changeHtmlClassPrefix(htmlString, oldPrefix, newPrefix) {  
-          const regex = new RegExp(  
-            `(class|style)\\s*:\\s*((["']((${oldPrefix}\\b)-).*["'])|((_normalizeClass|_normalizeStyle)\\(.*(${oldPrefix}\\b)-.*\\)))`,  
-            'g'  
-          )  
-          return htmlString.replace(regex, (match, p1, offset, string) => {  
-            return match.replace(oldPrefix, newPrefix)  
-          })  
-        }  
-  
         newCode = changeHtmlClassPrefix(newCode, oldPrefix, newPrefix)  
       }  
       // else if (id.includes('.vue') && id.includes('scoped')) {  
       else if (cssLangs.some((lang) => id.endsWith(`.${lang}`))) {  
         if (oldPrefix && newPrefix) {  
-          function changeSelectorPrefix(cssString, oldPrefix, newPrefix) {  
-            const regex = new RegExp(  
-              `(\\.${oldPrefix}\\b|\#${oldPrefix}\\b|\--${oldPrefix}\\b)`,  
-              'g'  
-            )  
-            return cssString.replace(regex, (match, p1, offset, string) => {  
-              return match.replace(oldPrefix, newPrefix)  
-            })  
-          }  
-  
           newCode = changeSelectorPrefix(newCode, oldPrefix, newPrefix)  
         }  
         if (prefixScoped) {  
