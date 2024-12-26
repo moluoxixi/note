@@ -134,7 +134,8 @@ export default function addScopedCssPrefixPostBuildPlugin({ prefixScoped, oldPre
       else if (cssLangs.some((lang) => id.endsWith(`.${lang}`))) {  
         if (oldPrefix && newPrefix) {  
           newCode = changeSelectorPrefix(newCode, oldPrefix, newPrefix)  
-        }  
+        }
+        // 给代码包裹一层指定前缀的选择器
         if (prefixScoped) {  
           newCode = `${newCode}${prefixScoped}{${newCode}}`  
         }  
