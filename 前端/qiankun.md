@@ -20,9 +20,10 @@ router.beforeEach((to, from, next) => {
 
 //解决方案:
 // 将子应用appendBody的元素,挂载到子应用根元素身上  
-const proxy = (container) => {  
-  console.log(document.body.appendChild);  
-  if (document.body.appendChild.__isProxy__) return;  
+const proxy = (container) => {
+  //**检查是否已代理
+  if (document.body.appendChild.__isProxy__) return;
+  //创建可撤销的proxy对象,返回{proxy,revoke},proxy是代理对象,revoke是撤销方法
   const revocable = Proxy.revocable(document.body.appendChild, {  
     apply (target, thisArg, [node]) {  
       if (container) {  
