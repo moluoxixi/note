@@ -1,0 +1,203 @@
+{
+  "main": {
+    "id": "5324373015726ba8",
+    "type": "split",
+    "children": [
+      {
+        "id": "4509724f8bf84da7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e7a7b303c61786dc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "大纲/大纲.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "475aa19d803a658b",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "e8516b26a9c33da9",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "c33591cfaf47ded6",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true
+          }
+        }
+      },
+      {
+        "id": "667fee49cf29a907",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {}
+        }
+      },
+      {
+        "id": "e7b534868984a691",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          }
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "39e6f0a4abb01d2f",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "1c745709f84c6f6c",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "大纲/大纲.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "a1f650360aa96179",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "大纲/大纲.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "34e4d5c35b1b11c9",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "大纲/大纲.md"
+          }
+        }
+      },
+      {
+        "id": "5c8f9cf4decca332",
+        "type": "leaf",
+        "state": {
+          "type": "git-history-view",
+          "state": {}
+        }
+      },
+      {
+        "id": "36cf7c510d2dc997",
+        "type": "leaf",
+        "state": {
+          "type": "calendar",
+          "state": {}
+        }
+      }
+    ],
+    "currentTab": 2
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "templater-obsidian:Templater": false,
+      "homepage:Open homepage": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "remotely-save:Remotely Save": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
+    }
+  },
+  "active": "e7a7b303c61786dc",
+  "lastOpenFiles": [
+    "HIS.md",
+    "业务/业务.md",
+    "大纲/大纲.md",
+    "乘车.md",
+    "his.md",
+    "号脉.md",
+    "会诊.md",
+    "门诊.md",
+    "前端/微前端方案.md",
+    "his5.0门诊.md",
+    "_debug_remotely_save/sync_plans_hist_exported_on_1735298425094.md",
+    "未命名",
+    "_debug_remotely_save",
+    "大纲/plan.md",
+    "后端/maven.md",
+    "其他/dataview.md",
+    "output/docker.md",
+    "其他/qiankun问题采集.md",
+    "其他/images/Pasted image 20241212164346.png",
+    "其他/images/237d3a9a2abf28998ea3ec7bfca4387.jpg",
+    "output/assets/docker.png",
+    "前端/images/Pasted image 20241114160854.png",
+    "大纲/images",
+    "其他/images",
+    "output/assets",
+    "output",
+    "dataview",
+    "rs-test-folder--yjFYZ6GI9m_xD19HuMjU",
+    "rs-test-folder-XQmhgAY_FARjGp4wyGxC6",
+    "rs-test-folder-W5xdXrj3xuQeTv1TfrTz9",
+    "其他/搭一台服务器.md",
+    "前端/前端不常用/vite.md",
+    "前端/electron.md",
+    "后端/天天卷-后端.md",
+    "其他/汇报.md",
+    "其他/计划.md",
+    "其他/ada.md",
+    "其他/扩展业务.md",
+    "其他/电子病历.md",
+    "前端/tauri.md",
+    "后端/images/msql客户端.png",
+    "业务/images/fe1f38d3ee89405a65a36878b2976dd.png",
+    "docker.png",
+    "后端/images/docker.png",
+    "前端/images/Pasted image 20240718161443.png",
+    "前端/antv/images/WEBRESOURCE3c0382e84cef954a54c7ef3831d176a1截图.png"
+  ]
+}

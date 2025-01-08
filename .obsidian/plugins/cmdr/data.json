@@ -1,0 +1,48 @@
+{
+  "confirmDeletion": true,
+  "showAddCommand": true,
+  "debug": false,
+  "editorMenu": [],
+  "fileMenu": [],
+  "leftRibbon": [],
+  "rightRibbon": [],
+  "titleBar": [],
+  "statusBar": [],
+  "pageHeader": [
+    {
+      "id": "global-search:open",
+      "icon": "lucide-search",
+      "name": "搜索",
+      "mode": "any"
+    },
+    {
+      "id": "homepage:open-homepage",
+      "icon": "home",
+      "name": "主页(大纲)",
+      "mode": "any"
+    },
+    {
+      "id": "obsidian-quiet-outline:quiet-outline",
+      "icon": "lucide-list-collapse",
+      "name": "Quiet Outline: Quiet Outline",
+      "mode": "any"
+    }
+  ],
+  "macros": [],
+  "explorer": [],
+  "hide": {
+    "statusbar": [],
+    "leftRibbon": []
+  },
+  "spacing": 8,
+  "advancedToolbar": {
+    "rowHeight": 48,
+    "rowCount": 1,
+    "spacing": 0,
+    "buttonWidth": 48,
+    "columnLayout": false,
+    "mappedIcons": [],
+    "tooltips": false,
+    "heightOffset": 0
+  }
+}

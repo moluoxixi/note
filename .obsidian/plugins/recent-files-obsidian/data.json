@@ -1,0 +1,207 @@
+{
+  "recentFiles": [
+    {
+      "basename": "未命名",
+      "path": "dataview/未命名.md"
+    },
+    {
+      "basename": "大纲",
+      "path": "大纲/大纲.md"
+    },
+    {
+      "basename": "0天天卷-前端",
+      "path": "前端/0天天卷-前端.md"
+    },
+    {
+      "basename": "vue",
+      "path": "前端/vue.md"
+    },
+    {
+      "basename": "vue3",
+      "path": "前端/前端不常用/vue3.md"
+    },
+    {
+      "basename": "springboot3",
+      "path": "后端/springboot3.md"
+    },
+    {
+      "basename": "docker",
+      "path": "后端/docker.md"
+    },
+    {
+      "basename": "天天卷-后端",
+      "path": "后端/天天卷-后端.md"
+    },
+    {
+      "basename": "electron",
+      "path": "前端/electron.md"
+    },
+    {
+      "basename": "wsl与linux",
+      "path": "后端/wsl与linux.md"
+    },
+    {
+      "basename": "mysql",
+      "path": "后端/mysql.md"
+    },
+    {
+      "basename": "maven",
+      "path": "后端/maven.md"
+    },
+    {
+      "basename": "kafka",
+      "path": "后端/kafka.md"
+    },
+    {
+      "basename": "java基础",
+      "path": "后端/java基础.md"
+    },
+    {
+      "basename": "电子病历",
+      "path": "其他/电子病历.md"
+    },
+    {
+      "basename": "计划",
+      "path": "其他/计划.md"
+    },
+    {
+      "basename": "汇报",
+      "path": "其他/汇报.md"
+    },
+    {
+      "basename": "搭一台服务器",
+      "path": "其他/搭一台服务器.md"
+    },
+    {
+      "basename": "obsidian插件",
+      "path": "其他/obsidian插件.md"
+    },
+    {
+      "basename": "扩展业务",
+      "path": "其他/扩展业务.md"
+    },
+    {
+      "basename": "gpt模板",
+      "path": "其他/gpt模板.md"
+    },
+    {
+      "basename": "业务",
+      "path": "业务/业务.md"
+    },
+    {
+      "basename": "ts与JsDoc",
+      "path": "前端/ts与JsDoc.md"
+    },
+    {
+      "basename": "各css框架与css",
+      "path": "前端/各css框架与css.md"
+    },
+    {
+      "basename": "微前端方案",
+      "path": "前端/微前端方案.md"
+    },
+    {
+      "basename": "react",
+      "path": "前端/react.md"
+    },
+    {
+      "basename": "X6",
+      "path": "前端/antv/X6.md"
+    },
+    {
+      "basename": "qiankun",
+      "path": "前端/qiankun.md"
+    },
+    {
+      "basename": "知识补充",
+      "path": "前端/前端不常用/知识补充.md"
+    },
+    {
+      "basename": "vite",
+      "path": "前端/前端不常用/vite.md"
+    },
+    {
+      "basename": "工程化",
+      "path": "前端/工程化.md"
+    },
+    {
+      "basename": "性能优化",
+      "path": "前端/前端不常用/性能优化.md"
+    },
+    {
+      "basename": "storybook",
+      "path": "前端/前端不常用/storybook.md"
+    },
+    {
+      "basename": "单测",
+      "path": "前端/前端不常用/单测.md"
+    },
+    {
+      "basename": "git",
+      "path": "前端/git.md"
+    },
+    {
+      "basename": "nest",
+      "path": "前端/nest.md"
+    },
+    {
+      "basename": "package",
+      "path": "前端/前端不常用/package.md"
+    },
+    {
+      "basename": "tauri",
+      "path": "前端/tauri.md"
+    },
+    {
+      "basename": "nuxt3",
+      "path": "前端/nuxt3.md"
+    },
+    {
+      "basename": "node",
+      "path": "前端/node.md"
+    },
+    {
+      "basename": "正则",
+      "path": "前端/前端不常用/正则.md"
+    },
+    {
+      "basename": "tsconfig.json",
+      "path": "前端/前端不常用/tsconfig.json.md"
+    },
+    {
+      "basename": "设计模式",
+      "path": "前端/前端不常用/设计模式.md"
+    },
+    {
+      "basename": "代码实现",
+      "path": "前端/代码实现.md"
+    },
+    {
+      "basename": "uniapp",
+      "path": "前端/前端不常用/uniapp.md"
+    },
+    {
+      "basename": "webpack",
+      "path": "前端/前端不常用/webpack.md"
+    },
+    {
+      "basename": "G6",
+      "path": "前端/antv/G6.md"
+    },
+    {
+      "basename": "监控（性能&错误）",
+      "path": "前端/监控（性能&错误）.md"
+    },
+    {
+      "basename": "echarts",
+      "path": "前端/前端不常用/echarts.md"
+    },
+    {
+      "basename": "msql客户端",
+      "path": "后端/images/msql客户端.png"
+    }
+  ],
+  "omittedPaths": [],
+  "omittedTags": [],
+  "omitBookmarks": false
+}
