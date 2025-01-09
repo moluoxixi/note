@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端/工程化.md",
+                "file": "大纲/大纲.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "工程化"
+              "title": "大纲"
             }
           }
         ]
@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "冒泡",
+                "query": "Omit",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -83,7 +83,8 @@
               "title": "插件不再活动"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -203,15 +204,18 @@
       "remotely-save:Remotely Save": false,
       "obsidian-excalidraw-plugin:新建绘图文件": false,
       "templater-obsidian:Templater": false,
-      "homepage:Open homepage": false
+      "homepage:Open homepage": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
+    "前端/react.md",
     "大纲/大纲.md",
+    "前端/工程化.md",
+    "前端/ts与JsDoc.md",
     "业务/业务.md",
     "HIS.md",
-    "前端/工程化.md",
     "前端/electron.md",
     "前端/antv/X6.md",
     "前端/antv/G6.md",
@@ -228,11 +232,9 @@
     "前端/代码实现.md",
     "前端/vite-press.md",
     "前端/前端不常用/storybook.md",
-    "前端/ts与JsDoc.md",
     "其他/qiankun问题采集.md",
     "其他/images/237d3a9a2abf28998ea3ec7bfca4387.jpg",
     "前端/各css框架与css.md",
-    "前端/react.md",
     "前端/vue.md",
     "前端/前端不常用/vue3.md",
     "其他/电子病历.md",

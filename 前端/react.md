@@ -14,9 +14,9 @@ https://juejin.cn/post/7146107198215553055
 
 使用memo缓存子组件,防止子组件因为父组件渲染而重新渲染
 
-使用useCallback缓存传递给子组件的回调
+使用useCallback缓存传递给子组件的回调,相当于watch依赖项,并更新这个函数和里面的响应式数据
 
-使用useMemo缓存传递给子组件的对象
+使用useMemo缓存传递给子组件的对象,相当于watch依赖项,并更新这个对象
 
 使用createContext(默认值)创建context对象 , context对象.Provider 的value传递共享数据，当value的值发生改变时，所有依赖该数据的组件会重新渲染  //共享状态组件
 
