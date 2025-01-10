@@ -6,7 +6,7 @@
       "url": "https://duckduckgo.com/?q="
     }
   ],
-  "hoverPopover": false,
+  "hoverPopover": true,
   "ignoreList": [
     "notion",
     "craft"
@@ -19,7 +19,7 @@
   "highlightFormat": "[{CONTENT}]({URL})",
   "highlightInSameTab": false,
   "openInSameTab": false,
-  "showRefreshButton": false,
+  "showRefreshButton": true,
   "openInObsidianWeb": false,
   "useCustomIcons": false,
   "useWebview": false,
@@ -48,7 +48,7 @@
   },
   "treeData": [],
   "enableHtmlPreview": false,
-  "supportLivePreviewInlineUrl": false,
+  "supportLivePreviewInlineUrl": true,
   "enableTreeView": false,
   "focusSearchBarViaKeyboard": true
 }

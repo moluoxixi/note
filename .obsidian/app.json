@@ -19,5 +19,10 @@
     "editor:redo",
     "editor:configure-toolbar"
   ],
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "autoConvertHtml": false,
+  "showLineNumber": false,
+  "readableLineLength": true,
+  "showInlineTitle": false,
+  "showRibbon": true
 }
