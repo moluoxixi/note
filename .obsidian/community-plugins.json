@@ -12,5 +12,12 @@
   "calendar",
   "templater-obsidian",
   "homepage",
-  "obsidian-outliner"
+  "obsidian-outliner",
+  "obsidian-quiet-outline",
+  "obsidian-git",
+  "obsidian-list-callouts",
+  "easy-typing-obsidian",
+  "editing-toolbar",
+  "obsidian-kanban",
+  "obsidian-style-settings"
 ]
