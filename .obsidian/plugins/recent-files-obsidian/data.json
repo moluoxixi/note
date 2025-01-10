@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "业务",
-      "path": "业务/业务.md"
-    },
-    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
+    },
+    {
+      "basename": "微前端方案",
+      "path": "前端/微前端方案.md"
+    },
+    {
+      "basename": "0天天卷-前端",
+      "path": "前端/0天天卷-前端.md"
+    },
+    {
+      "basename": "业务",
+      "path": "业务/业务.md"
     },
     {
       "basename": "docker",
@@ -15,10 +23,6 @@
     {
       "basename": "未命名",
       "path": "dataview/未命名.md"
-    },
-    {
-      "basename": "0天天卷-前端",
-      "path": "前端/0天天卷-前端.md"
     },
     {
       "basename": "vue",
@@ -91,10 +95,6 @@
     {
       "basename": "各css框架与css",
       "path": "前端/各css框架与css.md"
-    },
-    {
-      "basename": "微前端方案",
-      "path": "前端/微前端方案.md"
     },
     {
       "basename": "react",

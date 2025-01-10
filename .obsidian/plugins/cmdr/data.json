@@ -26,6 +26,12 @@
       "icon": "chevrons-down-up",
       "name": "Outliner",
       "mode": "any"
+    },
+    {
+      "id": "obsidian-advanced-slides:open-advanced-slides-preview",
+      "icon": "lucide-presentation",
+      "name": "Advanced Slides: Show Slide Preview",
+      "mode": "any"
     }
   ],
   "macros": [],
