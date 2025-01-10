@@ -12,7 +12,5 @@
   "calendar",
   "templater-obsidian",
   "homepage",
-  "obsidian-outliner",
-  "obsidian-quiet-outline",
-  "obsidian-git"
+  "obsidian-outliner"
 ]

@@ -22,9 +22,9 @@
       "mode": "any"
     },
     {
-      "id": "obsidian-quiet-outline:quiet-outline",
-      "icon": "lucide-list-collapse",
-      "name": "Quiet Outline: Quiet Outline",
+      "id": "obsidian-outliner:fold",
+      "icon": "chevrons-down-up",
+      "name": "Outliner",
       "mode": "any"
     }
   ],
