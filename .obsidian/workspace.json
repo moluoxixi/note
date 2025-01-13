@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "237d3a9a2abf28998ea3ec7bfca4387",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -83,8 +83,7 @@
               "title": "Recent Files"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -199,10 +198,12 @@
       "notion-like-tables:Create loom": false
     }
   },
-  "active": "6143f7e9cf10e680",
+  "active": "34107128bc101b1b",
   "lastOpenFiles": [
-    "其他/images/237d3a9a2abf28998ea3ec7bfca4387.jpg",
+    "dataLoom/Untitled.loom",
     "大纲/大纲.md",
+    "dataLoom",
+    "其他/images/237d3a9a2abf28998ea3ec7bfca4387.jpg",
     "前端/微前端方案.md",
     "前端/0天天卷-前端.md",
     "业务/业务.md",
@@ -242,9 +243,7 @@
     "大纲/大纲.docx",
     "output/assets/docker.png",
     "output/assets",
-    "output",
     "markdownOutput/docker/assets/993634a147c68c63c68d2aba49f3e019.png",
-    "markdownOutput/docker/assets",
     "output/attachment/993634a147c68c63c68d2aba49f3e019.png",
     "output/images/WEBRESOURCE8bff9f4fe8349aec1bac7f33372e99b3image-20231121223925056.png"
   ]
