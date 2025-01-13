@@ -20,21 +20,8 @@
               "icon": "lucide-file",
               "title": "大纲"
             }
-          },
-          {
-            "id": "0ecc6c5cac64a7e3",
-            "type": "leaf",
-            "state": {
-              "type": "surfing-view",
-              "state": {
-                "url": "https://v2.tauri.app/zh-cn/"
-              },
-              "icon": "lucide-file",
-              "title": "Tauri 2.0 | Tauri"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -100,7 +87,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 208.49999618530273
+    "width": 252
   },
   "right": {
     "id": "c849f9fe049669ba",
@@ -158,12 +145,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "前端/工程化.md",
+                "file": "大纲/大纲.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "工程化 的出链列表"
+              "title": "大纲 的出链列表"
             }
           },
           {
@@ -191,13 +178,11 @@
       }
     ],
     "direction": "horizontal",
-    "width": 276.5
+    "width": 252
   },
   "left-ribbon": {
     "hiddenItems": {
-      "graph:查看关系图谱": false,
       "switcher:打开快速切换": true,
-      "canvas:新建白板": true,
       "templates:插入模板": true,
       "command-palette:打开命令面板": true,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
@@ -213,7 +198,7 @@
       "notion-like-tables:Create loom": false
     }
   },
-  "active": "0ecc6c5cac64a7e3",
+  "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
     "大纲/大纲.md",
     "前端/微前端方案.md",

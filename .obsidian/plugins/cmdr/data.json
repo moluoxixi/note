@@ -1,5 +1,5 @@
 {
-  "confirmDeletion": true,
+  "confirmDeletion": false,
   "showAddCommand": true,
   "debug": false,
   "editorMenu": [],
@@ -22,15 +22,15 @@
       "mode": "any"
     },
     {
-      "id": "obsidian-outliner:fold",
-      "icon": "chevrons-down-up",
-      "name": "Outliner",
-      "mode": "any"
-    },
-    {
       "id": "obsidian-advanced-slides:open-advanced-slides-preview",
       "icon": "lucide-presentation",
       "name": "Advanced Slides: Show Slide Preview",
+      "mode": "any"
+    },
+    {
+      "id": "obsidian-quiet-outline:quiet-outline",
+      "icon": "lucide-list",
+      "name": "Quiet Outline: Quiet Outline",
       "mode": "any"
     }
   ],
