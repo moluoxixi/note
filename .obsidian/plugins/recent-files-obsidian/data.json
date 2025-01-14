@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "css",
+      "path": "css.md"
+    },
+    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
+    },
+    {
+      "basename": "css框架",
+      "path": "前端/css框架.md"
+    },
+    {
+      "basename": "git",
+      "path": "前端/git.md"
     },
     {
       "basename": "237d3a9a2abf28998ea3ec7bfca4387",
@@ -97,10 +109,6 @@
       "path": "前端/ts与JsDoc.md"
     },
     {
-      "basename": "各css框架与css",
-      "path": "前端/各css框架与css.md"
-    },
-    {
       "basename": "react",
       "path": "前端/react.md"
     },
@@ -131,10 +139,6 @@
     {
       "basename": "单测",
       "path": "前端/前端不常用/单测.md"
-    },
-    {
-      "basename": "git",
-      "path": "前端/git.md"
     },
     {
       "basename": "nest",
