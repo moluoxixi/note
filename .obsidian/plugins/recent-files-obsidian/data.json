@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "git",
+      "path": "前端/git.md"
+    },
+    {
+      "basename": "工程化",
+      "path": "前端/工程化.md"
+    },
+    {
+      "basename": "0天天卷-前端",
+      "path": "前端/0天天卷-前端.md"
+    },
+    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
     },
@@ -13,20 +25,12 @@
       "path": "前端/css框架.md"
     },
     {
-      "basename": "git",
-      "path": "前端/git.md"
-    },
-    {
       "basename": "237d3a9a2abf28998ea3ec7bfca4387",
       "path": "其他/images/237d3a9a2abf28998ea3ec7bfca4387.jpg"
     },
     {
       "basename": "微前端方案",
       "path": "前端/微前端方案.md"
-    },
-    {
-      "basename": "0天天卷-前端",
-      "path": "前端/0天天卷-前端.md"
     },
     {
       "basename": "业务",
@@ -127,10 +131,6 @@
     {
       "basename": "vite",
       "path": "前端/前端不常用/vite.md"
-    },
-    {
-      "basename": "工程化",
-      "path": "前端/工程化.md"
     },
     {
       "basename": "storybook",
