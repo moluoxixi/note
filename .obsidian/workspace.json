@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端/ts与JsDoc.md",
+                "file": "大纲/大纲.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ts与JsDoc"
+              "title": "大纲"
             }
           }
         ]
@@ -198,8 +198,9 @@
       "notion-like-tables:Create loom": false
     }
   },
-  "active": "71f5f20815de2c7d",
+  "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
+    "前端/ts与JsDoc.md",
     "大纲/大纲.md",
     "vite-press.md",
     "Pasted image 20250116165617.png",
@@ -225,7 +226,6 @@
     "业务/住院护士.excalidraw.md",
     "业务/HIS.md",
     "前端/react.md",
-    "前端/ts与JsDoc.md",
     "前端/electron.md",
     "前端/antv/X6.md",
     "前端/antv/G6.md",
