@@ -26,6 +26,7 @@
 * @param {string}p1           参数p1的注释
 * @param {string=}p2          可选参数
 * @param {string}[p3]         可选参数的第二种写法
+* @param {string?}p4          可选参数的第三种写法
 * @param {string} [p4="test"] 可选+默认值
 */
 const func=(p1,p2,p3,p4){}
