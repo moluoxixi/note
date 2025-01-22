@@ -1,8 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "报错解决",
+      "path": "报错解决.md"
+    },
+    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
+    },
+    {
+      "basename": "0天天卷-前端",
+      "path": "前端/0天天卷-前端.md"
+    },
+    {
+      "basename": "代码实现",
+      "path": "前端/代码实现.md"
+    },
+    {
+      "basename": "vue3",
+      "path": "前端/前端不常用/vue3.md"
+    },
+    {
+      "basename": "vue",
+      "path": "前端/vue.md"
+    },
+    {
+      "basename": "业务",
+      "path": "业务/业务.md"
     },
     {
       "basename": "ts与JsDoc",
@@ -21,10 +45,6 @@
       "path": "前端/工程化.md"
     },
     {
-      "basename": "0天天卷-前端",
-      "path": "前端/0天天卷-前端.md"
-    },
-    {
       "basename": "css",
       "path": "css.md"
     },
@@ -41,20 +61,12 @@
       "path": "前端/微前端方案.md"
     },
     {
-      "basename": "业务",
-      "path": "业务/业务.md"
-    },
-    {
       "basename": "docker",
       "path": "后端/docker.md"
     },
     {
       "basename": "未命名",
       "path": "dataview/未命名.md"
-    },
-    {
-      "basename": "vue",
-      "path": "前端/vue.md"
     },
     {
       "basename": "springboot3",
@@ -177,10 +189,6 @@
       "path": "前端/前端不常用/设计模式.md"
     },
     {
-      "basename": "代码实现",
-      "path": "前端/代码实现.md"
-    },
-    {
       "basename": "uniapp",
       "path": "前端/前端不常用/uniapp.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "G6",
       "path": "前端/antv/G6.md"
-    },
-    {
-      "basename": "监控（性能&错误）",
-      "path": "前端/监控（性能&错误）.md"
-    },
-    {
-      "basename": "echarts",
-      "path": "前端/前端不常用/echarts.md"
     }
   ],
   "omittedPaths": [],

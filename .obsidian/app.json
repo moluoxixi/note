@@ -1,5 +1,5 @@
 {
-  "tabSize": 4,
+  "tabSize": 2,
   "mobileToolbarCommands": [
     "editor:insert-wikilink",
     "editor:insert-link",
