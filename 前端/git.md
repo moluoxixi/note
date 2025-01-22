@@ -3,7 +3,7 @@ git 命令
 ## 子模块
 | 命令名称                                              | 作用                             |
 | ------------------------------------------------- | ------------------------------ |
-| `git submodule add <子模块仓库URL> <子模块目录>`            | 新增子模块到指定目录                     |
+| `git submodule add -b <子模块分支> <子模块仓库URL> <子模块目录>` | 新增子模块到指定目录                     |
 | `git clone --recurse-submodules <repository-url>` | clone 项目, 并初始化并更新(clone)其中的子模块 |
 | `git submodule init`                              | 初始化所有子模块                       |
 | `git submodule update`                            | 更新所有子模块 (clone 下来)             |

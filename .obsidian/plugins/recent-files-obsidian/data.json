@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "报错解决",
-      "path": "报错解决.md"
-    },
-    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
+    },
+    {
+      "basename": "git",
+      "path": "前端/git.md"
+    },
+    {
+      "basename": "工程化",
+      "path": "前端/工程化.md"
+    },
+    {
+      "basename": "报错解决",
+      "path": "报错解决.md"
     },
     {
       "basename": "0天天卷-前端",
@@ -35,14 +43,6 @@
     {
       "basename": "vite-press",
       "path": "vite-press.md"
-    },
-    {
-      "basename": "git",
-      "path": "前端/git.md"
-    },
-    {
-      "basename": "工程化",
-      "path": "前端/工程化.md"
     },
     {
       "basename": "css",
