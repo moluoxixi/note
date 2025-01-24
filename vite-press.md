@@ -97,7 +97,7 @@ interface Feature {
 
 ```js
 import { defineConfig } from 'vitepress'
-
+// https://github.com/mingyuLi97/blog
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "vueComponent",
@@ -157,6 +157,10 @@ export default defineConfig({
       // local or algolia
       provider: 'local'
       // //#region algolia
+      // algolia有两种方式,
+      	// 使用Crawler爬虫,
+      	// 或者github的DocSearch Scraper Action
+      	// 参考https://juejin.cn/post/7157340749065895944
       // provider: 'algolia',
       // options: {
       //   appId: 'U30ELOTLE6',
