@@ -201,11 +201,11 @@
   },
   "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
+    "大纲/大纲.md",
     "css.md~",
     "前端/git.md",
     "前端/工程化.md",
     "报错解决.md",
-    "大纲/大纲.md",
     "前端/0天天卷-前端.md",
     "前端/代码实现.md",
     "前端/前端不常用/vue3.md",
@@ -246,7 +246,6 @@
     "大纲/images",
     "dataview",
     "Excalidraw/未命名.canvas",
-    "output-pandoc",
-    "大纲/~$大纲.docx"
+    "output-pandoc"
   ]
 }
