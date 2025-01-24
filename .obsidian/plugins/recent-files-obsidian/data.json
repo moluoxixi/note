@@ -5,6 +5,10 @@
       "path": "大纲/大纲.md"
     },
     {
+      "basename": "vite-press",
+      "path": "vite-press.md"
+    },
+    {
       "basename": "git",
       "path": "前端/git.md"
     },
@@ -39,10 +43,6 @@
     {
       "basename": "ts与JsDoc",
       "path": "前端/ts与JsDoc.md"
-    },
-    {
-      "basename": "vite-press",
-      "path": "vite-press.md"
     },
     {
       "basename": "css",
