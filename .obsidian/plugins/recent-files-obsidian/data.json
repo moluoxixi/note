@@ -5,6 +5,10 @@
       "path": "大纲/大纲.md"
     },
     {
+      "basename": "业务",
+      "path": "output/业务.md"
+    },
+    {
       "basename": "vite-press",
       "path": "vite-press.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "webpack",
       "path": "前端/前端不常用/webpack.md"
-    },
-    {
-      "basename": "G6",
-      "path": "前端/antv/G6.md"
     }
   ],
   "omittedPaths": [],
