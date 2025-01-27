@@ -5,6 +5,14 @@
       "path": "大纲/大纲.md"
     },
     {
+      "basename": "java基础",
+      "path": "后端/java基础.md"
+    },
+    {
+      "basename": "docker",
+      "path": "后端/docker.md"
+    },
+    {
       "basename": "plan",
       "path": "大纲/plan.md"
     },
@@ -65,10 +73,6 @@
       "path": "前端/微前端方案.md"
     },
     {
-      "basename": "docker",
-      "path": "后端/docker.md"
-    },
-    {
       "basename": "未命名",
       "path": "dataview/未命名.md"
     },
@@ -99,10 +103,6 @@
     {
       "basename": "kafka",
       "path": "后端/kafka.md"
-    },
-    {
-      "basename": "java基础",
-      "path": "后端/java基础.md"
     },
     {
       "basename": "电子病历",

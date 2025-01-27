@@ -20,6 +20,16 @@
               "icon": "lucide-file",
               "title": "大纲"
             }
+          },
+          {
+            "id": "63f7338cb6e77326",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
+            }
           }
         ]
       }
@@ -200,8 +210,12 @@
   },
   "active": "a7c1c8c4f409d779",
   "lastOpenFiles": [
-    "output/大纲.md",
+    "后端/java基础.md",
+    "后端/docker.md",
+    "大纲/plan.md",
     "大纲/大纲.md",
+    "blog",
+    "output/大纲.md",
     "output/assets",
     "output",
     "output/大纲/大纲.md",
@@ -242,10 +256,6 @@
     "output/前端/前端不常用/知识补充.md",
     "output/前端/前端不常用/正则.md",
     "output/前端/前端不常用/性能优化.md",
-    "output/前端/前端不常用/webpack.md",
-    "output/前端/前端不常用/vue3.md",
-    "output/前端/前端不常用/vite.md~",
-    "output/前端/前端不常用/storybook.md",
     "Excalidraw/未命名.canvas"
   ]
 }
