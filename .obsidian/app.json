@@ -28,5 +28,7 @@
   "userIgnoreFilters": [
     "output/"
   ],
-  "promptDelete": false
+  "promptDelete": false,
+  "attachmentFolderPath": "images",
+  "useMarkdownLinks": true
 }

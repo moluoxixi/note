@@ -5,6 +5,10 @@
       "path": "大纲/大纲.md"
     },
     {
+      "basename": "qiankun",
+      "path": "前端/qiankun.md"
+    },
+    {
       "basename": "java基础",
       "path": "后端/java基础.md"
     },
@@ -139,10 +143,6 @@
     {
       "basename": "X6",
       "path": "前端/antv/X6.md"
-    },
-    {
-      "basename": "qiankun",
-      "path": "前端/qiankun.md"
     },
     {
       "basename": "知识补充",
