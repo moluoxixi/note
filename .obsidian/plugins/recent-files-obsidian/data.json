@@ -5,8 +5,8 @@
       "path": "大纲/大纲.md"
     },
     {
-      "basename": "conflict-files-obsidian-git",
-      "path": "conflict-files-obsidian-git.md"
+      "basename": "0天天卷-前端",
+      "path": "前端/0天天卷-前端.md"
     },
     {
       "basename": "qiankun",
@@ -23,10 +23,6 @@
     {
       "basename": "plan",
       "path": "大纲/plan.md"
-    },
-    {
-      "basename": "0天天卷-前端",
-      "path": "前端/0天天卷-前端.md"
     },
     {
       "basename": "vite-press",
