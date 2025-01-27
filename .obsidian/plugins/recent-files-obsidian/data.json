@@ -5,12 +5,16 @@
       "path": "大纲/大纲.md"
     },
     {
-      "basename": "业务",
-      "path": "output/业务.md"
+      "basename": "plan",
+      "path": "大纲/plan.md"
+    },
+    {
+      "basename": "0天天卷-前端",
+      "path": "前端/0天天卷-前端.md"
     },
     {
       "basename": "vite-press",
-      "path": "vite-press.md"
+      "path": "前端/vite-press.md"
     },
     {
       "basename": "git",
@@ -22,11 +26,7 @@
     },
     {
       "basename": "报错解决",
-      "path": "报错解决.md"
-    },
-    {
-      "basename": "0天天卷-前端",
-      "path": "前端/0天天卷-前端.md"
+      "path": "前端/报错解决.md"
     },
     {
       "basename": "代码实现",
@@ -50,7 +50,7 @@
     },
     {
       "basename": "css",
-      "path": "css.md"
+      "path": "前端/css.md"
     },
     {
       "basename": "css框架",
@@ -179,26 +179,6 @@
     {
       "basename": "node",
       "path": "前端/node.md"
-    },
-    {
-      "basename": "正则",
-      "path": "前端/前端不常用/正则.md"
-    },
-    {
-      "basename": "tsconfig.json",
-      "path": "前端/前端不常用/tsconfig.json.md"
-    },
-    {
-      "basename": "设计模式",
-      "path": "前端/前端不常用/设计模式.md"
-    },
-    {
-      "basename": "uniapp",
-      "path": "前端/前端不常用/uniapp.md"
-    },
-    {
-      "basename": "webpack",
-      "path": "前端/前端不常用/webpack.md"
     }
   ],
   "omittedPaths": [],

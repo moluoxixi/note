@@ -243,7 +243,7 @@ GAV遵循一下规则：
 
 ### 仓库字段讲解
 
-![](images/WEBRESOURCE06f3cca8e0ef585d97baba68940d5937img009.7f737ed7.png)
+![](WEBRESOURCE06f3cca8e0ef585d97baba68940d5937img009.7f737ed7.png)
 
 | 仓库类型   | 说明                            |
 | ------ | ----------------------------- |
@@ -343,5 +343,5 @@ maven会将依赖缓存在仓库中,避免重复下载,同时可以放公司的�
 
 3. 可部署第三方构件,例如公司的依赖,npm等
 
-![](images/WEBRESOURCE316e546d2995cd278685cd8d2e88b54bimage-20231021164631791.png)
+![](WEBRESOURCE316e546d2995cd278685cd8d2e88b54bimage-20231021164631791.png)
 

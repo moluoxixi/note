@@ -17,7 +17,7 @@ npx storybook@latest -s init
 
 storybook运行依赖.storybook下的配置文件,main.ts是主文件,**preview.ts是所有 story 的公共配置**
 
-![](images/WEBRESOURCE7ee8962166a5c47ddcadd2f677906154image.png)
+![](WEBRESOURCE7ee8962166a5c47ddcadd2f677906154image.png)
 
 ## 目录结构
 

@@ -27,5 +27,6 @@
   "showRibbon": true,
   "userIgnoreFilters": [
     "output/"
-  ]
+  ],
+  "promptDelete": false
 }

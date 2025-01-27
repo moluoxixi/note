@@ -1671,7 +1671,7 @@ System.out.println(i10 == i11); //false
 
 **旋转时,丢掉叶子节点,旋转完毕后再添加**
 
-![](images/WEBRESOURCEf30acc3f450cb3dba623ebdae515f770image-20231122115820874.png)
+![](WEBRESOURCEf30acc3f450cb3dba623ebdae515f770image-20231122115820874.png)
 
 ## 平衡二叉树旋转
 
@@ -1681,11 +1681,11 @@ System.out.println(i10 == i11); //false
 
 ### 支点仅单侧子节点
 
-![](images/WEBRESOURCEfc495f0433e4be1500bdc9984a6eb270image-20231121220204216.png)
+![](WEBRESOURCEfc495f0433e4be1500bdc9984a6eb270image-20231121220204216.png)
 
-![](images/WEBRESOURCE053a0c1cf1226cbe4247222592c39f8dimage-20231121220653692.png)
+![](WEBRESOURCE053a0c1cf1226cbe4247222592c39f8dimage-20231121220653692.png)
 
-![](images/WEBRESOURCE761c78ef05ede88253edbc66a517b922image-20231121220412194.png)
+![](WEBRESOURCE761c78ef05ede88253edbc66a517b922image-20231121220412194.png)
 
 ### 支点有两侧子节点
 
@@ -1699,11 +1699,11 @@ System.out.println(i10 == i11); //false
 
 左子节点添加左子节点,需右旋,将`不平衡支点`降级,`不平衡支点的左节点`升级,并将`不平衡支点的左节点`的`右子节点`转移给`不平衡支点`当`左子节点`
 
-![](images/WEBRESOURCE15db4d292e291d5f836c2e361e36ee2eimage-20231121220925660.png)
+![](WEBRESOURCE15db4d292e291d5f836c2e361e36ee2eimage-20231121220925660.png)
 
-![](images/WEBRESOURCE680a2dd3723b9d4928b46c3655bdb0f8image-20231121221159152.png)
+![](WEBRESOURCE680a2dd3723b9d4928b46c3655bdb0f8image-20231121221159152.png)
 
-![](images/WEBRESOURCE104bc6e32b902fb83611169f5334e77bimage-20231121222443945.png)
+![](WEBRESOURCE104bc6e32b902fb83611169f5334e77bimage-20231121222443945.png)
 
 #### 添加不同侧节点
 
@@ -1716,13 +1716,13 @@ System.out.println(i10 == i11); //false
    - **局部右旋**:将`不平衡支点`的`右子节点`作为支点进行右旋操作
    - **左旋**:将`不平衡支点`降级,`不平衡支点的右节点`升级,并将`不平衡支点的右节点`的`左子节点`转移给`不平衡支点`当`右子节点`
 
-![](images/WEBRESOURCE8bff9f4fe8349aec1bac7f33372e99b3image-20231121223925056.png)
+![](WEBRESOURCE8bff9f4fe8349aec1bac7f33372e99b3image-20231121223925056.png)
 
-![](images/WEBRESOURCE49d7d47ab2a42373357c0df387c54779image-20231121224229896.png)
+![](WEBRESOURCE49d7d47ab2a42373357c0df387c54779image-20231121224229896.png)
 
-![](images/WEBRESOURCE6707e67a1ded0c7bcc63d5d3f75cc900image-20231121225023377.png)
+![](WEBRESOURCE6707e67a1ded0c7bcc63d5d3f75cc900image-20231121225023377.png)
 
-![](images/WEBRESOURCE80f58432297bb479eca100e08b65818eimage-20231121224316430.png)
+![](WEBRESOURCE80f58432297bb479eca100e08b65818eimage-20231121224316430.png)
 
 ## 链表结构
 
@@ -1740,7 +1740,7 @@ System.out.println(i10 == i11); //false
 
 层序遍历(从左到右,从上到下一层层遍历):20 18 23 16 19 22 24
 
-![](images/WEBRESOURCE6659ddfc174c72a77b2de595e1e42c6aimage-20231121174447888.png)
+![](WEBRESOURCE6659ddfc174c72a77b2de595e1e42c6aimage-20231121174447888.png)
 
 # 集合
 
@@ -1754,7 +1754,7 @@ System.out.println(i10 == i11); //false
 
 双列集合一次添加一对(键值对)
 
-![](images/WEBRESOURCE4006c2fc76c671ffff3c7bb8170a6b9d01_集合类体系结构图.png)
+![](WEBRESOURCE4006c2fc76c671ffff3c7bb8170a6b9d01_集合类体系结构图.png)
 
 ## 不可变集合
 
@@ -1944,7 +1944,7 @@ System.out.println("acD".hashCode());//96354
 
 **注意,比较时如果是链表或者是红黑树,会全部比较直到有相同或者比较完毕**
 
-![](images/WEBRESOURCE1a4178a5a99f881e56edfc02aa66953fimage-20231122134746420.png)
+![](WEBRESOURCE1a4178a5a99f881e56edfc02aa66953fimage-20231122134746420.png)
 
 ### LinkedHashSet原理
 

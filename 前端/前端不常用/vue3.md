@@ -71,7 +71,7 @@ Watcher
 收集依赖,通知视图更新
 ```
 
-![](images/WEBRESOURCE75b04692a14bb8baedd5f5d53d6b3092截图.png)
+![](WEBRESOURCE75b04692a14bb8baedd5f5d53d6b3092截图.png)
 ## nextTick 作用及原理
 
 ```js
@@ -288,7 +288,7 @@ export default{
 
 [https://cn.vuejs.org/api/application.html](https://cn.vuejs.org/api/application.html)
 
-![](images/WEBRESOURCE67989d3d98c04c6c4ab1c5d82c162490stickPicture.png)
+![](WEBRESOURCE67989d3d98c04c6c4ab1c5d82c162490stickPicture.png)
 
 app.createApp(options) :用于创建组件实例,接收optionsAPI
 
@@ -440,7 +440,7 @@ app.mount('#app')
 
 # 通用API
 
-![](images/WEBRESOURCE01710939172576截图.png)
+![](WEBRESOURCE01710939172576截图.png)
 
 # 组合式API
 
@@ -450,7 +450,7 @@ app.mount('#app')
 
 # setup
 
-![](images/WEBRESOURCE11710939172414截图.png)
+![](WEBRESOURCE11710939172414截图.png)
 
 ```js
 props:['val'],
@@ -481,7 +481,7 @@ setup(props, context) {
 
 ## script setup
 
-![](images/WEBRESOURCE21710939173190截图.png)
+![](WEBRESOURCE21710939173190截图.png)
 
 ### **编译器宏**
 
@@ -788,7 +788,7 @@ import { * as Form } from './components';
 这意味着不能与src属性共存
 ## 响应式：核心
 
-![](images/WEBRESOURCE31710939173057截图.png)
+![](WEBRESOURCE31710939173057截图.png)
 
 ### ref&reactive&readonly
 
@@ -933,7 +933,7 @@ onTrigger?: (event: DebuggerEvent) => void
 
 ## 响应式：工具函数
 
-![](images/WEBRESOURCE41710939172586截图.png)
+![](WEBRESOURCE41710939172586截图.png)
 
 ### toRef&toRefs
 
@@ -1011,7 +1011,7 @@ unRef(params)
 
 ## 响应式：进阶
 
-![](images/WEBRESOURCE51710939173317截图.png)
+![](WEBRESOURCE51710939173317截图.png)
 
 ### shallowRef&triggerRef
 
@@ -1194,11 +1194,11 @@ console.log(isReactive(bar.foo)) // false
 
 ## 依赖注入
 
-![](images/WEBRESOURCE61710939172554截图.png)
+![](WEBRESOURCE61710939172554截图.png)
 
 ## 生命周期
 
-![](images/WEBRESOURCE71710939172865截图.png)
+![](WEBRESOURCE71710939172865截图.png)
 
 beforeCreate,created-->被干掉
 
@@ -1226,7 +1226,7 @@ errorCaptured-->onErrorCaptured
 
 ## 组件
 
-![](images/WEBRESOURCE81710939172814截图.png)
+![](WEBRESOURCE81710939172814截图.png)
 
 ### 新增组件
 

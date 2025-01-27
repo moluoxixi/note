@@ -306,7 +306,7 @@ module.exports ={
 ```
 css Modues会将`button.module.css`文件编译成这个样子
 
-![](images/WEBRESOURCE2e01d5001b00b663c689e9ca71f89b9cimage.png)
+![](WEBRESOURCE2e01d5001b00b663c689e9ca71f89b9cimage.png)
 
 显而易见,它这样用:
 

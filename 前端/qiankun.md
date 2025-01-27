@@ -614,6 +614,6 @@ beforeDestroy() {
 '至此,完成了子应用本地连上远程的主应用'
 ```
 
-![](images/WEBRESOURCE8d9068a993116e9724ff3ffbc7061099bee332e41f444312d6ddf44eaaa60403.png)
+![](WEBRESOURCE8d9068a993116e9724ff3ffbc7061099bee332e41f444312d6ddf44eaaa60403.png)
 
 

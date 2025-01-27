@@ -316,9 +316,9 @@ Vite 在浏览器请求源码时进行转换并按需提供源码,让浏览器�
 
 以实现根据情景动态导入代码，即只在当前屏幕上实际使用时才会被处理。
 
-![](images/WEBRESOURCEe7a8af3a863c2dda5db6125a40a07605838a5e8ff18c3dc936a08e9c77019345.png)
+![](WEBRESOURCEe7a8af3a863c2dda5db6125a40a07605838a5e8ff18c3dc936a08e9c77019345.png)
 
-![](images/WEBRESOURCE300bbe1722e34899f0a2c5353e096dbf95b061f2138caa9908a2aae552deff06.png)
+![](WEBRESOURCE300bbe1722e34899f0a2c5353e096dbf95b061f2138caa9908a2aae552deff06.png)
 
 ## 热更新HMR
 

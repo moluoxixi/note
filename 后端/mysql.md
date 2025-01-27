@@ -356,7 +356,7 @@ SELECT order_id, order_date, status FROM orders WHERE status = 'pending';
 
 ```
 
-![](images/WEBRESOURCE3f1f84922b37aa788fe33a0531642248image-20220531224319139.png)
+![](WEBRESOURCE3f1f84922b37aa788fe33a0531642248image-20220531224319139.png)
 
 #### 子查询
 
