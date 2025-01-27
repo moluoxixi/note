@@ -213,13 +213,13 @@ const Index=()=>{
 
 渲染过程中,遇到状态更新,状态更新,页面继续渲染,后续渲染会被新状态影响
 
-![](WEBRESOURCEa5ca31d44eac13186262f05c1d6a4797截图.png)
+![](./images/WEBRESOURCEa5ca31d44eac13186262f05c1d6a4797截图.png)
 
 同步渲染
 
 渲染过程中,遇到状态更新,停止渲染,将状态更新后开始下次渲染
 
-![](WEBRESOURCEab3864be117a5bd385fcf90833da8da7截图.png)
+![](./images/WEBRESOURCEab3864be117a5bd385fcf90833da8da7截图.png)
 
 #### useTransition v18
 
@@ -395,7 +395,7 @@ export default function Test(props) {
 }
 ```
 
-![](WEBRESOURCE88183f0b3c654097075fb520d3b2a83a截图.png)
+![](./images/WEBRESOURCE88183f0b3c654097075fb520d3b2a83a截图.png)
 
 ### useImperativeHandle与forwardRef
 
@@ -750,7 +750,7 @@ Suspense 的作用与 [ErrorBounary](##错误处理ErrorBounary) 相似。Suspen
 
 ```
 
-![](WEBRESOURCEcf7099c58b51662f49e79f268de6f2ad截图.png)
+![](./images/WEBRESOURCEcf7099c58b51662f49e79f268de6f2ad截图.png)
 
 ## Link/NavLink
 
@@ -866,7 +866,7 @@ newState是这一次reducer的返回值
 
 chunks是所有中间件
 
-![](WEBRESOURCE32291cc354a3ac152369454b01347384截图.png)
+![](./images/WEBRESOURCE32291cc354a3ac152369454b01347384截图.png)
 
 | 名称 | 描述 | 作用 | 
 | -- | -- | -- |
@@ -1207,7 +1207,7 @@ react-redux 通过 connect 方法返回 高阶组件的方式 将 store , props 
 
 react-redux 无法创建store,通过redux库的createStore(Reducers)创建并连接 store 与 reducers
 
-![](WEBRESOURCE354c14b2e6aa66b039cbc4863b6d59b8截图.png)
+![](./images/WEBRESOURCE354c14b2e6aa66b039cbc4863b6d59b8截图.png)
 
 ### ts
 
@@ -1406,7 +1406,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 ### 流程图
 
-![](WEBRESOURCE8e8aafd11b291d4cdf55c24fe631ff2c截图.png)
+![](./images/WEBRESOURCE8e8aafd11b291d4cdf55c24fe631ff2c截图.png)
 
 ### ts
 
@@ -2080,11 +2080,11 @@ app.use('/api1',
 
 ## 旧生命周期图
 
-![](WEBRESOURCE7c4745f7dc19a8e942e63740fa85a85c截图.png)
+![](./images/WEBRESOURCE7c4745f7dc19a8e942e63740fa85a85c截图.png)
 
 ## 新生命周期图
 
-![](WEBRESOURCEe33f7963e13b4249fb069ecefb4594a4截图.png)
+![](./images/WEBRESOURCEe33f7963e13b4249fb069ecefb4594a4截图.png)
 
 ## 生命周期 hocks
 

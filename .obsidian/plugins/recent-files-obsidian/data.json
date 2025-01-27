@@ -5,6 +5,10 @@
       "path": "大纲/大纲.md"
     },
     {
+      "basename": "conflict-files-obsidian-git",
+      "path": "conflict-files-obsidian-git.md"
+    },
+    {
       "basename": "qiankun",
       "path": "前端/qiankun.md"
     },

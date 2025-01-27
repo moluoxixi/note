@@ -1,3 +1,11 @@
+---
+title: java
+description: java
+date: 2025-01-27
+tags:
+   - java
+---
+
 # 注解
 
 ```java
@@ -1071,7 +1079,6 @@ StringJoiner内存分析
 | `public static double pow (double a,double b)` | 计算a的b次幂的值             | `Math.pow(2,3)`     |
 | `public static double random()`                | 返回一个[0.0,1.0)的随机值     | `Math.random()`     |
 
-
 # 系统操作相关
 
 ## System常用方法
@@ -1082,6 +1089,7 @@ StringJoiner内存分析
 | ------------------------------------------------------------------------------------------------ | --------------------------------- | ------------------------------------------- |
 | `public static void exit(int status)`                                                            | 终止当前正在运行的Java虚拟机，0表示正常退出，非零表示异常退出 | `System.exit(0)`                            |
 | `public static native void arraycopy(Object src,int srcPos, Object dest,int destPos,int length)` | 将数组的指定个数元素复制到目标数组                 | `System.arraycopy(srcArray,0,desArray,1,3)` |
+
 1. 如果目标数组从destPos开始不够装下拷贝个数的元素,会报错
 2. **arraycopy允许将 子类类型的值 赋值给 父类类型的目标数组,但最好不要这么做,类型会很混乱**
 
@@ -1112,7 +1120,6 @@ Java中运行时对象，可以获取到程序运行时涉及到的一些信息
 | `public long freeMemory()`            | JVM剩余内存大小（单位byte）        | `rt.freeMemory()`                   |
 | `public Process exec(String command)` | 运行cmd命令                  | `rt.exec("shutdown -s -t 3600")`    |
 
-
 ```java
 一些cmd命令
 //shutdown 参数 :关机
@@ -1142,7 +1149,6 @@ Java中运行时对象，可以获取到程序运行时涉及到的一些信息
 | `public boolean equals(Object obj)` | 比较两个对象地址值是否相等,返回布尔值    | `s1.equals(s2)` |
 | `protected Object clone()`          | 对象克隆                   | `s1.clone()`    |
 
-
 ```java
 public class Parent implements Cloneable{
 	@Override
@@ -1167,7 +1173,6 @@ java中深拷贝,遇到String对象,不会创建新对象,会复用串池中的�
 | `public static boolean equals(Object a, Object b)` | 先做非空判断,再比较两个对象是否相等 | `Objects.equals(s1,s2)` |
 | `public static boolean isNull(Object obj)`         | 判断对象是否为null        | `Objects.isNull(s1)`    |
 | `public static boolean nonNull(Object obj)`        | 判断对象是否不为null       | `Objects.nonNull(s1)`   |
-
 
 ### Objects.equals原理
 
@@ -1206,8 +1211,6 @@ java中深拷贝,遇到String对象,不会创建新对象,会复用串池中的�
 |public  BigInteger max/min(BigInteger val)|二者比较取最大/小|bd.max/min(bd1)|
 |public  int int/longValue(BigInteger val)|转为int/long类型整数，超出范围数据有误|intValue.add(bd1)|
 
-
-
 ### BigInteger的valueOf原理
 
 ```java
@@ -1220,7 +1223,8 @@ valueOf时,如果为-16~16,则直接返回存储的对应实例,否则才会new�
 
 数组的最大长度是int的长度,是21亿多
 
-bg存的数字会以被分割为多个32位一组的二进制数字,再转成十进制存在一个数组中,以一个属性代表正负,格式这样 `[1,32位一组的数字,0]`,
+bg存的数字会以被分割为多个32位一组的二进制数字,再转成十进制存在一个数组中,以一个属性代表正负,格式这样
+`[1,32位一组的数字,0]`,
 
 再将这个数组存在mag数组里面
 
@@ -1238,7 +1242,6 @@ bg存的数字会以被分割为多个32位一组的二进制数字,再转成十
 | `public BigDecimal multiply(BigDecimal value)`                              | 乘法运算              | `bd.multiply(b2)`                          |
 | `public BigDecimal divide(BigDecimal value)`                                | 除法运算,结果为无限循环小数会报错 | `bd.divide(b2)`                            |
 | `public BigDecimal divide(BigDecimal divisor, int scale, int roundingMode)` |                   | `bd.divide(b2 , 2 , RoundingMode.HALF_UP)` |
-
 
 ### divide演示
 
@@ -1442,7 +1445,6 @@ System.out.println("相差的纪元数:" + ChronoUnit.ERAS.between(birthDate, to
 | ---------------------------------------- | ---------------------------- | ---------------------------- |
 | `public static long currentTimeMillis()` | 获取从1970年1月1日 00:00:00到现在的毫秒值 | `System.currentTimeMillis()` |
 
-
 ## JDK8以前的垃圾
 
 ### 获取设置Date
@@ -1453,7 +1455,6 @@ System.out.println("相差的纪元数:" + ChronoUnit.ERAS.between(birthDate, to
 | `public long getTime()`          | 获取从1970年1月1日 00:00:00到现在的毫秒值 | `date.getTime()`                           |
 | `public void setTime(long time)` | 接收毫秒值,设置时间                   | `date.setTime(System.currentTimeMillis())` |
 
-
 ### 格式化SimpleDateFormat
 
 | 方法                                        | 说明                         | 使用                                                                 |
@@ -1461,7 +1462,6 @@ System.out.println("相差的纪元数:" + ChronoUnit.ERAS.between(birthDate, to
 | `public SimpleDateFormat(String pattern)` | 格式化日期                      | `SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")` |
 | `public String format(Date date)`         | 将Date对象按sdf的格式转换为字符串       | `sdf.format(new Date(0L))`                                         |
 | `public Date parse(String source)`        | 将符合sdf格式的字符串解析为Date对象,否则报错 | `sdf.parse("2023-11-11 11:11:11")`                                 |
-
 
 ```java
 //1.利用带参构造创建simpleDateFormat对象，指定格式
@@ -1490,7 +1490,7 @@ System.out.println(str2);//1970/1/1 上午8:00
 
 # 包装类
 
-共有Byte  Short  **Integer** Long Float Double **Character** Boolean
+共有Byte Short  **Integer** Long Float Double **Character** Boolean
 
 ## Integer类
 
@@ -1502,7 +1502,6 @@ System.out.println(str2);//1970/1/1 上午8:00
 | static string toOctalstring(int i)      | 把整数换成八进制的字符串            | Integer.toOctalString(100)  |
 | static string toHexstring(int i)        | 把整数换成十六进制的字符串           | Integer.toHexString(100)    |
 | static int parseInt(string s)           | 将字符串类型的整数转成int类型的整数     | Integer.parseInt("123")     |
-
 
 ## 装箱与拆箱
 
@@ -1545,8 +1544,8 @@ i = i + 5;//等号右边：将i对象转成基本数值(自动拆箱) i.intValue
 ### 基本类型转换为String
 
 - 转换方式
-	- 方式一：直接在数字后加一个空字符串
-	- 方式二：通过String类静态方法valueOf()
+   - 方式一：直接在数字后加一个空字符串
+   - 方式二：通过String类静态方法valueOf()
 
 - 示例代码
 
@@ -1568,7 +1567,7 @@ public class IntegerDemo {
 
 ```
 
-### String转换成基本类型 
+### String转换成基本类型
 
 除了Character类之外，其他所有包装类都具有parseXxx静态方法可以将字符串参数转换为对应的基本类型：
 
@@ -1583,8 +1582,8 @@ public class IntegerDemo {
 代码使用（仅以Integer类的静态方法parseXxx为例）如：
 
 - 转换方式
-  - 方式一：先将字符串数字转成Integer，再调用valueOf()方法
-  - 方式二：通过Integer静态方法parseInt()进行转换
+   - 方式一：先将字符串数字转成Integer，再调用valueOf()方法
+   - 方式二：通过Integer静态方法parseInt()进行转换
 - 示例代码
 
 ```java
@@ -1607,7 +1606,6 @@ public class IntegerDemo {
 ```
 
 > 注意:如果字符串参数的内容无法正确转换为对应的基本类型，则会抛出java.lang.NumberFormatException异常。
-
 
 ## Integer底层原理
 
@@ -1658,7 +1656,9 @@ System.out.println(i10 == i11); //false
    - 相比单向链表查询快，因为结构的不同,可以双端查找
 6. **二叉树**:每个节点最多有两个子节点,没有特点存储顺序
 7. **二叉查找树**:比根节点小存左边,大存右边
-8. **平衡二叉树**:通过旋转保证树的平衡,任意节点左右子树高度不超过1,也就是左右子节点存满才能存下一层,不能有一层以上的单节点(即父节点下的单个子节点连单个孙节点)
+8. **平衡二叉树**:
+   通过旋转保证树的平衡,任意节点左右子树高度不超过1,也就是左右子节点存满才能存下一层,不能有一层以上的单节点(
+   即父节点下的单个子节点连单个孙节点)
 9. **红黑树**:又称平衡二叉B树
 
 ## 红黑树规则
@@ -1671,7 +1671,7 @@ System.out.println(i10 == i11); //false
 
 **旋转时,丢掉叶子节点,旋转完毕后再添加**
 
-![](WEBRESOURCEf30acc3f450cb3dba623ebdae515f770image-20231122115820874.png)
+![](./images/WEBRESOURCEf30acc3f450cb3dba623ebdae515f770image-20231122115820874.png)
 
 ## 平衡二叉树旋转
 
@@ -1681,11 +1681,11 @@ System.out.println(i10 == i11); //false
 
 ### 支点仅单侧子节点
 
-![](WEBRESOURCEfc495f0433e4be1500bdc9984a6eb270image-20231121220204216.png)
+![](./images/WEBRESOURCEfc495f0433e4be1500bdc9984a6eb270image-20231121220204216.png)
 
-![](WEBRESOURCE053a0c1cf1226cbe4247222592c39f8dimage-20231121220653692.png)
+![](./images/WEBRESOURCE053a0c1cf1226cbe4247222592c39f8dimage-20231121220653692.png)
 
-![](WEBRESOURCE761c78ef05ede88253edbc66a517b922image-20231121220412194.png)
+![](./images/WEBRESOURCE761c78ef05ede88253edbc66a517b922image-20231121220412194.png)
 
 ### 支点有两侧子节点
 
@@ -1695,15 +1695,17 @@ System.out.println(i10 == i11); //false
 
 或右子节点添加右子节点,例如下图右子节点11添加右子节点12
 
-右子节点添加右子节点,需左旋,将`不平衡支点`降级,`不平衡支点的右节点`升级,并将`不平衡支点的右节点`的`左子节点`转移给`不平衡支点`当`右子节点`
+右子节点添加右子节点,需左旋,将`不平衡支点`降级,`不平衡支点的右节点`升级,并将`不平衡支点的右节点`的`左子节点`转移给
+`不平衡支点`当`右子节点`
 
-左子节点添加左子节点,需右旋,将`不平衡支点`降级,`不平衡支点的左节点`升级,并将`不平衡支点的左节点`的`右子节点`转移给`不平衡支点`当`左子节点`
+左子节点添加左子节点,需右旋,将`不平衡支点`降级,`不平衡支点的左节点`升级,并将`不平衡支点的左节点`的`右子节点`转移给
+`不平衡支点`当`左子节点`
 
-![](WEBRESOURCE15db4d292e291d5f836c2e361e36ee2eimage-20231121220925660.png)
+![](./images/WEBRESOURCE15db4d292e291d5f836c2e361e36ee2eimage-20231121220925660.png)
 
-![](WEBRESOURCE680a2dd3723b9d4928b46c3655bdb0f8image-20231121221159152.png)
+![](./images/WEBRESOURCE680a2dd3723b9d4928b46c3655bdb0f8image-20231121221159152.png)
 
-![](WEBRESOURCE104bc6e32b902fb83611169f5334e77bimage-20231121222443945.png)
+![](./images/WEBRESOURCE104bc6e32b902fb83611169f5334e77bimage-20231121222443945.png)
 
 #### 添加不同侧节点
 
@@ -1711,18 +1713,20 @@ System.out.println(i10 == i11); //false
 
 1. 左子节点添加右子节点,需先局部左旋,再右旋
    - **局部左旋**:将`不平衡支点`的`左子节点`作为支点进行左旋操作
-   - **右旋**:将`不平衡支点`降级,`不平衡支点的左节点`升级,并将`不平衡支点的左节点`的`右子节点`转移给`不平衡支点`当`左子节点`
+   - **右旋**:将`不平衡支点`降级,`不平衡支点的左节点`升级,并将`不平衡支点的左节点`的`右子节点`转移给`不平衡支点`当
+     `左子节点`
 2. 右子节点添加左子节点,需先局部右旋,再左旋
    - **局部右旋**:将`不平衡支点`的`右子节点`作为支点进行右旋操作
-   - **左旋**:将`不平衡支点`降级,`不平衡支点的右节点`升级,并将`不平衡支点的右节点`的`左子节点`转移给`不平衡支点`当`右子节点`
+   - **左旋**:将`不平衡支点`降级,`不平衡支点的右节点`升级,并将`不平衡支点的右节点`的`左子节点`转移给`不平衡支点`当
+     `右子节点`
 
-![](WEBRESOURCE8bff9f4fe8349aec1bac7f33372e99b3image-20231121223925056.png)
+![](./images/WEBRESOURCE8bff9f4fe8349aec1bac7f33372e99b3image-20231121223925056.png)
 
-![](WEBRESOURCE49d7d47ab2a42373357c0df387c54779image-20231121224229896.png)
+![](./images/WEBRESOURCE49d7d47ab2a42373357c0df387c54779image-20231121224229896.png)
 
-![](WEBRESOURCE6707e67a1ded0c7bcc63d5d3f75cc900image-20231121225023377.png)
+![](./images/WEBRESOURCE6707e67a1ded0c7bcc63d5d3f75cc900image-20231121225023377.png)
 
-![](WEBRESOURCE80f58432297bb479eca100e08b65818eimage-20231121224316430.png)
+![](./images/WEBRESOURCE80f58432297bb479eca100e08b65818eimage-20231121224316430.png)
 
 ## 链表结构
 
@@ -1740,7 +1744,7 @@ System.out.println(i10 == i11); //false
 
 层序遍历(从左到右,从上到下一层层遍历):20 18 23 16 19 22 24
 
-![](WEBRESOURCE6659ddfc174c72a77b2de595e1e42c6aimage-20231121174447888.png)
+![](./images/WEBRESOURCE6659ddfc174c72a77b2de595e1e42c6aimage-20231121174447888.png)
 
 # 集合
 
@@ -1754,7 +1758,7 @@ System.out.println(i10 == i11); //false
 
 双列集合一次添加一对(键值对)
 
-![](WEBRESOURCE4006c2fc76c671ffff3c7bb8170a6b9d01_集合类体系结构图.png)
+![](./images/WEBRESOURCE4006c2fc76c671ffff3c7bb8170a6b9d01_集合类体系结构图.png)
 
 ## 不可变集合
 
@@ -1768,7 +1772,6 @@ System.out.println(i10 == i11); //false
 | `static <K,V> Map <K,V> of(E...elements)`  | 创建一个键值对对象组成的不可变Map集合   | `Map<String,String> list=Map.of(键1，值1,键2,值2,...)` |
 |                                            |                        |                                                   |
 
-
 ## toArray
 
 用于将集合转换为数组
@@ -1777,7 +1780,6 @@ System.out.println(i10 == i11); //false
 | -------------- | ---------------------------------------------------------------------------------- | --------------------------- |
 | toArray()      | 返回一个包含集合所有元素的数组                                                                    | list.toArray()              |
 | toArray(T[] a) | 返回一个与指定数组类型相同的数组,包含集合的所有元素,如果指定数组的大小足够容纳集合中的元素，则将元素存储在指定数组中，否则，将创建一个新的数组并将元素存储在其中。 | list.toArray(new String[0]) |
-
 
 # 单列集合
 
@@ -1805,7 +1807,6 @@ System.out.println(i10 == i11); //false
 | void clear()                 | 清空集合中的元素                         | set.clear()          |
 | int size()                   | 返回集合的长度(元素的个数)                   | set.size()           |
 
-
 ## List接口常用方法
 
 添加的元素是有序、有索引、可重复
@@ -1817,8 +1818,13 @@ System.out.println(i10 == i11); //false
 | E get(int index)               | 获取指定索引的元素          | set.get(1)      |
 | E set(int index,E e)           | 修改指定索引的元素,返回被修改的元素 | set.set(1,"你好") |
 
-
 ### Arraylist常用方法
+
+|方法名|说明|使用|
+|--|--|--|
+|public ArrayList(Object e)|创建空列表|`ArrayList list= new ArrayList()`|
+|public ArrayList(Object e)|当不指定泛型时,不做类型限制|`ArrayList list= new ArrayList(List.of("张三丰","张无忌"))`|
+|public ArrayList(E e)|E接收包装对象,代表类型|`ArrayList<String> list= new ArrayList<>(List.of("张三丰","张无忌"))`|
 
 ```java
 ArrayList list= new ArrayList() //不做类型限制的
@@ -1829,11 +1835,19 @@ ArrayList<E> 变量名= new ArrayList<>()
 
 ```
 
-|方法名|说明|使用|
-|--|--|--|
-|public ArrayList(Object e)|创建空列表|ArrayList list= new ArrayList()|
-|public ArrayList(Object e)|当不指定泛型时,不做类型限制|ArrayList list= new ArrayList(List.of("张三丰","张无忌"))|
-|public ArrayList(E e)|E接收包装对象,代表类型|ArrayList<String> list= new ArrayList<>(List.of("张三丰","张无忌"))|
+### LinkedList常用方法
+
+| 方法名                            | 说明                       |
+| ------------------------------ | ------------------------ |
+| public void addFirst/Last(E e) | 在该列开头/末尾插入指定元素           |
+| public E getFirst/Last()       | 返回集合中的第一个/最后一个元素         |
+| public E removeFirst/Last()    | 移除集合的第一个/最后一个元素,并返回移除的元素 |
+
+#### linkedList添加元素原理
+
+采用Node类创建每一个元素,node实例有三个属性prev,item,next,分别对应上一个元素的地址,新增的元素,下一个元素的地址,
+
+linkedList会将头节点和尾节点用first和last存起来,并在每次添加元素时,更新first和last
 
 #### iterator
 
@@ -1884,21 +1898,6 @@ list.remove(i); //调用connection的remove,删除对应元素
 
 ```
 
-### LinkedList常用方法
-
-| 方法名                            | 说明                       |
-| ------------------------------ | ------------------------ |
-| public void addFirst/Last(E e) | 在该列开头/末尾插入指定元素           |
-| public E getFirst/Last()       | 返回集合中的第一个/最后一个元素         |
-| public E removeFirst/Last()    | 移除集合的第一个/最后一个元素,并返回移除的元素 |
-
-
-#### linkedList添加元素原理
-
-采用Node类创建每一个元素,node实例有三个属性prev,item,next,分别对应上一个元素的地址,新增的元素,下一个元素的地址,
-
-linkedList会将头节点和尾节点用first和last存起来,并在每次添加元素时,更新first和last
-
 ## Set接口(无常用方法)
 
 添加的元素是无序、无索引、不重复
@@ -1936,6 +1935,7 @@ System.out.println("acD".hashCode());//96354
 ```
 
 #### HashSet原理
+
 `HashSet` 使用了 `HashMap` 的实现(也就是哈希表)作为其底层数据结构
 
 **HashSet无索引**:因为同一位置可能有多个元素组成的红黑树或者链表,索引没有意义,还是找不到指定元素
@@ -1944,7 +1944,7 @@ System.out.println("acD".hashCode());//96354
 
 **注意,比较时如果是链表或者是红黑树,会全部比较直到有相同或者比较完毕**
 
-![](WEBRESOURCE1a4178a5a99f881e56edfc02aa66953fimage-20231122134746420.png)
+![](./images/WEBRESOURCE1a4178a5a99f881e56edfc02aa66953fimage-20231122134746420.png)
 
 ### LinkedHashSet原理
 
@@ -1955,10 +1955,12 @@ System.out.println("acD".hashCode());//96354
 结构: `[null,当前元素的值,下一个存储元素的地址]->[上一个存储元素的地址,当前元素的值,null]`
 
 ### TreeSet原理
+
 底层采用红黑树
 
 对于数值类型：Integer,Double,默认按值从小到大的顺序进行排序
-对于字符、字符串类型：默认从左到右按字符的ASCII值比较每个字符,发现不相等时,中断比较,小的去左边,大的去右边,例如"aac"默认是比"ab"小的,会挂在"ab"的左节点
+对于字符、字符串类型：默认从左到右按字符的ASCII值比较每个字符,发现不相等时,中断比较,小的去左边,大的去右边,例如"aac"
+默认是比"ab"小的,会挂在"ab"的左节点
 
 方式一：Javabean类实现Comparable接口，指定比较规则
 方式二：创建集合时，自定义Comparator比较器对象，指定比较规则
@@ -2019,7 +2021,6 @@ TreeSet<string>ts = new Treeset<>((o1,o2)->{
 | `Set key/value/entrySet()`                    | 获取键/值/键值对对象组成的单列集合,键值对对象身上有getKey/Value方法获取键/值 | `map.entrySet()`         |
 | `get(Object key)`                             | 分解键获取对应的值                                      | `map.get("张无忌")`         |
 
-
 三种遍历方式
 
 ```java
@@ -2060,6 +2061,7 @@ map.forEach((key,value)->{})
 HashMap与HashSet几乎一样,但是存的是键值对,通过equals比较时默认比较的是键
 
 LinkedHashMap和TreeMap也是一样的道理
+# aaa
 
 # 集合工具类Connections
 
@@ -2080,7 +2082,6 @@ public static <T>void swap(List<?>list,int i,int j)
 交换集合中指定位置的元素
 
 ```
-
 
 | 方法                                                                | 说明                  | 使用                                           |
 | ----------------------------------------------------------------- | ------------------- | -------------------------------------------- |
@@ -2110,13 +2111,13 @@ public static <T>void swap(List<?>list,int i,int j)
 **生成Stream流的方式**
 
 1. Collection体系集合
-	- 使用默认方法stream()生成流，`default Stream<E> stream()`
+   - 使用默认方法stream()生成流，`default Stream<E> stream()`
 2. Map体系集合
-	- 把Map转成Set集合，再利用Collection体系生成stream流
+   - 把Map转成Set集合，再利用Collection体系生成stream流
 3. 数组
-	- 通过Arrays中的静态方法stream生成流
+   - 通过Arrays中的静态方法stream生成流
 4. 同种数据类型的多个数据
-	- 通过Stream接口的静态方法of(T... values)生成流,`Stream.of("hello", "world", "java")`
+   - 通过Stream接口的静态方法of(T... values)生成流,`Stream.of("hello", "world", "java")`
 
 **代码演示**
 
@@ -2156,7 +2157,6 @@ public class StreamDemo {
 
 常见方法
 
-
 | 方法名                                               | 说明                         |
 | ------------------------------------------------- | -------------------------- |
 | `Stream <T> filter(Predicate predicate)`          | 对流中的数据进行过滤                 |
@@ -2164,7 +2164,6 @@ public class StreamDemo {
 | `Stream <T> skip(long n)`                         | 跳过指定参数个数的数据，返回由该流的剩余元素组成的流 |
 | `static <T> Stream<T> concat(Stream a, Stream b)` | 合并a和b两个流为一个流               |
 | `Stream <T> distinct()`                           | 将流中的元素通过equals方法去重后返回新的流   |
-
 
 filter代码演示
 
@@ -2204,7 +2203,6 @@ public class MyStream3 {
 | T toArray()                   | 把流变为长度与与元素个数等同的数组   |
 | T toArray(IntFunction apply)  | 把流变为指定长度的数组,长度不够会报错 |
 
-
 ```java
 //forEach演示
 list.stream().forEach((s)->{System.out.println(s)})
@@ -2242,7 +2240,6 @@ Integer[]arr list.stream().toArray(new IntFunction<Integer[]>(){
 | -------------------------------- | --------- |
 | `R collect(Collector collector)` | 把结果收集到集合中 |
 
-
 工具类Collectors提供了具体的收集方式
 
 | 方法名                                                                       | 说明                   |
@@ -2250,7 +2247,6 @@ Integer[]arr list.stream().toArray(new IntFunction<Integer[]>(){
 | `public static <T> Collector toList/Set()`                                | 把流中的元素收集到List/Set集合中 |
 | `public static  Collector toMap(Function keyMapper,Function valueMapper)` | 把流中的元素收集到Map集合中      |
 |                                                                           |                      |
-
 
 代码演示
 
@@ -2283,6 +2279,7 @@ public class MyStream7 {
 # File
 
 ## 构造方法
+
 | 方法                                         | 说明                                 | 使用                                        |
 | ------------------------------------------ | ---------------------------------- | ----------------------------------------- |
 | `public File(String pathname)`             | 通过`转义后的绝对/相对路径`来创建文件对象             | `new File("D:\\aaa.txt")`                 |
@@ -2300,7 +2297,6 @@ public class MyStream7 {
 
 ## 判断功能的方法
 
-
 | 方法                             | 说明                             | 使用                   |
 | ------------------------------ | ------------------------------ | -------------------- |
 | `public boolean exists()`      | 判断创建`File`对象时传入的路径是否有文件或目录真实存在 | `file.exists()`      |
@@ -2308,7 +2304,6 @@ public class MyStream7 {
 | `public boolean isFile()`      | 创建`File`对象时对应的路径是否是文件          | `file.isFile()`      |
 
 ## 创建删除功能的方法
-
 
 | 方法                               | 说明                                                | 使用              |
 | -------------------------------- | ------------------------------------------------- | --------------- |
@@ -2325,6 +2320,7 @@ File directory = new File("parentDirectory/childDirectory");
 ```
 
 ## 遍历目录的方法
+
 | 方法                          | 说明                          | 使用                 |
 | --------------------------- | --------------------------- | ------------------ |
 | `public String[] list()`    | 获取目录中的文件和子目录的名称组成的String数组  | `file.list()`      |
@@ -2345,7 +2341,6 @@ File directory = new File("parentDirectory/childDirectory");
 |  **字节流**写入byte  | 字节输入流<br/>**InputStream** | 字节输出流<br/>**OutputStream** |
 | **字符流**写入string |   字符输入流<br/>**Reader**    |    字符输出流<br/>**Writer**    |
 
-
 ## 字节流
 
 以字节为单位,最终传输的仍然是二进制
@@ -2363,7 +2358,6 @@ File directory = new File("parentDirectory/childDirectory");
 | `public void write(byte[] b)`                   | 将字节数组中的b.length个字节的数据写入输出流中**,也就是全部数据**                               | `fos.write({"A"})`                                  |
 | `public void write(byte[] b, int off, int len)` | 从off开始将字节数组中的数据的len个字节的数据读取出来并写入输出流                                   | `fos.write({"A"},1,0)`                              |
 | `public abstract void write(int b)`             | 将指定的字节写入输出流                                                           | `fos.write("A")`                                    |
-
 
 ### FileOutputStream的方法
 
@@ -2400,7 +2394,6 @@ java也可以实现换行，因为java在底层会补全。
 | `public FileOutputStream(File file, boolean append)`   | 创建用于写入**指定文件对象**所对应文件的输出流<br/>append为true时输出内容追加<br/>append为false清空指定文件 | `new FileOutputStream(new File("文件地址"),true)` |
 | `public FileOutputStream(String name, boolean append)` | 创建**指定文件**的输出流<br/>append为true时输出内容追加<br/>append为false清空指定文件            | `new FileOutputStream("文件地址",true)`           |
 
-
 ### 字节输入流超类InputStream
 
 字节输入流
@@ -2410,7 +2403,6 @@ java也可以实现换行，因为java在底层会补全。
 | `public void close()`        | 关闭输入流,释放相关系统资源                                           | `fis.close()`                                         |
 | `public abstract int read()` | 令输入流读取一个字节并提升为int类型输出,读取到末尾时，返回`-1`                      | `int read = fis.read()`                               |
 | `public int read(byte[] b)`  | 令输入流读取 `b.length` 个字节的数据，并存储在提供的字节数组 `b` 中。读取到末尾时，返回`-1` | `fis.read(new byte[1024])`                            |
-
 
 ### FileInputStream的方法
 
@@ -2494,20 +2486,22 @@ java也可以实现换行，因为java在底层会补全。
 
 并行:
 
- 在同一时刻，有多个指令在**多个**线程上**同时**执行
+在同一时刻，有多个指令在**多个**线程上**同时**执行
+
 ## 进程和线程
 
 进程：是正在运行的程序
 
-​    独立性：进程是一个能独立运行的基本单位，同时也是系统分配资源和调度的独立单位
-​    动态性：进程的实质是程序的一次执行过程，进程是动态产生，动态消亡的
-​    并发性：任何进程都可以同其他进程一起并发执行
+​ 独立性：进程是一个能独立运行的基本单位，同时也是系统分配资源和调度的独立单位
+​ 动态性：进程的实质是程序的一次执行过程，进程是动态产生，动态消亡的
+​ 并发性：任何进程都可以同其他进程一起并发执行
 
 线程：是进程中的单个顺序控制流，是一条执行路径
 
-​    单线程：一个进程如果只有一条执行路径，则称为单线程程序
+​ 单线程：一个进程如果只有一条执行路径，则称为单线程程序
 
-​    多线程：一个进程如果有多条执行路径，则称为多线程程序
+​ 多线程：一个进程如果有多条执行路径，则称为多线程程序
+
 ## 实现多线程的三种方式
 
 ### Thread的方法
@@ -2560,6 +2554,7 @@ public class MyThreadDemo {
     }
 }
 ```
+
 ### 实现Runnable接口
 
 Thread有两种构造方法,接受runnable接口,开启一个线程,返回一个新的Thread对象现步骤
@@ -2600,6 +2595,7 @@ public class MyRunnableDemo {
     }
 }
 ```
+
 ### FutureTask+实现callable接口
 
 实现步骤
@@ -2658,14 +2654,16 @@ public class Demo {
 ## 线程安全
 
 1. **竞态条件（Race Condition）：** 当两个或多个线程同时访问共享资源，并且最终的结果取决于线程执行的顺序时，就可能发生竞态条件。这可能导致意外的结果，因为线程的执行顺序是不确定的。
-2. **数据不一致性（Data Inconsistency）：** 多线程环境下，由于线程之间的交互，共享数据的状态可能变得不一致。例如，一个线程正在修改某个共享变量的值，而另一个线程同时读取了这个值，但此时该值可能还未被修改完成。
+2. **数据不一致性（Data Inconsistency）：**
+   多线程环境下，由于线程之间的交互，共享数据的状态可能变得不一致。例如，一个线程正在修改某个共享变量的值，而另一个线程同时读取了这个值，但此时该值可能还未被修改完成。
 3. **死锁（Deadlock）：** 死锁是指两个或多个线程因为争夺资源而互相等待的状态，导致程序无法继续执行。这种情况发生时，每个线程都在等待其他线程释放资源，形成了一个相互等待的循环。
 4. **资源争夺（Resource Contention）：** 多个线程竞争有限的资源，可能导致性能下降或者程序的不稳定。
 5. **非原子性操作（Non-Atomic Operations）：** 由于多线程交替执行，可能导致某个操作在执行的过程中被中断，导致了部分操作执行完而部分未执行的情况。
 
 为了解决线程安全问题，可以采用以下一些手段：
 
-- **锁机制（Locking）：** 使用锁来确保在同一时刻只有一个线程可以访问共享资源。Java 提供了 `synchronized` 关键字和 `ReentrantLock` 类来实现锁。
+- **锁机制（Locking）：** 使用锁来确保在同一时刻只有一个线程可以访问共享资源。Java 提供了 `synchronized` 关键字和
+  `ReentrantLock` 类来实现锁。
 - **原子性操作（Atomic Operations）：** 使用原子类（`AtomicInteger`、`AtomicLong` 等）来保证某些操作的原子性，避免竞态条件。
 - **线程安全的数据结构：** 使用线程安全的集合类（如 `ConcurrentHashMap`、`CopyOnWriteArrayList` 等）来替代普通的集合类。
 - **使用 `volatile` 关键字：** 通过 `volatile` 关键字来确保变量的可见性，避免线程从本地缓存中读取变量值。
@@ -2676,7 +2674,7 @@ public class Demo {
 
 1. 把所有代码打包成一个jar后缀的压缩包
 2. 把jar包转换成exe安装包
-把第二步的exe，图片，JDK合在一起，变成最终的exe安装包
+   把第二步的exe，图片，JDK合在一起，变成最终的exe安装包
 
 # 第三方包
 
@@ -2726,3 +2724,5 @@ public class ScannerDemo {
     }
 }
 ```
+
+
