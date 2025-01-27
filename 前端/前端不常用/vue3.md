@@ -71,7 +71,7 @@ Watcher
 收集依赖,通知视图更新
 ```
 
-![](WEBRESOURCE75b04692a14bb8baedd5f5d53d6b3092截图.png)
+![](../images/WEBRESOURCE75b04692a14bb8baedd5f5d53d6b3092截图.png)
 ## nextTick 作用及原理
 
 ```js
@@ -191,7 +191,8 @@ webpack 为客服端打包一个 ClientBundle，为服务端打包一个 ServerB
 ```
 
 ## diff
-![[Pasted image 20250120150404.png]]
+
+![](../../images/Pasted image 20250120150404.png)
 `双端比较` 就是**新列表**和**旧列表**两个列表的头与尾互相对比，在对比的过程中指针会逐渐向内靠拢，直到某一个列表的节点全部遍历过，对比停止。
 Vue 2 的 Diff 算法
 1. 同级比较：只比较同一层级的节点，不跨层级比较。
@@ -288,7 +289,7 @@ export default{
 
 [https://cn.vuejs.org/api/application.html](https://cn.vuejs.org/api/application.html)
 
-![](WEBRESOURCE67989d3d98c04c6c4ab1c5d82c162490stickPicture.png)
+![](./images/WEBRESOURCE67989d3d98c04c6c4ab1c5d82c162490stickPicture.png)
 
 app.createApp(options) :用于创建组件实例,接收optionsAPI
 
@@ -440,7 +441,7 @@ app.mount('#app')
 
 # 通用API
 
-![](WEBRESOURCE01710939172576截图.png)
+![](./images/WEBRESOURCE01710939172576截图.png)
 
 # 组合式API
 
@@ -450,7 +451,7 @@ app.mount('#app')
 
 # setup
 
-![](WEBRESOURCE11710939172414截图.png)
+![](./images/WEBRESOURCE11710939172414截图.png)
 
 ```js
 props:['val'],
@@ -481,7 +482,7 @@ setup(props, context) {
 
 ## script setup
 
-![](WEBRESOURCE21710939173190截图.png)
+![](./images/WEBRESOURCE21710939173190截图.png)
 
 ### **编译器宏**
 
@@ -788,7 +789,7 @@ import { * as Form } from './components';
 这意味着不能与src属性共存
 ## 响应式：核心
 
-![](WEBRESOURCE31710939173057截图.png)
+![](./images/WEBRESOURCE31710939173057截图.png)
 
 ### ref&reactive&readonly
 
@@ -933,7 +934,7 @@ onTrigger?: (event: DebuggerEvent) => void
 
 ## 响应式：工具函数
 
-![](WEBRESOURCE41710939172586截图.png)
+![](./images/WEBRESOURCE41710939172586截图.png)
 
 ### toRef&toRefs
 
@@ -1011,7 +1012,7 @@ unRef(params)
 
 ## 响应式：进阶
 
-![](WEBRESOURCE51710939173317截图.png)
+![](./images/WEBRESOURCE51710939173317截图.png)
 
 ### shallowRef&triggerRef
 
@@ -1194,11 +1195,11 @@ console.log(isReactive(bar.foo)) // false
 
 ## 依赖注入
 
-![](WEBRESOURCE61710939172554截图.png)
+![](./images/WEBRESOURCE61710939172554截图.png)
 
 ## 生命周期
 
-![](WEBRESOURCE71710939172865截图.png)
+![](./images/WEBRESOURCE71710939172865截图.png)
 
 beforeCreate,created-->被干掉
 
@@ -1226,7 +1227,7 @@ errorCaptured-->onErrorCaptured
 
 ## 组件
 
-![](WEBRESOURCE81710939172814截图.png)
+![](./images/WEBRESOURCE81710939172814截图.png)
 
 ### 新增组件
 

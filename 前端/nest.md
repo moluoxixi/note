@@ -90,7 +90,7 @@ export class AppModule implements OnModuleInit,OnApplicationBootstrap
 }
 ```
 
-![](WEBRESOURCEaf83f0c5078f93bfb16a045e820f8112image.png)
+![](./images/WEBRESOURCEaf83f0c5078f93bfb16a045e820f8112image.png)
 
 ## 销毁阶段生命周期
 
@@ -119,7 +119,7 @@ export class MongooseCoreModule implements OnApplicationShutdown{
 }
 ```
 
-![](WEBRESOURCE049afb2f7c364ad46edd9695dd9ec18fimage.png)
+![](./images/WEBRESOURCE049afb2f7c364ad46edd9695dd9ec18fimage.png)
 
 # 创建nest应用&切换到fastify
 
@@ -151,7 +151,7 @@ AOP 的好处是可以把一些通用逻辑分离到切面中，保持业务逻�
 
 Nest 实现 AOP 的方式更多，一共有五种，包括 Middleware、Guard、Pipe、Interceptor、ExceptionFilter。
 
-![](WEBRESOURCEedeb62e4168d112966c85bf61160a53dimage.png)
+![](./images/WEBRESOURCEedeb62e4168d112966c85bf61160a53dimage.png)
 
 ## 它们的执行顺序
 
@@ -163,9 +163,9 @@ Nest 实现 AOP 的方式更多，一共有五种，包括 Middleware、Guard、
 
 - 无权限,调用ExceptionFilter 
 
-![](WEBRESOURCE2ac1f463361c0b9eb44cbf650c3b3d9cimage.png)
+![](./images/WEBRESOURCE2ac1f463361c0b9eb44cbf650c3b3d9cimage.png)
 
-![](WEBRESOURCEc0d36f9c577d4b27c83eecb4cdef0eb4image.png)
+![](./images/WEBRESOURCEc0d36f9c577d4b27c83eecb4cdef0eb4image.png)
 
 ## Middleware
 
@@ -851,19 +851,19 @@ export class AppController{
 
 通过 @Ip 拿到请求的 ip：
 
-![](WEBRESOURCE0adfda35602b70dc8fceda8e6d998d2estickPicture.png)
+![](./images/WEBRESOURCE0adfda35602b70dc8fceda8e6d998d2estickPicture.png)
 
 ## Session
 
 通过 @Session 拿到 session 对象：
 
-![](WEBRESOURCE304ed3900d0fe8f709361041ca2d8301stickPicture.png)
+![](./images/WEBRESOURCE304ed3900d0fe8f709361041ca2d8301stickPicture.png)
 
 但要使用 session 需要安装一个 express 中间件：npm install express-session
 
 在 main.ts 里引入并启用：
 
-![](WEBRESOURCE4405e2e9c870e5c081f8860fe889459dstickPicture.png)
+![](./images/WEBRESOURCE4405e2e9c870e5c081f8860fe889459dstickPicture.png)
 
 指定加密的密钥和 cookie 的存活时间。
 
@@ -871,7 +871,7 @@ export class AppController{
 
 @Redirect 装饰器来指定路由重定向的 url：
 
-![](WEBRESOURCE6b9a938c16f87821af2988654ed179ccstickPicture.png)
+![](./images/WEBRESOURCE6b9a938c16f87821af2988654ed179ccstickPicture.png)
 
 或者在返回值的地方设置 url：
 
@@ -886,23 +886,23 @@ async jump() {
 }
 ```
 
-![](WEBRESOURCE2783507738343fae183f05569b13e8e7stickPicture.png)
+![](./images/WEBRESOURCE2783507738343fae183f05569b13e8e7stickPicture.png)
 
 ## SetMetadata
 
 handler 和 class 可以通过 @SetMetadata 指定 metadata：
 
-![](WEBRESOURCE35aaa0407b950fb3f72b8fef128455f1stickPicture.png)
+![](./images/WEBRESOURCE35aaa0407b950fb3f72b8fef128455f1stickPicture.png)
 
 然后在 guard 或者 interceptor 里取出来：
 
-![](WEBRESOURCE2fae8c680564f0d43ce734ac93dda11fstickPicture.png)
+![](./images/WEBRESOURCE2fae8c680564f0d43ce734ac93dda11fstickPicture.png)
 
 ## Render
 
 返回的响应内容指定渲染引擎，不过这需要先这样设置：
 
-![](WEBRESOURCE009fcc8434f9fed5f286a81fa0405213image.png)
+![](./images/WEBRESOURCE009fcc8434f9fed5f286a81fa0405213image.png)
 
 ```javascript
 import { NestFactory } from '@nestjs/core';
@@ -935,17 +935,17 @@ npm install --save hbs
 
 然后准备图片和模版文件：
 
-![](WEBRESOURCEdc66812ea3d7b2b842210c081334a227stickPicture.png)
+![](./images/WEBRESOURCEdc66812ea3d7b2b842210c081334a227stickPicture.png)
 
-![](WEBRESOURCE7c9e8aa72cceddcb920179eae3e755f2stickPicture.png)
+![](./images/WEBRESOURCE7c9e8aa72cceddcb920179eae3e755f2stickPicture.png)
 
 在 handler 里指定模版和数据：
 
-![](WEBRESOURCE47107bc83f46d3caa3ed19b4b1e1c133stickPicture.png)
+![](./images/WEBRESOURCE47107bc83f46d3caa3ed19b4b1e1c133stickPicture.png)
 
 就可以看到渲染出的 html 了：
 
-![](WEBRESOURCEdf7fc63446dc065570e9019e09fa32cdstickPicture.png)
+![](./images/WEBRESOURCEdf7fc63446dc065570e9019e09fa32cdstickPicture.png)
 
 ## Param&Query&Body&Headers&Session&HostParm
 
@@ -965,7 +965,7 @@ npm install --save hbs
 
 可以通过 @Headers 装饰器取某个请求头 或者全部请求头：
 
-![](WEBRESOURCEe120cbb78870435a46da0f141a4a2544截图.png)
+![](./images/WEBRESOURCEe120cbb78870435a46da0f141a4a2544截图.png)
 
 ## **UsePipes&UseInterceptors&UseFilters&Catch**
 
@@ -1117,7 +1117,7 @@ export class AppController{
 
 # forwardRef解决循环依赖
 
-![](WEBRESOURCE9cc262a35f70485d8d6dbad772566824image.png)
+![](./images/WEBRESOURCE9cc262a35f70485d8d6dbad772566824image.png)
 
 ```javascript
 import {forwardRef,Module,Inject} from 'nest/common'
@@ -1348,7 +1348,7 @@ function bootstrap(){
 
 ## 洋葱模型
 
-![](WEBRESOURCE05429cc421f8b6d669ed63e8e2a73358image.png)
+![](./images/WEBRESOURCE05429cc421f8b6d669ed63e8e2a73358image.png)
 
 ## OSS
 
