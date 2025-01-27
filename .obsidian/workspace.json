@@ -198,11 +198,12 @@
       "notion-like-tables:Create loom": false
     }
   },
-  "active": "71f5f20815de2c7d",
+  "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
+    "output/前端不常用/tsconfig.md",
+    "大纲/大纲.md",
     "output/shell.md",
     "output/业务.md",
-    "大纲/大纲.md",
     "output/性能&错误监控.md",
     "output/代码实现.md",
     "output/qiankun.md",
@@ -239,7 +240,6 @@
     "output/前端不常用/storybook.md",
     "output/前端不常用/images",
     "output/前端不常用/echarts.md",
-    "output/前端不常用/Axios-TS.md",
     "output/前端不常用",
     "output/electron.md~",
     "output/antv/images",
