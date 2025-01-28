@@ -11,12 +11,14 @@
             "id": "75c49ea0ec18463f",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "业务/住院护士.excalidraw.md"
+                "file": "大纲/大纲.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "住院护士.excalidraw"
+              "icon": "lucide-file",
+              "title": "大纲"
             }
           }
         ]
@@ -124,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "业务/住院护士.excalidraw.md",
+                "file": "大纲/大纲.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,7 +136,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "住院护士.excalidraw 的反向链接列表"
+              "title": "大纲 的反向链接列表"
             }
           },
           {
@@ -198,6 +200,7 @@
   },
   "active": "75c49ea0ec18463f",
   "lastOpenFiles": [
+    "业务/住院护士.excalidraw.md",
     "前端/vitepress.md",
     "大纲/大纲.md",
     "业务/业务.md",
@@ -224,7 +227,6 @@
     "前端/低代码.md",
     "前端/qiankun.md",
     "blog",
-    "output/大纲.md",
     "output/assets",
     "output",
     "output/images/Pasted image 20250120150404.png",
