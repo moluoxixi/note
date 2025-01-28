@@ -1,3 +1,11 @@
+---
+title: shell
+description: shell笔记
+date: 2025-01-28
+tags:
+  - 后端
+---
+
 ## 文件操作
 ```shell
 ll 等于ls -l 列出当前目录下的文件和文件夹

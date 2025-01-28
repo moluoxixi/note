@@ -1,3 +1,11 @@
+---
+title: mysql
+description: mysql笔记
+date: 2025-01-28
+tags:
+  - 后端
+---
+
 # 主要内容
 
 ```

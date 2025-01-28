@@ -1,3 +1,11 @@
+---
+title: maven
+description: maven笔记
+date: 2025-01-28
+tags:
+  - 后端
+---
+
 # **maven**
 
 依赖管理工具,可以搭建私服

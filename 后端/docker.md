@@ -1,3 +1,11 @@
+---
+title: docker
+description: docker笔记
+date: 2025-01-28
+tags:
+  - 后端
+---
+
 ## docker命令
 ![[docker.png]]
 - images 是本地的所有镜像

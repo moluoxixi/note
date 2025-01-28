@@ -1,6 +1,50 @@
 {
   "recentFiles": [
     {
+      "basename": "spring",
+      "path": "后端/spring.md"
+    },
+    {
+      "basename": "shell",
+      "path": "后端/shell.md"
+    },
+    {
+      "basename": "mysql",
+      "path": "后端/mysql.md"
+    },
+    {
+      "basename": "maven",
+      "path": "后端/maven.md"
+    },
+    {
+      "basename": "kafka",
+      "path": "后端/kafka.md"
+    },
+    {
+      "basename": "java基础",
+      "path": "后端/java基础.md"
+    },
+    {
+      "basename": "golang",
+      "path": "后端/golang.md"
+    },
+    {
+      "basename": "es",
+      "path": "后端/es.md"
+    },
+    {
+      "basename": "docker",
+      "path": "后端/docker.md"
+    },
+    {
+      "basename": "天天卷-后端",
+      "path": "后端/天天卷-后端.md"
+    },
+    {
+      "basename": "plan",
+      "path": "大纲/plan.md"
+    },
+    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
     },
@@ -11,18 +55,6 @@
     {
       "basename": "qiankun",
       "path": "前端/qiankun.md"
-    },
-    {
-      "basename": "java基础",
-      "path": "后端/java基础.md"
-    },
-    {
-      "basename": "docker",
-      "path": "后端/docker.md"
-    },
-    {
-      "basename": "plan",
-      "path": "大纲/plan.md"
     },
     {
       "basename": "vite-press",
@@ -85,28 +117,12 @@
       "path": "后端/springboot3.md"
     },
     {
-      "basename": "天天卷-后端",
-      "path": "后端/天天卷-后端.md"
-    },
-    {
       "basename": "electron",
       "path": "前端/electron.md"
     },
     {
       "basename": "wsl与linux",
       "path": "后端/wsl与linux.md"
-    },
-    {
-      "basename": "mysql",
-      "path": "后端/mysql.md"
-    },
-    {
-      "basename": "maven",
-      "path": "后端/maven.md"
-    },
-    {
-      "basename": "kafka",
-      "path": "后端/kafka.md"
     },
     {
       "basename": "电子病历",
