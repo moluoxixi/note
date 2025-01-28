@@ -4,21 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "a510d472f324c846",
+        "id": "293cc0cdf1c09f70",
         "type": "tabs",
         "children": [
           {
-            "id": "ad1e78463b4b9a4b",
+            "id": "75c49ea0ec18463f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "业务/业务.md",
-                "mode": "source",
-                "source": false
+                "file": "业务/住院护士.excalidraw.md"
               },
-              "icon": "lucide-file",
-              "title": "业务"
+              "icon": "excalidraw-icon",
+              "title": "住院护士.excalidraw"
             }
           }
         ]
@@ -126,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "业务/业务.md",
+                "file": "业务/住院护士.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +134,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "业务 的反向链接列表"
+              "title": "住院护士.excalidraw 的反向链接列表"
             }
           },
           {
@@ -198,8 +196,10 @@
       "notion-like-tables:Create loom": false
     }
   },
-  "active": "ad1e78463b4b9a4b",
+  "active": "75c49ea0ec18463f",
   "lastOpenFiles": [
+    "大纲/大纲.md",
+    "业务/业务.md",
     "后端/spring.md",
     "后端/shell.md",
     "后端/mysql.md",
@@ -211,7 +211,6 @@
     "后端/docker.md",
     "后端/天天卷-后端.md",
     "大纲/plan.md",
-    "大纲/大纲.md",
     "前端/0天天卷-前端.md",
     "前端/Flutter.md",
     "conflict-files-obsidian-git.md",
@@ -228,7 +227,6 @@
     "output/assets",
     "output",
     "output/大纲/大纲.md",
-    "output/大纲/大纲/大纲.md",
     "output/images/Pasted image 20250120150404.png",
     "output/images/Pasted image 20250116165617.png",
     "output/images/Pasted image 20250116165516.png",
