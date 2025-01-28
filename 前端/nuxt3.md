@@ -1,3 +1,10 @@
+---
+title: nuxt3
+description: nuxt3
+date: 2025-01-28
+tags:
+  - 前端
+---
 # vue中如何使用SSR的
 
 ```javascript

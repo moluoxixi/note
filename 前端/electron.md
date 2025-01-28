@@ -1,3 +1,10 @@
+---
+title: electron
+description: electron
+date: 2025-01-28
+tags:
+	- 前端
+---
 # 创建electron应用
 接口文档
 	https://www.electronjs.org/zh/docs/latest/api/app

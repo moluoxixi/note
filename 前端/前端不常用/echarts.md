@@ -1,3 +1,10 @@
+---
+title: echarts
+description: echarts笔记
+date: 2025-01-28
+tags:
+  - 前端
+---
 # 基础操作
 
 引入echars

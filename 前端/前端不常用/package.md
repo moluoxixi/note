@@ -1,3 +1,10 @@
+---
+title: package
+description: package笔记
+date: 2025-01-28
+tags:
+  - 前端
+---
 ## 版本号
 
 版本采用三个数字来标识，

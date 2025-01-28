@@ -1,3 +1,10 @@
+---
+title: webpack
+description: webpack笔记
+date: 2025-01-28
+tags:
+  - 前端
+---
 ## 命令解析
 
 我们分析如上命令:

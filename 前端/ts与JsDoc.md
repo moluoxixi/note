@@ -1,3 +1,10 @@
+---
+title: ts与JsDoc
+description: ts与JsDoc
+date: 2025-01-28
+tags:
+  - 前端
+---
 # JsDoc
 
 一种无需编译即可定义类型的编辑器内置工具,如果需要类型检查,需要在配置中添加js检查

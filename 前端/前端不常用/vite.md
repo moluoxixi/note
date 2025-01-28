@@ -1,3 +1,10 @@
+---
+title: vite
+description: vite笔记
+date: 2025-01-28
+tags:
+  - 前端
+---
 # 原理
 
 vite是基于es module(script type:module&import)实现的，

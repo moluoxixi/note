@@ -1,3 +1,10 @@
+---
+title: IOS
+description: IOS笔记
+date: 2025-01-28
+tags:
+  - 前端
+---
 ## ios 键盘换行变为搜索
 
 1. input type="search"

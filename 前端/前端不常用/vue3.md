@@ -1,3 +1,10 @@
+---
+title: vue3
+description: vue3笔记
+date: 2025-01-28
+tags:
+	- 前端
+---
 ```js
 //初始化项目配置
 npm init vue@latest

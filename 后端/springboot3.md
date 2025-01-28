@@ -1,3 +1,10 @@
+---
+title: springboot3
+description: springboot3笔记
+date: 2025-01-28
+tags:
+  - 后端
+---
 # 起步依赖starter poms
 
 - 官方提供的场景：命名为：spring-boot-starter-*

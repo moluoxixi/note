@@ -1,3 +1,10 @@
+---
+title: qiankun
+description: qiankun
+date: 2025-01-28
+tags:
+  - 前端
+---
 # 一些坑
 ## vue 3 作为子应用,路由跳转使不同子应用来回切换,vue3子应用多次挂载问题
 https://github.com/umijs/qiankun/issues/2254

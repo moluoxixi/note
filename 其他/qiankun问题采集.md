@@ -1,3 +1,10 @@
+---
+title: qiankun问题采集
+description: qiankun问题采集笔记
+date: 2025-01-28
+tags:
+  - 其他
+---
 ## 使用 css 变量,部分样式丢失
 
 ```js

@@ -1,3 +1,10 @@
+---
+title: storybook
+description: storybook笔记
+date: 2025-01-28
+tags:
+  - 前端
+---
 # 初始化项目
 
 ```js

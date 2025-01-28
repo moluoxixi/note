@@ -1,3 +1,10 @@
+---
+title: uniapp
+description: uniapp笔记
+date: 2025-01-28
+tags:
+  - 前端
+---
 ## uniApp
 
 目前只能@vue/cli@4 版本及以下创建

@@ -1,3 +1,10 @@
+---
+title: wsl与linux
+description: wsl与linux笔记
+date: 2025-01-28
+tags:
+  - 后端
+---
 # WSL
 
 sudo是暂时用root用户执行命令,是一个程序,

@@ -1,3 +1,10 @@
+---
+title: css框架
+description: css框架
+date: 2025-01-28
+tags:
+  - 前端
+---
 # tailwind
 
 将样式粒子化,变成一个个类名,并在打包后只会保留使用的类名,其余会被摇掉
