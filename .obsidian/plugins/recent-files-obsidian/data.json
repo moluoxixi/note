@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "业务",
+      "path": "业务/业务.md"
+    },
+    {
       "basename": "spring",
       "path": "后端/spring.md"
     },
@@ -83,10 +87,6 @@
     {
       "basename": "vue",
       "path": "前端/vue.md"
-    },
-    {
-      "basename": "业务",
-      "path": "业务/业务.md"
     },
     {
       "basename": "ts与JsDoc",
