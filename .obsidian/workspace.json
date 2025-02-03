@@ -13,15 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "业务/HIS.md",
+                "file": "大纲/大纲.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "HIS"
+              "title": "大纲"
+            }
+          },
+          {
+            "id": "c36cdd8563d3970d",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.4"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -127,7 +140,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "业务/HIS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +149,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "HIS 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -199,11 +211,11 @@
       "notion-like-tables:Create loom": false
     }
   },
-  "active": "e7a7b303c61786dc",
+  "active": "c36cdd8563d3970d",
   "lastOpenFiles": [
     "大纲/大纲.md",
-    "业务/住院护士.excalidraw.md",
     "业务/HIS.md",
+    "业务/住院护士.excalidraw.md",
     "前端/vitepress.md",
     "业务/业务.md",
     "后端/spring.md",
