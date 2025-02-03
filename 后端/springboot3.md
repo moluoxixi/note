@@ -2,8 +2,11 @@
 title: springboot3
 description: springboot3笔记
 date: 2025-01-28
+ptags:
+  - 后端
 tags:
   - 后端
+  - springboot3
 ---
 # 起步依赖starter poms
 

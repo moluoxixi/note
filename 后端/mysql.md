@@ -2,8 +2,11 @@
 title: mysql
 description: mysql笔记
 date: 2025-01-28
+ptags:
+  - 后端
 tags:
   - 后端
+  - mysql
 ---
 
 # 主要内容
