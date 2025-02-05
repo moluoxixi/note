@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "nest",
+      "path": "前端/nest.md"
+    },
+    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
     },
@@ -179,10 +183,6 @@
     {
       "basename": "单测",
       "path": "前端/前端不常用/单测.md"
-    },
-    {
-      "basename": "nest",
-      "path": "前端/nest.md"
     },
     {
       "basename": "package",
