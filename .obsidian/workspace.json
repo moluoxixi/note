@@ -20,21 +20,8 @@
               "icon": "lucide-file",
               "title": "大纲"
             }
-          },
-          {
-            "id": "c36cdd8563d3970d",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.8.4"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.8.4"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -53,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -96,8 +84,7 @@
               "title": "Recent Files"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -140,6 +127,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "大纲/大纲.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,7 +137,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "大纲 的反向链接列表"
             }
           },
           {
@@ -211,8 +199,9 @@
       "notion-like-tables:Create loom": false
     }
   },
-  "active": "c36cdd8563d3970d",
+  "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
+    "大纲/plan.md",
     "大纲/大纲.md",
     "业务/HIS.md",
     "业务/住院护士.excalidraw.md",
@@ -228,7 +217,6 @@
     "后端/es.md",
     "后端/docker.md",
     "后端/天天卷-后端.md",
-    "大纲/plan.md",
     "前端/0天天卷-前端.md",
     "前端/Flutter.md",
     "conflict-files-obsidian-git.md",

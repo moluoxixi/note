@@ -5,6 +5,10 @@
       "path": "大纲/大纲.md"
     },
     {
+      "basename": "plan",
+      "path": "大纲/plan.md"
+    },
+    {
       "basename": "HIS",
       "path": "业务/HIS.md"
     },
@@ -55,10 +59,6 @@
     {
       "basename": "天天卷-后端",
       "path": "后端/天天卷-后端.md"
-    },
-    {
-      "basename": "plan",
-      "path": "大纲/plan.md"
     },
     {
       "basename": "0天天卷-前端",
