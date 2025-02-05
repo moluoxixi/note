@@ -24,7 +24,6 @@
   "showLineNumber": false,
   "readableLineLength": true,
   "showInlineTitle": false,
-  "showRibbon": true,
   "userIgnoreFilters": [
     "output/"
   ],
