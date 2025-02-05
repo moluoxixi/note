@@ -84,7 +84,8 @@
               "title": "Recent Files"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -199,7 +200,7 @@
       "notion-like-tables:Create loom": false
     }
   },
-  "active": "e7a7b303c61786dc",
+  "active": "6143f7e9cf10e680",
   "lastOpenFiles": [
     "大纲/大纲.md",
     "后端/wsl与linux.md",
