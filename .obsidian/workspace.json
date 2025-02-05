@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端/nest.md",
+                "file": "大纲/大纲.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "nest"
+              "title": "大纲"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:node",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -84,8 +84,7 @@
               "title": "Recent Files"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -128,7 +127,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "前端/nest.md",
+                "file": "大纲/大纲.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,7 +137,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "nest 的反向链接列表"
+              "title": "大纲 的反向链接列表"
             }
           },
           {
@@ -200,8 +199,9 @@
       "notion-like-tables:Create loom": false
     }
   },
-  "active": "6143f7e9cf10e680",
+  "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
+    "前端/nest.md",
     "大纲/大纲.md",
     "前端/前端不常用/tsconfig.md",
     "大纲/plan.md",
@@ -227,7 +227,6 @@
     "前端/前端不常用/vscode.md",
     "前端/前端不常用/MonacoEditor.md",
     "前端/前端不常用/IOS.md",
-    "前端/前端不常用/CodeMirror.md",
     "blog",
     "output/assets",
     "output",
