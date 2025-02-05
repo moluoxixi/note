@@ -5,7 +5,7 @@ date: 2025-01-28
 ptags:
  - 前端
 tags:
- - 前端
+ - 工具
 ---
 [vitepress](https://juejin.cn/post/7362547962604437541?searchId=20250116152459C477D53F0033D50AF80C#heading-40)
  https://vitepress.dev/reference

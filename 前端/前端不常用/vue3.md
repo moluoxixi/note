@@ -3,9 +3,9 @@ title: vue3
 description: vue3笔记
 date: 2025-01-28
 ptags:
-	- 前端
+  - 前端
 tags:
-	- 前端
+  - vue
 ---
 ```js
 //初始化项目配置

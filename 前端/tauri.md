@@ -5,7 +5,7 @@ date: 2025-01-28
 ptags:
   - 前端
 tags:
-  - 前端
+  - tauri
 ---
 # tauri
 前端部分：依赖系统内置 Webview 组件。例如，在 Windows 上使用 Edge/Webview2，在 macOS 上使用 WebKit，在 Linux 上使用 WebKitGTK。
