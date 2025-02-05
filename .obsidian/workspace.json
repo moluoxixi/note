@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "大纲/大纲.md",
+                "file": "大纲/plan.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "大纲"
+              "title": "plan"
             }
           }
         ]
@@ -127,7 +127,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "大纲/大纲.md",
+                "file": "大纲/plan.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +137,7 @@
                 "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "大纲 的反向链接列表"
+              "title": "plan 的反向链接列表"
             }
           },
           {
@@ -202,13 +202,9 @@
   "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
     "大纲/大纲.md",
-    "前端/nest.md",
-    "前端/前端不常用/tsconfig.md",
-    "大纲/plan.md",
-    "业务/HIS.md",
-    "业务/住院护士.excalidraw.md",
-    "前端/vitepress.md",
-    "业务/业务.md",
+    "后端/wsl与linux.md",
+    "后端/springClound.md",
+    "后端/springboot3.md",
     "后端/spring.md",
     "后端/shell.md",
     "后端/mysql.md",
@@ -219,14 +215,18 @@
     "后端/es.md",
     "后端/docker.md",
     "后端/天天卷-后端.md",
-    "前端/0天天卷-前端.md",
-    "前端/Flutter.md",
-    "conflict-files-obsidian-git.md",
-    "后端/springClound.md",
-    "前端/前端不常用/编辑器.md",
-    "前端/前端不常用/vscode.md",
-    "前端/前端不常用/MonacoEditor.md",
-    "前端/前端不常用/IOS.md",
+    "其他/计划.md",
+    "其他/dataview.md",
+    "其他/qiankun问题采集.md",
+    "其他/obsidian插件.md",
+    "其他/gpt模板.md",
+    "其他/扩展业务.md",
+    "其他/汇报.md",
+    "其他/电子病历.md",
+    "其他/搭一台服务器.md",
+    "业务/业务.md",
+    "神器/神奇密码.md",
+    "前端/vue.md",
     "blog",
     "output/assets",
     "output",

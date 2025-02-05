@@ -3,9 +3,9 @@ title: electron
 description: electron
 date: 2025-01-28
 ptags:
-	- 前端
+- 前端
 tags:
-	- electron
+- electron
 ---
 # 创建electron应用
 接口文档
