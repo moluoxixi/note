@@ -1,0 +1,13 @@
+{
+  "name": "note",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "push": "push.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moluoxixi/note.git"
+  },
+  "private": true
+}
