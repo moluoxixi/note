@@ -80,8 +80,8 @@
             "state": {
               "type": "recent-files",
               "state": {},
-              "icon": "clock",
-              "title": "Recent Files"
+              "icon": "lucide-file",
+              "title": "插件不再活动"
             }
           }
         ]
@@ -104,8 +104,8 @@
             "state": {
               "type": "advanced-tables-toolbar",
               "state": {},
-              "icon": "spreadsheet",
-              "title": "Advanced Tables"
+              "icon": "lucide-file",
+              "title": "插件不再活动"
             }
           },
           {
@@ -160,8 +160,8 @@
             "state": {
               "type": "calendar",
               "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Calendar"
+              "icon": "lucide-file",
+              "title": "插件不再活动"
             }
           },
           {
@@ -170,8 +170,8 @@
             "state": {
               "type": "quiet-outline",
               "state": {},
-              "icon": "lines-of-text",
-              "title": "Quiet Outline"
+              "icon": "lucide-file",
+              "title": "插件不再活动"
             }
           }
         ],
@@ -193,10 +193,10 @@
       "homepage:Open homepage": false,
       "obsidian-git:Open Git source control": false,
       "obsidian-kanban:创建新看板": false,
-      "obsidian-advanced-slides:Show Slide Preview": false,
       "omnisearch:Omnisearch": false,
       "surfing:surfing-bookmark-manager": false,
-      "notion-like-tables:Create loom": false
+      "notion-like-tables:Create loom": false,
+      "obsidian-advanced-slides:Show Slide Preview": false
     }
   },
   "active": "336f9a65386cf4b5",
