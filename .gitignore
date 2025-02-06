@@ -19,7 +19,7 @@ dist-ssr
 # 编辑器文件
 .vscode/*
 !.vscode/extensions.json
-.markemd
+.makemd
 .obsidian
 .space
 .idea
