@@ -4,6 +4,5 @@
   "description": "",
   "scripts": {
     "push": "push.sh"
-  },
-  "private": true
+  }
 }
