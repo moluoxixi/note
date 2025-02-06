@@ -29,5 +29,6 @@
   ],
   "promptDelete": false,
   "attachmentFolderPath": "images",
-  "useMarkdownLinks": true
+  "useMarkdownLinks": true,
+  "newLinkFormat": "relative"
 }
