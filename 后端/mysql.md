@@ -415,7 +415,7 @@ SELECT 是先执行 FROM 这一步的。在这个阶段，如果是多张表联�
 5. CHECK 检查约束
 6. DEFAULT 默认值约束
 
-```mysql
+```text
 #[]代表可选
 CREATE TABLE 表名称(
     #非空约束
@@ -462,7 +462,7 @@ ALTER TABLE 表名称 MODIFY 列名 数据类型 UNIQUE KEY NOT NULL DEFAULT 默
 
 ### 创建视图
 
-```mysql
+```sql
 #注意:
 #1.查询语句可以查询视图,也可以查询多个表,也就是说,可以基于视图创建视图
 #2.查询语句中不能存在子查询
@@ -502,14 +502,14 @@ MySQL支持使用INSERT、UPDATE和DELETE语句对视图中的数据进行插入
 
 举例：UPDATE操作
 
-```mysql
+```sql
 UPDATE emp_tel SET tel = '13789091234' WHERE ename = '孙洪亮';
 
 ```
 
 举例：DELETE操作
 
-```mysql
+```sql
  DELETE FROM emp_tel WHERE ename = '孙洪亮';
 
 ```
@@ -533,7 +533,7 @@ UPDATE emp_tel SET tel = '13789091234' WHERE ename = '孙洪亮';
 
 方式1：使用CREATE OR REPLACE VIEW 子句修改视图
 
-```mysql
+```sql
 CREATE OR REPLACE VIEW empvu80
 (id_number, name, sal, department_id)
 AS
@@ -550,7 +550,7 @@ WHERE department_id = 80;
 
 修改视图的语法是：
 
-```mysql
+```sql
 ALTER VIEW 视图名称
 AS
 查询语句
@@ -562,13 +562,13 @@ AS
 - 删除视图只是删除视图的定义，并不会删除基表的数据。 
 - 删除视图的语法是：
 
-```mysql
+```sql
 DROP VIEW IF EXISTS 视图名称;
 ```
 
 - 举例：
 
-```mysql
+```sql
 DROP VIEW empvu80;
 ```
 
@@ -610,7 +610,7 @@ MySQL将用户对数据的 访问限制 在某些数据的结果集上，而这�
 
 ## 导入现有表数据
 
-```mysql
+```sql
 source 文件绝对路径
 source  D:/masqldb.sql
 ```
@@ -623,7 +623,7 @@ source  D:/masqldb.sql
 
 ## 使mysql可以存中文
 
-```mysql
+```sql
 //如果是修改my.ini文件前建的数据库,通过如下方式修改
 alter database/table 数据库/表名 charset utf8
 
@@ -643,7 +643,7 @@ show variables like 'collation_%'; //查询字符集比较规则
 
 ## 可视化工具报密码格式错误
 
-```mysql
+```sql
 //因为MySQL8之前的版本中加密规则是mysql_native_password，在MySQL8之后，加密规则是caching_sha2_password
 
 //要么升级,要么把密码加密规则还原
@@ -657,7 +657,7 @@ FLUSH PRIVILEGES;
 
 ### 说说你对DB、DBMS、SQL的理解
 
-```mysql
+```sql
 DB就是database,也就是数据库文件
 DBMS就是DB的管理工具
 SQL是一门语言
@@ -667,7 +667,7 @@ mysql数据库服务器中安装了mysql DBMS来管理和操作DB,使用的sql�
 
 ### 表和表记录之间的关联关系
 
-```mysql
+```sql
 ORM思想(了解)
 //也就是表的数据可以引用多个表的数据(n对n),也可以引用自己表中的数据(子引用)
 一对一,一对多,多对多,自引用
@@ -676,7 +676,7 @@ ORM思想(了解)
 
 ### 知道哪些非关系型数据库(了解)
 
-```mysql
+```sql
 redis
 
 ```
@@ -716,7 +716,7 @@ redis
 
 **语法：**
 
-```mysql
+```sql
 CREATE PROCEDURE 存储过程名(IN|OUT|INOUT 参数名 参数类型,...)
 [characteristics ...]
 BEGIN
@@ -741,7 +741,7 @@ END
 
 3、characteristics 表示创建存储过程时指定的对存储过程的约束条件，其取值信息如下：
 
-```mysql
+```sql
 LANGUAGE SQL
 | [NOT] DETERMINISTIC
 | { CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA }
@@ -765,7 +765,7 @@ LANGUAGE SQL
 
 4、存储过程体中可以有多条 SQL 语句，如果仅仅一条SQL 语句，则可以省略 BEGIN 和 END
 
-```mysql
+```sql
 1. BEGIN…END：BEGIN…END 中间包含了多个语句，每个语句都以（;）号为结束符。
 2. DECLARE：DECLARE 用来声明变量，使用的位置在于 BEGIN…END 语句中间，而且需要在其他语句使用之前进
 行变量的声明。
@@ -776,7 +776,7 @@ LANGUAGE SQL
 
 5、需要设置新的结束标记
 
-```mysql
+```sql
 DELIMITER 新的结束标记
 
 ```
@@ -789,7 +789,7 @@ DELIMITER 新的结束标记
 
 示例：
 
-```mysql
+```sql
 DELIMITER $
 CREATE PROCEDURE 存储过程名(IN|OUT|INOUT 参数名 参数类型,...)
 [characteristics ...]
@@ -804,7 +804,7 @@ END $
 
 举例1：创建存储过程select_all_data()，查看 emps 表的所有数据
 
-```mysql
+```sql
 DELIMITER $
 CREATE PROCEDURE select_all_data()
 BEGIN
@@ -816,7 +816,7 @@ DELIMITER ;
 
 举例2：创建存储过程avg_employee_salary()，返回所有员工的平均工资
 
-```mysql
+```sql
 DELIMITER //
 CREATE PROCEDURE avg_employee_salary ()
 BEGIN
@@ -832,7 +832,7 @@ DELIMITER ;
 
 存储过程有多种调用方法。存储过程必须使用CALL语句调用，并且存储过程和数据库相关，如果要执行其他数据库中的存储过程，需要指定数据库名称，例如CALL dbname.procname。
 
-```mysql
+```sql
 CALL 存储过程名(实参列表)
 ```
 
@@ -840,13 +840,13 @@ CALL 存储过程名(实参列表)
 
 1、调用in模式的参数：
 
-```mysql
+```sql
 CALL sp1('值');
 ```
 
 2、调用out模式的参数：
 
-```mysql
+```sql
 SET @name;
 CALL sp1(@name);
 SELECT @name;
@@ -854,7 +854,7 @@ SELECT @name;
 
 3、调用inout模式的参数：
 
-```mysql
+```sql
 SET @name=值;
 CALL sp1(@name);
 SELECT @name;
@@ -864,7 +864,7 @@ SELECT @name;
 
 **举例1：**
 
-```mysql
+```sql
 DELIMITER //
 CREATE PROCEDURE CountProc(IN sid INT,OUT num INT)
 BEGIN
@@ -876,19 +876,19 @@ DELIMITER ;
 
 调用存储过程：
 
-```mysql
+```sql
 CALL CountProc (101, @num);
 ```
 
 查看返回结果：
 
-```mysql
+```sql
 SELECT @num;
 ```
 
 **举例2：**创建存储过程，实现累加运算，计算 1+2+…+n 等于多少。具体的代码如下：
 
-```mysql
+```sql
 DELIMITER //
 CREATE PROCEDURE `add_num`(IN n INT)
 BEGIN
@@ -919,7 +919,7 @@ DELIMITER ;
 
 语法格式：
 
-```mysql
+```sql
 CREATE FUNCTION 函数名(参数名 参数类型,...)
 RETURNS 返回值类型
 [characteristics ...]
@@ -942,7 +942,7 @@ END
 
 在MySQL中，存储函数的使用方法与MySQL内部函数的使用方法是一样的。换言之，用户自己定义的存储函数与MySQL内部函数是一个性质的。区别在于，存储函数是 用户自己定义 的，而内部函数是MySQL 的 开发者定义 的。
 
-```mysql
+```sql
 SELECT 函数名(实参列表)
 ```
 
@@ -952,7 +952,7 @@ SELECT 函数名(实参列表)
 
 创建存储函数，名称为email_by_name()，参数定义为空，该函数查询Abel的email，并返回，数据类型为字符串型。
 
-```mysql
+```sql
 DELIMITER //
 CREATE FUNCTION email_by_name()
 RETURNS VARCHAR(25)
@@ -966,7 +966,7 @@ DELIMITER ;
 
 调用：
 
-```mysql
+```sql
 SELECT email_by_name();
 ```
 
@@ -974,7 +974,7 @@ SELECT email_by_name();
 
 创建存储函数，名称为email_by_id()，参数传入emp_id，该函数查询emp_id的email，并返回，数据类型 为字符串型。
 
-```mysql
+```sql
 DELIMITER //
 CREATE FUNCTION email_by_id(emp_id INT)
 RETURNS VARCHAR(25)
@@ -988,7 +988,7 @@ DELIMITER ;
 
 调用：
 
-```mysql
+```sql
 SET @emp_id = 102;
 SELECT email_by_id(@emp_id);
 ```
@@ -1002,7 +1002,7 @@ SELECT email_by_id(@emp_id);
   加上必要的函数特性“[NOT] DETERMINISTIC”和“{CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA}”
 - 方式2：
 
-```mysql
+```sql
 SET GLOBAL log_bin_trust_function_creators = 1;
 ```
 
@@ -1025,13 +1025,13 @@ MySQL存储了存储过程和函数的状态信息，用户可以使用SHOW STAT
 
 1. 使用SHOW CREATE语句查看存储过程和函数的创建信息
 
-```mysql
+```sql
 SHOW CREATE {PROCEDURE | FUNCTION} 存储过程名或函数名
 ```
 
 2. 使用SHOW STATUS语句查看存储过程和函数的状态信息
 
-```mysql
+```sql
 SHOW {PROCEDURE | FUNCTION} STATUS [LIKE 'pattern']
 ```
 
@@ -1039,7 +1039,7 @@ SHOW {PROCEDURE | FUNCTION} STATUS [LIKE 'pattern']
 
 MySQL中存储过程和函数的信息存储在information_schema数据库下的Routines表中。可以通过查询该表的记录来查询存储过程和函数的信息。其基本语法形式如下：
 
-```mysql
+```sql
 SELECT * FROM information_schema.Routines
 WHERE ROUTINE_NAME='存储过程或函数的名' [AND ROUTINE_TYPE = {'PROCEDURE|FUNCTION'}];
 ```
@@ -1050,13 +1050,13 @@ WHERE ROUTINE_NAME='存储过程或函数的名' [AND ROUTINE_TYPE = {'PROCEDURE
 
 修改存储过程或函数，不影响存储过程或函数功能，只是修改相关特性。使用ALTER语句实现。
 
-```mysql
+```sql
 ALTER {PROCEDURE | FUNCTION} 存储过程或函数的名 [characteristic ...]
 ```
 
 其中，characteristic指定存储过程或函数的特性，其取值信息与创建存储过程、函数时的取值信息略有不同。
 
-```mysql
+```sql
 { CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA }
 | SQL SECURITY { DEFINER | INVOKER }
 | COMMENT 'string'
@@ -1077,7 +1077,7 @@ ALTER {PROCEDURE | FUNCTION} 存储过程或函数的名 [characteristic ...]
 
 删除存储过程和函数，可以使用DROP语句，其语法结构如下：
 
-```mysql
+```sql
 DROP {PROCEDURE | FUNCTION} [IF EXISTS] 存储过程或函数的名
 ```
 
@@ -2800,7 +2800,7 @@ LAG(expr,n)函数返回当前行的前n行的expr的值。
 
 举例：查询goods数据表中前一个商品价格与当前商品价格的差值。
 
-```mysql
+```sql
 mysql> SELECT id, category, NAME, price, pre_price, price - pre_price AS diff_price
 -> FROM (
 -> SELECT id, category, NAME, price,LAG(price,1) OVER w AS pre_price
@@ -2831,7 +2831,7 @@ LEAD(expr,n)函数返回当前行的后n行的expr的值。
 
 举例：查询goods数据表中后一个商品价格与当前商品价格的差值。
 
-```mysql
+```sql
 mysql> SELECT id, category, NAME, behind_price, price,behind_price - price AS
 diff_price
 -> FROM(
@@ -2864,7 +2864,7 @@ FIRST_VALUE(expr)函数返回第一个expr的值。
 
 举例：按照价格排序，查询第1个商品的价格信息。
 
-```mysql
+```sql
 mysql> SELECT id, category, NAME, price, stock,FIRST_VALUE(price) OVER w AS
 first_price
 -> FROM goods WINDOW w AS (PARTITION BY category_id ORDER BY price);
@@ -2893,7 +2893,7 @@ LAST_VALUE(expr)函数返回最后一个expr的值。
 
 举例：按照价格排序，查询最后一个商品的价格信息。
 
-```mysql
+```sql
 mysql> SELECT id, category, NAME, price, stock,LAST_VALUE(price) OVER w AS last_price
 -> FROM goods WINDOW w AS (PARTITION BY category_id ORDER BY price);
 +----+---------------+------------+---------+-------+------------+
@@ -2921,7 +2921,7 @@ mysql> SELECT id, category, NAME, price, stock,LAST_VALUE(price) OVER w AS last_
 
 NTH_VALUE(expr,n)函数返回第n个expr的值。 举例：查询goods数据表中排名第2和第3的价格信息。
 
-```mysql
+```sql
 mysql> SELECT id, category, NAME, price,NTH_VALUE(price,2) OVER w AS second_price,
 -> NTH_VALUE(price,3) OVER w AS third_price
 -> FROM goods WINDOW w AS (PARTITION BY category_id ORDER BY price);
@@ -2950,7 +2950,7 @@ NTILE(n)函数将分区中的有序数据分为n个桶，记录桶编号。
 
 举例：将goods表中的商品按照价格分为3组。
 
-```mysql
+```sql
 mysql> SELECT NTILE(3) OVER w AS nt,id, category, NAME, price
 -> FROM goods WINDOW w AS (PARTITION BY category_id ORDER BY price);
 +----+----+---------------+------------+---------+
@@ -2986,7 +2986,7 @@ mysql> SELECT NTILE(3) OVER w AS nt,id, category, NAME, price
 
 普通公用表表达式的语法结构是：
 
-```mysql
+```sql
 WITH CTE名称
 AS （子查询）
 SELECT|DELETE|UPDATE 语句;
@@ -2996,7 +2996,7 @@ SELECT|DELETE|UPDATE 语句;
 
 举例：查询员工所在的部门的详细信息。
 
-```mysql
+```sql
 mysql> SELECT * FROM departments
 -> WHERE department_id IN (
 -> SELECT DISTINCT department_id
@@ -3022,7 +3022,7 @@ mysql> SELECT * FROM departments
 
 这个查询也可以用普通公用表表达式的方式完成：
 
-```mysql
+```sql
 mysql> WITH emp_dept_id
 -> AS (SELECT DISTINCT department_id FROM employees)
 -> SELECT *
@@ -3052,7 +3052,7 @@ mysql> WITH emp_dept_id
 
 递归公用表表达式也是一种公用表表达式，只不过，除了普通公用表表达式的特点以外，它还有自己的特点，就是可以调用自己。它的语法结构是：
 
-```mysql
+```sql
 WITH RECURSIVE
 CTE名称 AS （子查询）
 SELECT|DELETE|UPDATE 语句;
@@ -3083,7 +3083,7 @@ SELECT|DELETE|UPDATE 语句;
 
 代码实现：
 
-```mysql
+```sql
 WITH RECURSIVE cte
 AS
 (
