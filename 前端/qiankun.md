@@ -47,55 +47,6 @@ const proxy = (container) => {
   document.body.appendChild.__isProxy__ = true;  
 };
 ```
-## 子应用开启experimentalStyleIsolation后, 若存在样式覆盖, 会导致样式解析失败
-暂无解决方案,只能强写样式覆盖错误样式
-
-```js
-//experimentalStyleIsolation用于样式隔离,会给全局style加上div[data-qiankun=`${appName}`] 前缀
-
-// element-plus中,部分样式覆盖导致qiankun的style解析失败导致样式丢失  
-// 例如border:var(--el-border-color); border-left:0;
-//例如:
-.residentdoctor-button{
-	border-color: var(--residentdoctor-button-border-color);
-	border-left: 0;
-}
-
-//解析为:
-div[data-qiankun="residentdoctor"] .residentdoctor-button {
-    border-top-style: ;
-    border-top-width: ;
-    border-right-style: ;
-    border-right-width: ;
-    border-bottom-style: ;
-    border-bottom-width: ;
-    border-left-style: ;
-    border-left-width: ;
-    border-image-source: ;
-    border-image-slice: ;
-    border-image-width: ;
-    border-image-outset: ;
-    border-image-repeat: ;
-
-	border-left:0;
-}
-```
-
-
-```js
-//fixQiankun.scss
-//将这个文件引入放在element样式引入之后,
-.el-button {  
-  border: 1px solid var(--border-color-1);  
-  &--text{  
-    border-color: transparent;  
-  }  
-}  
-  
-.el-radio-button__inner {  
-  border: 1px solid var(--border-color-1);  
-}
-```
 ## 子应用开启 experimentalStyleIsolation 后, 局部样式未添加前缀, 会导致权重问题
 
 ```js
@@ -235,6 +186,53 @@ html{
 ```
 乾坤源码部分:
 ![[Pasted image 20241114160854.png]]
+### 解决方案:
+```js
+//experimentalStyleIsolation用于样式隔离,会给全局style加上div[data-qiankun=`${appName}`] 前缀
+
+// element-plus中,部分样式覆盖导致qiankun的style解析失败导致样式丢失  
+// 例如border:var(--el-border-color); border-left:0;
+//例如:
+.residentdoctor-button{
+	border-color: var(--residentdoctor-button-border-color);
+	border-left: 0;
+}
+
+//解析为:
+div[data-qiankun="residentdoctor"] .residentdoctor-button {
+    border-top-style: ;
+    border-top-width: ;
+    border-right-style: ;
+    border-right-width: ;
+    border-bottom-style: ;
+    border-bottom-width: ;
+    border-left-style: ;
+    border-left-width: ;
+    border-image-source: ;
+    border-image-slice: ;
+    border-image-width: ;
+    border-image-outset: ;
+    border-image-repeat: ;
+
+	border-left:0;
+}
+```
+
+
+```js
+//fixQiankun.scss
+//将这个文件引入放在element样式引入之后,
+.el-button {  
+  border: 1px solid var(--border-color-1);  
+  &--text{  
+    border-color: transparent;  
+  }  
+}  
+  
+.el-radio-button__inner {  
+  border: 1px solid var(--border-color-1);  
+}
+```
 ## scoped 样式冲突
 
 vue 的 scoped 样式其实也有问题，
