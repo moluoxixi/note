@@ -2,6 +2,7 @@
 title: 2022 Annual Summary
 description: 2022 Annual Summary
 date: 2023-04-19
+hidden: true
 tags:
   - English
 ---
