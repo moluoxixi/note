@@ -4,6 +4,8 @@ description: 测试
 date: 2024-01-09
 tags:
   - 闲聊
+ptags:
+  - 前端
 ---
 
 This is just a demo for test.The source page is [here](https://github.com/shikijs/shiki).

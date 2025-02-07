@@ -4,6 +4,8 @@ description: cosmos
 date: 2022-07-05
 tags:
   - 区块链
+ptags:
+  - 前端
 ---
 
 ## 区块链现阶段的问题

@@ -4,6 +4,8 @@ description: mac外接显示器的坑
 date: 2021-10-15
 tags:
   - 工具
+ptags:
+  - 前端
 ---
 
 ## 背景

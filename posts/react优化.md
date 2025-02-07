@@ -3,7 +3,9 @@ title: React 简单优化
 description: React
 date: 2022-09-03
 tags:
-  - React
+  - react
+ptags:
+  - 前端
 ---
 
 ### 优化的原因

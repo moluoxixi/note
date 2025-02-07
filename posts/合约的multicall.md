@@ -4,6 +4,8 @@ description: 合约的multicall
 date: 2023-03-20
 tags:
   - 区块链
+ptags:
+  - 前端
 ---
 
 ## 背景

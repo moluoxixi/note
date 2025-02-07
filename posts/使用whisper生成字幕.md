@@ -4,6 +4,8 @@ description: 使用whisper生成字幕
 date: 2023-03-22
 tags:
   - 工具
+ptags:
+  - 前端
 ---
 
 ## 简介

@@ -4,6 +4,8 @@ description: 这是服务器建站的一系列记录，早期的版本已经遗�
 date: 2020-01-10
 tags:
   - 建站
+ptags:
+  - 前端
 ---
 
 ### ucloud 服务器

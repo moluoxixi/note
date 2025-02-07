@@ -4,6 +4,8 @@ description: typescript学习笔记
 date: 2021-09-03
 tags:
   - typescript
+ptags:
+  - 前端
 ---
 
 ## tips
