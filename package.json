@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "push": "push.sh"
+    "push": "push.sh",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "husky": "^9.1.7"
   }
 }
