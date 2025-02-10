@@ -37,8 +37,17 @@ tags:
 * @param {string}[p3]         可选参数的第二种写法
 * @param {string?}p4          可选参数的第三种写法
 * @param {string} [p4="test"] 可选+默认值
+* @return {*}
 */
+
 const func=(p1,p2,p3,p4){}
+
+/**
+ * @param {Object} user - 用户对象
+ * @param {string} user.name - 用户的名字
+ * @param {number} user.age - 用户的年龄
+ * @param {string} [user.email] - 用户的邮箱（可选）
+ */
 ```
 
 ## 定义变量类型
@@ -54,8 +63,19 @@ let func=(a,b)=>1;
 
 ```javascript
 //用于类型被多处用到,可以放在.d.ts文件中供全局使用
-//定义
-**@typedef {(s:string,b:boolean)=>number} 别名名称*/
+
+//定义函数
+/**
+* @typedef {(s:string,b:boolean)=>number} 别名名称
+*/
+
+//定义对象
+/**
+ * @typedef {Object} 别名名称
+ * @property {string} name - 用户的名字
+ * @property {number} age - 用户的年龄
+ * @property {string} [email] - 用户的邮箱（可选）
+ */
 ​
 //使用
 /** @type {别名名称} */
@@ -83,7 +103,7 @@ let func2 = (s,b)=>1;
 
 ## class写法(继承+泛型)
 
-```
+```js
 /**
 *@template T
 *@extends {Set<T>}
