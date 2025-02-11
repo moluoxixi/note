@@ -1,3 +1,10 @@
+---
+title: 1
+description: 1
+date: 2025-01-28
+tags:
+  - 业务
+---
 web转型:
 测试地址：http://192.168.209.105:9099/middle/hcl-item/chargeType/constraintOfMedisiTypeForOrderItem_publicOtherConfig
 账号密码：admin admin123
