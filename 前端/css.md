@@ -9,7 +9,6 @@ tags:
 ---
 ## grid 布局
 通过 display: grid 开启
-
 grid-template-rows/gird-template-columns 用于自定义行列，值可以是:
 
 1. 同 width 一样的值，例如 100px, 30%
