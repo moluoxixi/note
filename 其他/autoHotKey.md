@@ -1,5 +1,14 @@
+---
+title: autoHotKey
+description: 一个autoHotKey笔记
+date: 2025-02-13
+hidden: false
+tags: autoHotKey
+ptags: 
+---
 # 命令集合
 ## window 命令
+w+r 然后输入命令
 
 | 命令            | 说明                                  |
 | ------------- | ----------------------------------- |
