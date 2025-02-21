@@ -7,8 +7,8 @@ ptags:
 tags:
   - 工具
 ---
+ai 参考文案
 ```text
-ai参考文案
 写入类型与控制器, 格式参考
 trigger: {
 	options: ["hover", "click"],
