@@ -7,6 +7,16 @@ ptags:
 tags:
   - 工具
 ---
+```text
+ai参考文案
+写入类型与控制器, 格式参考
+trigger: {
+	options: ["hover", "click"],
+	control: "select",
+	type: '"hover" | "click"',
+	description: "触发 popover 的方式",
+},
+```
 # 初始化项目
 
 ```js
