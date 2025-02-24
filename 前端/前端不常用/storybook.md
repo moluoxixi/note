@@ -16,6 +16,12 @@ trigger: {
 	type: '"hover" | "click"',
 	description: "触发 popover 的方式",
 },
+a:{
+	type:{
+	  b:"string",
+	  c:"number"
+	}
+}
 ```
 # 初始化项目
 
