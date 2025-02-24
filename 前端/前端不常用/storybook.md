@@ -9,7 +9,7 @@ tags:
 ---
 ai 参考文案
 ```text
-写入类型与控制器, 格式参考
+写入类型，描述,控制器, 格式参考
 trigger: {
 	options: ["hover", "click"],
 	control: "select",
