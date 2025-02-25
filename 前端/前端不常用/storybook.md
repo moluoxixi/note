@@ -9,7 +9,7 @@ tags:
 ---
 ai 参考文案
 ```text
-写入类型，描述,控制器, 格式参考
+写入类型，描述,控制器, 格式参考如下，如果遇到除object外的复杂类型，control都为false,其余复杂类型，视情况选择select或radio,基础类型根据类型推导,
 trigger: {
 	options: ["hover", "click"],
 	control: "select",
