@@ -7,6 +7,35 @@ ptags:
 tags:
   - react
 ---
+# 大纲
+```js
+-->useState
+	const [state,setState]=useState(基础数据)
+-->useReducer,需要自定义reducer函数用来修改数据
+	const initialState={a:1}
+	const reducer=(state,action)=>{
+		switch (action) {
+			case 'increment':
+				return state.a+1
+			case 'decrement':
+				return state.a - 1
+			case 'reset':
+				return initialState
+			default:
+				return state
+		}
+	}
+	const [count, dispatch] = useReducer(reducer, initialState)
+-->useContext,需要依赖createContext
+	react.createContext()返回一个带Provider组件的对象，
+	Provider组件的子组件中使用useContext,会返回Provider的value属性值
+
+-->useRef,用于获取组件/dom实例
+	const Ref=useRef()
+	将这个Ref传递给组件/dom的ref属性后，会在挂载完毕后获取到组件/dom实例，
+	通过在useEffect等挂载完毕后才调用的函数中通过Ref.current获取到组件/dom实例
+
+```
 # ReactHooks
 
 ## 极致缓存示例
@@ -157,8 +186,6 @@ export default CounterOne
 待学
 
 #### useState
-
-`useState` 是使用 ` useReducer ` 构建的,用于替代 ` useReducer `
 
 ```javascript
 //immer是第三方包,要下载
