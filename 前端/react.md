@@ -9,31 +9,58 @@ tags:
 ---
 # 大纲
 ```js
--->useState
-	const [state,setState]=useState(基础数据)
--->useReducer,需要自定义reducer函数用来修改数据
-	const initialState={a:1}
-	const reducer=(state,action)=>{
-		switch (action) {
-			case 'increment':
-				return state.a+1
-			case 'decrement':
-				return state.a - 1
-			case 'reset':
-				return initialState
-			default:
-				return state
+-->React hook
+	-->useState
+		const [state,setState]=useState(基础数据)
+	-->useReducer,需要自定义reducer函数用来修改数据
+		const initialState={a:1}
+		const reducer=(state,action)=>{
+			switch (action) {
+				case 'increment':
+					return state.a+1
+				case 'decrement':
+					return state.a - 1
+				case 'reset':
+					return initialState
+				default:
+					return state
+			}
 		}
-	}
-	const [count, dispatch] = useReducer(reducer, initialState)
--->useContext,需要依赖createContext
-	react.createContext()返回一个带Provider组件的对象，
-	Provider组件的子组件中使用useContext,会返回Provider的value属性值
-
--->useRef,用于获取组件/dom实例
-	const Ref=useRef()
-	将这个Ref传递给组件/dom的ref属性后，会在挂载完毕后获取到组件/dom实例，
-	通过在useEffect等挂载完毕后才调用的函数中通过Ref.current获取到组件/dom实例
+		const [count, dispatch] = useReducer(reducer, initialState)
+	-->useContext,需要依赖createContext
+		react.createContext()返回一个带Provider组件的对象，
+		Provider组件的子组件中使用useContext,会返回Provider的value属性值
+	
+	-->useRef,用于获取组件/dom实例
+		const Ref=useRef()
+		将这个Ref传递给组件/dom的ref属性后，会在挂载完毕后获取到组件/dom实例，
+		通过在useEffect等挂载完毕后才调用的函数中通过Ref.current获取到组件/dom实例
+	
+	-->forwardRef,用于自定义组件暴露的dom元素，而不是默认的组件实例
+		const Child=forwardRef((props,ref)=>{
+			return <input ref={ref} />
+		})
+		function Parent(props) {
+		    const childRef=useRef();
+		    //此时childRef的值为{current:null},在挂载完毕后会变成{current:span元素}
+		    return <Child ref={childRef} />;
+		}
+		
+	-->useImperativeHandle常与forwardRef一起使用,用于自定义组件实例暴露的内容
+		const Child=forwardRef((props,ref)=>{
+			useImperativeHandle(ref, () => ({
+			        focus: () => {
+			            inputRef.current.focus();
+			        }
+			}));
+			return <input ref={ref} />
+		})
+		function Parent(props) {
+		    const childRef=useRef();
+		    //此时childRef的值为{current:null},在挂载完毕后会变成{current:{focus:focus函数}}
+		    return <Child ref={childRef} />;
+		}
+		
 
 ```
 # ReactHooks
@@ -713,33 +740,6 @@ hello<h2>word</h2>
 
 //我们还可以使用数组写法,返回多个相连的元素
 [<span>1</span>,'a']
-
-```
-
-## forwardRef
-
-用于获取 `函数组件` 内的Dom元素或组件实例
-
-若需要自定义ref暴露的内容,请使用  [useImperativeHandle](#useImperativeHandle与forwardRef)
-
-```js
-//Parent
-import {createRef,useRef} from 'react';
-import Child from './components/Child/index.tsx';
-function Parent(props){
-    //使用childRef.current即可获取Child组件内ref绑定的元素,这里是span
-    //此时childRef的值为{current:null},在每次渲染时,都会被初始化为这个值,然后变为{current:{spanNode}}
-    const childRef=createRef();
-    //此时childRef的值为{current:null},在未来会变为{current:{spanNode}}并维持这个值走完整个函数组件的生命周期
-    const childRef=useRef();
-    return <Child ref={childRef} />
-}
-
-//Child
-import {forwardRef} from 'react';
-const Child=forwardRef((props,ref)=>{
-    return <span ref={ref} />
-})
 
 ```
 
