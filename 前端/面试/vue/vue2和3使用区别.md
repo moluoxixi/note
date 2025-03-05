@@ -3,8 +3,10 @@ title: vue2和3使用区别
 description: 一个vue2和3使用区别笔记
 date: 2025-03-05
 hidden: false
-tags: vue2和3使用区别
-ptags: 
+tags:
+  - vue2和3使用区别
+ptags:
+  - vue
 ---
 
 ## 2/3 使用区别
