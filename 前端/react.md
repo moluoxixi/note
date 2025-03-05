@@ -9,7 +9,7 @@ tags:
 ---
 # 大纲
 ```js
--->React hook
+-->React
 	-->useState
 		const [state,setState]=useState(基础数据)
 	-->useReducer,需要自定义reducer函数用来修改数据
@@ -61,6 +61,8 @@ tags:
 		    return <Child ref={childRef} />;
 		}
 		
+-->React Dom
+	-->createPortal
 
 ```
 # ReactHooks
