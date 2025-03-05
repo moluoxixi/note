@@ -62,8 +62,9 @@ tags:
 		}
 		
 -->React Dom
-	-->createPortal
+	-->createPortal(元素，指定容器dom) 将元素挂载到指定容器dom上
 
+-->
 ```
 # ReactHooks
 
@@ -498,18 +499,18 @@ export const FancyInput=forwardRef((props, ref) {
 ```javascript
 import { useEffect, useRef, createPortal } from 'react';  
 const Portal = ({ children, container = document.body }) => {  
-  const el = useRef(null);  
+  let el;  
   useEffect(() => {  
     // 创建一个新的div元素作为portal的容器,方便维护,这样可以多次portal
-    el.current = document.createElement('div');
-    container.appendChild(el.current);
+    el = document.createElement('div');
+    container.appendChild(el);
     // 清理函数，在组件卸载时移除portal的容器  
     return () => {  
-      container.removeChild(el.current);  
+      container.removeChild(el);  
     };  
   }, [container]); // 如果container改变，则重新执行这个effect  
   // 使用createPortal将子元素渲染到portal的容器中
-  return createPortal(children, el.current);  
+  return createPortal(children, el);  
 };  
 const MyComponent = () => {  
   return (<p>test</p>);  
