@@ -12,9 +12,11 @@ tags:
 | **API 分类** | **API 名称**                                         | **常用参数**                                           | **功能描述**         |
 | ---------- | -------------------------------------------------- | -------------------------------------------------- | ---------------- |
 | **用户信息**   | `uni.getUserInfo({withCredentials})`               | `withCredentials`（是否包含敏感信息）                        | 获取用户信息，包括昵称、头像等  |
-|            | `uni.login({success(res){}})`                      | 无                                                  | 获取用户登录凭证（code）   |
+|            | `uni.login({success(res){}})`                      |                                                    | 获取用户登录凭证（code）   |
 | **数据存储**   | `uni.setStorageSync(key, data)`                    | `key`（键名）、`data`（存储的数据）                            | 同步方式存储数据到本地缓存    |
 |            | `uni.getStorageSync(key)`                          | `key`（键名）                                          | 同步方式从本地缓存获取数据    |
+|            | `uni.removeStorageSync(key)`                       | `key`（键名）                                          | 同步方式移除本地缓存数据     |
+|            | `uni.clearStorageSync()`                           | 无                                                  | 同步方式清空本地缓存       |
 | **网络请求**   | `uni.request(url, data, method)`                   | `url`（请求地址）、`data`（请求参数）、`method`（请求方法）            | 发起 HTTPS 网络请求    |
 | **支付**     | `uni.requestPayment(timeStamp, nonceStr, package)` | `timeStamp`（时间戳）、`nonceStr`（随机字符串）、`package`（订单信息） | 发起微信支付请求         |
 | **设备信息**   | `uni.getSystemInfoSync()`                          | 无                                                  | 获取系统信息，如屏幕宽度、高度等 |
@@ -22,8 +24,16 @@ tags:
 | **媒体**     | `uni.chooseImage(count, sizeType)`                 | `count`（选择图片数量）、`sizeType`（图片尺寸类型）                 | 从相册或相机选择图片       |
 |            | `uni.previewImage(urls, current)`                  | `urls`（图片链接列表）、`current`（当前显示图片的链接）                | 预览图片             |
 | **分享**     | `uni.shareAppMessage(title, path)`                 | `title`（分享标题）、`path`（分享路径）                         | 分享小程序页面          |
-
----
+| **文件操作**   | `uni.chooseFile(count, type)`                      | `count`（选择文件数量）、`type`（文件类型，如 `image`、`video`）     | 从本地选择文件          |
+|            | `uni.uploadFile(url, filePath, name)`              | `url`（上传地址）、`filePath`（文件路径）、`name`（文件字段名）         | 上传文件到服务器         |
+| **导航**     | `uni.navigateTo(url)`                              | `url`（目标页面路径）                                      | 跳转到非 tabBar 页面   |
+|            | `uni.switchTab(url)`                               | `url`（目标 tabBar 页面路径）                              | 跳转到 tabBar 页面    |
+| **通知**     | `uni.showToast(title, icon, duration)`             | `title`（提示内容）、`icon`（图标类型）、`duration`（显示时长）        | 显示消息提示框          |
+|            | `uni.showModal(title, content)`                    | `title`（标题）、`content`（内容）                          | 显示模态对话框          |
+| **设备能力**   | `uni.scanCode(onlyFromCamera)`                     | `onlyFromCamera`（是否只从相机扫码）                         | 调起扫码功能           |
+|            | `uni.vibrateLong()`                                | 无                                                  | 使手机振动            |
+| **网络状态**   | `uni.getNetworkType()`                             | 无                                                  | 获取当前网络类型         |
+|            | `uni.onNetworkStatusChange(callback)`              | `callback`（网络状态变化回调函数）                             | 监听网络状态变化         |
 
 ### Uniapp 登录流程
 
