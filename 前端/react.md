@@ -110,7 +110,101 @@ tags:
 -->React Dom
 	-->createPortal(元素，指定容器dom) 将元素挂载到指定容器dom上
 
--->
+-->react router dom
+	-->BrowserRouter，基于HTML5 history API的路由容器  
+		<BrowserRouter basename="/app">  
+			<App />  
+		</BrowserRouter>  
+		- basename: 基础路径（例："/app"）  
+		- forceRefresh: 强制页面刷新（兼容旧浏览器）  
+		- keyLength: location.key长度（默认6）  
+	
+	-->HashRouter，基于URL hash的路由容器  
+		<HashRouter hashType="slash">  
+			<App />  
+		</HashRouter>  
+		- hashType: hash格式（"slash|noslash|hashbang"）  
+	
+	-->MemoryRouter，内存路由（测试/非浏览器环境）  
+		<MemoryRouter initialEntries={["/"]} initialIndex={0}>  
+			<App />  
+		</MemoryRouter>  
+		- initialEntries: 初始路径数组  
+		- initialIndex: 初始路径索引  
+	
+	-->Routes/Route，路由匹配系统  
+		<Routes>  
+			<Route path="/" element={<Home />} />  
+			<Route path="users/:id" element={<User />} />  
+		</Routes>  
+		- path: 路径匹配规则  
+		- element: 匹配时渲染的组件  
+		- caseSensitive: 大小写敏感（默认false）  
+	
+	-->Link，声明式导航组件  
+		<Link to="/about" state={{ from: "/" }} replace>关于</Link>  
+		- to: 目标路径（支持字符串/对象）  
+		- replace: 替换历史记录  
+		- state: 携带的隐式状态数据  
+	
+	-->NavLink，带激活状态的导航组件  
+		<NavLink  
+			to="/news"  
+			style={({ isActive }) => ({ color: isActive ? "red" : "black" })}>
+			新闻
+		</NavLink>  
+		- end: 严格匹配子路径（类似exact）  
+		- activeClassName: 已过时，推荐用函数式style/className  
+	
+	-->useNavigate，编程式导航Hook  
+		const navigate = useNavigate();  
+		navigate("/login", { replace: true, state: { referrer: currentPath } });  
+		- 参数1: 目标路径  
+		- 参数2: { replace, state }  
+	
+	-->useParams，获取动态路由参数  
+		const { id } = useParams();  // 匹配路径如 "/user/:id"  
+	
+	-->useSearchParams，URL查询参数操作  
+		const [searchParams, setSearchParams] = useSearchParams();  
+		setSearchParams({ q: "react" });  // 更新为?q=react  
+	
+	-->useLocation，获取当前路由信息  
+		const location = useLocation();  
+		// 包含 pathname/search/hash/state/key  
+	
+	-->Outlet，嵌套路由占位组件  
+		function Layout() {  
+			return (  
+				<div>  
+					<Header />  
+					<Outlet />  // 子路由内容将渲染在此处  
+					<Footer />  
+				</div>  
+			)  
+		}  
+	
+	-->useRouteError，获取路由错误信息  
+		function ErrorPage() {  
+			const error = useRouteError();  
+			return <div>{error.statusText || error.message}</div>;  
+		}  
+	
+	-->createBrowserRouter，配置式路由创建  
+		const router = createBrowserRouter([  
+			{ path: "/", element: <Home /> },  
+			{ path: "/user", element: <User />, loader: userLoader }  
+		]);  
+		// 需配合RouterProvider使用  
+	
+	-->RouterProvider，配置路由的容器组件  
+		<RouterProvider router={router} fallbackElement={<Loading />} />  
+		- fallbackElement: 路由加载中的过渡UI  
+	
+	-->useNavigation，获取导航状态  
+		const navigation = useNavigation();  
+		// navigation.state: "idle|loading|submitting"  
+		// navigation.location: 目标路由信息
 ```
 # ReactHooks
 
@@ -723,6 +817,14 @@ const location=useLocation();
 //state: {message:'xxx'}
 ```
 
+### Link/NavLink
+
+NavLink 与 Link 都是基于 a 标签封装的组件, 用于跳转路由
+
+区别: NavLink 在激活时多一个 className="active"
+
+当这两组件被激活时, a 标签会多一个 aria-current="page"
+
 ## custom Hook(自定义)
 
 自定义hooks
@@ -836,13 +938,6 @@ Suspense 的作用与 [ErrorBounary](##错误处理ErrorBounary) 相似。Suspen
 
 ![](./images/WEBRESOURCEcf7099c58b51662f49e79f268de6f2ad截图.png)
 
-## Link/NavLink
-
-NavLink与Link都是基于a标签封装的组件,用于跳转路由
-
-区别:NavLink在激活时多一个className="active"
-
-当这两组件被激活时,a标签会多一个aria-current="page"
 
 ## 错误处理ErrorBounary
 
