@@ -10,55 +10,101 @@ tags:
 # 大纲
 ```js
 -->React
-	-->useState
-		const [state,setState]=useState(基础数据)
-	-->useReducer,需要自定义reducer函数用来修改数据
-		const initialState={a:1}
-		const reducer=(state,action)=>{
-			switch (action) {
-				case 'increment':
-					return state.a+1
-				case 'decrement':
-					return state.a - 1
-				case 'reset':
-					return initialState
-				default:
-					return state
+	-->响应式
+		-->useState
+			const [state,setState]=useState(基础数据)
+		-->useReducer,需要自定义reducer函数用来修改数据
+			const initialState={a:1}
+			const reducer=(state,action)=>{
+				switch (action) {
+					case 'increment':
+						return state.a+1
+					case 'decrement':
+						return state.a - 1
+					case 'reset':
+						return initialState
+					default:
+						return state
+				}
 			}
-		}
-		const [count, dispatch] = useReducer(reducer, initialState)
-	-->useContext,需要依赖createContext
-		react.createContext()返回一个带Provider组件的对象，
-		Provider组件的子组件中使用useContext,会返回Provider的value属性值
+			const [count, dispatch] = useReducer(reducer, initialState)
+		-->createContext,创建一个带Provider组件的上下文对象
+		-->useContext,Provider组件的子组件使用，返回Provider组件的value属性值
 	
-	-->useRef,用于获取组件/dom实例
-		const Ref=useRef()
-		将这个Ref传递给组件/dom的ref属性后，会在挂载完毕后获取到组件/dom实例，
-		通过在useEffect等挂载完毕后才调用的函数中通过Ref.current获取到组件/dom实例
-	
-	-->forwardRef,用于自定义组件暴露的dom元素，而不是默认的组件实例
-		const Child=forwardRef((props,ref)=>{
-			return <input ref={ref} />
-		})
-		function Parent(props) {
-		    const childRef=useRef();
-		    //此时childRef的值为{current:null},在挂载完毕后会变成{current:span元素}
-		    return <Child ref={childRef} />;
-		}
+	-->ref相关
+		-->useRef,用于获取组件/dom实例
+			const Ref=useRef()
+			将这个Ref传递给组件/dom的ref属性后，会在挂载完毕后获取到组件/dom实例，
+			通过在useEffect等挂载完毕后才调用的函数中通过Ref.current获取到组件/dom实例
+		-->forwardRef,用于自定义组件暴露的dom元素，而不是默认的组件实例
+			const Child=forwardRef((props,ref)=>{
+				return <input ref={ref} />
+			})
+			function Parent(props) {
+			    const childRef=useRef();
+			    //此时childRef的值为{current:null},在挂载完毕后会变成{current:span元素}
+			    return <Child ref={childRef} />;
+			}
+		-->useImperativeHandle常与forwardRef一起使用,用于自定义组件实例暴露的内容
+			const Child=forwardRef((props,ref)=>{
+				useImperativeHandle(ref, () => ({
+				        focus: () => {
+				            inputRef.current.focus();
+				        }
+				}));
+				return <input ref={ref} />
+			})
+			function Parent(props) {
+			    const childRef=useRef();
+			    //此时childRef的值为{current:null},在挂载完毕后会变成{current:{focus:focus函数}}
+			    return <Child ref={childRef} />;
+			}
 		
-	-->useImperativeHandle常与forwardRef一起使用,用于自定义组件实例暴露的内容
-		const Child=forwardRef((props,ref)=>{
-			useImperativeHandle(ref, () => ({
-			        focus: () => {
-			            inputRef.current.focus();
-			        }
-			}));
-			return <input ref={ref} />
-		})
-		function Parent(props) {
-		    const childRef=useRef();
-		    //此时childRef的值为{current:null},在挂载完毕后会变成{current:{focus:focus函数}}
-		    return <Child ref={childRef} />;
+	-->副作用
+		-->useEffect，处理副作用操作（数据获取/订阅）
+			useEffect(() => {
+				// 副作用逻辑
+				return () => { /* 清理函数 */ }
+			}, [依赖]) // 空数组表示只运行一次
+		-->useLayoutEffect，类似useEffect但同步执行（DOM更新后立即触发）
+			useLayoutEffect(() => {
+				// 布局相关的副作用
+			}, [依赖])
+		
+	-->性能优化
+		-->useMemo，缓存计算结果（性能优化）
+			const memoizedValue = useMemo(() =>computeExpensiveValue(a, b), [依赖])
+		-->useCallback，缓存函数引用（性能优化）
+			const memoizedFn = useCallback(() =>{ doSomething(a, b) }, [依赖])
+		-->memo,缓存函数组件，避免父组件重新渲染导致子组件渲染，内部通过Object.is比较props的每一个属性
+			//memo(Component,propsAreEqual?:(props,preProps)=>boolean)
+			const Child=memo(组件,(props,preProps)=>{...})
+		-->lazy，懒加载组件
+			const lazyComponent = React.lazy(() => import('./OtherComponent'))
+		-->Suspense，懒加载组件过程中的备用UI
+			<Suspense fallback={<Spinner />}>
+				<LazyComponent />
+			</Suspense>
+
+	-->ErrorBoundary,捕获子组件树中的 JavaScript 错误，并显示备用 UI
+		class ErrorBoundary extends React.Component {
+			state = { hasError: false }
+			//子组件或者componentDidCatch抛出错误时触发
+			static getDerivedStateFromError(error) {
+				return { hasError: true }
+			}
+			//记录错误信息
+			componentDidCatch(error, info) {
+				logErrorToService(error, info)
+			}
+			
+			render() {
+				if (this.state.hasError) {
+					return <h1>Something went wrong.</h1>
+				}
+				
+				return this.props.children
+			}
 		}
 		
 -->React Dom
@@ -700,7 +746,7 @@ React.Children用来操作children，它有 map、forEach、toArray、only、cou
 
 [想看缓存钩子比较不同?点击这里](#useMemo)
 
-memo函数的特点是:对组件接受的 props 属性进行浅比较,以确定是否需要render
+memo函数的特点是: 缓存函数组件，避免父组件重新渲染导致子组件渲染，内部通过 Object. is 比较 props 的每一个属性
 
 如果想控制比较过程,可以传递第二个参数回调
 
@@ -711,8 +757,8 @@ memo函数的特点是:对组件接受的 props 属性进行浅比较,以确定�
 当导致父组件重新渲染的原因与子组件无关时,例如父组件的某个响应式状态A改变,而子组件不依赖A,这是没有意义的,这时候就需要缓存
 
 ```js
-const Child=memo((props)=>(组件));
-const Child=memo((props)=>(组件),(p,c)=>{...})
+const Child=memo(组件);
+const Child=memo(组件,(props,preProps)=>{返回boolean控制是否重新渲染})
 
 ```
 
@@ -806,25 +852,24 @@ ErrorBounary用于包装可能抛出错误的组件。 当子孙组件抛出错�
 
 ```js
 import React from 'react';
-class ErrorBounary extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state={hasError:false}
-  }
-  //子组件或者componentDidCatch抛出错误时触发
-  getDerivedStateFromError(error){
-    return { hasError: true };
-  }
-  componentDidCatch(error, errorInfo) {
-    // 你同样可以将错误日志上报给服务器
-    return ;
-  }
-  render(){
-    if(this.hasError){
-      return '报错了'   //显示报错UI
-    }
-    return this.props.children;
-  }
+class ErrorBoundary extends React.Component {
+	state = { hasError: false }
+	//子组件或者componentDidCatch抛出错误时触发
+	static getDerivedStateFromError(error) {
+		return { hasError: true }
+	}
+	//记录错误信息
+	componentDidCatch(error, info) {
+		logErrorToService(error, info)
+	}
+	
+	render() {
+		if (this.state.hasError) {
+			return <h1>Something went wrong.</h1>
+		}
+		
+		return this.props.children
+	}
 }
 export default ErrorBounary;
 
