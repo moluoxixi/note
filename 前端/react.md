@@ -14,81 +14,84 @@ npx create-react-app 项目文件名
 
 -->React
 	-->响应式
-		-->useState
-			const [state,setState]=useState(基础数据)
-		-->useReducer,需要自定义reducer函数用来修改数据
-			const initialState={a:1}
-			const reducer=(state,action)=>{
-				switch (action) {
-					case 'increment':
-						return state.a+1
-					case 'decrement':
-						return state.a - 1
-					case 'reset':
-						return initialState
-					default:
-						return state
-				}
+	-->useState
+		const [state,setState]=useState(基础数据)
+	-->useReducer,需要自定义reducer函数用来修改数据
+		const initialState={a:1}
+		const reducer=(state,action)=>{
+			switch (action) {
+				case 'increment':
+					return state.a+1
+				case 'decrement':
+					return state.a - 1
+				case 'reset':
+					return initialState
+				default:
+					return state
 			}
-			const [count, dispatch] = useReducer(reducer, initialState)
-		-->createContext,创建一个带Provider组件的上下文对象
-		-->useContext,Provider组件的子组件使用，返回Provider组件的value属性值
+		}
+		const [count, dispatch] = useReducer(reducer, initialState)
+	-->createContext,创建一个带Provider组件的上下文对象
+	-->useContext,Provider组件的子组件使用，返回Provider组件的value属性值
 	
 	-->ref相关
-		-->useRef,用于获取组件/dom实例
-			const Ref=useRef()
-			将这个Ref传递给组件/dom的ref属性后，会在挂载完毕后获取到组件/dom实例，
-			通过在useEffect等挂载完毕后才调用的函数中通过Ref.current获取到组件/dom实例
-		-->forwardRef,用于自定义组件暴露的dom元素，而不是默认的组件实例
-			const Child=forwardRef((props,ref)=>{
-				return <input ref={ref} />
-			})
-			function Parent(props) {
-			    const childRef=useRef();
-			    //此时childRef的值为{current:null},在挂载完毕后会变成{current:span元素}
-			    return <Child ref={childRef} />;
-			}
-		-->useImperativeHandle常与forwardRef一起使用,用于自定义组件实例暴露的内容
-			const Child=forwardRef((props,ref)=>{
-				useImperativeHandle(ref, () => ({
-				        focus: () => {
-				            inputRef.current.focus();
-				        }
-				}));
-				return <input ref={ref} />
-			})
-			function Parent(props) {
-			    const childRef=useRef();
-			    //此时childRef的值为{current:null},在挂载完毕后会变成{current:{focus:focus函数}}
-			    return <Child ref={childRef} />;
-			}
+	-->useRef,用于获取组件/dom实例
+		const Ref=useRef()
+		将这个Ref传递给组件/dom的ref属性后，会在挂载完毕后获取到组件/dom实例，
+		通过在useEffect等挂载完毕后才调用的函数中通过Ref.current获取到组件/dom实例
+	-->forwardRef,用于自定义组件暴露的dom元素，而不是默认的组件实例
+		const Child=forwardRef((props,ref)=>{
+			return <input ref={ref} />
+		})
+		function Parent(props) {
+				const childRef=useRef();
+				//此时childRef的值为{current:null},在挂载完毕后会变成{current:span元素}
+				return <Child ref={childRef} />;
+		}
+	-->useImperativeHandle常与forwardRef一起使用,用于自定义组件实例暴露的内容
+		const Child=forwardRef((props,ref)=>{
+			useImperativeHandle(ref, () => ({
+							focus: () => {
+									inputRef.current.focus();
+							}
+			}));
+			return <input ref={ref} />
+		})
+		function Parent(props) {
+				const childRef=useRef();
+				//此时childRef的值为{current:null},在挂载完毕后会变成{current:{focus:focus函数}}
+				return <Child ref={childRef} />;
+		}
 		
 	-->副作用
-		-->useEffect，虚拟dom更新并渲染后，处理副作用操作（数据获取/订阅）
-			useEffect(() => {
-				// 副作用逻辑
-				return () => { /* 清理函数 */ }
-			}, [依赖]) // 空数组表示只运行一次
-		-->useLayoutEffect,虚拟dom更新后，渲染前，类似useEffect但同步执行（DOM更新后立即触发）
-			useLayoutEffect(() => {
-				// 布局相关的副作用
-			}, [依赖])
-		-->useInsertionEffect.虚拟dom更新前，类似useEffect
-		
+	-->useEffect，虚拟dom更新并渲染后，处理副作用操作（数据获取/订阅）
+		useEffect(() => {
+			// 副作用逻辑
+			return () => { /* 清理函数 */ }
+		}, [依赖]) // 空数组表示只运行一次
+	-->useLayoutEffect,虚拟dom更新后，渲染前，类似useEffect但同步执行
+		useLayoutEffect(() => {
+			// 布局相关的副作用
+		}, [依赖])
+	-->useInsertionEffect.虚拟dom更新前，类似useEffect但同步执行
+		useInsertionEffect(() => {
+			// 布局相关的副作用
+		}, [依赖])
+	
 	-->性能优化
-		-->useMemo，缓存计算结果（性能优化）
-			const memoizedValue = useMemo(() =>computeExpensiveValue(a, b), [依赖])
-		-->useCallback，缓存函数引用（性能优化）
-			const memoizedFn = useCallback(() =>{ doSomething(a, b) }, [依赖])
-		-->memo,缓存函数组件，避免父组件重新渲染导致子组件渲染，内部通过Object.is比较props的每一个属性
-			//memo(Component,propsAreEqual?:(props,preProps)=>boolean)
-			const Child=memo(组件,(props,preProps)=>{...})
-		-->lazy，懒加载组件
-			const lazyComponent = React.lazy(() => import('./OtherComponent'))
-		-->Suspense，懒加载组件过程中的备用UI
-			<Suspense fallback={<Spinner />}>
-				<LazyComponent />
-			</Suspense>
+	-->useMemo，缓存计算结果（性能优化）
+		const memoizedValue = useMemo(() =>computeExpensiveValue(a, b), [依赖])
+	-->useCallback，缓存函数引用（性能优化）
+		const memoizedFn = useCallback(() =>{ doSomething(a, b) }, [依赖])
+	-->memo,缓存函数组件，避免父组件重新渲染导致子组件渲染，内部通过Object.is比较props的每一个属性
+		//memo(Component,propsAreEqual?:(props,preProps)=>boolean)
+		const Child=memo(组件,(props,preProps)=>{...})
+	-->lazy，懒加载组件
+		const lazyComponent = React.lazy(() => import('./OtherComponent'))
+	-->Suspense，懒加载组件过程中的备用UI
+		<Suspense fallback={<Spinner />}>
+			<LazyComponent />
+		</Suspense>
 
 	-->ErrorBoundary,捕获子组件树中的 JavaScript 错误，并显示备用 UI
 		class ErrorBoundary extends React.Component {
@@ -115,16 +118,17 @@ npx create-react-app 项目文件名
 	-->createPortal(元素，指定容器dom) 将元素挂载到指定容器dom上
 
 -->react router
+	-->小于6.5配置路由方式
 	-->BrowserRouter，基于HTML5 history API的路由容器  
 		<BrowserRouter basename="/app">  
-			<App />
+			<Routes><Route /><Routes>
 		</BrowserRouter>  
 		- basename: 基础路径（例："/app"）  
 		- forceRefresh: 强制页面刷新（兼容旧浏览器）  
 		- keyLength: location.key长度（默认6）  
 	-->HashRouter，基于URL hash的路由容器  
 		<HashRouter hashType="slash">  
-			<App />  
+			<Routes><Route /><Routes>
 		</HashRouter>  
 		- hashType: hash格式（"slash|noslash|hashbang"）  
 	-->Routes/Route，路由匹配系统  
@@ -142,6 +146,7 @@ npx create-react-app 项目文件名
 		];
 		useRoutes(routes)
 	
+	-->大于6.5配置路由方式
 	-->RouterProvider，配置路由的容器组件  
 		<RouterProvider router={router} fallbackElement={<Loading />} />  
 		- fallbackElement: 路由加载中的过渡UI  
@@ -157,6 +162,7 @@ npx create-react-app 项目文件名
 			{ path: "/user", element: <User />, loader: userLoader }  
 		]);
 		
+	-->路由导航
 	-->Link，声明式导航组件  
 		<Link to="/about" state={{ from: "/" }} replace>关于</Link>  
 		- to: 目标路径（支持字符串/对象）  
@@ -176,12 +182,12 @@ npx create-react-app 项目文件名
 		- 参数1: 目标路径  
 		- 参数2: { replace, state }  
 	
+	-->获取路由信息
 	-->useParams，获取动态路由(params)参数  
 		const { id } = useParams();  // 匹配路径如 "/user/:id"  
 	-->useSearchParams，URL查询参数(query)操作  
 		const [searchParams, setSearchParams] = useSearchParams();  
 		setSearchParams({ q: "react" });  // 更新为?q=react  
-	
 	-->useNavigation，获取导航状态  
 		const navigation = useNavigation();  
 		// navigation.state: "idle|loading|submitting"  
