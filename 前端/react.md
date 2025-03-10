@@ -9,6 +9,9 @@ tags:
 ---
 # 大纲
 ```js
+-->创建项目
+npx create-react-app 项目文件名
+
 -->React
 	-->响应式
 		-->useState
@@ -61,15 +64,16 @@ tags:
 			}
 		
 	-->副作用
-		-->useEffect，处理副作用操作（数据获取/订阅）
+		-->useEffect，虚拟dom更新并渲染后，处理副作用操作（数据获取/订阅）
 			useEffect(() => {
 				// 副作用逻辑
 				return () => { /* 清理函数 */ }
 			}, [依赖]) // 空数组表示只运行一次
-		-->useLayoutEffect，类似useEffect但同步执行（DOM更新后立即触发）
+		-->useLayoutEffect,虚拟dom更新后，渲染前，类似useEffect但同步执行（DOM更新后立即触发）
 			useLayoutEffect(() => {
 				// 布局相关的副作用
 			}, [依赖])
+		-->useInsertionEffect.虚拟dom更新前，类似useEffect
 		
 	-->性能优化
 		-->useMemo，缓存计算结果（性能优化）
@@ -107,31 +111,22 @@ tags:
 			}
 		}
 		
--->React Dom
+-->ReactDom
 	-->createPortal(元素，指定容器dom) 将元素挂载到指定容器dom上
 
--->react router dom
+-->react router
 	-->BrowserRouter，基于HTML5 history API的路由容器  
 		<BrowserRouter basename="/app">  
-			<App />  
+			<App />
 		</BrowserRouter>  
 		- basename: 基础路径（例："/app"）  
 		- forceRefresh: 强制页面刷新（兼容旧浏览器）  
 		- keyLength: location.key长度（默认6）  
-	
 	-->HashRouter，基于URL hash的路由容器  
 		<HashRouter hashType="slash">  
 			<App />  
 		</HashRouter>  
 		- hashType: hash格式（"slash|noslash|hashbang"）  
-	
-	-->MemoryRouter，内存路由（测试/非浏览器环境）  
-		<MemoryRouter initialEntries={["/"]} initialIndex={0}>  
-			<App />  
-		</MemoryRouter>  
-		- initialEntries: 初始路径数组  
-		- initialIndex: 初始路径索引  
-	
 	-->Routes/Route，路由匹配系统  
 		<Routes>  
 			<Route path="/" element={<Home />} />  
@@ -140,14 +135,34 @@ tags:
 		- path: 路径匹配规则  
 		- element: 匹配时渲染的组件  
 		- caseSensitive: 大小写敏感（默认false）  
+	-->useRoutes(routes),Routes/Route的配置化
+		const routes = [  
+			{ path: "/", element: <Home /> },  
+			{ path: "/user", element: <User />, loader: userLoader }  
+		];
+		useRoutes(routes)
 	
+	-->RouterProvider，配置路由的容器组件  
+		<RouterProvider router={router} fallbackElement={<Loading />} />  
+		- fallbackElement: 路由加载中的过渡UI  
+	-->createBrowserRouter，配置式history路由创建,需配合RouterProvider使用
+		const router = createBrowserRouter([  
+			{ path: "/", element: <Home /> },  
+			{ path: "/user", element: <User />, loader: userLoader }  
+		]);
+		//   
+	-->createHashRouter，配置式hash路由创建,需配合RouterProvider使用
+		const router = createHashRouter([  
+			{ path: "/", element: <Home /> },  
+			{ path: "/user", element: <User />, loader: userLoader }  
+		]);
+		
 	-->Link，声明式导航组件  
 		<Link to="/about" state={{ from: "/" }} replace>关于</Link>  
 		- to: 目标路径（支持字符串/对象）  
 		- replace: 替换历史记录  
 		- state: 携带的隐式状态数据  
-	
-	-->NavLink，带激活状态的导航组件  
+	-->NavLink，带激活状态的(class默认多active)导航组件  
 		<NavLink  
 			to="/news"  
 			style={({ isActive }) => ({ color: isActive ? "red" : "black" })}>
@@ -155,24 +170,31 @@ tags:
 		</NavLink>  
 		- end: 严格匹配子路径（类似exact）  
 		- activeClassName: 已过时，推荐用函数式style/className  
-	
 	-->useNavigate，编程式导航Hook  
 		const navigate = useNavigate();  
 		navigate("/login", { replace: true, state: { referrer: currentPath } });  
 		- 参数1: 目标路径  
 		- 参数2: { replace, state }  
 	
-	-->useParams，获取动态路由参数  
+	-->useParams，获取动态路由(params)参数  
 		const { id } = useParams();  // 匹配路径如 "/user/:id"  
-	
-	-->useSearchParams，URL查询参数操作  
+	-->useSearchParams，URL查询参数(query)操作  
 		const [searchParams, setSearchParams] = useSearchParams();  
 		setSearchParams({ q: "react" });  // 更新为?q=react  
 	
+	-->useNavigation，获取导航状态  
+		const navigation = useNavigation();  
+		// navigation.state: "idle|loading|submitting"  
+		// navigation.location: 目标路由信息
 	-->useLocation，获取当前路由信息  
 		const location = useLocation();  
 		// 包含 pathname/search/hash/state/key  
-	
+	-->useRouteError，获取路由错误信息  
+		function ErrorPage() {  
+			const error = useRouteError();  
+			return <div>{error.statusText || error.message}</div>;  
+		}
+		
 	-->Outlet，嵌套路由占位组件  
 		function Layout() {  
 			return (  
@@ -183,28 +205,6 @@ tags:
 				</div>  
 			)  
 		}  
-	
-	-->useRouteError，获取路由错误信息  
-		function ErrorPage() {  
-			const error = useRouteError();  
-			return <div>{error.statusText || error.message}</div>;  
-		}  
-	
-	-->createBrowserRouter，配置式路由创建  
-		const router = createBrowserRouter([  
-			{ path: "/", element: <Home /> },  
-			{ path: "/user", element: <User />, loader: userLoader }  
-		]);  
-		// 需配合RouterProvider使用  
-	
-	-->RouterProvider，配置路由的容器组件  
-		<RouterProvider router={router} fallbackElement={<Loading />} />  
-		- fallbackElement: 路由加载中的过渡UI  
-	
-	-->useNavigation，获取导航状态  
-		const navigation = useNavigation();  
-		// navigation.state: "idle|loading|submitting"  
-		// navigation.location: 目标路由信息
 ```
 # ReactHooks
 
@@ -750,8 +750,33 @@ function App(props){
 
 ```
 
-### useRoutes
+### BrowserRouter&useRoutes
 
+```js
+// 传统组件式写法（v6.4之前）
+<BrowserRouter>
+  <Routes>
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route path="user/:id" element={<User />} />
+    </Route>
+  </Routes>
+</BrowserRouter>
+
+// 配置式写法（v6.4+）
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "user/:id", element: <User /> }
+    ]
+  }
+]);
+<RouterProvider router={router} fallbackElement={<Loading />}>
+</RouterProvider>
+```
 根据路由表创建路由
 
 ```js
@@ -2305,85 +2330,3 @@ componenWillUnmount()做一些收尾工作
 | (新增)ReactDOM.createRoot(DOM 元素).unmount()   | 卸载组件(18 的写法) |
 
 
-# 挂载到根元素并渲染
-
-```javascript
-import ReactDOM from 'react-dom/client';
-import App from "./App";
-const root = ReactDOM.createRoot(document.getElementById('root'))//挂载根节点
-root.render(App)//渲染根元素,react18
-ReactDOM.render(虚拟DOM,作为根元素的DOM元素)//渲染根元素,react18以下
-```
-
-# 创建项目
-
-```js
-npx create-react-app 项目文件名
-```
-
-# Ng
-
-## nigix
-
-### linux
-
-`[用户名@操作系统 ~]`  ~代表家目录,即当前用户所属的目录 (即/用户名,/是根目录,/下面有很多目录)
-
-| pwd | 查看文件目录 | 
-| -- | -- |
-| cd/ls/mkdir |   | 
-| rm -rf | 以递归的方式删除文件 | 
-|   |   | 
-
-
-### 上线流程
-
-安全/安全组/修改规则/入站规则/将指定端口放通
-
-xftp:连接服务器,鼠标操作,用于上传文件
-
-xshell:连接服务器,命令操作,用户操作服务器  eg:看文件是不是真传上去了
-
-nginx:反向代理服务器 and 邮件代理服务器 and
-
-    正向代理(服务器不知道被哪台客户端访问):客户端访问代理服务器并告诉它要访问的目标服务器,代理服务器帮客户端请求服务器
-
-    反向代理(客户端不知道访问哪台服务器):客户端访问代理服务器,代理服务器根据策略动态选择访问的服务器
-
-etc
-
-以.开头的是隐藏文件
-
-ls -lha 以列表形式查看文件及隐藏文件
-
-如果非正规退出vim,会多出一个.swp结尾的文件,需要删除
-
-```
-yum install nginx
-选ok
-cd /
-ls
-cd /etc
-ls
-cd nginx
-ls
-service nginx start    //启动nginx服务
-vi nginx.conf    //用vim编辑器打开nginx配置文件
-​
-i    //插入
-:wq    //保存并退出vim
-​
-将sever下root的目录改为咱们项目的路径    //访问服务器地址显示什么,这里是让我们显示项目的dist目录
-​
-给server下添加额外配置:
-location / {
-    root dist目录地址
-    index index.html
-    try_files $uri $uri/ /index.html    //vue-router@3官方提供的history模式下404跳首页的配置
-}
-location /api {
-    proxy_pass 目标服务器    //访问api时,需要代理访问的目标服务器
-}
-​
-service nginx restart    //重启nginx服务
-```
