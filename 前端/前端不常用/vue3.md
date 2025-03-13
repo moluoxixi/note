@@ -14,15 +14,17 @@ npm init vue@latest
 # 原理
 ## 2/3 区别
 1. 源码用 ts 重写
-2. 响应性系统优化：Vue 2 使用了 Object. defineProperty 来实现响应式系统，Vue 3 在 reactive 和 ref 接受复杂类型时使用了 Proxy 来实现, 仅在 ref 接受基本类型时使用 defineProperty 代理。
-	1. defineProperty 在对象新增和删除属性时, 数组新增, 删除, 修改属性以及通过 length 改变长度时不具有响应式
-	2. proxy 支持更多数据类型的劫持, 除 Object 和 Array 外, 还支持 Map, Set, WeakSet, WeakMap
-3. proxy 劫持数组本身, vue2 只能通过数组方法实现对数组的监控
-4. 树摇：依赖 es module 的 import 和 export, 通过分析引用关系摇掉冗余代码
-5. diff 优化:
-	- Vue 3 生成 AST 语法树时，将具有动态绑定的部分 (例如 vif, vfor) 放在一个数组 `dynamicChildren` 中, 再触发第二次渲染时，再生成 AST 树和 `dynamicChildren`, 最后将两次 `dynamicChildren` 进行比较，进行精准的靶向更新
-	- 模板解析 compile, parse 将 template 解析为 AST 树, optimize 阶段遍历 AST 树找到静态节点打上标记, generate 阶段根据 AST 树生成 Render 函数，同时将静态节点提升到 render 函数外作为常量
-	- 生成后遍历 AST 树寻找静态节点并打上静态标识, 在生成高性能渲染函数时将静态节点提取到渲染函数之外，避免每次渲染时重新创建
+2. 响应性系统优化：Vue 2 使用了 Object. defineProperty, vue3 采用 proxy&reflect
+	1. defineProperty
+	    1. 需要遍历整个对象进行代理，即使对象不进行操作，也要代理，耗费性能
+	    2. 在对象新增和删除属性时, 数组新增, 删除, 修改属性以及通过 length 改变长度时不具有响应式
+	2. proxy&reflect
+	    1. 天然支持更多数据类型的劫持
+	    2. proxy 劫持原对象的操作，通过 reflect 反射操作到原对象身上，仅操作时才触发，节省性能
+3. 树摇：依赖 es module 的 import 和 export, 通过分析引用关系摇掉冗余代码
+4. diff 优化:
+	- 靶向更新: Vue 3 生成 AST 语法树时，将具有动态绑定的部分 (例如 vif, vfor) 放在一个数组 `dynamicChildren` 中, 再触发第二次渲染时，再生成 AST 树和 `dynamicChildren`, 最后将两次 `dynamicChildren` 进行比较
+	- 静态提升: 模板解析 compile, parse 将 template 解析为 AST 树, optimize 阶段遍历 AST 树找到静态节点打上标记, generate 阶段根据 AST 树生成 Render 函数，同时将静态节点提升到 render 函数外作为常量
 ## 响应式原理
 
 ```js
