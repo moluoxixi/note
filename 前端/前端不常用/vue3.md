@@ -20,10 +20,9 @@ npm init vue@latest
 3. proxy 劫持数组本身, vue2 只能通过数组方法实现对数组的监控
 4. 树摇：依赖 es module 的 import 和 export, 通过分析引用关系摇掉冗余代码
 5. diff 优化:
-	- Vue 3 在将模板转换为 AST 树时将动态改变节点结构的部分 (例如 vif, vfor) 放在一个数组中, 节点改变时从数组中取值, 避免每次动态改变节点重新生成虚拟 DOM 递归比较
+	- Vue 3 生成 AST 语法树时，将具有动态绑定的部分 (例如 vif, vfor) 放在一个数组 `dynamicChildren` 中, 再触发第二次渲染时，再生成 AST 树和 `dynamicChildren`, 最后将两次 `dynamicChildren` 进行比较，进行精准的靶向更新
 	- 模板解析 compile, parse 将 template 解析为 AST 树, optimize 阶段遍历 AST 树找到静态节点打上标记, generate 阶段根据 AST 树生成 Render 函数，同时将静态节点提升到 render 函数外作为常量
 	- 生成后遍历 AST 树寻找静态节点并打上静态标识, 在生成高性能渲染函数时将静态节点提取到渲染函数之外，避免每次渲染时重新创建
-## 响应式原理
 ## 响应式原理
 
 ```js
