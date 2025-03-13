@@ -81,7 +81,7 @@ Watcher
 收集依赖,通知视图更新
 ```
 
-![](./images/WEBRESOURCE75b04692a14bb8baedd5f5d53d6b3092截图.png)
+![](../../images/WEBRESOURCE75b04692a14bb8baedd5f5d53d6b3092截图.png)
 
 ### nextTick 作用及原理
 
