@@ -5,3 +5,7 @@
 | pnpm dlx shadcn@latest init<br> | pnpm dlx shadcn-vue@latest init<br> | 初始化，项目依赖 tailwind, 先跟着官网配置 |
 | pnpm dlx shadcn@latest add<br>  | pnpm dlx shadcn-vue@latest add<br>  | 添加组件                       |
 [components](https://ui.shadcn.com/docs/components)
+
+
+问题 1: 双击的医嘱没有 prescId | sourcePrescId
+问题 2: 草稿的医嘱似乎是按 prescId 来分方的
