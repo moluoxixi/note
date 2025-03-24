@@ -664,6 +664,7 @@ white-space: nowrap;
   ```html
   <area shape="poly" coords="x1,y1,x2,y2,x3,y3" />
   ```
+
 # BFC 元素
 
 ## 什么是 BFC
@@ -714,22 +715,22 @@ BFC（Block Formatting Context）是 W3C CSS2.1 规范中的一个概念。它�
 
 ## 触发 BFC 的元素或属性
 
-| 元素或属性                                     |
-|------------------------------------------------|
-| 根元素（<html>）                              |
-| 浮动元素（float 不是 none）                   |
-| overflow 值不为 visible 的块元素              |
-| 定位元素（position 为 absolute 或 fixed）     |
-| 行内块元素（display 为 inline-block）         |
-| 表格单元格（display 为 table-cell）           |
-| 表格标题（display 为 table-caption）          |
+| 元素或属性                                                                                                  |
+|--------------------------------------------------------------------------------------------------------|
+| 根元素（`<html>`）                                                                                          |
+| 浮动元素（float 不是 none）                                                                                    |
+| overflow 值不为 visible 的块元素                                                                              |
+| 定位元素（position 为 absolute 或 fixed）                                                                      |
+| 行内块元素（display 为 inline-block）                                                                          |
+| 表格单元格（display 为 table-cell）                                                                            |
+| 表格标题（display 为 table-caption）                                                                          |
 | 表格其他元素（display 为 table、table-row、table-row-group、table-header-group、table-footer-group 或 inline-table） |
-| display 值为 flow-root、flex 的元素           |
-| contain 值为 layout、content 或 paint 的元素  |
-| 弹性元素（display 为 flex 或 inline-flex 的直接子元素） |
-| 网格元素（display 为 grid 或 inline-grid 的直接子元素） |
-| 多列容器（column-count 或 column-width 不为 auto，包括 column-count 为 1） |
-| column-span 为 all 的元素始终会创建一个新的 BFC |
+| display 值为 flow-root、flex 的元素                                                                          |
+| contain 值为 layout、content 或 paint 的元素                                                                  |
+| 弹性元素（display 为 flex 或 inline-flex 的直接子元素）                                                              |
+| 网格元素（display 为 grid 或 inline-grid 的直接子元素）                                                              |
+| 多列容器（column-count 或 column-width 不为 auto，包括 column-count 为 1）                                          |
+| column-span 为 all 的元素始终会创建一个新的 BFC                                                                     |
 
 # CSS3 属性
 
@@ -837,6 +838,7 @@ background-image: linear-gradient(direction, color-stop1, color-stop2, ...);
 
 - **transform-style**：指定变形元素在三维空间中呈现。
 - **perspective**：定义 3D 元素距视图的距离。
+
 # 回流和重绘
 
 ## 回流与重绘的概念
