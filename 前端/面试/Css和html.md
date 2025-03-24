@@ -927,492 +927,183 @@ white-space: nowrap;
 说明：
     (1) 如果某个 area 标签中的坐标和其他区域发生了重叠，会优先采用最先出现的 area 标签;
     (2) 浏览器会忽略超过图像边界范围之外的坐标。
+以下是优化后的 Markdown 结构，采用了表格、列表和代码块的格式，使内容更加清晰易读。
+
+---
+
 # BFC 元素
 
-BFC 即 Block Formatting Contexts (块级格式化上下文)，是 W3C CSS2.1 规范中的一个概念。
+## 什么是 BFC
 
-它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。 CSS2.1 中只有 BFC 和 IFC, CSS3 中还增加了 GFC 和 FFC。不同类型的 Box，会参与不同的 Formatting Context；
+BFC（Block Formatting Context）是 W3C CSS2.1 规范中的一个概念。它是页面中的一块渲染区域，有一套渲染规则，决定了其子元素的定位及与其他元素的关系和相互作用。
 
-•block-level box 参与 block fomatting context；
+### BFC 参与的格式化上下文
 
-•inline-level box 参与 inline formatting context；
+- **Block-level box** 参与 Block Formatting Context
+- **Inline-level box** 参与 Inline Formatting Context
+- **Grid-level box** 参与 Grid Formatting Context
+- **Flex-level box** 参与 Flex Formatting Context
 
-•grid-level box 参与 grid formatting context；
+### BFC 的特点
 
-•flex-level box 参与 flex formatting context；
 ```js
--->BFC
-	块级格式化上下文，内部子元素会按独特的规则进行排列：
-		相邻元素margin会发生重叠，无论什么方向
-		计算宽高时，float元素也会被计算，不会再高度塌陷
-		
-	触发条件：
-		根元素，即HTML标签
-		overflow不为visible
-		float不为none
-		display为：inline-block flex inline-flex grid inline-gird  inline-table table-cell table-caption
-		position 为absolute/fixed
+// BFC 特性
+--> BFC
+    块级格式化上下文，内部子元素按独特规则排列：
+        - 相邻元素 margin 会重叠，无论方向
+        - 计算宽高时，float 元素也会被计算，不会再高度塌陷
 
--->层叠顺序
-	z-index为负< background< border< 块级元素 <浮动元素 <内联元素 <没有设置z-index的定位元素 < z-index为正
+// 触发条件
+--> 触发条件：
+    - 根元素，即 HTML 标签
+    - overflow 不为 visible
+    - float 不为 none
+    - display 为：inline-block, flex, inline-flex, grid, inline-grid, inline-table, table-cell, table-caption
+    - position 为 absolute/fixed
 
--->选择器优先级
-	!important>行内>id>类&伪类(:)>元素&伪元素(::)>通配符*
+// 层叠顺序
+--> 层叠顺序：
+    z-index 为负 < background < border < 块级元素 < 浮动元素 < 内联元素 < 没有设置 z-index 的定位元素 < z-index 为正
+
+// 选择器优先级
+--> 选择器优先级：
+    !important > 行内 > id > 类 & 伪类(:) > 元素 & 伪元素(::) > 通配符 *
 ```
-##### BFC 布局规则
 
-    一、内部的Box会在垂直方向，一个接一个地放置。
-    二、Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠（按照最大margin值设置）
-    三、每个元素的margin box的左边，与包含块border box的左边相接触
-    四、BFC的区域不会与float box重叠。
-    五、BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。
-    六、计算BFC的高度时，浮动元素也参与计算
+## BFC 布局规则
 
-##### 哪些元素或属性能触发 BFC
+1. 内部的 Box 在垂直方向一个接一个地放置。
+2. Box 垂直方向的距离由 margin 决定。属于同一个 BFC 的两个相邻 Box 的 margin 会重叠（按照最大 margin 值设置）。
+3. 每个元素的 margin box 的左边，与包含块 border box 的左边相接触。
+4. BFC 的区域不会与 float box 重叠。
+5. BFC 是页面上的一个隔离的独立容器，容器里面的子元素不会影响外面的元素。
+6. 计算 BFC 的高度时，浮动元素也参与计算。
 
-    根元素(<html>)
-    浮动元素（float不是none）
-    overflow 值不为visible的块元素
-    定位元素（元素的position为absolute或fixed）
-    行内块元素（元素的display为 inline-block）
-    表格单元格（元素的display为 table-cell(td th)，HTML表格单元格默认为该值）
-    表格标题（元素的display 为 table-caption(caption)，HTML表格标题默认为该值）
-    表格其他元素（元素的 display为 table、table-row(tr)、 table-row-group(tbody)、table-header-group(thead)、table-footer-group(tfoot)或 inline-table
-    display 值为flow-root、flex的元素
-    contain 值为layout、content或paint的元素
-    弹性元素（display为flex或inline-flex元素的直接子元素）
-    网格元素（display为grid或inline-grid元素的直接子元素）
-    多列容器（元素的column-count或column-width不为auto，包括column-count为1）
-    column-span为all的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（标准变更，Chrome bug）。
+## 触发 BFC 的元素或属性
+
+| 元素或属性                                     |
+|------------------------------------------------|
+| 根元素（<html>）                              |
+| 浮动元素（float 不是 none）                   |
+| overflow 值不为 visible 的块元素              |
+| 定位元素（position 为 absolute 或 fixed）     |
+| 行内块元素（display 为 inline-block）         |
+| 表格单元格（display 为 table-cell）           |
+| 表格标题（display 为 table-caption）          |
+| 表格其他元素（display 为 table、table-row、table-row-group、table-header-group、table-footer-group 或 inline-table） |
+| display 值为 flow-root、flex 的元素           |
+| contain 值为 layout、content 或 paint 的元素  |
+| 弹性元素（display 为 flex 或 inline-flex 的直接子元素） |
+| 网格元素（display 为 grid 或 inline-grid 的直接子元素） |
+| 多列容器（column-count 或 column-width 不为 auto，包括 column-count 为 1） |
+| column-span 为 all 的元素始终会创建一个新的 BFC |
 
 # CSS3 属性
 
-##### 盒子圆角
+## 盒子圆角
 
-    border-radius:设置盒子圆角效果；
-        border-radius:val; 四个角的圆角是一样的
-        border-radius:val1 val2;左上角/右下角  右上角/左下角 
-        border-radius:val1 val2 val3;左上角 右上角/左下角 右下角
-        border-radius:va11 val2 val3 val4;左上 右上 右下 左下
-    border-radius:1~4水平圆角半径/1~4垂直圆角半径；
-    
-    分别设置某个角的圆角效果：
-        border-top-left-radius: 2em 0.5em;
-        border-top-right-radius: 1em 3em;
-        border-bottom-right-radius: 4em 0.5em;
-        border-bottom-left-radius: 1em;
-     说明：
-        当分开设置元素各个顶角的水平和垂直半径圆角效果时，不需要“/”加上反而是一种错误的写法
-        
-    取消圆角效果：border-radius:0; 
+```css
+border-radius: val; /* 四个角的圆角是一样的 */
+border-radius: val1 val2; /* 左上角/右下角  右上角/左下角 */
+border-radius: val1 val2 val3; /* 左上角 右上角/左下角 右下角 */
+border-radius: val1 val2 val3 val4; /* 左上 右上 右下 左下 */
+```
 
-##### 盒子阴影
+- 取消圆角效果：`border-radius: 0;`
 
-    box-shadow：设置盒子阴影，设置多个阴影时，用逗号隔开；
-    属性值(依次往后)：
-        h-shadow:必需的。水平阴影的位置。允许负值
-        v-shadow:必需的。垂直阴影的位置。允许负值
-        blur:可选。模糊距离
-        spread:可选。阴影的大小
-        color:可选。阴影的颜色。在CSS颜色值寻找颜色值的完整列表
-        inset:可选。从外层的阴影（开始时）改变为内侧阴影；
-        默认是外阴影   
-        外阴影：
-        x + 右  -左
-        y + 下  -上
-        内阴影：
-        x + 左  -右
-        y + 上  -下
+## 盒子阴影
 
-##### transform2D 功能函数属性
+```css
+box-shadow: h-shadow v-shadow blur spread color inset;
+```
 
-    1. translate(x,y) ：元素从其当前位置，根据给定的 x 坐标和 y 坐标位置参数进行移动，如果第二个参数未提供，则默认为0；
-       translateX(n)：定义 2D 转换，沿着 X 轴移动元素。 +  右  - 左 
-       translateY(n)：定义 2D 转换，沿着 Y 轴移动元素。  + 下   - 上
-       说明： 单位为%，参照的自身的大小
-     
-    2. rotate(n deg)：定义2D旋转，在参数中规定角度;
-          正值+： 是顺时针旋转       
-          负值-： 为逆时针旋转
-    注意：rotate和translate同时使用，当书写顺序不同时，会影响显示效果
-    
-    3. scale(number,number)：指定对象的2D缩放，第一个参数对应X轴，第二个参数对应Y轴，如果第二个参数未提供，则默认取第一个参数的值
-       scaleX(number)：指定对象X轴的（水平方向）缩放
-       scaleY(number)：指定对象Y轴的（垂直方向）缩放
-    	0： 缩小不可见   <1: 缩小    =1: 大小不变
-        >1: 放大       负值：翻转 再放大或者缩小
-        
-    4. skew(angle ,angle)：指定对象skew transformation（斜切扭曲）, 第一个参数对应X轴，第二个参数对应Y轴。
-                           如果第二个参数未提供，则默认值为0
-        skewX(angle)：指定对象X轴的（水平方向）扭曲
-        skewY(angle)：指定对象Y轴的（垂直方向）扭曲
-    注意：rotate和skew同时使用，当书写顺序不同时，会影响显示效果
-    
-    5. matrix(n,n,n,n,n,n) 函数
-       matrix() 方法把所有 2D 转换方法组合在一起。
-       matrix() 方法需要六个参数，包含数学函数，允许：旋转、缩放、移动以及倾斜元素。
+- **属性值**：
+  - `h-shadow`: 必需的，水平阴影位置，允许负值
+  - `v-shadow`: 必需的，垂直阴影位置，允许负值
+  - `blur`: 可选，模糊距离
+  - `spread`: 可选，阴影大小
+  - `color`: 可选，阴影颜色
+  - `inset`: 可选，从外层阴影变为内侧阴影
 
-##### 变形原点
+## transform2D 功能函数属性
 
-    transform-origin: x-axis  y-axis  z-axis；属性允许改变被转换元素原点的位置，2D转换元素能够改变元素 x 和 y 轴,
-                                              3D转换元素还能改变其Z轴
-    说明：
-    该属性只有在设置了transform属性的时候起作用；
-    x：left center right/length/%
-    y：top center bottom/length/%
-    z：length
+1. **translate (x, y)**：元素从当前位置移动。
+   - `translateX(n)`：沿 X 轴移动元素。
+   - `translateY(n)`：沿 Y 轴移动元素。
 
-##### 过渡属性 transition
+1. **rotate (n deg)**：定义 2D 旋转，参数中规定角度。
 
-    1. transition-property：规定设置过渡效果的CSS属性的名称
-       属性值：
-         none：没有属性会获得过渡效果
-         all:所有属性都将获得过渡效果
-         property：定义应用过渡效果的css属性名称列表，列表以逗号分隔
-       
-    2. transition-duration : 规定完成过渡效果需要花费的时间（以秒或毫秒计）;其默认值是0，也就是变换时是即时的；
-    
-    3. transition-timing-function: 规定过渡效果的速度曲线 （https://cubic-bezier.com/）
-        属性值：
-        ease	规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)，默认值。
-        linear	规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。
-        ease-in	规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。
-        ease-out	规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。
-        ease-in-out	规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。
-        cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
-        http://cubic-bezier.com/
-    
-    4. transition-delay：定义在过渡效果开始之前需要等待的时间，以s或ms计，默认值为0。作用于所有元素，包括:before和:after伪元素。
-    
-    5. 简写属性
-       transition: property duration timing-function delay; 设置多个属性的过渡效果时，中间用逗号分隔；
-    
-    注意：transition-delay与 transition-duration的值都是时间，所以要区分它们在连写中的位置，一般浏览器会根据先后顺序决定，
-    第一个时间为 transition-duration 第二个为transition-delay。
-    
-    实现过渡效果：
-    （1）指定要添加效果的CSS属性;
-    （2）指定效果的持续时间；
-    注意：如果时长未规定，则不会有过渡效果，因为默认值是 0。CSS 属性改变的典型事件是鼠标指针位于元素上时.
-    
-    在转换概念当中：是没有display这么一说的，通过改变元素的透明度去实现从无到有；
+2. **scale (number, number)**：指定对象的 2D 缩放。
 
-##### 线性渐变
+3. **skew (angle, angle)**：指定对象的斜切扭曲。
 
-    语法：
-    background-image:linear-gradient(direction, color-stop1, color-stop2, ...);
-    
-    说明：
-    direction：定义渐变的角度方向。
-        angle:从0deg到360deg，默认为180deg。
-      to side-or-corner:由两个关键字组成,第一个为指定水平位置(left或 right)，
-                        第二个为指定垂直位置（top或bottom），顺序是随意的，每个关键字都是可选的。
-      
-    color-stop1, color-stop2,...：指定渐变的起止颜色，由颜色值、停止位置（可选，使用百分比指定）组成。
-    
-    注意：角度是指水平线和渐变线之间的角度，逆时针方向计算。换句话说，0deg 将创建一个从下到上的渐变，90deg 将创建一个从左到右的渐变。
-    但是，请注意很多浏览器(Chrome,Safari,fiefox等)的使用了旧的标准，即 0deg将创建一个从左到右的渐变，90deg 将创建一个从下到上的渐变。
+4. **matrix (n, n, n, n, n, n)**：组合所有 2D 转换方法。
 
-##### 重复线性渐变
+## 变形原点
 
-    语法:
-    background-image: repeating-linear-gradient(direction, color-stop1, color-stop2, ...);用于创建重复的线性渐变 "图像"；
-    注意：每个颜色后边必须设置%或者px；
+```css
+transform-origin: x-axis y-axis z-axis;
+```
 
-##### 径向渐变
+- **属性值**：
+  - `x`: left center right / length / %
+  - `y`: top center bottom / length / %
+  - `z`: length
 
-    语法：
-    A:
-    background-image: radial-gradient(position, shape size, start-color, ..., last-color) 需要处理兼容;
-    
-    B:
-    background-image: radial-gradient(shape(图形) size(尺寸) at position(径变起点), start-color, ..., last-color) 高版本不需要处理兼容;
-    说明： 
-    shape: ellipse (默认)：指定椭圆形的径向渐变。
-           circle ：指定圆形的径向渐变
-           
-    size：定义渐变的大小：
-        farthest-corner (默认) : 指定径向渐变的半径长度为从圆心到离圆心最远的角
-        farthest-side ：指定径向渐变的半径长度为从圆心到离圆心最远的边
-        closest-corner ： 指定径向渐变的半径长度为从圆心到离圆心最近的角
-        closest-side ：指定径向渐变的半径长度为从圆心到离圆心最近的边
-        
-    position：定义渐变的位置
-       length：用长度值指定径向渐变圆心的横坐标或纵坐标。可以为负值。
-        percentage：用百分比指定径向渐变圆心的横坐标或纵坐标。可以为负值。
-        left：设置左边为径向渐变圆心的横坐标值。
-        center：设置中间为径向渐变圆心的横坐标值。
-        right：设置右边为径向渐变圆心的横坐标值。
-        center（默认）：设置中间为径向渐变圆心的纵坐标值。
-        top：设置顶部为径向渐变圆心的纵坐标值。
-        bottom：设置底部为径向渐变圆心的纵坐标值。
-        
-    start-color, ..., last-color：用于指定渐变的起止颜色
+## 过渡属性 transition
 
-##### 重复径向渐变
+1. **transition-property**：规定设置过渡效果的 CSS 属性名称。
+2. **transition-duration**：规定完成过渡效果需要的时间。
+3. **transition-timing-function**：规定过渡效果的速度曲线。
+4. **transition-delay**：定义在过渡效果开始前的等待时间。
+5. **简写属性**：
+   ```css
+   transition: property duration timing-function delay;
+   ```
 
-    语法：
-    background-image:repeating-radial-gradient(shape size at position, start-color, ..., last-color);
-    注意：每个颜色后边必须设置%或者px；
+## 线性渐变
 
-##### 新增背景属性
+```css
+background-image: linear-gradient(direction, color-stop1, color-stop2, ...);
+```
 
-    background-origin:规定背景图片的定位区域，规定background-position属性相对于什么位置来定位。
-    	属性值：
-    		padding-box:背景图像相对于内边距框来定位
-    		border-box:背景图像相对于边框盒来定位
-    		content-box:背景图像相对于内容框来定位     
-    		
-    background-clip:属性规定背景的绘制区域
-    	属性值:
-    		border-box:背景被裁剪到边框盒。
-    		padding-box:背景被裁剪到内边距框。
-    		content-box:背景被裁剪到内容框。    
-    
-    background-size：规定背景图片的尺寸；
-        属性值：
-           length:设置背景图像的宽度,高度。第一个值设置宽度，第二个值设置高度,如果只设置一个值，则第二个值会被设置为 "auto"。
-           percentage:以父元素的百分比来设置背景图像的宽度和高度。第一个值设置宽度，第二个值设置高度。如果只设置一个值，则第二个值会被设置为 "auto"。
-           cover: 会保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小。背景图像的某些部分也许无法显示在背景定位区域中。
-           contain:会保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小，背景图像也许无法覆盖背景区域。
-     
-    简写： 
-    background:url() repeat scroll position/size;  
-    
-    背景新增功能：同一个元素多重背景设置，先写的显示在上面；
-    例如A：
-       background-image:url(test1.jpg),url(test2.jpg)...;
-       background-repeat:no-repeat,no-repeat...; 
-       background-attachment:scroll,scroll...; 
-       background-position:10px 20px,50px 60px...;
-       B：
-       background:url(test1.jpg) no-repeat scroll 10px 20px,
-                 url(test2.jpg) no-repeat scroll 50px 60px,
-                 url(test3.jpg) no-repeat scroll 90px 100px;
+- **说明**：
+  - `direction`：定义渐变的角度方向。
+  - `color-stop`：指定渐变的起止颜色。
 
-# CSS3 动画
+## CSS3 动画
 
-##### 关键帧的定义
+### 关键帧的定义
 
-    语法:@keyframes animation-name {
-           keyframes-selector {css-styles;}
-          }
-        通过@keyframes规则，能够创建动画。创建动画的原理是，将一套CSS样式逐渐变化为另一套样式，在动画过程中，能够多次改变这套CSS样式。
-        以百分比来规定改变发生的时间，或者通过关键词 “from” 和 “to”。
-    
-        @keyframes mymove{
-         from{初始状态属性}
-         to{结束状态属性}
-        }
-        或
-        @keyframes mymove{
-         0%{初始状态属性}
-            ...
-         50%（中间再可以添加关键帧）
-            ...
-         100%{结束状态属性}
-        }
+```css
+@keyframes animation-name {
+    keyframes-selector { css-styles; }
+}
+```
 
-##### animation 属性
+- **示例**：
+```css
+@keyframes mymove {
+    from { /* 初始状态属性 */ }
+    to { /* 结束状态属性 */ }
+}
+```
 
-    1. animation-name：检索或设置对象所应用的动画名称，必须与规则@keyframes配合使用；
-       
-    2. animation-duration：检索或设置对象动画的持续时间（s/ms）
-     
-    3. animation-timing-function：检索或设置对象动画的过渡类型
-        属性值：
-        linear：线性过渡。等同于贝塞尔曲线(0.0, 0.0, 1.0, 1.0)
-        ease：平滑过渡。等同于贝塞尔曲线(0.25, 0.1, 0.25, 1.0)
-        ease-in：由慢到快。等同于贝塞尔曲线(0.42, 0, 1.0, 1.0)
-        ease-out：由快到慢。等同于贝塞尔曲线(0, 0, 0.58, 1.0)
-        ease-in-out：由慢到快再到慢。等同于贝塞尔曲线(0.42, 0, 0.58, 1.0);
-        cubic-bezier(num, num, num, num)：特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内
-        
-        timing-function的以上属性值，效果上，关键帧之间会插入补间动画，所以动画效果是连贯性的，是线性动画的效果。
-        
-        steps()函数/step-start/step-end：实现的动画是没有过渡效果的，而是一帧帧的变化；
-        语法：
-        steps(次数，start/end)
-            第一个参数指定了时间函数中的间隔数量（必须是正整数）;
-            第二个参数可选，有start和end两个值，指定在每个间隔的起点或是终点发生阶跃变化，默认为 end；
-        step-start等同于steps(1,start)，动画分成1步，动画执行时为开始端点的部分为开始；
-        step-end等同于steps(1,end)：动画分成1步，动画执行时以结尾端点为开始，默认值为end。
-        
-    4. animation-delay：检索或设置对象动画延迟的时间(s/ms)
-          属性值：+ - 
-     
-    5. animation-iteration-count：检索或设置对象动画的循环次数（默认执行1次）
-        属性值：
-          infinite：无限循环     number: 循环的次数
-          
-    6. animation-direction ：检索或设置对象动画在循环中是否反向运动
-         属性值：
-          normal：正常方向
-          reverse：反方向运行
-          alternate：动画先正常运行再反方向运行，并持续交替运行
-          alternate-reverse：动画先反运行再正方向运行，并持续交替运行
-          
-    7. animation-fill-mode：规定对象动画时间之外的状态;
-         属性值：
-         none：不改变默认行为。
-         forwards：当动画完成后，保持最后一个属性值（在最后一个关键帧中定义），固定动画。
-         backwards：在animation-delay所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）。
-         both：向前和向后填充模式都被应用。
-    
-    8. animation-play-state：检索或设置对象动画的状态
-        属性值：
-          running:运动 - 默认值
-          paused: 暂停
-    
-    简写：animation 
-      (1) 此属性是所有动画属性的简写属性，除了animation-play-state属性 
-      (2) 一个动画多个属性值中间空格隔开；想要设置多个动画时，动画之间用逗号分隔；
-      (3) 必须定义动画的名称和时长,如果忽略时长,则动画不会执行，因为默认值是 0;
+### animation 属性
 
-# 3D
+1. **animation-name**：动画名称。
+2. **animation-duration**：动画持续时间。
+3. **animation-timing-function**：动画过渡类型。
+4. **animation-delay**：动画延迟时间。
+5. **animation-iteration-count**：动画循环次数。
+6. **animation-direction**：动画是否反向运动。
+7. **animation-fill-mode**：动画时间之外的状态。
+8. **animation-play-state**：动画状态。
 
-##### 实现 3D 场景（css 属性加给父元素）
+### 3D 属性
 
-    transform-style:指定变形元素是怎样在三维空间中呈现。
-     属性值：
-       flat:值为默认值，表示所有子元素在2D平面呈现
-       preserve-3d: 表示所有子元素在3D空间中呈现。
-       
-      （1）该属性必须与transform属性一同使用
-      （2）需要设置在父元素上面，并且高于任何嵌套的变形元素；  
-      
-    perspective: 定义3D元素距视图的距离，以像素计；
-      （1）为父元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。
-      属性值： 
-        number:元素距离视图的距离，以像素计。
-        none:默认值，与0相同。不设置透视。
-
-##### 3D 转换
-
-    1、位移translate:
-    translateX (value)：默认是以X(水平方向)移动
-    translateY (value)：默认是以Y(垂直方向)移动
-    translateZ (value)：设置元素以Z(前后)轴移动，正值向前使元素视觉上变大，负值向后，使元素视觉上变小
-    translate3d(x,y,z): 设置x，y，z轴的移动；
-    
-    3种写法等价：
-    transform:translateZ(800px) translateX(30px) translateY(30px);
-    transform:translateZ(800px) translate(30px,30px);
-    transform:translate3d(30px,30px,800px)
-    
-    2、旋转rotate：
-    rotateX(deg)：定义沿着X轴的3D旋转。 + 屏幕里   – 屏幕外
-    rotateY(deg)：定义沿着Y轴的3D旋转。 + 右  - 左
-    rotateZ(deg)：设置元素围绕Z轴旋转；
-       如果仅从视觉角度上看，rotateZ()函数让元素顺时针或逆时针旋转，并且效果和rotate()效果等同，但它不是在2D平面的旋转;
-    
-    rotate3d(1,1,0,50deg)
-        x：是一个0到１之间的数值，主要用来描述元素围绕X轴旋转的矢量值；
-        y：是一个０到１之间的数值，主要用来描述元素围绕Y轴旋转的矢量值；
-        z：是一个０到１之间的数值，主要用来描述元素围绕Z轴旋转的矢量值；a：是一个角度值，主要用来指定元素在3D空间旋转的角度，
-        如果其值为正值，元素顺时针旋转，反之元素逆时针旋转缩放效果：
-      （1）当值为1时，表示旋转，当值为0是表示不旋转；
-      （2）当值为小数时，只给一个小数时会当做1，如果多个非0数值，小数就会生效；
-    
-    3、scale缩放：
-    scaleX (number)：默认是X轴(长度)缩放；
-    scaleY (number)：默认是Y轴(高度)缩放；
-    scaleZ (number):  默认是Z(宽度)缩放；
-    scale3d(num1,num2,num3):设置x,y,z轴的缩放；
-    注意：
-    scaleZ()和scale3d()函数单独使用时没有任何效果，需要配合其它的变形函数一起使用才会有效果，必须写在其他变形函数的后边；
-    
-    backface-visibility（是否可见）：
-    定义元素在不面对屏幕时是否可见（它用于决定当一个元素的背面面向用户的时候是否可见）。
-    属性值：
-        visible:背面是可见的-默认值
-        hidden：背面是不可见的
-    transform-origin（旋转点）：
-    语法：transform-origin: x-axis y-axis z-axis；
-    允许改变被转换元素原点的位置，2D转换元素能够改变元素x和y轴,3D转换元素还能改变其Z轴;
-      x:left center right/length/%
-      y:top center bottom/length/%
-      z:length
-    perspective-origin：
-    语法：perspective-origin: x-axis y-axis;主要用来决定perspective属性的源点角度,设置观察方向;
-      属性值：
-      x: left center right/length/%
-      y: top center bottom/length/%
-    说明：一般设置在父元素上，结合perspective使用；center center
-
-##### 透视的两种实现方式（景深）
-
-     perspective:设置元素的透视效果
-     transform:perspective();设置元素的透视效果
-              区别： 
-                1. perspective是设置给父元素的
-                   transform:perspective()设置给当前需要有转换效果的元素上面，跟其他转换函数一起使用时，写在其他函数的前面
-                2. perspective：0 none length
-                   transform:perspective(length)
-
-##### css3 新增文本属性
-
-    text-shadow：h-shadow v-shadow blur color；
-    向文本添加一个或多个阴影，用逗号分隔的阴影列表，每个阴影有两个或三个长度值和一个可选的颜色值进行规定，省略的长度是0。
-     属性值：
-        h-shadow:水平阴影的位置。允许负值
-        v-shadow:必需。垂直阴影的位置。允许负值
-        blur:可选。模糊的距离。
-        color:可选。阴影的颜色。
-        
-    word-wrap:属性用来标明是否允许浏览器在单词内进行断句，这是为了防止当一个字符串太长而找不到它的自然断句点时产生溢出现象。
-     属性值：
-    	normal:只在允许的断字点换行（浏览器保持默认处理）
-    	break-word:属性允许长单词或URL地址换行到下一行-会考虑尽量放在一行内，如果不行再换行
-    	
-    word-break:属性规定自动换行的处理方法
-     属性值：
-        normal:浏览器默认处理
-    	break-all:它断句的方式非常粗暴，它不会尝试把长单词挪到下一行，而是直接进行单词内的断句
-    	Keep-all:文本不会换行，只能在空格或连字符处换行
-    
-    @font-face
-    @font-face是CSS3中的一个模块，主要是把自己定义的Web字体嵌入到你的网页中，随着@font-face模块的出现，
-    我们在Web的开发中使用字体不怕只能使用Web安全字体（@font-face这个功能早在IE4就支持）
-    
-    @font-face的语法规则:
-        @font-face { 
-             font-family: <YourWebFontName>;
-             src: <source> [<format>][, []]; 
-        }
-     .ttf .eot .woff
-
-##### calc () 动态计算方法详解
-
-    calc是英文单词calculate(计算)的缩写，是css3的一个新增的功能，用来指定元素的长度。
-    
-     calc() 函数用于动态计算长度值。
-         ● calc(必须，一个数学表达式，结果将采用运算后的返回值。)
-         ● 运算符前后都需要保留一个空格，例如：width: calc(100% - 10px)；
-         ● 任何长度值都可以使用calc()函数进行计算；
-         ● calc()函数支持 "+", "-", "*", "/" 运算；
-         ● calc()函数使用标准的数学运算优先级规则；
-    
-    语法：
-    	.elm {
-      		width: calc(expression);
-      		width: calc(50% + 2em)
-    	}
-    	
-    兼容：
-     .elm {
-    	/*Firefox*/
-    	width:-moz-calc(expression);
-    	/*chrome safari*/
-    	width:-webkit-calc(expression);
-    	/*Standard */
-    	width:calc();
-     }
-     
-    优点：
-     calc()最大的好处就是用在流体布局上，可以通过calc()计算得到元素的宽度。
-     复杂的数据运算由浏览器去计算。
-
+- **transform-style**：指定变形元素在三维空间中呈现。
+- **perspective**：定义 3D 元素距视图的距离。
 # 回流和重绘
 
 ##### 回流重绘的概念
