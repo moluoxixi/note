@@ -6,266 +6,6 @@ hidden: false
 tags: Css和html
 ptags: 
 ---
-
-# Css&html
-
-## 五种监听器
-
-### IntersectionObserver
-
-```js
-//监听元素在监听器在指定根元素划分的可视区 的 可见性变化,即进入或离开这块区域
-const rootElement = document.getElementById('box')
-const rootHeight = rootElement.getBoundingClientRect().height  
-intersectionObserver = new IntersectionObserver(  
-	(entries) => {  
-		entries.forEach((entry) => {  
-			if (entry.isIntersecting) {} //元素是否进入可视区域
-			//entry.isVisible						//元素是否可见
-			//entry.boundingClientRect 	//触发的元素当前的getBoundingClientRect()返回对象
-			//entry.rootBounds						//监听的根元素当前的getBoundingClientRect()返回对象
-			//entry.target								//触发的元素
-		})  
-	},  
-	{  
-		root: rootElement,
-		// 指定可视区,对应margin,这里是指定根元素的 顶部0 - 顶部60px 为可视区域
-		rootMargin: `0px 0px ${-(rootHeight - 60)}px 0px`,
-		// 交叉比例,要完全显示或完全隐藏才算变化
-		threshold: [1.0]  
-	}  
-)
-
-intersectionObserver.observe(要监听的元素);
-intersectionObserver.unobserve(取消监听的元素);
-intersectionObserver.disconnect();
-```
-
-```vue
-<!--组件封装-->
-<template>  
-  <div id="intersection-observer-box" v-bind="$attrs">  
-    <slot />  </div></template>  
-<script setup>  
-import { onBeforeUnmount, onMounted } from 'vue'  
-  
-const props = defineProps({  
-  // 元素是否进入视口  
-  isIntersecting: {  
-    type: Boolean,  
-    default: true  
-  },  
-  // 进入或离开视口的比例  
-  threshold: {  
-    type: Number,  
-    default: 1.0  
-  },  
-  // 默认进入或离开容器触发监听,  
-  // 如果设置了rootMargin，分别对应容器上右下左收缩的比例  
-  // 例如[0,0,0.8,0] 代表仅监听0-20%高度部分  
-  rootMargin: {  
-    type: Array,  
-    default: () => [0, 0, 0, 0]  
-  },  
-  // 需要监听进入/离开容器的元素列表  
-  observers: {  
-    type: Array,  
-    default: () => []  
-  },  
-  // 需要监听进入/离开容器的元素id列表  
-  observerIds: {  
-    type: Array,  
-    default: () => []  
-  }  
-})  
-/*  
-* mutate接受根据isIntersecting判断的进入或离开视口的元素  
-* getTargets接受根据observerIds获取到的元素组成的{id:target} 隐射对象  
-* */  
-const emits = defineEmits(['mutate', 'getTargets'])  
-  
-let rootElement = null  
-let observer, resizeObserver  
-onMounted(() => {  
-  rootElement = document.getElementById('intersection-observer-box')  
-  resizeObserver = new ResizeObserver((entries) => {  
-    for (const entry of entries) {  
-      if (entry.contentBoxSize) {  
-        // Firefox将' contentBoxSize '实现为单个内容矩形，而不是数组  
-        const contentBoxSize = Array.isArray(entry.contentBoxSize)  
-          ? entry.contentBoxSize[0]  
-          : entry.contentBoxSize  
-        const { blockSize, inlineSize } = contentBoxSize  
-        if (observer) observer.disconnect()  
-  
-        const { threshold, isIntersecting, observers, observerIds } = props  
-  
-        let rootMargin = ''  
-        props.rootMargin.forEach((item, index) => {  
-          rootMargin += `${index % 2 ? -inlineSize * item : -blockSize * item}px `  
-        })  
-        observer = new IntersectionObserver(  
-          (entries) => {  
-            entries.forEach((entry) => {  
-              console.log('entry', entry)  
-              if (entry.isIntersecting == isIntersecting) {  
-                emits('mutate', entry)  
-              }  
-            })  
-          },  
-          {  
-            root: rootElement,  
-            rootMargin,  
-            threshold: [threshold]  
-          }  
-        )  
-        observers.forEach((domItem) => {  
-          observer.observe(domItem)  
-        })  
-        const targets = observerIds.reduce((p, id) => {  
-          p[id] = document.getElementById(id)  
-          return p  
-        }, {})  
-        Object.values(targets).forEach((domItem) => {  
-          observer.observe(domItem)  
-        })  
-        emits('getTargets', targets)  
-      }  
-    }  
-  })  
-  resizeObserver.observe(rootElement, {  
-    box: 'content-box'  
-  })  
-})  
-onBeforeUnmount(() => {  
-  resizeObserver.disconnect()  
-  observer.disconnect()  
-})  
-</script>  
-  
-<style scoped lang="scss"></style>
-
-```
-
-### ResizeObserver
-
-```js
-// 监听元素大小的改变
-const resizeObserver = new ResizeObserver((entries) => {  
-	for (const entry of entries) {
-	    if (entry.contentBoxSize) {
-			// Firefox将' contentBoxSize '实现为单个内容矩形，而不是数组
-			const contentBoxSize = Array.isArray(entry.contentBoxSize)
-				? entry.contentBoxSize[0]
-				: entry.contentBoxSize;
-			// blockSize元素现在的高度,inlineSize元素现在的宽度
-			const { blockSize, inlineSize } = contentBoxSize;
-			//do something
-	    }
-    }
-})  
-resizeObserver.observe(要监听的元素, {
-	box:'border-box' //设置监听的盒模型,content-box（默认）,border-box
-})
-resizeObserver.unobserve(取消监听的元素);
-resizeObserver.disconnect();
-
-  ```
-
-### MutationObserver
-
-```js
-// 监听对元素 属性,节点 的修改
-// 例如监听水印的移除再添加回去
-const mutationObserver = new MutationObserver((mutationsList) => { 
-	for (let mutation of mutationsList) {
-		if (mutation.type == "childList") {} //子节点新增or删除
-		else if (mutation.type == "attributes") {} //属性修改
-	}
-});
-mutationObserver.observe(要监听的元素, {
-	childList: false, // 子节点的变动（新增、删除或者更改）  
-    attributes: true, // 属性的变动
-    attributeFilter: ['style'], 
-    characterData: false, // 节点内容或节点文本的变动  
-    subtree: false // 是否将观察器应用于该节点的所有后代节点 
-});
-mutationObserver.unobserve(取消监听的元素);
-mutationObserver.disconnect();
-```
-
-### PerformanceObserver&ReportingObserver
-
-```js
-// PerformanceObserver接收性能报告
-// ReportingObserver接收违反安全策略,网络错误等的报告
-```
-
-## Other
-
-```js
-user-select: none; //禁止文本选中
-```
-
-## link 和@import
-
-```js
--->link和@import
-	`link` 标签会在解析时对于的 `link` 标签时开始下载，`@import` 规则会在在 CSS 文件被下载和解析到包含 `@import` 语句时才开始下载被导入的样式表。这意味着使用 `link` 标签可以更快地加载样式
-	
-	`link` 标签解析过程中会阻塞后续 dom 解析，阻塞页面渲染，包括解析并下载 `link` 标签中的 `@import` 所引用的 css 文件
-	
-	`@import` 加载顺序在 `link` 之后，会覆盖 `link` 的样式
-	
-	`link` 标签是HTML标签，所以它的支持性非常广泛，适用于所有主流的现代浏览器。而 `@import` 规则是CSS提供的一种导入样式表的方式，虽然也被大多数浏览器支持，但在一些旧版本的浏览器中可能存在兼容性问题。
-	
-	`@import` 规则只能在CSS样式表中使用，而不能在HTML文件中使用。`link` 标签可以用于在HTML文件中导入样式表，还可以用于导入其他类型的文件，如图标文件
-```
-
-## 布局方式
-
-```css
-flex
-flex-driection
-justifty-content
-align-items
-```
-
-## BOM
-
-### 三种鼠标位置
-
-只读
-
-| event. clientX & clientY | 拿的是鼠标相对视口的水平距离和垂直距离，相对的是视口的左上角（以视口左上角为原点)                 |
-| ----------------------- | --------------------------------------------------------- |
-| event. pageX & pageY     | 拿的是鼠标相对页面的水平距离和垂直距离，相对的是页面的左上角（以页面左上角为原点） 不支持 ie9 以下        |
-| event. offsetX & offsetY | 拿的是鼠标相对绑定事件的元素自身的水平距离和垂直距离，相对的是绑定事件的元素自身的左上角（以元素自身左上角为原点) |
-
-screen
-
-### 四种元素位置
-
-只读
-
-| 元素.getBoundingClientRect (). top/buttom/left/right | 拿的是元素距离视口上下左右的距离        |
-| ------------------------------------------------ | ----------------------- |
-| 元素. clientLeft& clientTop                         | 拿的是元素边框大小               |
-| 元素. offsetLeft& offsetTop                         | 元素偏移量绝对定位值+元素自身的 margin |
-| 元素. scrollLeft& scrollTop 可写                      | 拿的是元素滚动距离               |
-
-### 四种元素大小
-
-只读
-
-| 元素.getBoundingClientRect (). width/height | 拿的是元素内容 + padding + border 的宽/高, 包含小数                                                     |
-| --------------------------------------- | --------------------------------------------------------------------------------------- |
-| 元素. clientWidth& clientHeight            | 内容 + padding 的宽/高                                                                        |
-| 元素. offsetWidth& offsetHeight            | 内容 + padding + border 的宽/高                                                               |
-| 元素. screenWidth& screenHeight            | 当内容比盒子小的时候，拿的是盒子的 clientWidth/Height 当内容比盒子大的时候，拿的是内容的 offsetWidth/Height 加一侧外边距+盒子的一侧内边距 |
-
-
-
 # 常用布局
 
 ## Flex布局
@@ -924,13 +664,6 @@ white-space: nowrap;
   ```html
   <area shape="poly" coords="x1,y1,x2,y2,x3,y3" />
   ```
-说明：
-    (1) 如果某个 area 标签中的坐标和其他区域发生了重叠，会优先采用最先出现的 area 标签;
-    (2) 浏览器会忽略超过图像边界范围之外的坐标。
-以下是优化后的 Markdown 结构，采用了表格、列表和代码块的格式，使内容更加清晰易读。
-
----
-
 # BFC 元素
 
 ## 什么是 BFC
@@ -1106,187 +839,196 @@ background-image: linear-gradient(direction, color-stop1, color-stop2, ...);
 - **perspective**：定义 3D 元素距视图的距离。
 # 回流和重绘
 
-##### 回流重绘的概念
+## 回流与重绘的概念
 
-重绘：是指当 DOM 元素的样式属性（例如颜色、背景）发生改变时，浏览器重新绘制元素的过程，但并不影响元素的几何属性和布局；相比于回流，重绘的性能开销较小。
+- **重绘**：当 DOM 元素的样式属性（如颜色、背景）发生改变时，浏览器重新绘制元素的过程。重绘不影响元素的几何属性和布局，性能开销较小。
+  
+- **回流**：也称为重排，指当 DOM 元素的几何属性（如位置、大小）发生改变时，浏览器重新计算并更新元素的几何属性，并重新构建页面布局树的过程。回流会导致其他元素的几何属性和布局发生变化，性能开销较大。
 
-回流：也叫重排，是指当 DOM 元素的几何属性（例如位置、大小）发生改变时，浏览器重新计算并更新元素的几何属性，并重新构建页面布局树的过程；回流会导致其他元素的几何属性和布局发生变化。回流是一种相对较慢的操作，会消耗大量的 CPU 资源。
+> 回流一定会导致重绘，但重绘不一定会导致回流。
 
-回流一定会导致重绘，但是重绘不一定会导致回流。回流相对较慢，会重新计算文档中元素的位置和几何属性。而重绘是根据元素的新样式重新绘制页面，不需要重新计算元素的位置和几何属性。
+## 导致回流的操作
 
-##### 导致回流的操作
+| 操作类型           | 示例属性                                   |
+|--------------------|--------------------------------------------|
+| 盒模型属性         | width、height、padding、margin、border 等  |
+| 定位属性           | position、top、left、bottom、right 等      |
+| 布局属性           | display、float、clear、flex 等              |
+| 字体属性           | font-size、line-height、text-align 等      |
+| 背景属性           | background、background-color、background-image 等 |
+| 可见性属性         | visibility、opacity 等                       |
+| 浏览器窗口大小变化 | 修改浏览器窗口大小                        |
+| 页面初始加载       | 页面加载时                                 |
+| 渲染树变化         | 添加或删除元素                             |
+| 获取布局属性       | offsetWidth、offsetHeight 等                |
 
-    盒模型属性：width、height、padding、margin、border等。
-    定位属性：position、top、left、bottom、right等。
-    布局属性：display、float、clear、flex等。
-    字体属性：font-size、line-height、text-align等。
-    背景属性：background、background-color、background-image等。
-    盒子模型属性：box-sizing、border-box、outline等。
-    可见性属性：visibility、opacity等。
-    修改浏览器窗口大小。
-    页面初始加载。
-    页面的渲染树发生改变：
-      如添加或删除元素等。
-    获取元素的一些布局属性：
-      如offsetWidth、offsetHeight、clientWidth、clientHeight、getComputedStyle()、scrollIntoView()、scrollTo()、getBoundingClientRect()、scrollIntoViewIfNeeded()等。
+## 导致重绘的操作
 
-##### 导致重绘的操作
-
-    颜色属性：color、background-color、border-color等。
-    文字属性：font-weight、font-style、text-decoration等。
-    文本属性：text-align、text-transform、line-height等。
-    背景属性：background-image、background-position、background-size等。
-    盒子模型属性：box-shadow、outline-color、outline-style等。
-    渐变属性：linear-gradient、radial-gradient等。
-    变形属性：transform、transform-origin等。
-    过渡属性：transition、transition-property、transition-duration等。
+| 操作类型           | 示例属性                                   |
+|--------------------|--------------------------------------------|
+| 颜色属性           | color、background-color、border-color 等    |
+| 文字属性           | font-weight、font-style、text-decoration 等 |
+| 文本属性           | text-align、text-transform、line-height 等  |
+| 背景属性           | background-image、background-position、background-size 等 |
+| 盒子模型属性       | box-shadow、outline-color、outline-style 等 |
+| 渐变属性           | linear-gradient、radial-gradient 等         |
+| 变形属性           | transform、transform-origin 等               |
+| 过渡属性           | transition、transition-property、transition-duration 等 |
 
 # 媒体查询
 
-##### 基于 css
+## 基于 CSS 的媒体查询
 
-    媒体查询可以根据设备显示器的特性（如视口宽度、屏幕比例、设备方向：横向或纵向）为其设定CSS样式。使用媒体查询，可以在不改变页面内容的情况下，为特定的一些输出设备定制显示效果。
-    
-    语法：
-    媒体查询包含一个可选的媒体类型和零个或多个满足CSS3规范的表达式. 
-    @media mediatype and|not|only  (media feature) {CSS-Code;}
-    
-    媒体设备类型：
-        all:用于所有设备--默认值
-        print:用于打印机和打印预览
-        screen:用于电脑屏幕，平板电脑，智能手机等
-        speech:应用于屏幕阅读器等发声设备
-        tv
-        
-    媒体属性：
-        max-height:定义输出设备中的页面最大可见区域高度。
-        max-width:定义输出设备中的页面最大可见区域宽度。
-        min-height:定义输出设备中的页面最小可见区域高度。
-        min-width:定义输出设备中的页面最小可见区域宽度。
-        width:定义输出设备中的页面可见区域宽度。
-        height:定义输出设备中的页面可见区域高度。
-        orientation:定义输出设备中的页面是横屏还是竖屏。 
-            landscape横屏 portrait竖屏
-        max-device-height:定义输出设备的屏幕可见的最大高度。
-        max-device-width:定义输出设备的屏幕最大可见宽度。
-        min-device-width:定义输出设备的屏幕最小可见宽度。
-        min-device-height:定义输出设备的屏幕的最小可见高度。
-        device-height:定义输出设备的屏幕可见高度。
-        device-width:定义输出设备的屏幕可见宽度。
-        
-     
-    操作符not、and、only和逗号(,)可以用来构建复杂的媒体查询
-    
-    （1）and 关键字用来把多个媒体属性和媒体类型组合成一条媒体查询，只有当每个属性都为真时，结果才为真。   
-        @media  all and (min-width: 700px) and (orientation: landscape) { ... }
-    在可视区域宽度不小于700像素并在在横屏时有效
-    
-    （2）逗号： 媒体查询中使用逗号分隔，效果等同于 or 逻辑操作符，使用逗号分隔的媒体查询，任何一个媒体查询返回真，样式就是有效的。逗号分隔的列表中每个查询都是独立的，一个查询中的操作符并不影响其它的媒体查询。
-        @media all and (min-width: 700px),handheld and (orientation: landscape) { ... }
-    
-    （3）not 关键字用来对一条媒体查询的结果进行取反，在媒体查询为假时返回真,在逗号媒体查询列表中 not 仅会否定它应用到的媒体查询上而不影响其它的媒体查询
-        例如：
-        @media not screen and (color), print and (color)
-        等价于：
-        @media (not (screen and (color))), print and (color) 
-    
-    （4）only关键字用来排除不支持css3媒体查询的浏览器。
-         对于支持Media Queries的设备来说，存在only关键字，移动设备的 Web 浏览器会忽略only关键字并直接根据后面的表达式应用样式文件。对于不支持Media Queries的设备但能够读取Media Type类型的Web浏览器，遇到only关键字时会忽略这个样式文件
-         所以，在使用媒体查询时，only最好不要忽略
-    
-    css2，css3的版本媒体查询的区别：
-        一般认为媒体查询是CSS3的新增内容，实际上CSS2已经存在了，CSS3新增了媒体属性和使用场景(IE8-浏览器不支持)
-         在CSS2中，媒体查询只使用于<style>和<link>标签中，以media属性存在media属性用于为不同的媒介类型规定不同的样式，媒体属性是CSS3新增的内容；
-        <link rel="stylesheet" href="css/wide.css" media="screen " />
-         <link rel="stylesheet" href="css/mobile.css" media="screen and (min-width:320px) and (max-width:640px)" />
+媒体查询可以根据设备显示器的特性（如视口宽度、屏幕比例、设备方向）为其设定 CSS 样式。
 
-基于 js
+### 语法
 
-    window.matchMedia(mediaQueryString)返回一个新的 MediaQueryList 对象，表示指定的媒体查询字符串解析后的结果
-    
-    function myFunction(x) {
-        if (x.matches) { // 媒体查询
-            document.body.style.backgroundColor = "yellow";
-        } else {
-            document.body.style.backgroundColor = "pink";
-        }
+```css
+@media mediatype and|not|only (media feature) {
+    CSS-Code;
+}
+```
+
+### 媒体设备类型
+
+| 媒体类型   | 描述                                      |
+|------------|-------------------------------------------|
+| all        | 用于所有设备（默认值）                   |
+| print      | 用于打印机和打印预览                     |
+| screen     | 用于电脑屏幕、平板电脑、智能手机等       |
+| speech     | 应用于屏幕阅读器等发声设备               |
+| tv         | 用于电视设备                              |
+
+### 媒体属性
+
+| 媒体属性                | 描述                                          |
+|-------------------------|-----------------------------------------------|
+| max-height              | 定义页面最大可见区域高度                     |
+| max-width               | 定义页面最大可见区域宽度                     |
+| min-height              | 定义页面最小可见区域高度                     |
+| min-width               | 定义页面最小可见区域宽度                     |
+| width                   | 定义页面可见区域宽度                         |
+| height                  | 定义页面可见区域高度                         |
+| orientation             | 定义页面横屏或竖屏（landscape/portrait）    |
+| max-device-height       | 定义设备屏幕可见的最大高度                   |
+| max-device-width        | 定义设备屏幕可见的最大宽度                   |
+| min-device-width        | 定义设备屏幕可见的最小宽度                   |
+| min-device-height       | 定义设备屏幕可见的最小高度                   |
+| device-height           | 定义设备屏幕可见高度                         |
+| device-width            | 定义设备屏幕可见宽度                         |
+
+### 操作符
+
+1. **and**：将多个媒体属性和媒体类型组合成一条媒体查询。
+   ```css
+   @media all and (min-width: 700px) and (orientation: landscape) { ... }
+   ```
+
+2. **逗号**：媒体查询中使用逗号分隔，效果等同于 or 逻辑操作符。
+   ```css
+   @media all and (min-width: 700px), handheld and (orientation: landscape) { ... }
+   ```
+
+3. **not**：对一条媒体查询的结果进行取反。
+   ```css
+   @media not screen and (color), print and (color) { ... }
+   ```
+
+4. **only**：用于排除不支持 CSS3 媒体查询的浏览器。
+   ```css
+   @media only screen and (min-width: 700px) { ... }
+   ```
+
+### CSS2 与 CSS3 的媒体查询区别
+
+- CSS2 媒体查询只用于 `<style>` 和 `<link>` 标签中，以 media 属性存在。
+- CSS3 新增了媒体属性和使用场景。
+
+## 基于 JS 的媒体查询
+
+使用 `window.matchMedia(mediaQueryString)` 返回一个新的 MediaQueryList 对象，表示指定的媒体查询字符串解析后的结果。
+
+### 示例代码
+
+```javascript
+function myFunction(x) {
+    if (x.matches) { // 媒体查询
+        document.body.style.backgroundColor = "yellow";
+    } else {
+        document.body.style.backgroundColor = "pink";
     }
-     
-    var x = window.matchMedia("(max-width: 700px)")
-    myFunction(x) // 执行时调用的监听函数
-    x.addListener(myFunction) // 状态改变时添加监听器
+}
+
+var x = window.matchMedia("(max-width: 700px)");
+myFunction(x); // 执行时调用的监听函数
+x.addListener(myFunction); // 状态改变时添加监听器
+```
 
 # 移动端布局
-##### 视口-viewport
-```text
 
-许多智能手机都使用了一个比实际屏幕尺寸大很多的虚拟可视区域 (980px)，主要目的就是让 pc 页面在智能手机端阅读时不会因为实际可视区域变形。
+## 视口（Viewport）
 
-所以你看到的页面还是普通样式，即一个全局缩小后的页面。为了让智能手机能根据媒体查询匹配对应样式，让页面在智能手机中正常显示，特意添加了一个 meta 标签。
+许多智能手机使用一个比实际屏幕尺寸大很多的虚拟可视区域（980px），以便在智能手机端阅读时不会变形。为了让智能手机能根据媒体查询匹配对应样式，特意添加了一个 meta 标签。
 
-这个标签的主要作用就是让智能手机浏览页面时能进行优化，并且可以自定义界面可视区域的尺寸和缩放级别。
+### 语法
 
-语法：
-
-<meta name\="viewport" content\="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"\>
-
-属性值：
-
-width: 可视区域的宽度, 值可为数字或关键词 device-width；
-
-height: 可视区域的高度, 值可为数字或关键词 device-height；
-
-initial-scale: 页面首次被显示时的缩放级别（0-10.0），取值为 1 时页面按实际尺寸显示，无任何缩放
-
-minimum-scale: 设定最小缩小比例（0-10.0），取值为 1 时将禁止用户缩小页面至实际尺寸之下
-
-maximum-scale: 设定最大放大比例（0-10.0），取值为 1 时将禁止用户放大页面至实际尺寸之上
-
-user-scalable: 设定用户是否可以缩放（yes/no）
-
-含义为：宽为手机移动设备默认宽度，初始缩放比例为 1，最大缩放比例为原始像素大小，不允许用户放大或者缩小;
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 ```
 
-##### vh、vw 相关
-```text
-1vw 等于1/100的视口宽度 （Viewport Width）
-1vh 等于1/100的视口高度 （Viewport Height）
-vmin — vmin 的值是当前 vw 和 vh 中较小的值
-vmax — vw 和 vh 中较大的值
-svh 表示地址栏 UI 尚未缩小尺寸时的视口高度
-lvh 表示地址栏 UI 缩小尺寸后的视口高度
-dvh 表示根据地址栏 UI 是否缩小而使用小的、中间的和大的单位
-```
-##### 移动端适配
-###### rem 基本转换
-```text
-以750px的屏幕宽度，预计100px（根字体大小 ） = 1rem来计算，计算公式为： 
-1rem = 根字体大小 = 当前屏幕宽度 (document.body.clientWidth）/ 750 * 100  px
-```
+### 属性值
 
-###### 移动端适配
-```text
-1、媒体查询 + rem
-计算rem方法：
-      结合媒体查询，随着设备的改变 更改html的font-size的值。
-html{font-size:100px}
-@media screen and (min-width:321px) and (max-width:375px){  	
-       html{font-size:45px} 
-}
-@media screen and (min-width:376px) and (max-width:414px){ 
-       html{font-size:50px}
-}
-@media screen and (min-width:415px) and (max-width:639px){ 
-       html{font-size:55px} 
-}
-@media screen and (min-width:640px) and (max-width:719px){
-       html{font-size:60px}
-}
+- **width**：可视区域的宽度，值可为数字或关键词 device-width；
+- **height**：可视区域的高度，值可为数字或关键词 device-height；
+- **initial-scale**：页面首次显示时的缩放级别（0-10.0）；
+- **minimum-scale**：设定最小缩小比例（0-10.0）；
+- **maximum-scale**：设定最大放大比例（0-10.0）；
+- **user-scalable**：设定用户是否可以缩放（yes/no）。
 
-2、弹性布局
+## vh、vw 相关
 
-3、flxible.js  插件
-流程：
-（1）引入flxible.js插件
-（2）去掉html里面默认的meta标签  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-```
+- **1vw**：等于 1/100 的视口宽度（Viewport Width）
+- **1vh**：等于 1/100 的视口高度（Viewport Height）
+- **vmin**：当前 vw 和 vh 中较小的值
+- **vmax**：vw 和 vh 中较大的值
+- **svh**：地址栏 UI 尚未缩小尺寸时的视口高度
+- **lvh**：地址栏 UI 缩小尺寸后的视口高度
+- **dvh**：根据地址栏 UI 是否缩小而使用的单位
+
+## 移动端适配
+
+### rem 基本转换
+
+以 750px 的屏幕宽度，预计 100px（根字体大小）= 1rem 来计算，计算公式为：
+
+\[ 1rem = \frac{\text{当前屏幕宽度 (document. body. clientWidth)}}{750} \times 100 \]
+
+### 移动端适配示例
+
+1. **媒体查询 + rem**
+   ```css
+   html { font-size: 100px; }
+   @media screen and (min-width: 321px) and (max-width: 375px) { 
+       html { font-size: 45px; } 
+   }
+   @media screen and (min-width: 376px) and (max-width: 414px) { 
+       html { font-size: 50px; } 
+   }
+   @media screen and (min-width: 415px) and (max-width: 639px) { 
+       html { font-size: 55px; } 
+   }
+   @media screen and (min-width: 640px) and (max-width: 719px) { 
+       html { font-size: 60px; } 
+   }
+   ```
+
+2. **弹性布局**
+
+3. **flexible. js 插件**
+   - 流程：
+     1. 引入 `flexible.js` 插件
+     2. 去掉 HTML 里面默认的 meta 标签：
+     ```html
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     ```
+
