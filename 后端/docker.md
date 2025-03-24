@@ -90,3 +90,54 @@ VOLUME ["/data"]
 # 容器启动时运行的命令  
 CMD ["http-server", "-p", "8080"]
 ```
+
+
+
+# 都昌部署
+**先保证服务器安装了 docker**
+
+## 迁移文件创建目录
+
+- 在服务器创建文件夹，例如：
+
+```bash
+mkdir /home/dcwriter_docker
+cd /home/dcwriter_docker
+mkdir dcwriter5files
+```
+
+- 将镜像包移入/home/dcwriter 目录
+
+```bash
+mv /tmp/dcwriter-service-dotnet.tar /home/dcwriter_docker
+```
+
+## 导入镜像
+
+1.  导入镜像
+
+```bash
+docker load -i /home/dcwriter/dcwriter-service-dotnet.tar
+```
+
+2.  查看镜像
+
+```bash
+docker images
+```
+
+获得镜像名：dc/writer/service/dotnet
+
+## 运行镜像
+
+```bash
+docker run -d -p 5000:5000 -v /home/dcwriter_docker/dcwriter5files:/app/dcwriter5files -it dc/writer/service/dotnet:3.1
+```
+
+- 其中 `5000` 为系统本地端口，需要在防火墙放行
+- `/home/dcwriter_docker/dcwriter5files` 路径为第一步迁移的编辑器资源路径
+
+## 验证
+
+访问对应的服务器链接：  
+http://192.168.208.26:5000/MyWriter/MoreHandleDCWriterServicePage?wasmres=dcwriter5.js
