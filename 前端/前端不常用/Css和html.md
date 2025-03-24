@@ -232,12 +232,12 @@ border-top: 边框宽度 边框风格 边框颜色;    /* 上边框 */
 
 ### 6. 边框属性设置示例
 
-| 属性                        | 描述                                      |
-|-----------------------------|-------------------------------------------|
-| border-width/color/style    | A B C D; 上右下左                     |
-| border-width/color/style    | A B C; 上左右下                        |
-| border-width/color/style    | A B; 上下左右                           |
-| border-width/color/style    | A; 上下左右                              |
+| 属性                       | 描述            |
+| ------------------------ | ------------- |
+| border-width/color/style | A B C D; 上右下左 |
+| border-width/color/style | A B C; 上左右下   |
+| border-width/color/style | A B; 上下左右     |
+| border-width/color/style | A; 上下左右       |
 
 ## 背景属性
 
@@ -274,10 +274,10 @@ border-top: 边框宽度 边框风格 边框颜色;    /* 上边框 */
 
 ### 4. background-position
 
-| 属性值                  | 描述                                      |
-|-------------------------|-------------------------------------------|
-| xpos/%/left right center| 水平位置                                  |
-| ypos/%/top bottom center | 垂直位置                                  |
+| 属性值                      | 描述   |
+| ------------------------ | ---- |
+| xpos/%/left right center | 水平位置 |
+| ypos/%/top bottom center | 垂直位置 |
 
 ### 5. background-attachment
 
@@ -616,11 +616,11 @@ white-space: nowrap;
 
 ## HTML5 多媒体标签
 
-| 标签            | 示例                                          | 描述                                      |
-|------------------|-----------------------------------------------|-------------------------------------------|
-| `<video>`        | `<video src="movie.ogg">您的浏览器不支持video标签</video>` | 定义视频                                  |
-| `<audio>`        | `<audio src="someaudio.wav">您的浏览器不支持audio标签</audio>` | 定义音频                                  |
-| `<source>`       | `<source src="horse.ogg" type="audio/ogg">` | 定义媒介资源                             |
+| 标签         | 示例                                                   | 描述     |
+| ---------- | ---------------------------------------------------- | ------ |
+| `<video>`  | `<video src="movie.ogg">您的浏览器不支持video标签</video>`     | 定义视频   |
+| `<audio>`  | `<audio src="someaudio.wav">您的浏览器不支持audio标签</audio>` | 定义音频   |
+| `<source>` | `<source src="horse.ogg" type="audio/ogg">`          | 定义媒介资源 |
 
 ## 图像热点链接 map
 
@@ -679,7 +679,7 @@ BFC（Block Formatting Context）是 W3C CSS2.1 规范中的一个概念。它�
 
 ### BFC 的特点
 
-```js
+```text
 // BFC 特性
 --> BFC
     块级格式化上下文，内部子元素按独特规则排列：
@@ -999,9 +999,7 @@ x.addListener(myFunction); // 状态改变时添加监听器
 
 ### rem 基本转换
 
-以 750px 的屏幕宽度，预计 100px（根字体大小）= 1rem 来计算，计算公式为：
-
-\[ 1rem = \frac{\text{当前屏幕宽度 (document. body. clientWidth)}}{750} \times 100 \]
+以 750px 的屏幕宽度，预计 100px（根字体大小）= 1rem 来计算
 
 ### 移动端适配示例
 
