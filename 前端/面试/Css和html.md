@@ -759,365 +759,174 @@ white-space: nowrap;
 
 # CSS 选择器
 
-##### 常见选择器
+## 常见选择器
 
-    一、CSS+CSS3 选择器
-    类选择器： .name{}
-    ID选择器： #id{}
-    元素选择器： div{}
-    通配符选择器： *{}
-    后代选择器： div p{}
-    子选择器： div>p{} 和后代不一样的是，只筛选div下所有第一层p标签
-    兄弟选择器： div+p{} 筛选div后面一个p元素
-    交集选择器: div,p,.name{} 选择的元素共享一个样式
-    
-    二、属性选择器
-    属性选择器： a[target=_blank] 筛选所有a标签中属性target是_blank的
-    属性包含选择器： div[title~=name] 筛选div属性title中包裹带有name的
-    属性开头选择器： img[src^=‘https’] 筛选img属性src以htttps开头的所有img标签
-    属性结尾选择器： img[src$=’.png’] 筛选img属性src以 .png 结尾的img标签
-    定义属性选择器时的括号 *[target] {color:red;}  包含标题（target）的所有元素变为红色 
-    span[class='test']    这样写是：匹配所有带有class类名test的span标签
-    span[class *='test'] 这样写是：匹配所有包含了test字符串的class类名的span标签
-    span[class]             这样写是：匹配所有带有class属性的span标签
-    [class='all']              这样写是：匹配页面上所有带有class='all'的标签
-    [class *='as']           这样写是：匹配页面上所有class类且类名带有as字符串的类的标签
-    
-    三、伪类选择器
-    焦点伪类： :focus
-    悬浮伪类： :hover
-    前置伪类：p ::after 往p元素前面追加内容
-    后置伪类：p ::before 往p元素后面追加内容
-    光棍伪类：p :empty 选择没有子元素的p标签
-    取反伪类：div: not(p) 选择div下所有不是p标签的元素
-    首个选择器： div p:first-of-type 或:first-child 选择div下面第一个p标签
-    末尾选择器： ul li:last-child 或 last-of-type 选择ul下最后一个li
-    正序筛选伪类： :nth-child(2n) 正序第一个开始自由筛选第2的倍数（2、4、6、8）个元素
-    倒序筛选伪类： :nth-last-child(2) 倒序最末尾开始自由筛选第 2 个元素
-    注意点 nth-child(2) 和 nth-of-type(2) 区别：
-    p:nth-child(2) 找位置是2的p元素，如果位置2不是p元素不生效
-    p:nth-of-type(2) 找下面p元素中排在第二的，及时前面有很多其他元素，类似兄弟选择
+### 一、CSS + CSS3 选择器
 
-##### 伪对象选择符
+| 选择器             | 示例                 | 描述                                |
+|--------------------|----------------------|-------------------------------------|
+| 类选择器           | `.name {}`           | 选择类名为 name 的元素              |
+| ID 选择器           | `#id {}`             | 选择 ID 为 id 的元素                 |
+| 元素选择器         | `div {}`             | 选择所有 div 元素                   |
+| 通配符选择器       | `* {}`               | 选择所有元素                       |
+| 后代选择器         | `div p {}`           | 选择所有 div 内的 p 元素            |
+| 子选择器           | `div > p {}`         | 选择 div 下的直接子元素 p          |
+| 兄弟选择器         | `div + p {}`         | 选择紧接在 div 后的 p 元素          |
+| 交集选择器         | `div, p, .name {}`   | 选择共享样式的元素                  |
 
-    1）::after :选择器在被选元素的内容后面插入内容
-    2）::before:伪元素在元素内容之前添加新内容。
-    3）::first-letter:定义对象内第一个字符的样式。
-    4）::first-line:定义对象内第一行的样式。
-    5）::selection:(c3)定义用户鼠标已选择内容的样式（background color）
-    6) ::-webkit-scrollbar { display: none } 去除滚动条
-    
-    content属性与:before及:after伪元素配合使用，来插入生成内容。
-    
-    默认地，这往往是行内内容，不过该内容创建的框类型可以用属性 display 控制。
-      属性值：
-        none	设置Content，如果指定成Nothing
-        normal	设置content，如果指定的话，正常，默认是"none"（该是nothing）
-        counter	设定计数器内容
-        attr(attribute)	设置Content作为选择器的属性之一。
-        string	设置Content到你指定的文本
-        open-quote	设置Content是开口引号
-        close-quote	设置Content是闭合引号
-        no-open-quote	如果指定，移除内容的开始引号
-        no-close-quote	如果指定，移除内容的闭合引号
-        url(url)	设置某种媒体（图像，声音，视频等内容）
+### 二、属性选择器
 
-# 表单
+| 选择器                           | 示例                          | 描述                                |
+|----------------------------------|-------------------------------|-------------------------------------|
+| 属性选择器                       | `a[target=_blank]`           | 选择所有 target 属性为 _blank 的 a 标签 |
+| 属性包含选择器                   | `div[title~=name]`           | 选择 title 属性包含 name 的 div 元素 |
+| 属性开头选择器                   | `img[src^='https']`          | 选择 src 属性以 https 开头的 img 标签 |
+| 属性结尾选择器                   | `img[src$='.png']`           | 选择 src 属性以 .png 结尾的 img 标签 |
+| 定义属性选择器                   | `*[target] { color: red; }`  | 所有带有 target 属性的元素变为红色 |
+| `span[class='test']`             | 匹配 class 为 test 的 span 标签 |
+| `span[class*='test']`            | 匹配 class 中包含 test 的 span 标签 |
+| `span[class]`                     | 匹配所有带有 class 属性的 span 标签 |
+| `[class='all']`                  | 匹配所有 class 为 all 的元素 |
+| `[class*='as']`                  | 匹配所有 class 中带有 as 字符串的元素 |
 
-##### 表单标签
+### 三、伪类选择器
 
-    form标签：用于为用户输入创建 HTML 表单，表单用于向服务器传输数据（<form ></form>）。display:block
-    
-    name 属性：规定表单的名称，form元素的name属性提供了一种在脚本中引用表单的方法
-    action属性：规定当提交表单时，向何处发送表单数据（返回用户页面）。
-    method属性：规定如何发送表单数据（表单数据发送到 action 属性所规定的页面，共有两种方法：POST 方法和 GET 方法。）
-                  浏览器使用method属性设置的方法将表单中的数据传送给服务器进行处理。
+| 伪类选择器                       | 示例                       | 描述                                |
+|-----------------------------------|----------------------------|-------------------------------------|
+| 焦点伪类                         | `:focus`                   | 选择获得焦点的元素                  |
+| 悬浮伪类                         | `:hover`                   | 选择鼠标悬停的元素                  |
+| 前置伪类                         | `p::after`                 | 在 p 元素后面追加内容                |
+| 后置伪类                         | `p::before`                | 在 p 元素前面追加内容                |
+| 光棍伪类                         | `p:empty`                  | 选择没有子元素的 p 标签             |
+| 取反伪类                         | `div:not(p)`               | 选择 div 下所有不是 p 标签的元素    |
+| 首个选择器                       | `div p:first-of-type`      | 选择 div 下的第一个 p 标签          |
+| 末尾选择器                       | `ul li:last-child`         | 选择 ul 下最后一个 li               |
+| 正序筛选伪类                     | `:nth-child(2n)`           | 选择正序的第 2 的倍数元素           |
+| 倒序筛选伪类                     | `:nth-last-child(2)`       | 选择倒序的第 2 个元素               |
 
-##### 表单控件: input
+### 注意点
 
-    <input>
-    属性：
-    type = '控件类型'
-    name：属性标识表单域的名称(name 属性用于对提交到服务器后的表单数据进行标识)；
-    Value：属性定义表单域的默认值，其他属性根据type的不同而有所变化。
-    maxlength：控制最多输入的字符数，
-    Size：控制框的宽度（以字符为单位）
-    说明：
-    value属性：在checkbox,radio, hidden的标签上表示定义与输入相关联的值  
-    
-    disabled属性：规定应该禁用input元素。
-    disabled = ”disabled”
-    
-    checked属性：规定在页面加载时应该被预先选定的input元素(默认被选中)。     
-       checked=“checked”
-    
-    1）文本输入框 <input type="text" />
-            type属性： 规定 input 元素的类型；。
-            value属性：为 input 元素设定值；
-            name属性：规定 input 元素的名称。
-                name 属性用于对提交到服务器后的表单数据进行标识，或者在客户端通过 JavaScript 引用表单数据，
-                只有设置了name属性的表单元素才能在提交表单时传递它们的值。
-            placeholder属性：规定帮助用户填写输入字段的提示
-            maxlength属性：规定输入字段中的字符的最大长度
-            size属性：定义输入字段显的宽度（扩展）
-    2)密码框
-    	<input type="password" />
-    3)提交按钮
-    	<input type="submit" value="按钮内容" />
-    4)重置按钮
-    	<input type="reset" value="按钮内容" />
-    5)空按钮
-    	<input type="button" value="按钮内容" />
-    	value属性在type= "button ", "reset”, "submit " 的标签上，表示定义按钮上的显示的文本
-    
-    button和submit的区别：
-    submit是提交按钮起到提交信息的作用，button只是一个按钮；
+- `nth-child(2)`：找位置为 2 的 p 元素，如果位置 2 不是 p 元素则不生效。
+- `nth-of-type(2)`：找排在第二的 p 元素，即使前面有其他元素。
 
-##### 表单控件（元素）：input/非 input
+## 伪对象选择符
 
-    1) fieldset 表单字段集,分组（块状display: block;非input）
-       可将表单内的相关元素分组,会在相关表单元素周围绘制边框,fieldset元素可以嵌套，在其内部可以在设置多个fieldset对象。
-    
-    2) legend 字段集标题，分组标题（块状display: block；非input ）
-       legend元素为fieldset元素定义标题，legend元素必须是fieldset内的第一个元素
-    
-    3）radio 定义单选框/单选按钮(display:inline-block)
-       <input type="radio" name="ral" value="" />
-    
-    4）checkbox 定义复选框
-       <input type="checkbox" name="like" value="" />
-    
-    3) hidden 定义隐藏输入字段。
-       <input type= "hidden" name= "country" value="Norway" />隐藏字段对于用户是不可见的，
-       隐藏字段通常会存储一个默认值，它们的值也可以由 JavaScript 进行修改。
-    
-    6）file 文件框
-      <input type= "file" name="like" value="" />定义输入字段和 "浏览"按钮，供文件上传。
-    
-    
-    4) label 提示信息标签(display:inline；非input)
-       <label for="绑定控件id名"></label>
-    此标签为input元素定义标注（标记）；此标签的for属性可把label绑定到另外一个元素上，
-    将for属性设置为与该控件的id属性值相同。
-    写法：
-    （1） <label for="czm">姓名:</label>
-         <input type="text" name="name" id="czm" />
-    
-    （2）<label for="czm"> 姓名: <input type="text" name="name" id="czm" /></label>
-    
-    5) select 菜单列表 下拉列表(display:inline-block;非input)
-        size 属性：规定下拉列表中可见选项的数目，如果size属性的值大于1，但是小于列表中选项的总数目，
-        浏览器会显示出滚动条，表示可以查看更多选项。
-        <select  name="name" id="czm">
-           <option value="" name=""></option>
-        </select>
-    
-    6) option 标签定义下拉列表中的一个选项（一个条目;display:block;非input）
-        浏览器将option标签中的内容作为select标签的菜单或是滚动列表中的一个元素显示。
-         属性：
-           value：定义送往服务器的选项值。
-           selected：规定选项(在首次显示在列表中时)表现为选中状态。
-           label：下拉列表中会显示出所规定的更短版本。
-           
-    7) optgroup 标签定义选项组。(display:block;非input)
-         optgroup元素用于组合option选项。当使用一个长的选项列表时，对相关的选项进行组合会使处理更加容易。
-          label：为选项组规定描述-标题-不能被选中。
-    
-    
-    11）textarea 多行文本框（文本域）(display:inline-block;非input)
-         <textarea rows="10" cols="30"></textarea>标签定义一个多行的文本输入控件。
-       cols：规定文本区域内可见的宽度
-       rows ：规定文本区域内可见的行数。
-    
-    12）image 图像域提交按钮
-       <input type="image" src="submit.gif" alt="Submit" />定义图像形式的提交按钮。
-       必须把src 属性和 alt 属性与 <input type="image"> 结合使用。
-    
-    
-    13）button标签定义一个按钮  display:inline-block 
-        <button type=""></button>
-       属性：
-        type：规定按钮的类型。
-        属性值：button  reset submit
-        说明：要为button元素规定type属性，不同的浏览器对button元素的type属性使用不同的默任值； 
+| 选择符                          | 描述                                        |
+|---------------------------------|---------------------------------------------|
+| `::after`                       | 在被选元素的内容后面插入内容               |
+| `::before`                      | 在元素内容之前添加新内容                   |
+| `::first-letter`               | 定义对象内第一个字符的样式                 |
+| `::first-line`                 | 定义对象内第一行的样式                     |
+| `::selection`                  | 定义用户选择内容的样式（背景颜色）        |
+| `::-webkit-scrollbar`          | 去除滚动条                                 |
 
-##### HTML5 新增表单属性
+## 表单
 
-    placeholder:文本框处于未输入状态时文本框中显示的输入提示。
-         
-    required:检测输入框是否为空，如果为空，则不允许提交（required="required"）。
-        
-    autofocus:规定在页面加载时,输入域自动地获得焦点,一个页面只能有一个（autofocus="autofocus"）。
-         
-    novalidate:规定在提交表单时不应该验证form或input域。即使form表单中的input添加了required，也将不进行验证（novalidate="novalidate"）;
-    
-    multiple:规定输入域中可选择多个值，每个值之间用逗号分开；如果要获取其中的值在用split获取（multiple="multiple"）；
-       
-    autocomplete:规定form或input域应该拥有自动完成功能。     
-             on：默认；规定启用自动完成功能。
-             off：规定禁用自动完成功能。
-             
-    min、max、step:为包含数字或日期的input类型规定限定（约束）
-             max规定输入域所允许的最大值。
-             min规定输入域所允许的最小值。
-             step为输入域规定合法的数字间隔（如果 step="3"，则合法的数是 -3,0,3,6 等）。
-    
-    form:规定输入域所属的一个或多个表单，属性值必须引用所属表单的id，此属性适用于所有<input>标签的类型；
-    
-    pattern:规定用于验证input域的模式（pattern是正则表达式）,在提交时会检查其内容是否符合给定格式。
-              
-    list:list属性与datalist元素配合使用，用来规定输入域的选项列表，list的属性值写datalist的id值。
+### 表单标签
 
-##### HTML5 多媒体标签
+| 标签         | 描述                                        |
+|--------------|---------------------------------------------|
+| `<form>`     | 创建 HTML 表单，用于向服务器传输数据      |
+| name 属性    | 规定表单的名称                              |
+| action 属性  | 提交表单时，向何处发送表单数据            |
+| method 属性  | 规定如何发送表单数据（POST 或 GET 方法）  |
 
-    1、video：定义视频，比如电影片段或其它视频流
-    语法：
-    <video src="movie.ogg">您的浏览器不支持video标签</video>
-    注：可以在开始标签和结束标签之间放置文本内容，这样老的浏览器就可以显示出不支持该标签的信息。
-      
-    <video> 元素支持三种视频格式：MP4、WebM、Ogg。
-    
-    2 、audio：定义音频，比如音乐或其它音频流
-    语法：
-    <audio src="someaudio.wav"> 您的浏览器不支持 audio 标签</audio>
-    注：可以在开始标签和结束标签之间放置文本内容，这样老的浏览器就可以显示出不支持该标签的信息
-        
-     <audio> 元素支持的3种文件格式：MP3、Wav、Ogg。
-        
-    属性：
-      controls属性：如果出现该属性，则向用户显示控件，比如播放按钮。
-      autoplay属性：如果出现该属性，则视频在就绪后马上播放。
-      muted属性：静音属性。
-      loop属性：重复播放属性。
-      poster属性：规定视频正在下载时显示的图像，直到用户点击播放按钮。
-      src：要播放视频或者音频的路径
-    
-        
-    3、source：此标签为媒介元素（比如video和audio）定义媒介资源。此标签允许规定可替换的视频/音频文件供浏览器根据它对媒体类型或者编解码器的支持进行选择。
-    属性：
-         src：规定媒体文件的路径
-         type：规定媒体资源的类型
-      			用于视频：video/ogg   video/mp4     video/webm
-      			用于音频：audio/ogg   audio/mp3     audio/wav
-       
-         <audio controls>
-               <!--哪个视频在上面先识别哪个视频-->
-               <source src="horse.ogg" type="audio/ogg">
-               <source src="horse.mp3" type="audio/mpeg"> 
-              Your browser does not support the audio element.        
-         </audio>
-    
-     说明：
-         HTML5的多媒体标签的出现意味着富媒体的发展以及支持不使用插件的情况下即可操作媒体文件，极大地提升了用户体验 。
+### 表单控件: input
 
-##### 表单 css 属性 (resize、outline)
+| 控件类型            | 示例                                     | 描述                                       |
+|---------------------|------------------------------------------|--------------------------------------------|
+| 文本输入框          | `<input type="text" />`                 | 规定 input 元素的类型                     |
+| 密码框              | `<input type="password" />`              | 输入密码                                  |
+| 提交按钮            | `<input type="submit" value="提交" />`  | 提交表单                                  |
+| 重置按钮            | `<input type="reset" value="重置" />`   | 重置表单                                  |
+| 空按钮              | `<input type="button" value="按钮" />`  | 普通按钮                                  |
 
-    resize: 属性规定是否可由用户调整元素的大小;
-      属性值：
-      none	      用户无法调整元素的尺寸。
-      both	      用户可调整元素的高度和宽度(默认值)。
-      horizontal  用户可调整元素的宽度。
-      vertical	  用户可调整元素的高度。
-      
-    outline：（轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用，轮廓线不会占据空间，也不一定是矩形。
-      outline-width：规定边框宽度
-     outline-style：规定边框样式
-     outline-color：规定边框颜色
-     outline:width style(solid dashed dotted) color简写
-     说明：
-     border跟outline的区别：
-       border可应用于几乎所有有形的html元素，而outline是针对链接、表单控件和ImageMap等元素设计
-       border占据空间，outline不占据空间
-     cursor 属性规定要显示的光标的类型（形状）
-      属性值：
-        url            需使用的自定义光标的 URL。
-        default	默认光标（通常是一个箭头）
-        pointer	光标呈现为指示链接的指针（一只手）
-        auto     	默认。浏览器设置的光标。
-        crosshair	光标呈现为十字线。
-        move	        此光标指示某对象可被移动。
-        e-resize	此光标指示矩形框的边缘可被向右（东）移动。
-        ne-resize	此光标指示矩形框的边缘可被向上及向右移动（北/东）。
-        nw-resize	此光标指示矩形框的边缘可被向上及向左移动（北/西）。
-        n-resize	此光标指示矩形框的边缘可被向上（北）移动。
-        se-resize	此光标指示矩形框的边缘可被向下及向右移动（南/东）。
-        sw-resize	此光标指示矩形框的边缘可被向下及向左移动（南/西）。
-        s-resize	此光标指示矩形框的边缘可被向下移动（南）。
-        w-resize	此光标指示矩形框的边缘可被向左移动（西）。
-        text	此光标指示文本。
-        wait	此光标指示程序正忙（通常是一只表或沙漏）。
-        help	此光标指示可用的帮助（通常是一个问号或一个气球）。
-        
-    ie低版本浏览器设置鼠标指针形状为手型
-      cursor：hand
-    
-    iframe：会创建包含另外一个文档的内联框架
-       可以把需要的文本放置在<iframe>和</iframe>之间，这样就可以应对无法理解iframe的浏览器；
-       属性：src：URL规定在iframe中显示的文档的URL。
-            scrolling：规定是否在 iframe 中显示滚动条。
-            	yes:有滚动条
-            	no：不显示滚动条
-            frameborder：规定iframe是否显示边框
-                0：不显示
-                1：显示 
+### 表单控件（元素）：input/非 input
 
-# 图像热点链接 map
+| 控件类型            | 示例                                     | 描述                                       |
+|---------------------|------------------------------------------|--------------------------------------------|
+| fieldset            | `<fieldset>`                            | 表单字段集，用于分组                      |
+| legend              | `<legend>`                              | 字段集标题，分组标题                      |
+| radio               | `<input type="radio" name="ral" />`    | 单选框                                    |
+| checkbox            | `<input type="checkbox" name="like" />` | 复选框                                    |
+| hidden              | `<input type="hidden" name="country" value="Norway" />` | 隐藏输入字段 |
+| file                | `<input type="file" name="file" />`    | 文件上传                                  |
+| label               | `<label for="czm">姓名:</label>`       | 提示信息标签                              |
+| select              | `<select name="name" id="czm">`        | 下拉列表                                  |
+| option              | `<option value="1">选项1</option>`     | 下拉列表中的选项                          |
+| optgroup            | `<optgroup label="分组">`               | 选项组                                    |
+| textarea            | `<textarea rows="10" cols="30"></textarea>` | 多行文本框                          |
+| image               | `<input type="image" src="submit.gif" alt="提交" />` | 图像提交按钮                 |
+| button              | `<button type="button">按钮</button>`   | 按钮                                      |
 
-    指定图片某块区域加超链接 ：使用map标签可以给指定图片某块区域加超链接
-    使用方法：
-    例：
-     <img src="../imgs/1.jpg" alt="" usemap="#map1" />
-        <map name="map1" id="map1">
-          <area
-            shape="rect"
-            coords="500px,481px,670px,662px"
-            href="./test.html"
-            alt=""
-          />
-          <area shape="circ" coords="774px,582px,86px" href="./test.html" alt="" />
-        </map>
-    
-    1)在html文件中插入一个图片
-      <img src=”../img/1.jpg” usemap="">
-      属性：
-       usemap:将图像定义为客户端图像映射
-      
-    2)在html文档中插入一个map标签
-      A. map标签：定义客户端的图像映射，图像映射是带有可点击区域的图像
-      B. 为map标签设置id属性and name属性，属性值相同
-      
-    3)为img标签加上usemap属性，属性值为map标签的id/name 
-        语法：<img src="1.jpg" usemap="#id/name">
-    说明：
-        img中的usemap属性可引用map中的id或name属性（由浏览器决定）所以需要添加id和name两个属性
-    
-    4)在map标签内嵌套一个或者多个area标签来实现给指定区域加超链接
-       area标签：定义图像映射内部区域area标签始终嵌套在map标签内部
-       语法：
-       <area shape="" coords="" target="" href="" alt="">
-       属性：
-         shape:定义区域形状
-           属性值：rect-正方形
-                  circ-圆形
-                  poly-多边形
-         coords：定义可点击区域的坐标(xpx,ypx,npx)
-         alt：定义此区域的替换文本
-         target：设置超链接的打开方式
-         
-    矩形：shape="rectangle、rect"，coords="x1,y1,x2,y2"
-         第一个坐标是矩形的一个角的顶点坐标，另一对坐标是对角的顶点坐标，"0,0" 是图像左上角的坐标。
-    
-    圆形：shape="circle"，coords="x,y,z"
-         x 和 y 定义了圆心的位置（"0,0" 是图像左上角的坐标），z 是以像素为单位的圆形半径。
-    
-    多边形：shape="poly"，coords="x1,y1,x2,y2,x3,y3,..."
-         每一对 "x,y" 坐标都定义了多边形的一个顶点（"0,0" 是图像左上角的坐标）。定义三角形至少需要三组坐标；高纬多边形则需要更多数量的顶点。
-         多边形会自动封闭，因此在列表的结尾不需要重复第一个坐标来闭合整个区域。
-    
-    说明：
-    (1)如果某个 area 标签中的坐标和其他区域发生了重叠，会优先采用最先出现的 area 标签;
-    (2)浏览器会忽略超过图像边界范围之外的坐标。
+### HTML5 新增表单属性
 
+| 属性             | 描述                                      |
+|------------------|-------------------------------------------|
+| placeholder       | 文本框的输入提示                         |
+| required          | 检测输入框是否为空                       |
+| autofocus         | 页面加载时自动获得焦点                   |
+| novalidate        | 提交表单时不进行验证                     |
+| multiple          | 输入域中可选择多个值                     |
+| autocomplete      | 启用或禁用自动完成功能                   |
+| min/max/step     | 限制数字或日期的输入                     |
+| form              | 规定输入域所属的表单                     |
+| pattern           | 验证输入域的模式                         |
+| list              | 与 datalist 元素配合使用                  |
+
+## HTML5 多媒体标签
+
+| 标签            | 示例                                          | 描述                                      |
+|------------------|-----------------------------------------------|-------------------------------------------|
+| `<video>`        | `<video src="movie.ogg">您的浏览器不支持video标签</video>` | 定义视频                                  |
+| `<audio>`        | `<audio src="someaudio.wav">您的浏览器不支持audio标签</audio>` | 定义音频                                  |
+| `<source>`       | `<source src="horse.ogg" type="audio/ogg">` | 定义媒介资源                             |
+
+## 图像热点链接 map
+
+### 使用方法
+
+1. **插入图片**：
+   ```html
+   <img src="../imgs/1.jpg" alt="" usemap="#map1" />
+   ```
+
+2. **定义 map 标签**：
+   ```html
+   <map name="map1" id="map1">
+       <area shape="rect" coords="500,481,670,662" href="./test.html" alt="" />
+       <area shape="circ" coords="774,582,86" href="./test.html" alt="" />
+   </map>
+   ```
+
+### area 标签属性
+
+| 属性        | 描述                                      |
+|-------------|-------------------------------------------|
+| shape       | 定义区域形状（rect、circ、poly）        |
+| coords      | 定义可点击区域的坐标                    |
+| alt         | 定义此区域的替换文本                    |
+| target      | 设置超链接的打开方式                    |
+
+### 区域形状示例
+
+- **矩形**：
+  ```html
+  <area shape="rect" coords="x1,y1,x2,y2" />
+  ```
+
+- **圆形**：
+  ```html
+  <area shape="circle" coords="x,y,radius" />
+  ```
+
+- **多边形**：
+  ```html
+  <area shape="poly" coords="x1,y1,x2,y2,x3,y3" />
+  ```
+说明：
+    (1) 如果某个 area 标签中的坐标和其他区域发生了重叠，会优先采用最先出现的 area 标签;
+    (2) 浏览器会忽略超过图像边界范围之外的坐标。
 # BFC 元素
 
 BFC 即 Block Formatting Contexts (块级格式化上下文)，是 W3C CSS2.1 规范中的一个概念。
