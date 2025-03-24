@@ -432,554 +432,330 @@ place-self 是align-self属性和justify-self属性的合并简写形式。
 
 # 常用属性
 
-##### 通用属性
+## 通用属性
 
-    1、initial:默认值
-    2、unset:未设置（用于样式重置（覆盖浏览器默认样式）-> all:unset）
-    3、revert:回归到浏览器的默认样式
+| 属性      | 描述                                      |
+|-----------|-------------------------------------------|
+| initial   | 默认值                                    |
+| unset     | 未设置（用于样式重置）                   |
+| revert    | 回归到浏览器的默认样式                   |
 
-##### 边框的属性
+## 边框的属性
 
-    border-width：简写属性为元素的所有边框设置宽度，或者单独地为各边边框设置宽度。
-      属性值：
-            thin	定义细的边框。
-            medium	默认。定义中等的边框。
-            thick	定义粗的边框。
-            length	允许您自定义边框的宽度。
-        
-    border-color：设置边框颜色
-      属性值：
-            color_name	
-            hex_number	
-            rgb_number	
-            transparent	默认值。边框颜色为透明。
-    
-    border-style：设置边框类型
-      属性值：
-        none	定义无边框。
-        hidden	与 "none" 相同。不过应用于表时除外，对于表，hidden 用于解决边框冲突。
-        dotted	定义点状边框。在大多数浏览器中呈现为实线。
-        dashed	定义虚线。在大多数浏览器中呈现为实线。
-        solid	定义实线。
-        double	定义双线。双线的宽度等于 border-width 的值。
-        groove	定义 3D 凹槽边框。其效果取决于 border-color 的值。
-        ridge	定义 3D 垄状边框。其效果取决于 border-color 的值。
-        inset	定义 3D inset 边框。其效果取决于 border-color 的值。
-        outset	定义 3D outset 边框。其效果取决于 border-color 的值。
-    
-    border-width/color/style:A B C D;上  右 下 左
-    border-width/color/style:A B C;上 左右 下
-    border-width/color/style:A B;上下 左右
-    border-width/color/style:A;上下左右
-    
-    border:边框宽度 边框风格 边框颜色（简写）;
-    	例如：border:5px solid #ff0000
-    
-    可单独设置一方向边框:
-        border-bottom:边框宽度 边框风格 边框颜色;底边框
-        border-left:边框宽度 边框风格 边框颜色;左边框
-        border-right:边框宽度 边框风格 边框颜色;右边框
-        border-top:边框宽度 边框风格 边框颜色;上边框
-    
-    分别设置某一个方向上边框的颜色/类型/宽度:    
-        border-top/right/bottom/left-color
-        border-top/right/bottom/left-width
-        border-top/right/bottom/left-style
-    
-    width:100% : 子元素的 content 撑满父元素的content，如果子元素还有 padding、border等属性，或者是在父元素上设置了边距和填充，都有可能会造成子元素区域溢出显示;
-    width:auto : 是子元素的 content+padding+border+margin 等撑满父元素的 content 区域。
-    
-    border-image: 图片边框
-        border-image-source:路径
-        border-image-slice:切割距离（ 上下左右 )
-        border-image-repeat:重复方式（ stretch-拉伸 repeat-重复 round-拉伸重复)
+### 1. border-width
 
-##### 背景属性
+| 属性值   | 描述                                      |
+|----------|-------------------------------------------|
+| thin     | 定义细的边框。                           |
+| medium   | 默认。定义中等的边框。                   |
+| thick    | 定义粗的边框。                           |
+| length   | 允许您自定义边框的宽度。                 |
 
-    1. background-color：属性设置元素的背景颜色。
-    属性值：colorname：规定颜色名称为背景
-    hex：规定十六进制的背景颜色
-    rgb：规定rgb的背景颜色
-    transparent：默认，背景颜色为透明
-    
-    2.background-image：属性为元素设置背景图像。
-    属性值：url（）：指向图像路径
-    none：默认值，不显示背景图像
-    
-    背景图片的显示原则：
-    1）容器尺寸等于图片尺寸，背景图片正好显示在容器中;
-    2）容器尺寸大于图片尺寸，背景图片将默认平铺，直至铺满元素；
-    3）容器尺寸小于图片尺寸，只显示元素范围以内的背景图。
-    
-    网页上有两种图片形式：插入图片、背景图；
-    *插入图片：*属于网页内容，也就是结构。
-    *背景图：*属于网页的表现，背景图上可以显示文字、插入图片、表格等。
-    
-    2. background-repeat：设置是否及如何重复背景图像。
-    属性值：no-repeat：背景图像仅显示一次，不平铺
-    repeat：默认。背景图像将在垂直方向和水平方向重复
-    repeat-x：背景图像将在水平方向重复。
-    repeat-y：背景图像将在垂直方向重复。
-    
-    3. background-position：属性设置背景图像的起始位置。 
-    属性值：xpos/%/ left right center
-    ypos/%/ top bottom center
-    第一个值是水平位置，第二个值是垂直位置。
-    如果仅规定了一个值，另一个值将是50% / center
-    
-    4. background-attachment：设置背景图像是否固定或者随着页面的其余部分滚动。
-    属性值： scroll:默认值。背景图像会随着页面其余部分的滚动而移动。
-    fixed：当页面的其余部分滚动时，背景图像不会移动。
-    
-    5. background：简写属性，在一个声明中设置所有的背景属性
-    background:color image repeat position attachment
-    background:image repeat position attachment color
-    background:image repeat attachment position color
-    background:image;其他的属性值不写，但是有默认值；
-    background:color
+### 2. border-color
 
-##### 文本的属性
+| 属性值           | 描述                                      |
+|------------------|-------------------------------------------|
+| color_name       | 颜色名称                                  |
+| hex_number       | 十六进制颜色                              |
+| rgb_number       | RGB 颜色                                   |
+| transparent      | 默认值，边框颜色为透明                   |
 
-    1. font-size：可设置字体的尺寸说明：
-    	1） 属性值为数值型时，必须给属性值加单位，属性值为0时除外。
-    	2）为了减小系统间的字体显示差异，IE Netscape Mozilla的浏览器制作商于1999年召开会议，
-           共同确定16px/ppi为标准字体大小默认值,即1em.默认情况下，1em=16px, 0.75em=12px; 
-    	3）使用绝对大小关键字
-             xx-small =9px
-             x-small =11px
-             small =13px
-             medium =16px
-             large =19px
-             x-large =23px
-             xx-large =27px
-    2. color：规定文本的颜色。
-        属性值：colorname  hex rgb 
-    3. font-family：规定元素的字体系列
-        (1)此属性设置几个字体名称作为一种"后备"机制，如果浏览器不支持第一种字体，将尝试下一种字体，都不支持按系统默认字体显示。
-        (2) 如果字体系列的名称超过一个字，它必须用引号，如Font Family："宋体","Times New Roman"
-        (3) 多个字体系列是用一个逗号分隔指明;
-    4. font-weight：设置显示元素的文本中所用的字体加粗
-        属性值：bolder 更粗的
-               bold 加粗
-               normal 常规
-               lighter 更细
-               100—900 100对应最轻的字体变形
-                       900对应最重的字体变形，
-                       100-400 一般显示 
-                       500常规字体 
-                       600-900加粗字体
-    5. font-style：设置文本倾斜
-         属性值：
-              italic   倾斜 
-              oblique  更倾斜
-              normal   取消倾斜，常规显示     
-    6.line-height： 属性设置行间的距离（行高）
-         属性值：
-           normal	默认。设置合理的行间距。
-           number	设置数字，此数字会与当前的字体尺寸相乘来设置行间距(em)。
-           length	设置固定的行间距。
-               %	基于当前字体尺寸的百分比行间距。
-       A:行高指的是文本行的基线间的距离，而基线（Base line），指的是一行字横排时下沿的基础线，基线并不是汉字的下端沿，而是英文字母x的下端沿
-       B:行高有一个特性，叫做垂直居中性（文本在行高垂直居中的位置显示）
-        说明：
-        当单行文本的行高等于容器高时，可实现单行文本在容器中垂直方向居中对齐(重要)；
-        当单行文本的行高小于容器高时，可实现单行文本在容器中垂直中齐以上显示；
-        当单行文本的行高大于容器高时，可实现单行文本在容器中垂直中齐以下（IE6及以下版本存在浏览器兼容问题）
-    6. font:文字属性简写
-       font:font-style | font-variant(小体大写字母) | font-weight | font-size / line-height | font-family  
-       (1)简写时 , font-size和line-height只能通过斜杠/组成一个值，不能分开写。
-    
-       (2) 顺序不能改变 ,这种简写法只有在同时指定font-size和font-family属性时才起作用,而且,你没有设定font-weight , font-style , 以及font-varient , 他们会使用缺省值(normal)。
-    
-      (3)font:font-size/line-height  font-family
-      
-    7. text-align：设置文本水平对齐方式   
-       属性值：
-            left	把文本排列到左边。默认值：由浏览器决定。
-            right	把文本排列到右边。
-            center	把文本排列到中间。
-            justify	实现两端对齐文本效果。
-            
-    8. text-decoration：规定添加到文本的修饰
-      属性值：
-            none:没有修饰
-    	    underline:添加下划线
-    	    overline:添加上划线
-    	    line-through:添加删除线
-    	    
-    9. text-indent：属性规定文本块中首行文本的缩进（2em）（属性值可以为负值）
-    	属性值： 
-    	    length	定义固定的缩进。默认值：0。
-               %	定义基于元素宽度的百分比的缩进。 
-         
-    10. text-transform：设置文本大小写
-        属性值：
-            none	默认。定义带有小写字母和大写字母的标准的文本。
-            capitalize	文本中的每个单词以大写字母开头。
-            uppercase	定义仅有大写字母。
-            lowercase	定义无大写字母，仅有小写字母。
-    
-    11. letter-spacing：属性增加或减少字符间的空白（字符间距）。
-        属性值：
-    	    normal	默认。规定字符间没有额外的空间。
-           length	定义字符间的固定空间（允许使用负值）。
-    
-    12. word-spacing：属性增加或减少单词间的空白（即字间隔）。
-        属性值：
-        	normal	默认。定义单词间的标准空间。
-        	length	定义单词间的固定空间。   
+### 3. border-style
 
-##### 文本溢出overflow
+| 属性值   | 描述                                      |
+|----------|-------------------------------------------|
+| none     | 定义无边框。                             |
+| hidden   | 与 "none" 相同，但用于表格时解决边框冲突。 |
+| dotted   | 定义点状边框。                           |
+| dashed    | 定义虚线。                               |
+| solid    | 定义实线。                               |
+| double   | 定义双线。                               |
+| groove   | 定义 3D 凹槽边框。                      |
+| ridge    | 定义 3D 垄状边框。                      |
+| inset    | 定义 3D inset 边框。                    |
+| outset   | 定义 3D outset 边框。                   |
 
-    overflow：设置溢出容器的内容如何显示（css2）
-      属性值：
-        visible: 默认值，内容不会被修剪，会呈现在元素框之外；
-        hidden:  内容会被修剪，并且其余内容是不可见的；
-        scroll:  内容会被修剪，但是浏览器会显示滚动条，以便查看其余的内容;
-        auto:    如果内容被修剪，则浏览器会显示滚动条，以便查看其他的内容;
-        inherit: 规定应该从父元素继承overflow属性的值。
-    
-    white-space：设置如何处理元素内的空白
-      属性值：    
-        normal:   默认值，多余空白会被浏览器忽略只保留一个；
-        pre:      空白会被浏览器保留（类似pre标签）；
-        pre-wrap: 保留一部分空白符序列，但是正常的进行换行；
-        pre-line: 合并空白符序列，但是保留换行符；
-        nowrap:   文本不会换行，文本会在同一行上继续，直到遇到<br/>标签为止;
-     
-    text-overflow：设置单行文本溢出是否显示省略号
-      属性值：
-        clip：不显示省略号（...），而是简单的裁切;
-        ellipsis：当对象内文本溢出时，显示省略标记；
-        
-    例：设置某段文字显示省略号css代码
-      width：     ；        /*强制容器宽度*/
-      white-space: nowrap; /*文字在一行显示*/
-      overflow: hidden;    /*设置文字溢出*/
-      text-overflow: ellipsis;  /*溢出文字显示省略号*/    
-    
-    例：多行文本省略：
-    	display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    	text-overflow: ellipsis;
-      white-space: nowrap;
+### 4. 边框简写
 
-##### 列表属性
+```css
+border: 5px solid #ff0000; /* 边框宽度 边框风格 边框颜色 */
+```
 
-    list-style-type：设置列表项标记的类型
-      属性值：
-        none	无标记。
-        disc	默认。标记是实心圆。
-        circle	标记是空心圆。
-        square	标记是实心方块。
-        decimal	标记是数字。
-        decimal-leading-zero	0开头的数字标记。(01, 02, 03, 等。)
-        lower-roman	小写罗马数字(i, ii, iii, iv, v, 等。)
-        upper-roman	大写罗马数字(I, II, III, IV, V, 等。)
-        lower-alpha	小写英文字母The marker is lower-alpha (a, b, c, d, e, 等。)
-        upper-alpha	大写英文字母The marker is upper-alpha (A, B, C, D, E, 等。)
-        lower-greek	小写希腊字母(alpha, beta, gamma, 等。)
-        lower-latin	小写拉丁字母(a, b, c, d, e, 等。)
-        upper-latin	大写拉丁字母(A, B, C, D, E, 等。)
-        
-    list-style-position：定义列表符号的位置
-      属性值：
-            inside	列表项目标记放置在文本以内，且环绕文本根据标记对齐。
-            outside	默认值。保持标记位于文本的左侧。列表项目标记放置在文本以外，且环绕文本不根据标记对齐。
-        
-    list-style-image：设置图片作为列表符号；
-      属性值：
-             URL	图像的路径。
-            none	默认。无图形被显示。
-            
-    list-style：简写属性，在一个声明中设置所有的列表属性。
-    例如：list-style:circle inside
-         list-style:url() inside
-         list-style：none;去掉列表符号
+### 5. 单方向边框设置
 
-##### 浮动
+```css
+border-bottom: 边框宽度 边框风格 边框颜色; /* 底边框 */
+border-left: 边框宽度 边框风格 边框颜色;   /* 左边框 */
+border-right: 边框宽度 边框风格 边框颜色;  /* 右边框 */
+border-top: 边框宽度 边框风格 边框颜色;    /* 上边框 */
+```
 
-    float：定义元素在哪个方向浮动
-     属性值：
-      left	元素向左浮动。
-      right	元素向右浮动。
-      none	默认值。元素不浮动，并会显示在其在文本中出现的位置。
-     说明：
-       以往这个属性总应用于图像，使文本围绕在图像周围，不过在CSS中，任何元素都可以浮动。
-       浮动元素会生成一个块级框，而不论它本身是何种元素类型。
-       浮动会让元素变成块状元素。
-     分类
-             双标签 单标签：根据有无单独结束标签进行分类
-     元素类型
-             块状元素  行内元素：根据标签在浏览器中显示的特征
-                块状元素：div p h3 ol li ul dl dt dd 
-                  A:自占一行
-                  B:可以设置宽度和高度
-                  C：在没有设置宽度的情况下，宽度与父元素同宽
-                行内元素：em i b strong a sup sub span del 
-                  A: 可以和其他行内元素在一行内并列显示
-                  B：不可以设置宽度和高度，大小根据内容多少而定
+### 6. 边框属性设置示例
 
-##### 属性继承
+| 属性                        | 描述                                      |
+|-----------------------------|-------------------------------------------|
+| border-width/color/style    | A B C D; 上右下左                     |
+| border-width/color/style    | A B C; 上左右下                        |
+| border-width/color/style    | A B; 上下左右                           |
+| border-width/color/style    | A; 上下左右                              |
 
-    层叠性：一个元素可能同时被多个css选择器选中，每个选择器都有一些css规则，这就是层叠。
-    
-    CSS的处理原则是：
-      1）如果多个选择器定义的规则不发生冲突，则元素将应用所有选择器定义的样式。
-      2）如果多个选择器定义的规则发生了冲突，则CSS按选择器的特殊性(权重)让元素应用特殊性(权重)高的选择器定义的样式。
-      
-    继承性：所谓继承，就是父元素的规则也会适用于子元素。比如给body设置为color:Red;那么他内部的元素如果没有其他的规则设置，也都会变成红色。继承得来的规则没有特殊性。
-    
-    说明：
-    CSS的继承贯穿整个CSS设计的始终，每个标记都遵循着CSS继承的概念。可以利用这种巧妙的继承关系，大大缩减代码的编写量，并提高可读性，尤其在页面内容很多且关系复杂的情况下。
-    
-    不可继承的：display、margin、border、padding、background、height、min-height、max-height、、min-width、max-width、overflow、position、left、right、top、 bottom、z-index、float、clear、table-layout、vertical-align
-    
-    所有元素可继承：visibility和cursor。
-    
-    内联元素、块状元素可继承：letter-spacing、word-spacing、line-height、color、font、 font-family、font-size、font-style、font-variant、font-weight、text-decoration、text-transform。
-    
-    块状元素可继承：text-indent和text-align
-    
-    列表元素可继承：list-style、list-style-type、list-style-position、list-style-image。
-    
-    表格元素可继承：border-collapse border-spacing empty-cells
+## 背景属性
 
-##### display元素类型转换
+### 1. background-color
 
-    盒子模型可通过display属性来改变默认的显示类型
-    display：属性规定元素应该生成的框的类型。
-     属性值：
-        none	此元素不会被显示，隐藏元素。（或者设置元素高度为0px，文本溢出overflow：hidden）
-        block	此元素将显示为块级元素，此元素前后会带有换行符。
-        inline	默认。此元素会被显示为内联元素，元素前后没有换行符。
-        inline-block 行内块元素。（CSS2.1 新增的值）
-        list-item	 此元素会作为列表显示。
-        run-in	此元素会根据上下文作为块级元素或内联元素显示。
-        table	此元素会作为块级表格来显示（类似 <table>），表格前后带有换行符。
-        inline-table 此元素会作为内联表格来显示（类似 <table>），表格前后没有换行符。
-        table-row-group	此元素会作为一个或多个行的分组来显示（类似 <tbody>）。
-        table-header-group	此元素会作为一个或多个行的分组来显示（类似 <thead>）。
-        table-footer-group	此元素会作为一个或多个行的分组来显示（类似 <tfoot>）。
-        table-row	此元素会作为一个表格行显示（类似 <tr>）。
-        table-column-group	此元素会作为一个或多个列的分组来显示（类似 <colgroup>）。
-        table-column  此元素会作为一个单元格列显示（类似 <col>）
-        table-cell	此元素会作为一个表格单元格显示（类似 <td>和<th>）
-        table-caption 此元素会作为一个表格标题显示（类似 <caption>）
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| colorname            | 规定颜色名称为背景                       |
+| hex                  | 规定十六进制的背景颜色                   |
+| rgb                  | 规定 RGB 的背景颜色                        |
+| transparent          | 默认，背景颜色为透明                     |
 
-##### filter：滤镜属性
+### 2. background-image
 
-    brightness:亮度变化；
-    grayscale:灰度变化；
-    blur:模糊变化（如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值）；
-    contrast:对比度变化；
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| url ()                | 指向图像路径                             |
+| none                 | 默认值，不显示背景图像                   |
 
-##### vertical-align
+### 背景图片的显示原则
 
-    vertical-align： 该属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐
-                     应用于行内元素和单元格元素（inline-level and 'table-cell' elements）
-     属性值：
-        baseline 默认。元素放置在父元素的基线上。
-        top	 把元素的顶端与行中最高元素的顶端对齐
-        middle	 把此元素放置在父元素的中部。
-        bottom	 把元素的顶端与行中最低的元素的顶端对齐
-        sub	 垂直对齐文本的下标。
-        super	 垂直对齐文本的上标
-       	text-top 把元素的顶端与父元素字体的顶端对齐。
-       	text-bottom	把元素的底端与父元素字体的底端对齐。
-       	%	     使元素的基线对齐到父元素的基线之上的给定百分比，该百分比是line-height属性的百分比。可以是负数。
-       	length  使元素的基线对齐到父元素的基线之上的给定长度。可以是负数
+1. 容器尺寸等于图片尺寸，背景图片正好显示在容器中。
+2. 容器尺寸大于图片尺寸，背景图片将默认平铺，直至铺满元素。
+3. 容器尺寸小于图片尺寸，只显示元素范围以内的背景图。
 
-##### position 属性：规定元素的定位类型
+### 3. background-repeat
 
-    static：默认值。没有定位，元素出现在正常的流中。
-        元素的位置根据在html中的书写顺序依次排序显示，没有特殊的位置改变
-        
-        relative：生成相对定位的元素，相对于其正常位置进行定位。
-        说明：元素仍然保持其未定位前的形状，它原本在文本流中所占的空间仍保留
-        
-        fixed: 生成固定定位的元素，相对于浏览器窗口进行定位。
-        说明：给元素设置固定定位之后，元素原先在正常文档流中所占的空间会关闭，就好像该元素原来不存在一样
-        配合margin（+固定值）使用可以一直显示在某一地点，不随窗口缩放影响
-        
-        absolute: 生成绝对定位的元素，相对于static定位以外的第一个父元素进行定位
-        解释：指绝对定位元素会根据有定位设置（除static定位）的父元素作为参照进行定位；如果父元素没有定位设置，那就继续向上找祖父元素，
-        看是否有定位设置，有的话就根据祖父元素定位，没有的话，那就继续向上找…….如果都没有，就根据窗口进行定位。
-        
-        包含块：绝对定位元素参照的有定位设置的父元素我们称为包含块，包含块是绝对定位的基础，包含块就是为绝对定位元素提供坐标偏移和显示范围的参照物；
-        设置某个元素为包含块：给此元素添加relative，fixed，absolute都OK，推荐使用relative，因为不会影响元素在文本流中的显示；
-        
-        总结元素绝对定位三部曲：
-          (1) 先确定绝对定位元素的包含块
-          (2) 设置元素绝对定位
-          (3) 定位的坐标位置
-        
-        sticky（css3中新增的属性值）: 粘性定位，该定位基于用户滚动的位置。
-        注意：父元素不能有overflow属性；需搭配top等属性；
-        说明：元素在浏览器范围内定位时就像 position:relative; 而当页面滚动超出目标区域时，它的定位效果就像 position:fixed，它会固定在目标位置
-      
-    
-    定位需要配合使用的属性：以下属性用于给元素定位设置坐标点的位置；
-     left   属性规定元素的左边缘偏移的大小。
-     right  属性规定元素的右边缘偏移的大小。
-     top    属性规定元素的顶部边缘偏移的大小。
-     bottom 属性规定元素的底部边缘偏移的大小。
-            属性值：
-           auto：  默认值。通过浏览器计算左边缘的位置。
-           %：     设置以包含元素的百分比计的左边位置。可使用负值。
-           length：使用 px、cm 等单位设置元素的左边位置。可使用负值。 
+| 属性值       | 描述                                      |
+|--------------|-------------------------------------------|
+| no-repeat    | 背景图像仅显示一次，不平铺               |
+| repeat       | 默认。背景图像将在垂直和水平方向重复   |
+| repeat-x     | 背景图像将在水平方向重复                 |
+| repeat-y     | 背景图像将在垂直方向重复                 |
 
-##### 层叠z-index
+### 4. background-position
 
-    z-index : 属性设置元素的堆叠顺序，拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。
-     属性值：
-        auto：默认值。
-        number:无单位的整数值，可为负数。
-    说明：    
-    1）此属性仅仅作用于position属性值为relative或absolute,fixed的对象。
-    2）该属性设置一个定位元素沿z轴的位置，z轴定义为垂直延伸到显示区的轴，如果为正数，则离用户更近，为负数则表示离用户更远。
+| 属性值                  | 描述                                      |
+|-------------------------|-------------------------------------------|
+| xpos/%/left right center| 水平位置                                  |
+| ypos/%/top bottom center | 垂直位置                                  |
 
-##### 浮动元素父元素高度自适应（高度塌陷）
+### 5. background-attachment
 
-    当子元素有浮动并且父元素没有高度的情况下父元素高度为0，会称为高度塌陷
-    解决方法：
-    （1）给父元素添加声明overflow:hidden;(触发一个BFC)
-    （2）在浮动元素下方添加空div,并给该元素添加声明
-            div{clear:both; height:0; overflow:hidden;}
-    （3）万能清除浮动法
-       选择符:after{
-        content:"";
-        display:block;
-        clear:both;  
-        height:0;
-        overflow:hidden;
-        visibility:hidden;
-       }
-    clear: 属性规定元素的哪一侧不允许其他浮动元素。
-      属性值：
-        left	在左侧不允许浮动元素。
-        right	在右侧不允许浮动元素。
-        both	在左右两侧均不允许浮动元素。
-        none	默认值。允许浮动元素出现在两侧。
+| 属性值       | 描述                                      |
+|--------------|-------------------------------------------|
+| scroll       | 默认值。背景图像会随着页面的滚动而移动   |
+| fixed        | 背景图像不会随着页面的滚动而移动         |
 
-  
+### 6. background
 
-##### visibility属性规定元素是否可见
+| 属性值                       | 描述                                      |
+|------------------------------|-------------------------------------------|
+| background: color image repeat position attachment; | 简写属性，在一个声明中设置所有的背景属性 |
 
-    属性值：
-        visible	  默认值。元素是可见的。
-        hidden	  元素是不可见的。
-        collapse  当在表格元素中使用时，此值可删除一行或一列，但是它不会影响表格的布局。
-        被行或列占据的空间会留给其他内容使用。如果此值被用在其他的元素上，会呈现为 "hidden"。
-    
-    说明：visibility:hidden;和display:none;的区别：
-         visibility:hidden;属性会使对象不可见，但该对象在网页所占的空间没有改变，等于留出了一块空白区域，
-         而display:none属性会使这个对象彻底消失。
+## 文本的属性
 
+### 1. font-size
 
-# 元素基础
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| 数值型               | 必须给属性值加单位，0 时除外             |
+| 绝对大小关键字      | xx-small = 9px, x-small = 11px, ...     |
 
-##### 基础标签
+### 2. color
 
-    <h1></h1>    <h6></h6>                     标题标签
-    <p></p>                                    段落标签
-    <i></i>     <em></em>                      斜体显示
-    <b></b>     <strong></strong>              加粗显示
-    <br>                                       换行显示
-    <hr>                                       画下划线
-    <span></span>                              短文本标签
-    <del></del>                                给文字增加删除线
-    <ins></ins>                                给文字增加下划线
-    <sup></sup>                               将文字变成上标
-    <sub></sub>                               将文字变成下标
-    <u></u>                                   给文字加下划线
-    <center></center>                         将文字居中 
-    <a href="   ">超链接</a>                   超链接
-    <a href="   " target="_blank" title="">超链接</a>    在新的窗口打开超链接
-    <img src="  " width="" height="" >         插入图片,设置宽高，单位px（像素）或者百分比
-    <img src="  " title="鼠标划上去的提示" alt="图片加载失败后文字提示" >
-    <ul type="disc"(实心圆) type="circle"(空心圆) type="square"(实心方框)>
-      <li>
-      </li>
-    </ul>                                     #无序列表
-    <ol type="1"(数字) type="a"(小写字母) type="i"(罗马数字)>
-      <li>
-      </li>
-    </ol>                                     #有序列表
-    <dl>                                      #自定义列表
-      <dt>标题</dt>
-      <dd>描述</dd>
-    </dl>      
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| colorname            | 颜色名称                                  |
+| hex                  | 十六进制颜色                              |
+| rgb                  | RGB 颜色                                   |
 
-##### 表格 table
+### 3. font-family
 
-    <table border="1px" cellspacing="0">                 #border为边框，cellspacing为单元格空隙
-         <col width="200px">                             #定义1列的宽
-         <tr height="100px" align="center">              #行居中
-             <td width="10px" align="center">  列 </td>  #列宽10px，文字对齐方式居中
-         </tr>
-     </table> 
-    
-    在列中采用colspan属性合并横向单元格：<td colspan="7" align="center">个人简历</td>
-    在列中采用rowspan属性合并竖向单元格：<td rowspan="7" align="center">个人简历</td>
-    
-    1) 表格标题
-       <caption>标题内容</caption>定义表格的标题。caption标签必须直接放置到table标签之后，只能对每个表格定义一个标题。
-       
-    2) 表头单元格
-       <th>标签定义HTML表格中的表头单元格
-     说明：
-        HTML表格有两种单元格类型：
-        表头单元格 - 包含头部信息（由<th>元素创建）
-        标准单元格 - 包含数据（由<td>元素创建）
-        <th> 元素中的文本通常呈现为粗体并且居中。
-        <td> 元素中的文本通常是普通的左对齐文本。
-    
-    3) 列分组
-       <col> 标签为表格中一个或多个列定义属性值。
-      	span属性: 规定col元素应该横跨的列数, 默认为1，默认时仅定义一列为一组。只能在table或colgroup元素中使用col标签。
-       <colgroup> 标签用于对表格中的列进行组合，以便对其进行格式化。
-     	span属性：规定列组应该横跨的列数, 默认为1，默认时仅定义一列为一组。
-    
-    4) 数据行分组
-        <thead> 标签用于组合 HTML 表格的表头内容。
-        <tbody> 标签用于组合 HTML 表格的主体内容。
-        <tfoot> 标签用于组合 HTML 表格的页脚内容。
-    说明：
-    (1) tfoot,tbody,thead元素内部必须包含一个或者多个 <tr> 标签。
-    (2) thead, tbody,  tfoot 元素结合起来使用，用来规定表格的各个部分-表头、主体、页脚
-    (3)它们的出现次序是： caption、colgroup、 thead、 tbody， tfoot
-    
-    5) rules属性：规定内侧边框的哪个部分是可见的。(html的属性)
-       属性值：
-        rows:位于行之间的线条
-        cols:位于列之间的线条
-        all:位于行和列之间的线条
-        none:没有线条
-        groups:位于行组或者列组之间的线条 
-    
-    6) border-collapse 属性设置表格的边框是否被合并为一个单一的边框，还是像在标准的HTML中那样分开显示。
-       属性值：
-         separate：默认值。边框会被分开。不会忽略border-spacing和 empty-cells属性。
-         collapse：如果可能，边框会合并为一个单一的边框。会忽略border-spacing和empty-cells属性。
-         
-    7) border-spacing 属性设置相邻单元格的边框间的距离（仅用于"边框分离"模式）。
-        属性值：length length	
-        规定相邻单元的边框之间的距离。使用 px、cm 等单位。不允许使用负值。
-        如果定义一个length参数，那么定义的是水平和垂直间距。
-        如果定义两个length参数，那么第一个设置水平间距，而第二个设置垂直间距。
-         
-    8) empty-cells 属性设置是否显示表格中的空单元格（仅用于"边框分离"模式）。
-       属性值：
-            hide 不在空单元格周围绘制边框。
-            show 在空单元格周围绘制边框。默认。
-            
-    9) table-layout属性设置表格布局算法。
-       属性值：
-             automatic	默认。列宽度由单元格内容设定。
-             fixed	列宽由表格宽度和列宽度设定。
+| 描述                                      |
+|-------------------------------------------|
+| 设置多个字体名称作为后备机制              |
+| 字体名称超过一个字时，必须用引号          |
+| 多个字体系列用逗号分隔                    |
+
+### 4. font-weight
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| bolder               | 更粗的                                    |
+| bold                 | 加粗                                      |
+| normal               | 常规                                      |
+| lighter              | 更细                                      |
+| 100—900             | 100 对应最轻的字体变形                    |
+
+### 5. font-style
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| italic               | 倾斜                                      |
+| oblique              | 更倾斜                                    |
+| normal               | 取消倾斜，常规显示                        |
+
+### 6. line-height
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| normal               | 默认。设置合理的行间距                    |
+| number               | 设置数字，此数字会与当前的字体尺寸相乘   |
+| length               | 设置固定的行间距                          |
+
+### 7. text-align
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| left                 | 把文本排列到左边。                        |
+| right                | 把文本排列到右边。                        |
+| center               | 把文本排列到中间。                        |
+| justify              | 实现两端对齐文本效果。                    |
+
+### 8. text-decoration
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| none                 | 没有修饰                                  |
+| underline            | 添加下划线                                |
+| overline             | 添加上划线                                |
+| line-through         | 添加删除线                                |
+
+### 9. text-indent
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| length               | 定义固定的缩进。                          |
+| %                    | 定义基于元素宽度的百分比的缩进。         |
+
+### 10. text-transform
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| none                 | 默认。标准文本                            |
+| capitalize           | 每个单词以大写字母开头                    |
+| uppercase            | 仅有大写字母                              |
+| lowercase            | 仅有小写字母                              |
+
+### 11. letter-spacing
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| normal               | 默认。字符间没有额外的空间                |
+| length               | 定义字符间的固定空间（允许使用负值）。   |
+
+### 12. word-spacing
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| normal               | 默认。定义单词间的标准空间                |
+| length               | 定义单词间的固定空间。                    |
+
+## 文本溢出
+
+### overflow
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| visible              | 默认值，内容不会被修剪                    |
+| hidden               | 内容会被修剪且不可见                      |
+| scroll               | 内容会被修剪，显示滚动条                  |
+| auto                 | 内容被修剪时显示滚动条                    |
+| inherit              | 从父元素继承 overflow 属性的值              |
+
+### white-space
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| normal               | 默认值，多余空白会被忽略                  |
+| pre                  | 空白会被保留（类似 pre 标签）              |
+| pre-wrap             | 保留空白符序列，正常换行                  |
+| pre-line             | 合并空白符序列，保留换行符                |
+| nowrap               | 文本不会换行，直到遇到<br/>标签为止      |
+
+### text-overflow
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| clip                 | 不显示省略号（...），简单裁切             |
+| ellipsis             | 溢出时显示省略标记                        |
+
+### 示例代码
+
+```css
+/* 设置单段文字显示省略号 */
+width: 100px; /* 强制容器宽度 */
+white-space: nowrap; /* 文字在一行显示 */
+overflow: hidden; /* 设置文字溢出 */
+text-overflow: ellipsis; /* 溢出文字显示省略号 */
+
+/* 多行文本省略 */
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+```
+
+## 列表属性
+
+### list-style-type
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| none                 | 无标记                                    |
+| disc                 | 默认。标记是实心圆                        |
+| circle               | 标记是空心圆                              |
+| square               | 标记是实心方块                            |
+| decimal              | 标记是数字                                |
+| decimal-leading-zero  | 0 开头的数字标记 (01, 02, 03, 等)        |
+| lower-roman          | 小写罗马数字 (i, ii, iii, iv, v, 等)     |
+| upper-roman          | 大写罗马数字 (I, II, III, IV, V, 等)     |
+| lower-alpha          | 小写英文字母 (a, b, c, d, e, 等)         |
+| upper-alpha          | 大写英文字母 (A, B, C, D, E, 等)         |
+| lower-greek          | 小写希腊字母 (alpha, beta, gamma, 等)    |
+| lower-latin          | 小写拉丁字母 (a, b, c, d, e, 等)         |
+| upper-latin          | 大写拉丁字母 (A, B, C, D, E, 等)         |
+
+### list-style-position
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| inside               | 列表项目标记放置在文本以内                |
+| outside              | 默认值。标记位于文本的左侧                |
+
+### list-style-image
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| URL                  | 图像的路径                                |
+| none                 | 默认。无图形显示                          |
+
+### list-style
+
+| 示例                 | 描述                                      |
+|----------------------|-------------------------------------------|
+| list-style: circle inside; | 设置列表项标记为圆形并放置在文本内 |
+| list-style: url () inside;  | 使用图片作为列表符号并放置在文本内 |
+| list-style: none;          | 去掉列表符号                        |
+
+## 浮动
+
+### float
+
+| 属性值               | 描述                                      |
+|----------------------|-------------------------------------------|
+| left                 | 元素向左浮动                              |
+| right                | 元素向右浮动                              |
+| none                 | 默认值。元素不浮动                        |
+
+### 分类
+
+| 类型               | 描述                                      |
+|--------------------|-------------------------------------------|
+| 块状元素          | div, p, h3, ol, li, ul, dl, dt, dd      |
+| 行内元素          | em, i, b, strong, a, sup, sub, span, del |
 
 # CSS 选择器
 
