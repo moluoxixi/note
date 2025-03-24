@@ -270,9 +270,9 @@ screen
 
 ## Flex布局
 
-#### flex容器属性：
+### flex容器属性：
 
-##### flex-direction（子元素排列顺序）
+#### flex-direction（子元素排列顺序）
 
     flex-direction:属性规定灵活项目的排列方向（主轴方向）:
     
@@ -281,7 +281,7 @@ screen
     column:灵活的项目将垂直显示。
     column-reverse:与column相同，但是以相反的顺序。
 
-##### flex-wrap（换行）
+#### flex-wrap（换行）
 
     用于设置伸缩项目在主轴上的换行方式:
     
@@ -289,11 +289,11 @@ screen
     wrap:规定灵活的项目在必要的时候拆行或拆列。
     wrap-reverse:规定灵活的项目在必要的时候拆行或拆列，但是以相反的顺序。
 
-##### flex-flow
+#### flex-flow
 
     flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap;-简化代码
 
-##### justify-content（主轴对齐方式）
+#### justify-content（主轴对齐方式）
 
     justify-content：用于设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式:
     
@@ -303,7 +303,7 @@ screen
     space-between:项目位于各行之间留有空白的容器内。
     space-around:项目位于各行之前、之间、之后都留有空白的容器内。
 
-##### align-items（侧轴对齐方式）
+#### align-items（侧轴对齐方式）
 
     align-items:定义flex子项目在flex容器的侧轴（纵轴）方向上的对齐方式:
     
@@ -314,7 +314,7 @@ screen
     flex-end:元素位于容器的结尾。
     baseline:元素位于容器的基线上。
 
-##### align-content（横向排列换行后多行文本y轴对齐方式）
+#### align-content（横向排列换行后多行文本y轴对齐方式）
 
     align-content：用于设置多行子元素在容器侧轴上的对齐方式(多行时才有效)；
     
@@ -328,9 +328,9 @@ screen
     说明：
        align-content在侧轴上执行样式的时候，会把默认的间距给合并。对于单行子元素，该属性不起作用
 
-#### flex子元素属性：
+### flex子元素属性：
 
-##### align-self属性（单个元素侧轴对齐方式）
+#### align-self属性（单个元素侧轴对齐方式）
 
     align-self：属性定义flex子项单独在侧轴（纵轴）方向上的对齐方式:
     
@@ -342,14 +342,14 @@ screen
     flex-end:元素位于容器的结尾。
     baseline:元素位于容器的基线上。
 
-##### flex-grow扩展比率
+#### flex-grow扩展比率
 
     flex-grow：用于设置或检索弹性盒子项目的扩展比率；      
     
     number:规定项目将相对于其他灵活的项目进行扩展的量。默认值是0。
     即当容器空间大于内部元素空间之和时，剩余部分将根据各元素指定的flex-grow按比例分配，使各子元素增大；默认值为0，表示剩余空间不分配。
 
-##### flex-shrink收缩比率
+#### flex-shrink收缩比率
 
     flex-shrink：设置弹性盒的伸缩项目的收缩比率:
     
@@ -361,19 +361,19 @@ screen
     加权总和：=(第一个子元素的宽度)*(shrink)+（第二个子元素的宽度）*   (shrink)+....; 
         A收缩的像素数：(Awidth*shrink)/加权综合)*超出空间 =收缩的像素数 
 
-##### flex-basis伸缩基准值
+#### flex-basis伸缩基准值
 
     flex-basis:设置弹性盒伸缩基准值（指定flex-item在主轴上的初始大小）:
     
     number:规定灵活项目的初始长度。
     auto：默认值。长度等于灵活项目的长度。如果该项目未指定长度，则长度将根据内容决定。
 
-##### order出现顺序
+#### order出现顺序
 
     order：属性设置或检索弹性盒模型对象的子元素出现的順序。
     number：值越小排列越靠前，值越大顺序越靠后 + -
 
-##### flex属性简写
+#### flex属性简写
 
     （1）flex 属性用于设置弹性盒模型对象的子元素如何分配父元素的空间。
     （2）flex 属性是 flex-grow、flex-shrink 和 flex-basis 属性的简写属性。
@@ -383,47 +383,48 @@ screen
       1  = 1 1 0%
 
 ## Grid布局
+```text
+display: grid;
 
-    display: grid;
+display: inline-grid;
 
-    display: inline-grid;
+grid-template-columns: 100px 1fr 1fr;                // fr 是fraction 的缩写，意为"片段"，可以与绝对长度的单位结合使用
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-columns: repeat(3, 1fr);               // repeat()接受两个参数，第一个参数是重复的次数，第二个参数是要重复的值。
+grid-template-columns: 1fr 1fr minmax(100px, 1fr);   // minmax()函数产生一个长度范围，表示长度就在这个范围之中。它接受两个参数，分别为最小值和最大值。
+grid-template-columns: repeat(auto-fill, 100px);     // 空白匿名网格
+grid-template-columns: repeat(auto-fit, 100px);      // 空白匿名网格折叠合并
+grid-template-columns: fit-content(100px) fit-content(100px) 40px auto;  // 让尺寸适应于内容，但不超过设定的尺寸,只支持数值和百分比值
 
-    grid-template-columns: 100px 1fr 1fr;                // fr 是fraction 的缩写，意为"片段"，可以与绝对长度的单位结合使用
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-columns: repeat(3, 1fr);               // repeat()接受两个参数，第一个参数是重复的次数，第二个参数是要重复的值。
-    grid-template-columns: 1fr 1fr minmax(100px, 1fr);   // minmax()函数产生一个长度范围，表示长度就在这个范围之中。它接受两个参数，分别为最小值和最大值。
-    grid-template-columns: repeat(auto-fill, 100px);     // 空白匿名网格
-    grid-template-columns: repeat(auto-fit, 100px);      // 空白匿名网格折叠合并
-    grid-template-columns: fit-content(100px) fit-content(100px) 40px auto;  // 让尺寸适应于内容，但不超过设定的尺寸,只支持数值和百分比值
+grid-template-rows  //  使用方法与列相同
 
-    grid-template-rows  //  使用方法与列相同
+row-gap: 20px;       // 行间距
+column-gap: 30px;    // 列间距
+gap: 20px;           // 行列间距
 
-    row-gap: 20px;       // 行间距
-    column-gap: 30px;    // 列间距
-    gap: 20px;           // 行列间距
+justify-items 指定单元格内容的水平对齐方式，属性值有：
+stretch：【默认值】拉伸，占满单元格的整个宽度。
+start：对齐单元格的起始边缘。
+end：对齐单元格的结束边缘。
+center：单元格内部居中。
 
-    justify-items 指定单元格内容的水平对齐方式，属性值有：
-    stretch：【默认值】拉伸，占满单元格的整个宽度。
-    start：对齐单元格的起始边缘。
-    end：对齐单元格的结束边缘。
-    center：单元格内部居中。
-    
-    align-items 指定单元格内容的垂直对齐方式，属性值有：
-    normal：【默认值】会根据使用场景的不同表现为stretch或者start。
-    stretch：拉伸，占满单元格的整个宽度。
-    start：对齐单元格的起始边缘。
-    end：对齐单元格的结束边缘。
-    center：单元格内部居中。
-    baseline：基线对齐（align-items属性特有属性值）
-    
-    place-items 是align-items属性和justify-items属性的合并简写形式：
-    place-items: start end;
+align-items 指定单元格内容的垂直对齐方式，属性值有：
+normal：【默认值】会根据使用场景的不同表现为stretch或者start。
+stretch：拉伸，占满单元格的整个宽度。
+start：对齐单元格的起始边缘。
+end：对齐单元格的结束边缘。
+center：单元格内部居中。
+baseline：基线对齐（align-items属性特有属性值）
 
-    justify-self 跟justify-items属性的用法完全一致，但只作用于单个项目。
-    
-    align-self 跟align-items属性的用法完全一致，也是只作用于单个项目。
-    
-    place-self 是align-self属性和justify-self属性的合并简写形式。
+place-items 是align-items属性和justify-items属性的合并简写形式：
+place-items: start end;
+
+justify-self 跟justify-items属性的用法完全一致，但只作用于单个项目。
+
+align-self 跟align-items属性的用法完全一致，也是只作用于单个项目。
+
+place-self 是align-self属性和justify-self属性的合并简写形式。
+```
 
 # 常用属性
 
@@ -1935,3 +1936,77 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，是 W3C CSS2.1 �
     myFunction(x) // 执行时调用的监听函数
     x.addListener(myFunction) // 状态改变时添加监听器
 
+# 移动端布局
+##### 视口-viewport
+```text
+
+许多智能手机都使用了一个比实际屏幕尺寸大很多的虚拟可视区域 (980px)，主要目的就是让 pc 页面在智能手机端阅读时不会因为实际可视区域变形。
+
+所以你看到的页面还是普通样式，即一个全局缩小后的页面。为了让智能手机能根据媒体查询匹配对应样式，让页面在智能手机中正常显示，特意添加了一个 meta 标签。
+
+这个标签的主要作用就是让智能手机浏览页面时能进行优化，并且可以自定义界面可视区域的尺寸和缩放级别。
+
+语法：
+
+<meta name\="viewport" content\="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"\>
+
+属性值：
+
+width: 可视区域的宽度, 值可为数字或关键词 device-width；
+
+height: 可视区域的高度, 值可为数字或关键词 device-height；
+
+initial-scale: 页面首次被显示时的缩放级别（0-10.0），取值为 1 时页面按实际尺寸显示，无任何缩放
+
+minimum-scale: 设定最小缩小比例（0-10.0），取值为 1 时将禁止用户缩小页面至实际尺寸之下
+
+maximum-scale: 设定最大放大比例（0-10.0），取值为 1 时将禁止用户放大页面至实际尺寸之上
+
+user-scalable: 设定用户是否可以缩放（yes/no）
+
+含义为：宽为手机移动设备默认宽度，初始缩放比例为 1，最大缩放比例为原始像素大小，不允许用户放大或者缩小;
+```
+
+##### vh、vw 相关
+```text
+1vw 等于1/100的视口宽度 （Viewport Width）
+1vh 等于1/100的视口高度 （Viewport Height）
+vmin — vmin 的值是当前 vw 和 vh 中较小的值
+vmax — vw 和 vh 中较大的值
+svh 表示地址栏 UI 尚未缩小尺寸时的视口高度
+lvh 表示地址栏 UI 缩小尺寸后的视口高度
+dvh 表示根据地址栏 UI 是否缩小而使用小的、中间的和大的单位
+```
+##### 移动端适配
+###### rem 基本转换
+```text
+以750px的屏幕宽度，预计100px（根字体大小 ） = 1rem来计算，计算公式为： 
+1rem = 根字体大小 = 当前屏幕宽度 (document.body.clientWidth）/ 750 * 100  px
+```
+
+###### 移动端适配
+```text
+1、媒体查询 + rem
+计算rem方法：
+      结合媒体查询，随着设备的改变 更改html的font-size的值。
+html{font-size:100px}
+@media screen and (min-width:321px) and (max-width:375px){  	
+       html{font-size:45px} 
+}
+@media screen and (min-width:376px) and (max-width:414px){ 
+       html{font-size:50px}
+}
+@media screen and (min-width:415px) and (max-width:639px){ 
+       html{font-size:55px} 
+}
+@media screen and (min-width:640px) and (max-width:719px){
+       html{font-size:60px}
+}
+
+2、弹性布局
+
+3、flxible.js  插件
+流程：
+（1）引入flxible.js插件
+（2）去掉html里面默认的meta标签  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
