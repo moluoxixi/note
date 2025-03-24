@@ -6,7 +6,160 @@ hidden: false
 tags: Css和html
 ptags: 
 ---
+# 静态页面布局基础
 
+常用布局  
+Flex布局  
+flex容器属性：  
+flex-direction（子元素排列顺序）  
+flex-wrap（换行）  
+flex-flow  
+justify-content（主轴对齐方式）  
+align-items（侧轴对齐方式）  
+align-content（横向排列换行后多行文本y轴对齐方式）  
+flex子元素属性：  
+align-self属性（单个元素侧轴对齐方式）  
+flex-grow扩展比率  
+
+flex-grow扩展比率
+
+CSS
+
+复制代码
+
+1
+
+2
+
+3
+
+4
+
+flex-grow：用于设置或检索弹性盒子项目的扩展比率；
+
+  
+
+number:规定项目将相对于其他灵活的项目进行扩展的量。默认值是0。
+
+即当容器空间大于内部元素空间之和时，剩余部分将根据各元素指定的flex-grow按比例分配，使各子元素增大；默认值为0，表示剩余空间不分配。
+
+flex-shrink收缩比率  
+
+flex-shrink收缩比率
+
+CSS
+
+复制代码
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+flex-shrink：设置弹性盒的伸缩项目的收缩比率:
+
+  
+
+number:规定项目将相对于其他灵活的项目进行收缩的量。默认值是1收缩，0为不收缩。
+
+Flex子元素仅在默认宽度之和大于容器的时候才会发生收缩，其收缩的大小是依据 flex-shrink 的值；默认值为1，表示溢出时等比例缩小；
+
+  
+
+算法-公式：
+
+超出空间的像素数：1000-(900+200)\=-100px;
+
+加权总和：\=(第一个子元素的宽度)\*(shrink)+（第二个子元素的宽度）\* (shrink)+....;
+
+A收缩的像素数：(Awidth\*shrink)/加权综合)\*超出空间 =收缩的像素数
+
+flex-basis伸缩基准值  
+
+flex-basis伸缩基准值
+
+CSS
+
+复制代码
+
+1
+
+2
+
+3
+
+4
+
+flex-basis:设置弹性盒伸缩基准值（指定flex-item在主轴上的初始大小）:
+
+  
+
+number:规定灵活项目的初始长度。
+
+auto：默认值。长度等于灵活项目的长度。如果该项目未指定长度，则长度将根据内容决定。
+
+order出现顺序  
+
+order出现顺序
+
+CSS
+
+复制代码
+
+1
+
+2
+
+order：属性设置或检索弹性盒模型对象的子元素出现的順序。
+
+number：值越小排列越靠前，值越大顺序越靠后 + -
+
+flex属性简写  
+
+flex属性简写
+
+CSS
+
+复制代码
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+（1）flex 属性用于设置弹性盒模型对象的子元素如何分配父元素的空间。
+
+（2）flex 属性是 flex-grow、flex-shrink 和 flex-basis 属性的简写属性。
+
+  
+
+auto = 1 1 auto
+
+none = 0 0 auto
+
+1 = 1 1 0%
+
+Grid布局
 
 
 # Css&html
