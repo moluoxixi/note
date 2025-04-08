@@ -1,3 +1,25 @@
+---
+title: nginx
+description: 一个nginx笔记
+date: 2025-04-08
+hidden: false
+tags: nginx
+ptags: 
+---
+
+### 常用 Nginx 命令（Markdown 表格）
+
+| 命令 | 描述 |
+|------|------|
+| `nginx -t` | 测试配置文件语法是否正确 |
+| `nginx -s reload` | 重新加载配置（不中断服务） |
+| `nginx -s stop` | 立即停止服务 |
+| `nginx -s quit` | 优雅停止（处理完当前请求） |
+| `nginx -V` | 查看编译参数和版本信息 |
+| `tail -f /var/log/nginx/access.log` | 实时查看访问日志 |
+| `systemctl status nginx` | 查看系统服务状态（Systemd） |
+| `nginx -c /path/to/nginx.conf` | 指定配置文件启动 |
+
 ### Nginx 配置补充说明
 ```nginx
 # 前端静态资源服务（如 Vue/React 项目）
@@ -28,9 +50,8 @@ location /ts-bs-his/ts-bs-emr {
 
 ---
 
-### 其他常见 Nginx 配置
 
-#### 1. 负载均衡
+### 负载均衡
 ```nginx
 upstream backend {
     server 192.168.1.100:8080 weight=3; # 权重 3
@@ -43,7 +64,7 @@ location /api/ {
 }
 ```
 
-#### 2. HTTPS 配置
+### HTTPS 配置
 ```nginx
 server {
     listen 443 ssl;
@@ -59,7 +80,7 @@ server {
 }
 ```
 
-#### 3. 访问控制
+### 访问控制
 ```nginx
 location /admin/ {
     allow 192.168.1.0/24;  # 允许内网访问
@@ -69,7 +90,7 @@ location /admin/ {
 }
 ```
 
-#### 4. 重定向规则
+### 重定向规则
 ```nginx
 # HTTP 跳转到 HTTPS
 server {
@@ -84,7 +105,7 @@ location /old-page {
 }
 ```
 
-#### 5. Gzip 压缩
+### Gzip 压缩
 ```nginx
 gzip on;
 gzip_types text/plain text/css application/json application/javascript text/xml;
@@ -94,23 +115,11 @@ gzip_comp_level 6;
 
 ---
 
-### 常用 Nginx 命令（Markdown 表格）
-
-| 命令 | 描述 |
-|------|------|
-| `nginx -t` | 测试配置文件语法是否正确 |
-| `nginx -s reload` | 重新加载配置（不中断服务） |
-| `nginx -s stop` | 立即停止服务 |
-| `nginx -s quit` | 优雅停止（处理完当前请求） |
-| `nginx -V` | 查看编译参数和版本信息 |
-| `tail -f /var/log/nginx/access.log` | 实时查看访问日志 |
-| `systemctl status nginx` | 查看系统服务状态（Systemd） |
-| `nginx -c /path/to/nginx.conf` | 指定配置文件启动 |
 
 ---
 
-### 高级配置技巧
-#### 1. **跨域配置**：
+### 匹配规则
+### **跨域配置**：
 ```nginx
 # 核心 CORS 配置
 add_header 'Access-Control-Allow-Origin' 'http://192.168.209.103:9099' always;
@@ -119,7 +128,7 @@ add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,Conte
 add_header 'Access-Control-Allow-Credentials' 'true' always;
 ```
 
-#### 2. **防盗链**：
+### **防盗链**：
 ```nginx
 location ~* \.(jpg|png|gif)$ {
     valid_referers none blocked example.com;
@@ -129,7 +138,7 @@ location ~* \.(jpg|png|gif)$ {
 }
 ```
 
-#### 3. **限流**：
+### **限流**：
 ```nginx
 limit_req_zone $binary_remote_addr zone=mylimit:10m rate=10r/s;
 
@@ -138,7 +147,7 @@ location /api/ {
 }
 ```
 
-#### 4. **缓存策略**：
+###  **缓存策略**：
 ```nginx
 location ~* \.(css|js|png)$ {
     expires 365d;
