@@ -16,7 +16,7 @@ ptags:
 Model-View-Constroller
     Model代表数据模型,定义数据操作及业务逻辑
     View代表视图层,也就是前端页面
-    Constroller 控制层,接收view层的操作调用Model层的逻辑
+    Constroller 控制层,接收view层的操作调用Model层的逻辑，需要
     
 //MVVM
 Model-View-ViewModel,
