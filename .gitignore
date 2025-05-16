@@ -20,7 +20,6 @@ dist-ssr
 # 编辑器文件
 .vscode/*
 !.vscode/extensions.json
-.makemd
 .idea
 .DS_Store
 *.suo
