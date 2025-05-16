@@ -1,0 +1,42 @@
+{
+  "tabSize": 2,
+  "mobileToolbarCommands": [
+    "editor:insert-wikilink",
+    "editor:insert-link",
+    "editor:set-heading",
+    "editor:insert-table",
+    "editor:toggle-bold",
+    "editor:toggle-italics",
+    "editor:toggle-strikethrough",
+    "editor:toggle-code",
+    "editor:toggle-blockquote",
+    "editor:toggle-bullet-list",
+    "editor:toggle-numbered-list",
+    "editor:toggle-checklist-status",
+    "editor:indent-list",
+    "editor:unindent-list",
+    "editor:undo",
+    "editor:redo",
+    "editor:configure-toolbar"
+  ],
+  "alwaysUpdateLinks": true,
+  "autoConvertHtml": false,
+  "showLineNumber": false,
+  "readableLineLength": true,
+  "showInlineTitle": false,
+  "userIgnoreFilters": [
+    "output/"
+  ],
+  "promptDelete": false,
+  "attachmentFolderPath": "images",
+  "useMarkdownLinks": true,
+  "newLinkFormat": "relative",
+  "livePreview": true,
+  "pdfExportSettings": {
+    "includeName": true,
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
+}

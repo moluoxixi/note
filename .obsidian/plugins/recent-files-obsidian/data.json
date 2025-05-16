@@ -1,0 +1,208 @@
+{
+  "recentFiles": [
+    {
+      "basename": "计划",
+      "path": "业务与工作/计划.md"
+    },
+    {
+      "basename": "大纲",
+      "path": "大纲/大纲.md"
+    },
+    {
+      "basename": "中医舌苔",
+      "path": "其他/中医舌苔.md"
+    },
+    {
+      "basename": "周任务",
+      "path": "周任务.md"
+    },
+    {
+      "basename": "gpt模板",
+      "path": "其他/gpt模板.md"
+    },
+    {
+      "basename": "qiankun问题采集",
+      "path": "其他/qiankun问题采集.md"
+    },
+    {
+      "basename": "AI",
+      "path": "AI.md"
+    },
+    {
+      "basename": "一群的工作",
+      "path": "一群的工作.md"
+    },
+    {
+      "basename": "食材",
+      "path": "其他/食材.md"
+    },
+    {
+      "basename": "autoHotKey",
+      "path": "其他/autoHotKey.md"
+    },
+    {
+      "basename": "css",
+      "path": "前端/css.md"
+    },
+    {
+      "basename": "非面试技能点",
+      "path": "前端/非面试技能点.md"
+    },
+    {
+      "basename": "0天天卷-前端",
+      "path": "前端/0天天卷-前端.md"
+    },
+    {
+      "basename": "迁移指南",
+      "path": "前端/面试/vue/迁移指南.md"
+    },
+    {
+      "basename": "vue",
+      "path": "前端/vue.md"
+    },
+    {
+      "basename": "中药通用方",
+      "path": "其他/中药通用方.md"
+    },
+    {
+      "basename": "vue3",
+      "path": "前端/前端不常用/vue3.md"
+    },
+    {
+      "basename": "plan",
+      "path": "大纲/plan.md"
+    },
+    {
+      "basename": "shadcn",
+      "path": "前端/shadcn.md"
+    },
+    {
+      "basename": "住院护士.excalidraw",
+      "path": "excalidraw/住院护士.excalidraw.md"
+    },
+    {
+      "basename": "家族信息",
+      "path": "神器/家族信息.md"
+    },
+    {
+      "basename": "账密",
+      "path": "其他/账密.md"
+    },
+    {
+      "basename": "cursor",
+      "path": "其他/cursor.md"
+    },
+    {
+      "basename": "dataview",
+      "path": "其他/dataview.md"
+    },
+    {
+      "basename": "obsidian插件",
+      "path": "其他/obsidian插件.md"
+    },
+    {
+      "basename": "搭一台服务器",
+      "path": "其他/搭一台服务器.md"
+    },
+    {
+      "basename": "神奇密码",
+      "path": "神器/神奇密码.md"
+    },
+    {
+      "basename": "GPT",
+      "path": "神器/GPT.md"
+    },
+    {
+      "basename": "git",
+      "path": "前端/git.md"
+    },
+    {
+      "basename": "业务",
+      "path": "业务与工作/业务.md"
+    },
+    {
+      "basename": "住院医生.excalidraw",
+      "path": "excalidraw/住院医生.excalidraw.md"
+    },
+    {
+      "basename": "门诊护士.excalidraw",
+      "path": "excalidraw/门诊护士.excalidraw.md"
+    },
+    {
+      "basename": "门诊收费.excalidraw",
+      "path": "excalidraw/门诊收费.excalidraw.md"
+    },
+    {
+      "basename": "门诊医生.excalidraw",
+      "path": "excalidraw/门诊医生.excalidraw.md"
+    },
+    {
+      "basename": "药库管理.excalidraw",
+      "path": "excalidraw/药库管理.excalidraw.md"
+    },
+    {
+      "basename": "药房管理.excalidraw",
+      "path": "excalidraw/药房管理.excalidraw.md"
+    },
+    {
+      "basename": "病历质控.excalidraw",
+      "path": "excalidraw/病历质控.excalidraw.md"
+    },
+    {
+      "basename": "医保管理.excalidraw",
+      "path": "excalidraw/医保管理.excalidraw.md"
+    },
+    {
+      "basename": "每月任务",
+      "path": "业务与工作/每月任务.md"
+    },
+    {
+      "basename": "门诊护士计划",
+      "path": "业务与工作/门诊护士计划.md"
+    },
+    {
+      "basename": "HIS",
+      "path": "业务与工作/HIS.md"
+    },
+    {
+      "basename": "电子病历",
+      "path": "其他/电子病历.md"
+    },
+    {
+      "basename": "业务",
+      "path": "其他/业务.md"
+    },
+    {
+      "basename": "docker",
+      "path": "后端/docker.md"
+    },
+    {
+      "basename": "nginx",
+      "path": "后端/nginx.md"
+    },
+    {
+      "basename": "textCodeBox",
+      "path": "templates/textCodeBox.md"
+    },
+    {
+      "basename": "工程化",
+      "path": "前端/工程化.md"
+    },
+    {
+      "basename": "css框架",
+      "path": "前端/css框架.md"
+    },
+    {
+      "basename": "微前端方案",
+      "path": "前端/微前端方案.md"
+    },
+    {
+      "basename": "ts与JsDoc",
+      "path": "前端/ts与JsDoc.md"
+    }
+  ],
+  "omittedPaths": [],
+  "omittedTags": [],
+  "updateOn": "file-open",
+  "omitBookmarks": false
+}

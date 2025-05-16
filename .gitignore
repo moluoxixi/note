@@ -21,8 +21,6 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 .makemd
-.obsidian
-.space
 .idea
 .DS_Store
 *.suo
@@ -31,4 +29,3 @@ dist-ssr
 *.sln
 *.sw?
 *.tsbuildinfo
-/旧笔记/创星/工作总结/
