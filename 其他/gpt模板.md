@@ -8,10 +8,11 @@ tags:
 ## cursor 自己生成自己的提示词
 ```
 写一个提示词供cursor在src/components/lowCodeEditorPlus中生成低代码编辑器，
+采用中文，
 使用tailwind，
 技术栈为pnpm,vue3，element-plus，antd/g2,echarts等
-左侧为element-plus的基础组件，布局组件，基于echarts和g2的图表组件
-中间为画布，要求支持磁吸对齐，组件拖进去后，仍然为elementPlus/echarts/g2的样式
+左侧为element-plus的基础组件，布局组件，基础组件和布局组件的样式也用element-plus的，基于echarts和g2的图表组件，图表组件的样式用一个写好的图表展示
+中间为画布，要求支持磁吸对齐，组件拖进去后，与组件样式保持一致，支持拖拽多个组件，组件不能超出画布，画布不可选中，画布可以展示网格
 右侧为组件属性编辑器,
 支持json schema导入导出,
 提供.stories
