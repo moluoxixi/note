@@ -1,20 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "计划",
+      "path": "业务与工作/计划.md"
+    },
+    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
     },
     {
       "basename": "gpt模板",
       "path": "其他/gpt模板.md"
-    },
-    {
-      "basename": "计划",
-      "path": "业务与工作/计划.md"
-    },
-    {
-      "basename": "中医舌苔",
-      "path": "其他/中医舌苔.md"
     },
     {
       "basename": "周任务",
@@ -31,10 +27,6 @@
     {
       "basename": "一群的工作",
       "path": "一群的工作.md"
-    },
-    {
-      "basename": "食材",
-      "path": "其他/食材.md"
     },
     {
       "basename": "autoHotKey",
@@ -59,10 +51,6 @@
     {
       "basename": "vue",
       "path": "前端/vue.md"
-    },
-    {
-      "basename": "中药通用方",
-      "path": "其他/中药通用方.md"
     },
     {
       "basename": "vue3",
