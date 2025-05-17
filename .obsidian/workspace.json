@@ -35,8 +35,7 @@
               "title": "计划"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -206,10 +205,11 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "384cda6fcc070124",
+  "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
-    "大纲/大纲.md",
     "其他/gpt模板.md",
+    "大纲/大纲.md",
+    "业务与工作/计划.md",
     "食材.md",
     "中医问诊.md",
     "中医舌苔.md",
@@ -220,7 +220,6 @@
     "大纲/images",
     "kanban/notes",
     "kanban",
-    "业务与工作/计划.md",
     "其他/中医舌苔.md",
     "周任务.md",
     "images/Pasted image 20250513205205.png",
