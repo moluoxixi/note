@@ -20,7 +20,7 @@ tags:
 
 
 ```
-请使用Vue 3、Element Plus、Tailwind CSS、ECharts和Ant Design/G2开发一个完整的低代码编辑器组件，参考市面上流行的可视化配置表单工具（如FormMaking、FormCreate等）。
+请使用Vue 3、Element Plus、Tailwind CSS、ECharts和Ant Design/G2在src/components/lowCodeEditor2中开发一个完整的低代码编辑器组件，严格按照以下要求：
 
 技术要求：
 - 使用pnpm作为包管理工具
@@ -31,15 +31,16 @@ tags:
 
 功能要求：
 1. 左侧组件面板：
-   - Element Plus基础组件（按钮、输入框、选择器等）直接使用Element Plus原生组件作为展示
-   - Element Plus布局组件（容器、栅格等）直接使用Element Plus原生组件作为展示
+   - Element Plus基础组件（按钮、输入框、选择器等）
+   - Element Plus布局组件（容器、栅格等）
    - 基于ECharts和G2的图表组件（柱状图、折线图、饼图等）
    - 组件支持拖拽到画布
-   - 基础组件和画布组件必须放置在布局组件内部
+   - 基础组件，布局组件 直接使用Element Plus原生组件作为展示
+   - 图表组件使用基础图表进行展示
 
 2. 中间画布区域：
    - 画布自身展示其实际样式，包括网格背景、边界等
-   - 拖入的Element Plus基础组件和布局组件保持与原生Element Plus组件样式完全一致
+   - 拖入的基础组件和布局组件和图表组件需保持与组件面板样式一致
    - 支持组件磁吸对齐和网格辅助线
    - 支持多组件选择和拖拽
    - 组件不能超出画布边界
@@ -61,14 +62,14 @@ tags:
 
 5. 开发文档：
    - 使用Storybook创建组件示例和文档
-   - 为每个核心组件提供.stories文件
+   - 为该低代码组件提供.stories文件
    - 展示布局组件和基础组件的嵌套使用方式
    - 提供典型场景的使用示例
 
 请按照以上要求实现低代码编辑器，并确保代码遵循以下规范：
 - 每个函数和代码块必须有中文注释说明功能
 - 所有函数必须包含错误处理和日志记录
-- 组件结构应遵循src/components/lowCodeEditorPlus/types/index.ts中定义的类型接口
+- 组件结构应遵循src/components/lowCodeEditor2/types/index.ts中定义的类型接口
 ```
 ## 修改为 composition
 该文件内未按照以下标准进行修复:
