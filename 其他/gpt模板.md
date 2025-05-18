@@ -5,6 +5,12 @@ date: 2025-01-28
 tags:
 - 其他
 ---
+```
+Error: Cannot read properties of null (reading 'insertBefore'),
+还有组件没有水平居中对齐
+画布中，我其实想要标准栅栏布局，也就是画布默认高度宽度100%，拖入el-container默认宽高100%，el-row默认宽度100%
+```
+
 ## cursor 自己生成自己的提示词
 ```
 写一个提示词供cursor在src/components/lowCodeEditorPlus中生成低代码编辑器，
