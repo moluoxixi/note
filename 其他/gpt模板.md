@@ -6,9 +6,11 @@ tags:
 - 其他
 ---
 ```
-Error: Cannot read properties of null (reading 'insertBefore'),
-还有组件没有水平居中对齐
-画布中，我其实想要标准栅栏布局，也就是画布默认高度宽度100%，拖入el-container默认宽高100%，el-row默认宽度100%
+图表组件仍然报错Cannot read properties of null (reading 'insertBefore')
+行只能放在容器组件中，列只能放在行中
+容器组件默认占父组件宽高的100%，没有则是画布宽高的100%，
+行组件宽默认占父组件的100%，高根据里面的内容自适应，
+列组件高度根据里面的内容自适应
 ```
 
 ## cursor 自己生成自己的提示词
