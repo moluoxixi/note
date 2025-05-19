@@ -21,23 +21,16 @@ tags:
 采用中文，
 使用tailwind，
 技术栈为pnpm,vue3，element-plus，antd/g2,echarts等
-左侧为element-plus的基础组件，布局组件，基础组件和布局组件的样式也用element-plus的，基于echarts和g2的图表组件，图表组件的样式用一个写好的图表展示
-中间为画布，要求支持磁吸对齐，组件拖进去后，与组件样式保持一致，支持拖拽多个组件，组件不能超出画布，画布不可选中，画布可以展示网格
+左侧为element-plus的基础组件，布局组件，直接使用element-plus组件进行展示，基于echarts和g2的图表组件，图表组件的样式用一个写好的图表展示
+中间为编辑区域，要求支持磁吸对齐，组件拖进去后，与组件样式保持一致，规则是el-col只能放在el-row中，基础组件/图表组件只能放在布局组件中，
+el-row宽度默认100%，el-container宽高默认100%
 右侧为组件属性编辑器,
 支持json schema导入导出,
 提供.stories
 ```
-```
-不满足要求如下： 
-1. 左侧组件列表基础组件，布局组件的显示不是element-plus组件的样子，图表组件不是图表渲染出来的样子
-2. 画布中，布局组件拖进去没有白色背景，基础组件未满足只能放在布局组件中的要求，图表组件未满足只能放在容器组件中的要求
-3. 我希望组件都是基于栅栏布局，而不是绝对定位
-4. 图表组件拖拽进去未能实时看到效果
-5. 预览按钮没有文字，且预览功能看不到效果，而且预览是有网格线的
-```
 
 ```
-请使用Vue 3、Element Plus、Tailwind CSS、ECharts和Ant Design/G2在src/components/lowCodeEditor2中开发一个完整的低代码编辑器组件，严格按照以下要求：
+请使用Vue 3、Element Plus、Tailwind CSS、ECharts和Ant Design/G2在src/components/lowCodeEditorPlus中开发一个完整的低代码编辑器组件，严格按照以下要求：
 
 技术要求：
 - 使用pnpm作为包管理工具
@@ -86,7 +79,7 @@ tags:
 请按照以上要求实现低代码编辑器，并确保代码遵循以下规范：
 - 每个函数和代码块必须有中文注释说明功能
 - 所有函数必须包含错误处理和日志记录
-- 组件结构应遵循src/components/lowCodeEditor2/types/index.ts中定义的类型接口
+- 组件结构应遵循src/components/lowCodeEditorPlus/types/index.ts中定义的类型接口
 ```
 ## 修改为 composition
 该文件内未按照以下标准进行修复:
