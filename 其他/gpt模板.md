@@ -29,59 +29,6 @@ el-row宽度默认100%，el-container宽高默认100%
 提供.stories
 ```
 
-```
-请使用Vue 3、Element Plus、Tailwind CSS、ECharts和Ant Design/G2在src/components/lowCodeEditorPlus中开发一个完整的低代码编辑器组件，严格按照以下要求：
-
-技术要求：
-- 使用pnpm作为包管理工具
-- Vue 3组合式API和TypeScript
-- Element Plus作为基础UI组件库
-- Tailwind CSS进行样式管理
-- ECharts和Ant Design/G2用于图表组件
-
-功能要求：
-1. 左侧组件面板：
-   - Element Plus基础组件（按钮、输入框、选择器等）
-   - Element Plus布局组件（容器、栅格等）
-   - 基于ECharts和G2的图表组件（柱状图、折线图、饼图等）
-   - 组件支持拖拽到画布
-   - 基础组件，布局组件 直接使用Element Plus原生组件作为展示
-   - 图表组件使用基础图表进行展示
-
-1. 中间区域：
-   - 拖入的基础组件和布局组件和图表组件需保持与组件面板样式一致
-   - 支持组件磁吸对齐和网格辅助线
-   - 支持多组件选择和拖拽
-   - 强制要求基础组件和画布组件必须放置在布局组件内部
-   - el-col只能存在于el-row中
-   - el-row默认占宽100%
-   - 容器组件默认宽高100%
-
-3. 右侧属性编辑面板：
-   - 动态显示当前选中组件的属性
-   - 支持修改组件属性、样式和事件
-   - 属性修改实时反映到画布
-   - 为布局组件提供容器管理功能
-   - 提供组件树结构视图
-
-4. 数据处理功能：
-   - 支持JSON Schema格式导入导出页面配置
-   - 提供版本历史和撤销/重做功能
-   - 导出时保持组件嵌套结构完整性
-   - 支持预览生成的表单或页面
-
-5. 开发文档：
-   - 使用Storybook创建组件示例和文档
-   - 为该低代码组件提供.stories文件
-   - 展示布局组件和基础组件的嵌套使用方式
-   - 提供典型场景的使用示例
-
-请按照以上要求实现低代码编辑器，并确保代码遵循以下规范：
-- 每个函数和代码块必须有中文注释说明功能
-- 所有函数必须包含错误处理和日志记录
-- 组件结构应遵循src/components/lowCodeEditorPlus/types/index.ts中定义的类型接口
-```
-
 ```text
 # 低代码编辑器Plus组件开发需求
 
@@ -137,10 +84,10 @@ el-row宽度默认100%，el-container宽高默认100%
 - 代码结构清晰，易于维护和扩展
 
 ## 组件结构建议
-1. ComponentPanel文件管理左侧面板
-2. ComponentRenderer文件管理中间区域
-3. ComponentPropertyPanel文件管理右侧属性编辑面板
-4. types文件统一管理组件的类型
+1. ComponentPanel文件夹管理左侧面板
+2. ComponentRenderer文件夹管理中间区域
+3. ComponentPropertyPanel文件夹管理右侧属性编辑面板
+4. types文件夹统一管理组件的类型
 5. 使用Pinia进行状态管理
 6. 实现自定义hooks处理拖拽逻辑、组件规则验证等
 7. 独立的工具函数和常量定义
