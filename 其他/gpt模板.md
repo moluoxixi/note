@@ -17,7 +17,7 @@ tags:
 
 ## cursor 自己生成自己的提示词
 ```
-写一个提示词供cursor在src/components/lowCodeEditorPlus中生成低代码编辑器，
+写一个提示词供cursor在src/components/lowCodeEditorPlus中生成低代码编辑器，要求如下(注意只要提示词):
 采用中文，
 使用tailwind，
 技术栈为pnpm,vue3，element-plus，antd/g2,echarts等
@@ -81,6 +81,70 @@ el-row宽度默认100%，el-container宽高默认100%
 - 所有函数必须包含错误处理和日志记录
 - 组件结构应遵循src/components/lowCodeEditorPlus/types/index.ts中定义的类型接口
 ```
+
+```
+# 低代码编辑器Plus组件开发需求
+
+我需要在src/components/lowCodeEditor目录下创建一个基于Vue3的低代码编辑器组件。该组件需要遵循以下技术规范和功能要求：
+
+## 技术栈
+- pnpm作为包管理工具
+- Vue3 Composition API + TypeScript
+- Tailwind CSS用于样式
+- Element Plus组件库
+- ECharts和AntV/G2用于图表展示
+- 支持JSON Schema
+
+## 总体布局
+编辑器需要分为三个主要区域：
+
+### 左侧组件面板
+- 分类展示Element Plus的基础组件（如按钮、输入框、选择器等）
+- 布局组件（如el-row、el-col、el-container等）
+- 图表组件（基于ECharts和G2的可视化组件）
+- 每个图表组件需要有默认的示例数据和样式展示
+- 组件需要可拖拽到中间编辑区域
+
+### 中间编辑区域
+- 支持组件的拖拽放置
+- 实现磁吸对齐功能，使组件能够自动对齐
+- 严格的组件嵌套规则：
+  * el-col组件只能放在el-row中
+  * 基础组件和图表组件只能放在布局组件中
+  * el-row宽度默认100%
+  * el-container宽高默认100%
+- 组件拖入后保持与原始组件样式一致
+- 支持组件选中、移动、删除等基本操作
+
+### 右侧属性编辑面板
+- 根据选中组件显示对应的属性配置项
+- 支持修改组件的常用属性、样式和事件
+- 对于图表组件，提供数据配置和样式调整选项
+- 实时预览属性变更效果
+
+## 核心功能
+- 组件的拖拽和放置
+- 磁吸对齐功能
+- 组件嵌套规则的实现和验证
+- JSON Schema导入导出功能，用于保存和恢复页面配置
+- 完整的Storybook演示文档（.stories文件）
+
+## 代码规范
+- 所有功能模块必须包含中文注释说明
+- 每个函数必须包含错误捕获和日志记录
+- 使用TypeScript类型定义确保类型安全
+- 遵循Vue3组件最佳实践
+- 代码结构清晰，易于维护和扩展
+
+## 组件结构建议
+- 拆分为多个子组件，如ComponentPanel、EditorCanvas、PropertyPanel，并分别用文件管理等
+- 使用Pinia进行状态管理
+- 实现自定义hooks处理拖拽逻辑、组件规则验证等
+- 独立的工具函数和常量定义
+
+请根据以上需求，实现一个功能完整、交互友好的低代码编辑器组件，支持基本的页面搭建需求。
+```
+
 ## 修改为 composition
 该文件内未按照以下标准进行修复:
 1. 采用 composition api
