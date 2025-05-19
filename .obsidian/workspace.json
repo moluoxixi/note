@@ -50,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -220,11 +220,11 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "529468700d2bea63",
+  "active": "7bea715b788e2f8c",
   "lastOpenFiles": [
     "大纲/大纲.md",
-    "业务与工作/计划.md",
     "其他/gpt模板.md",
+    "业务与工作/计划.md",
     "食材.md",
     "中医问诊.md",
     "中医舌苔.md",
