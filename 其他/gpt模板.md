@@ -82,7 +82,7 @@ el-row宽度默认100%，el-container宽高默认100%
 - 组件结构应遵循src/components/lowCodeEditorPlus/types/index.ts中定义的类型接口
 ```
 
-```
+```text
 # 低代码编辑器Plus组件开发需求
 
 我需要在src/components/lowCodeEditor目录下创建一个基于Vue3的低代码编辑器组件。该组件需要遵循以下技术规范和功能要求：
@@ -137,10 +137,13 @@ el-row宽度默认100%，el-container宽高默认100%
 - 代码结构清晰，易于维护和扩展
 
 ## 组件结构建议
-- 拆分为多个子组件，如ComponentPanel、EditorCanvas、PropertyPanel，并分别用文件管理等
-- 使用Pinia进行状态管理
-- 实现自定义hooks处理拖拽逻辑、组件规则验证等
-- 独立的工具函数和常量定义
+1. ComponentPanel文件管理左侧面板
+2. ComponentRenderer文件管理中间区域
+3. ComponentPropertyPanel文件管理右侧属性编辑面板
+4. types文件统一管理组件的类型
+5. 使用Pinia进行状态管理
+6. 实现自定义hooks处理拖拽逻辑、组件规则验证等
+7. 独立的工具函数和常量定义
 
 请根据以上需求，实现一个功能完整、交互友好的低代码编辑器组件，支持基本的页面搭建需求。
 ```
