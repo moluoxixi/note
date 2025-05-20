@@ -103,6 +103,17 @@ src/components/lowCodeEditor/
 - 包含错误处理
 - 使用TypeScript类型定义
 - 遵循Vue3最佳实践
+
+## Storybook Stories要求
+为每个主要组件创建.stories.ts文件
+展示以下典型场景:
+基础空白编辑器
+预填充了示例组件的编辑器
+演示各类组件拖拽的交互示例
+展示属性编辑效果的示例
+不同布局组件的嵌套示例
+图表组件配置示例
+每个Story提供必要的文档说明用途和用法
 ```
 
 ## 修改为 composition
