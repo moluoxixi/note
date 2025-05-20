@@ -34,7 +34,7 @@ el-row宽度默认100%，el-container宽高默认100%
 - html2canvas/dom-to-image (页面截图导出)
 
 ```text
-# 低代码编辑器Plus组件开发完整需求
+# 低代码编辑器Plus组件开发完整需求，请严格按照要求逐一实现：
 
 ## 核心依赖库
 - Vue3 + TypeScript
