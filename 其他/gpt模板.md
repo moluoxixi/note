@@ -30,11 +30,11 @@ el-row宽度默认100%，el-container宽高默认100%
 ```
 ## 准备下个月有次数的时候运行
 ### 低代码
+- mitt/tiny-emitter (轻量级事件总线)
+- html2canvas/dom-to-image (页面截图导出)
+
 ```text
-
-# 低代码编辑器Plus组件开发需求
-
-我需要在src/components/lowCodeEditor目录下创建一个基于Vue3的低代码编辑器组件。
+# 低代码编辑器Plus组件开发完整需求
 
 ## 核心依赖库
 - Vue3 + TypeScript
@@ -44,9 +44,18 @@ el-row宽度默认100%，el-container宽高默认100%
 - vue-grid-layout
 - Pinia
 - ECharts/AntV G2
+- Monaco Editor (代码编辑能力)
+- JSONSchema (组件属性定义和验证)
+- file-saver (配置导出保存)
+- lodash-es (数据处理工具函数)
+- nanoid (生成唯一组件ID)
+- moment (轻量级日期处理)
+- hotkeys-js (快捷键支持)
+- vue-ruler-tool (画布标尺功能)
+- transform-js (视口管理与缩放)
 
-## 总体布局
-编辑器分为三个区域：左侧组件面板、中间编辑区域、右侧属性编辑面板。
+## 总体架构
+编辑器分为三个区域：左侧组件面板、中间编辑区域、右侧属性编辑面板。采用SchemaJSON驱动的渲染引擎设计，支持组件的拖拽、配置、预览和导出功能。
 
 ## 左侧组件面板
 - 使用el-tabs进行组件类型切换，默认展示"全部"
@@ -58,6 +67,7 @@ el-row宽度默认100%，el-container宽高默认100%
 - 每个组件显示图标和名称，hover时有醒目提示
 - 组件仅作展示用途，禁止点击交互，只能拖拽
 - 使用VueDraggable实现拖拽功能
+- 支持组件分组和自定义组合
 
 ## 中间编辑区域
 - 使用vue-grid-layout实现网格布局和磁吸对齐
@@ -78,6 +88,7 @@ el-row宽度默认100%，el-container宽高默认100%
 - 组件嵌套规则：
   * 基础组件和图表组件只能放在布局组件中
   * el-col只能放在el-row中
+  * el-container默认宽高100%，需在属性面板中可配置
   * 嵌套容器边缘显示明显的视觉提示，指示可放置区域
 - 辅助功能：
   * 网格线和参考线辅助对齐
@@ -85,6 +96,14 @@ el-row宽度默认100%，el-container宽高默认100%
   * 高亮显示当前拖拽组件的有效放置区域
 - 支持组件多选、复制/粘贴、层级调整
 - 实现撤销/重做功能
+- 画布增强功能：
+  * 标尺功能，显示水平和垂直标尺
+  * 缩放控制，支持画布放大缩小
+  * 可视区域管理，支持大画布导航
+  * 快捷键支持，提高操作效率
+  * 组件锁定功能，防止误操作
+  * 组件对齐工具栏，实现快速对齐
+  * 画布网格显示控制
 
 ## 右侧属性编辑面板
 - 根据选中组件显示对应属性
@@ -94,12 +113,24 @@ el-row宽度默认100%，el-container宽高默认100%
 - 常用设置放在顶部，提供快速访问
 - 样式编辑支持可视化操作，如颜色选择器、滑块控制等
 - 提供组件样式预设模板，一键应用
+- 高级配置功能：
+  * 表达式编辑器，支持属性间联动
+  * 事件配置器，可视化配置组件交互事件
+  * 变量绑定面板，管理和绑定数据变量
+  * 条件渲染配置，设置组件显示条件
+  * CSS样式编辑器，支持自定义CSS
+  * 动画效果配置，添加过渡和动画
 
 ## 状态管理
-- 使用Pinia创建三个store:
+- 使用Pinia创建五个store:
   * componentsStore: 管理组件实例和层级
   * editorStore: 管理编辑器状态
   * historyStore: 管理操作历史
+  * dataStore: 管理数据模型和变量
+  * settingsStore: 管理编辑器全局设置
+- 支持状态持久化，保存编辑进度
+- 实现撤销重做队列，支持操作回溯
+- 支持编辑器快照功能，保存关键节点
 
 ## 核心功能实现
 1. 高精度组件拖拽与放置反馈:
@@ -109,21 +140,56 @@ el-row宽度默认100%，el-container宽高默认100%
    - 放置前预览组件在当前位置的实际渲染效果
    - 无效放置区域时显示禁止标识
    - 放置完成时有明显视觉反馈和平滑过渡动画
+   - 拖拽阻力和吸附设置，优化拖拽体验
+   - 支持组件旋转和缩放操作
+
 2. 精确的位置对齐系统:
    - 自动显示组件间距离和对齐参考线
    - 组件拖拽时出现智能磁吸效果
    - 提供网格对齐和自由对齐两种模式
    - 支持相对位置和绝对位置放置
+   - 智能对齐算法，识别组件边缘和中心线
+   - 对齐吸附力度可配置
+
 3. 实时高保真预览:
-   - 组件放置后立即渲染真实效果，包括样式和交互
+   - 组件放置后立即显示与最终效果一致的外观和样式
    - 基础组件显示与最终效果一致的样式和内容
    - 图表组件使用示例数据渲染实际可交互图表
+   - 支持设备模拟器预览，如手机、平板等
+   - 支持预览模式切换，查看实际交互效果
+
 4. 智能布局系统:
    - 自动调整组件位置避免重叠
    - 支持组件自适应和固定尺寸两种模式
    - 布局组件能智能识别子组件并优化排列
-5. 属性编辑: 右侧面板更新选中组件属性，实时反映到预览
-6. 导入导出: 使用JSON Schema保存和恢复配置
+   - 支持响应式布局配置，适应不同屏幕尺寸
+   - 布局组件间距自动调整
+
+5. 属性编辑系统:
+   - 右侧面板更新选中组件属性，实时反映到预览
+   - 属性表单根据JSONSchema动态生成
+   - 支持属性联动和条件显示
+   - 表达式编辑器支持简单逻辑配置
+   - 样式编辑支持主题继承和覆盖
+
+6. 数据管理系统:
+   - 可视化数据模型设计器
+   - 支持静态数据和API数据源
+   - 内置Mock数据生成器
+   - 数据绑定可视化配置
+   - 支持数据转换和过滤设置
+
+7. 逻辑编排:
+   - 无代码事件配置系统
+   - 条件逻辑可视化配置
+   - 简单动作流程编排
+   - 页面状态管理与切换
+
+8. 导入导出系统:
+   - 使用JSON Schema保存和恢复配置
+   - 支持导出为独立应用代码
+   - 支持页面截图和PDF导出
+   - 配置版本管理和历史回溯
 
 ## 交互细节
 - 布局组件拖入后显示带虚线边框的容器，清晰标识可放置区域
@@ -133,22 +199,80 @@ el-row宽度默认100%，el-container宽高默认100%
 - 拖拽过程有明确视觉引导，包括组件预览、放置区域指示等
 - 组件拖拽时显示辅助线和距离标识，帮助精确对齐
 - 组件属性修改后无延迟地更新预览效果
+- 多选操作提供批量编辑功能
+- 组件操作有轻微动效反馈
+- 画布移动和缩放有平滑过渡效果
 
 ## 项目结构
 src/components/lowCodeEditor/
-├── ComponentPanel/         # 左侧组件面板
-├── ComponentRenderer/      # 中间编辑区域
-├── ComponentPropertyPanel/ # 右侧属性编辑面板
-├── types/                  # 类型定义
-├── constants/              # 常量定义
-├── hooks/                  # 自定义hooks
-├── utils/                  # 工具函数
-└── store/                  # Pinia状态管理
+├── ComponentPanel/             # 左侧组件面板
+│   ├── ComponentCategory/      # 组件分类
+│   ├── ComponentSearch/        # 组件搜索
+│   ├── DraggableComponent/     # 可拖拽组件
+│   └── ComponentPreview/       # 组件预览
+├── EditorCanvas/               # 中间编辑区域
+│   ├── GridCanvas/             # 网格画布
+│   ├── ComponentContainer/     # 组件容器
+│   ├── DragHelper/             # 拖拽辅助
+│   ├── SelectionManager/       # 选择管理
+│   ├── AlignmentGuides/        # 对齐辅助
+│   ├── ContextMenu/            # 右键菜单
+│   └── CanvasToolbar/          # 画布工具栏
+├── PropertyPanel/              # 右侧属性编辑面板
+│   ├── PropertyForm/           # 属性表单
+│   ├── StyleEditor/            # 样式编辑器
+│   ├── EventEditor/            # 事件编辑器
+│   ├── DataBindingPanel/       # 数据绑定面板
+│   └── TemplateManager/        # 模板管理
+├── Renderer/                   # 组件渲染器
+│   ├── ComponentRenderer/      # 组件渲染核心
+│   ├── ContainerRenderer/      # 容器渲染
+│   ├── ChartRenderer/          # 图表渲染
+│   └── FormRenderer/           # 表单渲染
+├── DataManager/                # 数据管理
+│   ├── DataModeler/            # 数据模型设计
+│   ├── ApiConfigurator/        # API配置
+│   ├── MockDataGenerator/      # Mock数据生成
+│   └── DataTransformer/        # 数据转换
+├── types/                      # 类型定义
+│   ├── component.ts            # 组件类型
+│   ├── schema.ts               # Schema类型
+│   ├── editor.ts               # 编辑器类型
+│   └── data.ts                 # 数据类型
+├── constants/                  # 常量定义
+├── hooks/                      # 自定义hooks
+│   ├── useDrag.ts              # 拖拽hook
+│   ├── useComponentRenderer.ts # 渲染hook
+│   ├── usePropertyEditor.ts    # 属性编辑hook
+│   └── useHistory.ts           # 历史记录hook
+├── utils/                      # 工具函数
+│   ├── schemaUtils.ts          # Schema工具
+│   ├── styleUtils.ts           # 样式工具
+│   ├── eventUtils.ts           # 事件工具
+│   └── exportUtils.ts          # 导出工具
+├── store/                      # Pinia状态管理
+│   ├── components.ts           # 组件store
+│   ├── editor.ts               # 编辑器store
+│   ├── history.ts              # 历史记录store
+│   ├── data.ts                 # 数据store
+│   └── settings.ts             # 设置store
+└── services/                   # 服务
+    ├── renderService.ts        # 渲染服务
+    ├── exportService.ts        # 导出服务
+    ├── importService.ts        # 导入服务
+    └── historyService.ts       # 历史记录服务
 
 ## 组件交互限制
 - 所有组件仅供展示，禁止触发原生交互
 - 禁用组件的原生点击、输入、选择等功能
 - 仅通过右侧属性面板修改组件配置
+- 预览模式下允许组件交互测试
+
+## 布局组件特性
+- el-container默认宽高100%，需明确展示并在属性面板中提供修改选项
+- el-header、el-footer默认高度60px
+- el-aside默认宽度300px
+- 布局组件默认样式需在属性面板中可配置
 
 ## 布局辅助工具
 - 网格显示/隐藏控制
@@ -157,16 +281,34 @@ src/components/lowCodeEditor/
 - 快速对齐工具栏
 - 缩放控制
 - 画布大小调整
+- 标尺功能
+- 参考线功能
+- 快捷键支持
+
+## 扩展性设计
+- 插件系统支持功能扩展
+- 自定义组件注册机制
+- 主题系统支持样式定制
+- 布局模板系统
+- 多语言支持
 
 ## 代码规范
 - 添加中文注释
 - 包含错误处理
 - 使用TypeScript类型定义
 - 遵循Vue3最佳实践
+- 组件最小化原则
+- 性能优化考虑
+
+## 性能优化
+- 大型画布虚拟滚动优化
+- 组件懒加载机制
+- 局部渲染与局部更新
+- 属性编辑器按需加载
+- 大数据量图表优化策略
 
 ## Storybook Stories要求
-为每个主要组件创建.stories.ts文件
-展示以下典型场景:
+为每个主要组件创建.stories.ts文件，展示以下典型场景:
 - 基础空白编辑器
 - 预填充了示例组件的编辑器
 - 演示组件拖拽与精确位置放置的交互示例
@@ -174,7 +316,15 @@ src/components/lowCodeEditor/
 - 不同布局组件的嵌套示例
 - 图表组件配置与实时预览示例
 - 组件对齐和布局调整示例
+- 数据绑定与动态渲染示例
+- 事件配置与交互示例
 - 每个Story提供必要的文档说明用途和用法
+
+## 扩展功能
+- 版本控制与历史回溯
+- 应用模板库
+- 组件市场集成
+- 自动布局推荐
 
 ```
 
