@@ -2,5 +2,7 @@
   "cssTheme": "Minimal",
   "theme": "obsidian",
   "showViewHeader": true,
-  "showRibbon": true
+  "showRibbon": true,
+  "monospaceFontFamily": "Arial",
+  "textFontFamily": "Arial"
 }
