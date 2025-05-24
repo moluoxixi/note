@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "计划",
-      "path": "业务与工作/计划.md"
+      "basename": "css框架",
+      "path": "前端/css框架.md"
     },
     {
       "basename": "大纲",
       "path": "大纲/大纲.md"
+    },
+    {
+      "basename": "css",
+      "path": "前端/css.md"
+    },
+    {
+      "basename": "计划",
+      "path": "业务与工作/计划.md"
+    },
+    {
+      "basename": "电子病历",
+      "path": "其他/电子病历.md"
+    },
+    {
+      "basename": "编辑器",
+      "path": "前端/前端不常用/编辑器.md"
     },
     {
       "basename": "代码实现",
@@ -43,10 +59,6 @@
     {
       "basename": "autoHotKey",
       "path": "其他/autoHotKey.md"
-    },
-    {
-      "basename": "css",
-      "path": "前端/css.md"
     },
     {
       "basename": "非面试技能点",
@@ -161,10 +173,6 @@
       "path": "业务与工作/HIS.md"
     },
     {
-      "basename": "电子病历",
-      "path": "其他/电子病历.md"
-    },
-    {
       "basename": "业务",
       "path": "其他/业务.md"
     },
@@ -183,10 +191,6 @@
     {
       "basename": "工程化",
       "path": "前端/工程化.md"
-    },
-    {
-      "basename": "css框架",
-      "path": "前端/css框架.md"
     },
     {
       "basename": "微前端方案",
