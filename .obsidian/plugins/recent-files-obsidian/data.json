@@ -1,16 +1,8 @@
 {
   "recentFiles": [
     {
-      "basename": "css框架",
-      "path": "前端/css框架.md"
-    },
-    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
-    },
-    {
-      "basename": "css",
-      "path": "前端/css.md"
     },
     {
       "basename": "计划",
@@ -19,6 +11,14 @@
     {
       "basename": "电子病历",
       "path": "其他/电子病历.md"
+    },
+    {
+      "basename": "css框架",
+      "path": "前端/css框架.md"
+    },
+    {
+      "basename": "css",
+      "path": "前端/css.md"
     },
     {
       "basename": "编辑器",
