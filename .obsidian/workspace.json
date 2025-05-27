@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "业务与工作/计划.md",
+                "file": "大纲/大纲.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "计划"
+              "title": "大纲"
             }
           }
         ]
@@ -74,8 +74,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -184,8 +183,8 @@
   },
   "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
-    "大纲/大纲.md",
     "业务与工作/计划.md",
+    "大纲/大纲.md",
     "其他/电子病历.md",
     "前端/css框架.md",
     "前端/css.md",
