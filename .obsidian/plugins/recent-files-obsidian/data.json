@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "git",
+      "path": "前端/git.md"
+    },
+    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
     },
@@ -35,10 +39,6 @@
     {
       "basename": "gpt模板",
       "path": "其他/gpt模板.md"
-    },
-    {
-      "basename": "git",
-      "path": "前端/git.md"
     },
     {
       "basename": "周任务",
