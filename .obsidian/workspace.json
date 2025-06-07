@@ -50,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -210,10 +210,10 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "97f7bf97f8ee376d",
+  "active": "706197a93dc040be",
   "lastOpenFiles": [
-    "其他/电子病历.md",
     "其他/都昌部署.md",
+    "其他/电子病历.md",
     "大纲/大纲.md",
     "业务与工作/计划.md",
     "前端/ts与JsDoc.md",
