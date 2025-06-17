@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "业务",
+      "path": "其他/业务.md"
+    },
+    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
     },
@@ -179,10 +183,6 @@
     {
       "basename": "HIS",
       "path": "业务与工作/HIS.md"
-    },
-    {
-      "basename": "业务",
-      "path": "其他/业务.md"
     },
     {
       "basename": "docker",
