@@ -167,8 +167,8 @@
             "state": {
               "type": "advanced-tables-toolbar",
               "state": {},
-              "icon": "lucide-file",
-              "title": "插件不再活动"
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
             }
           },
           {
@@ -211,7 +211,7 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "1450aacbfbcc17e1",
+  "active": "af96eae4f639d271",
   "lastOpenFiles": [
     "其他/业务.md",
     "业务与工作/计划.md",
