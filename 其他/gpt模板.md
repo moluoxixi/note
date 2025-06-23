@@ -37,6 +37,11 @@ tags:
 11. jsx 或 tsx 注释示例{/**这是一个 sb 组件，功能是*/}
 12. html 注释示例<!-- 日历组件 -->
 ## storybook ai 参考文案
+```
+基于该文件内容，重写.storiebook/.stories/DraggableTable.stories.tsx
+```
+
+
 ```text
 写入类型，描述,控制器, 格式参考如下，如果遇到除object外的复杂类型，control都为false,其余复杂类型，视情况选择select或radio,基础类型根据类型推导,
 trigger: {
