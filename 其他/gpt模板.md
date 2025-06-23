@@ -5,16 +5,54 @@ date: 2025-01-28
 tags:
 - 其他
 ---
+# 实用
+## el-table 转 vxe-grid
+```text
+根据注释生成vxe-grid的columns,没有field的需要补上field但是要写注释/**补充field*/区分
 ```
-现在存在如下问题：
-删除会导致整个画布清空
+## 修改为 composition
+该文件内未按照以下标准进行修复:
+1. 采用 composition api
+2. types 和 utils 从@/components/ConfigForm 中引入
+3. props 中的 model 和 config 必须引用 types 的类型
+4. defineProps 必须用 withDefault 包裹
+5. emit ('update: model', val) 只能 emit val 出去
+6. 标签使用自闭合标签
+7. slot 需要保留 v-if 逻辑
+8. 需要使用 defineOptions
+9. 不要删除原有注释
 
-还有在画布中严格遵循以下规则：
-容器组件默认占父组件宽高的100%，没有则是画布宽高的100%，如果超出则添加滚动条，
-行组件宽默认占父组件的100%，高根据里面的内容自适应，
-列组件高度根据里面的内容自适应，
+## 添加注释
+检索并修改该文件下的所有组件，严格按照如下要求进行修复:
+1. 不要修改代码
+2. 遇到路径引入，改为@/components/组件名这种格式
+3. 以 jsdoc 的方式添加注释，如果是 jsx 部分则采用 html 注释
+4. 注释精确到每一行
+5. 如果这一行已经存在注释，则不要修改或删除已经存在的注释
+6. 如果遇到 jsx 组件默认导出，在组件的 jsdoc 注释中说明组件的用法
+7. 如果遇到 return (jsx), 则在 return 之前注释
+8. 如果遇到函数，说明函数的逻辑
+9. 如果遇到 vue 组件，setup script 则在 script 标签第一行说明组件用法，options api 则在默认导出的 jsdoc 中说明组件用法
+10. js 或 ts 注释示例/**这是一个 sb 组件，功能是*/
+11. jsx 或 tsx 注释示例{/**这是一个 sb 组件，功能是*/}
+12. html 注释示例<!-- 日历组件 -->
+## storybook ai 参考文案
+```text
+写入类型，描述,控制器, 格式参考如下，如果遇到除object外的复杂类型，control都为false,其余复杂类型，视情况选择select或radio,基础类型根据类型推导,
+trigger: {
+	options: ["hover", "click"],
+	control: "select",
+	type: '"hover" | "click"',
+	description: "触发 popover 的方式",
+},
+a:{
+	type:{
+	  b:"string",
+	  c:"number"
+	}
+}
 ```
-
+# other
 ## cursor 自己生成自己的提示词
 ```
 写一个提示词供cursor在src/components/lowCodeEditorPlus中生成低代码编辑器，要求如下(注意只要提示词):
@@ -28,6 +66,7 @@ el-row宽度默认100%，el-container宽高默认100%
 支持json schema导入导出,
 提供.stories
 ```
+
 ## 准备下个月有次数的时候运行
 ### 低代码
 - mitt/tiny-emitter (轻量级事件总线)
@@ -314,45 +353,4 @@ src/components/lowCodeEditor/
 - 每个Story提供必要的文档说明用途和用法
 ```
 
-## 修改为 composition
-该文件内未按照以下标准进行修复:
-1. 采用 composition api
-2. types 和 utils 从@/components/ConfigForm 中引入
-3. props 中的 model 和 config 必须引用 types 的类型
-4. defineProps 必须用 withDefault 包裹
-5. emit ('update: model', val) 只能 emit val 出去
-6. 标签使用自闭合标签
-7. slot 需要保留 v-if 逻辑
-8. 需要使用 defineOptions
-9. 不要删除原有注释
 
-## 添加注释
-检索并修改 该文件下的所有组件，严格按照如下要求进行修复:
-1. 不要修改代码
-2. 遇到路径引入，改为@/components/组件名这种格式
-3. 以 jsdoc 的方式添加注释，如果是 jsx 部分则采用 html 注释
-4. 注释精确到每一行
-5. 如果这一行已经存在注释，则不要修改或删除已经存在的注释
-6. 如果遇到 jsx 组件默认导出，在组件的 jsdoc 注释中说明组件的用法
-7. 如果遇到 return (jsx), 则在 return 之前注释
-8. 如果遇到函数，说明函数的逻辑
-9. 如果遇到 vue 组件，setup script 则在 script 标签第一行说明组件用法，options api 则在默认导出的 jsdoc 中说明组件用法
-10. js 或 ts 注释示例/**这是一个 sb 组件，功能是*/
-11. jsx 或 tsx 注释示例{/**这是一个 sb 组件，功能是*/}
-12. html 注释示例<!-- 日历组件 -->
-## storybook ai 参考文案
-```text
-写入类型，描述,控制器, 格式参考如下，如果遇到除object外的复杂类型，control都为false,其余复杂类型，视情况选择select或radio,基础类型根据类型推导,
-trigger: {
-	options: ["hover", "click"],
-	control: "select",
-	type: '"hover" | "click"',
-	description: "触发 popover 的方式",
-},
-a:{
-	type:{
-	  b:"string",
-	  c:"number"
-	}
-}
-```
