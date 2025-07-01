@@ -9,6 +9,18 @@
       "path": "大纲/大纲.md"
     },
     {
+      "basename": "vue3",
+      "path": "前端/前端不常用/vue3.md"
+    },
+    {
+      "basename": "docker",
+      "path": "后端/docker.md"
+    },
+    {
+      "basename": "nest",
+      "path": "前端/nest.md"
+    },
+    {
       "basename": "gpt模板",
       "path": "其他/gpt模板.md"
     },
@@ -87,10 +99,6 @@
     {
       "basename": "vue",
       "path": "前端/vue.md"
-    },
-    {
-      "basename": "vue3",
-      "path": "前端/前端不常用/vue3.md"
     },
     {
       "basename": "plan",
@@ -185,20 +193,12 @@
       "path": "业务与工作/HIS.md"
     },
     {
-      "basename": "docker",
-      "path": "后端/docker.md"
-    },
-    {
       "basename": "nginx",
       "path": "后端/nginx.md"
     },
     {
       "basename": "textCodeBox",
       "path": "templates/textCodeBox.md"
-    },
-    {
-      "basename": "工程化",
-      "path": "前端/工程化.md"
     }
   ],
   "omittedPaths": [],
