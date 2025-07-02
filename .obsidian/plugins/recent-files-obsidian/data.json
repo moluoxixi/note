@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "计划",
+      "path": "业务与工作/计划.md"
+    },
+    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
     },
     {
-      "basename": "计划",
-      "path": "业务与工作/计划.md"
+      "basename": "git",
+      "path": "前端/git.md"
     },
     {
       "basename": "vue3",
@@ -39,10 +43,6 @@
     {
       "basename": "ts与JsDoc",
       "path": "前端/ts与JsDoc.md"
-    },
-    {
-      "basename": "git",
-      "path": "前端/git.md"
     },
     {
       "basename": "css框架",
