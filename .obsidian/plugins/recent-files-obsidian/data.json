@@ -5,6 +5,38 @@
       "path": "大纲/大纲.md"
     },
     {
+      "basename": "住院护士.excalidraw",
+      "path": "excalidraw/住院护士.excalidraw.md"
+    },
+    {
+      "basename": "门诊护士.excalidraw",
+      "path": "excalidraw/门诊护士.excalidraw.md"
+    },
+    {
+      "basename": "门诊收费.excalidraw",
+      "path": "excalidraw/门诊收费.excalidraw.md"
+    },
+    {
+      "basename": "医保管理.excalidraw",
+      "path": "excalidraw/医保管理.excalidraw.md"
+    },
+    {
+      "basename": "药库管理.excalidraw",
+      "path": "excalidraw/药库管理.excalidraw.md"
+    },
+    {
+      "basename": "住院医生.excalidraw",
+      "path": "excalidraw/住院医生.excalidraw.md"
+    },
+    {
+      "basename": "药房管理.excalidraw",
+      "path": "excalidraw/药房管理.excalidraw.md"
+    },
+    {
+      "basename": "病历质控.excalidraw",
+      "path": "excalidraw/病历质控.excalidraw.md"
+    },
+    {
       "basename": "计划",
       "path": "业务与工作/计划.md"
     },
@@ -109,10 +141,6 @@
       "path": "前端/shadcn.md"
     },
     {
-      "basename": "住院护士.excalidraw",
-      "path": "excalidraw/住院护士.excalidraw.md"
-    },
-    {
       "basename": "家族信息",
       "path": "神器/家族信息.md"
     },
@@ -149,36 +177,8 @@
       "path": "业务与工作/业务.md"
     },
     {
-      "basename": "住院医生.excalidraw",
-      "path": "excalidraw/住院医生.excalidraw.md"
-    },
-    {
-      "basename": "门诊护士.excalidraw",
-      "path": "excalidraw/门诊护士.excalidraw.md"
-    },
-    {
-      "basename": "门诊收费.excalidraw",
-      "path": "excalidraw/门诊收费.excalidraw.md"
-    },
-    {
       "basename": "门诊医生.excalidraw",
       "path": "excalidraw/门诊医生.excalidraw.md"
-    },
-    {
-      "basename": "药库管理.excalidraw",
-      "path": "excalidraw/药库管理.excalidraw.md"
-    },
-    {
-      "basename": "药房管理.excalidraw",
-      "path": "excalidraw/药房管理.excalidraw.md"
-    },
-    {
-      "basename": "病历质控.excalidraw",
-      "path": "excalidraw/病历质控.excalidraw.md"
-    },
-    {
-      "basename": "医保管理.excalidraw",
-      "path": "excalidraw/医保管理.excalidraw.md"
     },
     {
       "basename": "每月任务",
@@ -195,10 +195,6 @@
     {
       "basename": "nginx",
       "path": "后端/nginx.md"
-    },
-    {
-      "basename": "textCodeBox",
-      "path": "templates/textCodeBox.md"
     }
   ],
   "omittedPaths": [],
