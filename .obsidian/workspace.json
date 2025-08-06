@@ -184,8 +184,9 @@
   },
   "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
-    "业务与工作/计划.md",
+    "远程组件总结.md",
     "大纲/大纲.md",
+    "业务与工作/计划.md",
     "前端/ts与JsDoc.md",
     "excalidraw/住院护士.excalidraw.md",
     "excalidraw/门诊护士.excalidraw.md",
@@ -209,7 +210,6 @@
     "前端/前端不常用/编辑器.md",
     "前端/代码实现.md",
     "前端/tauri.md",
-    "食材.md",
     "pnpm-lock.yaml",
     "前端/面试/其他",
     "前端/面试/react",
