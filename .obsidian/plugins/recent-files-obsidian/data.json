@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "计划",
-      "path": "业务与工作/计划.md"
+      "basename": "gpt模板",
+      "path": "其他/gpt模板.md"
     },
     {
       "basename": "大纲",
       "path": "大纲/大纲.md"
+    },
+    {
+      "basename": "AI",
+      "path": "AI.md"
+    },
+    {
+      "basename": "计划",
+      "path": "业务与工作/计划.md"
     },
     {
       "basename": "远程组件总结",
@@ -65,10 +73,6 @@
       "path": "前端/nest.md"
     },
     {
-      "basename": "gpt模板",
-      "path": "其他/gpt模板.md"
-    },
-    {
       "basename": "业务",
       "path": "其他/业务.md"
     },
@@ -107,10 +111,6 @@
     {
       "basename": "qiankun问题采集",
       "path": "其他/qiankun问题采集.md"
-    },
-    {
-      "basename": "AI",
-      "path": "AI.md"
     },
     {
       "basename": "一群的工作",

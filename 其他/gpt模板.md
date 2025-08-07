@@ -5,6 +5,9 @@ date: 2025-01-28
 tags:
 - 其他
 ---
+```
+根据DraggableTable的props,slots,defineExpose,defineEmit，去更新.docs/components中对应示例的Props,Slots,Expose,Events表格
+```
 # 实用
 ## el-table 转 vxe-grid
 ```text
