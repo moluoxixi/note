@@ -11,7 +11,10 @@ tags:
 ```
 
 ```
-根据packages/components中的DraggableTable，Tabs,DateRangePicker,EnterNextContainer,EnterNextTable,EnterNextDragTable,PopoverTableSelect，仔细阅读源码，特别是props,slots,defineExpose,defineEmit，去更新.docs/components中对应组件的示例，参考各组件在.docs/examples中的示例，添加更加详细丰富的示例，描述需要放在demo块外面
+仔细阅读packages/components中的DateRangePicker源码，特别是props,slots,defineExpose,defineEmit，去更新.docs/examples/DateRangePicker中对应组件的示例，和.docs/components/DateRangePicker.md中的文档，参考.docs/examples/DateRangePicker中示例，
+1. 添加非常多的单个示例，直到能表达出每一个props的作用
+2. 同一类型的示例应该放在同一文件夹中，参考.docs/examples/DateRangePicker/type文件夹
+3. 描述应该放在.docs/components/DateRangePicker.md中，不要放在.docs/examples/DateRangePicker中
 ```
 # 实用
 ## el-table 转 vxe-grid
