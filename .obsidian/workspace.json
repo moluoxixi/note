@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "大纲"
             }
+          },
+          {
+            "id": "7604aec015107d58",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "其他/gpt模板.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "gpt模板"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -182,7 +197,7 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "e7a7b303c61786dc",
+  "active": "7604aec015107d58",
   "lastOpenFiles": [
     "大纲/大纲.md",
     "业务与工作/计划.md",

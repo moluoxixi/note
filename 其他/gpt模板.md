@@ -6,7 +6,8 @@ tags:
 - 其他
 ---
 ```
-根据DraggableTable的props,slots,defineExpose,defineEmit，去更新.docs/components中对应示例的Props,Slots,Expose,Events表格
+根据packages/components中的DraggableTable，Tabs,DateRangePicker,EnterNextContainer,EnterNextTable,EnterNextDragTable,PopoverTableSelect，仔细阅读源码，特别是props,slots,defineExpose,defineEmit，去更新.docs/components中对应组件文档中的Props,Slots,Expose,Events表格，如遇特殊字符需要通过\转义，例如<,>,|
+
 ```
 # 实用
 ## el-table 转 vxe-grid
