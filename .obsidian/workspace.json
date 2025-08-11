@@ -22,6 +22,20 @@
             }
           },
           {
+            "id": "855f37f70f8f69dc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "业务与工作/计划.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "计划"
+            }
+          },
+          {
             "id": "7604aec015107d58",
             "type": "leaf",
             "state": {
@@ -36,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -199,8 +213,8 @@
   },
   "active": "7604aec015107d58",
   "lastOpenFiles": [
-    "大纲/大纲.md",
     "业务与工作/计划.md",
+    "大纲/大纲.md",
     "其他/gpt模板.md",
     "AI.md",
     "远程组件总结.md",
