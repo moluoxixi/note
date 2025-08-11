@@ -6,15 +6,15 @@ tags:
 - 其他
 ---
 ```
-根据packages/components中的DraggableTable，Tabs,DateRangePicker,EnterNextContainer,EnterNextTable,EnterNextDragTable,PopoverTableSelect，仔细阅读源码，特别是props,slots,defineExpose,defineEmit，去更新.docs/components中对应组件文档中的Props,Slots,Expose,Events表格，如遇特殊字符需要通过\转义，例如<,>,|
+根据packages/components中的xxx，仔细阅读源码，特别是props,slots,defineExpose,defineEmit，去更新.docs/components中对应组件文档中的Props,Slots,Expose,Events表格，如遇特殊字符需要通过\转义，例如<,>,|
 
 ```
 
 ```
-仔细阅读packages/components中的EnterNextDragTable源码，特别是props,slots,defineExpose,defineEmit，去更新.docs/examples/EnterNextDragTable中对应组件的示例，和.docs/components/EnterNextDragTable.md中的文档，参考.docs/examples/DateRangePicker中示例，
+仔细阅读packages/components中的Tabs源码，特别是props,slots,defineExpose,defineEmit，去更新.docs/examples/Tabs中对应组件的示例，和.docs/components/Tabs.md中的文档，参考.docs/examples/DateRangePicker中示例，
 1. 添加非常多的单个示例，直到能表达出每一个props的作用
 2. 同一类型的示例应该放在同一文件夹中，参考.docs/examples/DateRangePicker/type文件夹
-3. 描述应该放在.docs/components/EnterNextDragTable.md中，不要放在.docs/examples/EnterNextDragTable中
+3. 描述应该放在.docs/components/Tabs.md中，不要放在.docs/examples/Tabs中
 4. 每个:::demo块应该有单独的描述而不是整体描述
 5. examples中不应该有tailwind样式，仅采用原生css
 ```
