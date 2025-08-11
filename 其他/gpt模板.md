@@ -11,11 +11,11 @@ tags:
 ```
 
 ```
-仔细阅读packages/components中的Tabs源码，特别是props,slots,defineExpose,defineEmit，去更新.docs/examples/Tabs中对应组件的示例，和.docs/components/Tabs.md中的文档，参考.docs/examples/DateRangePicker中示例，
-1. 添加非常多的单个示例，直到能表达出每一个props的作用
-2. 同一类型的示例应该放在同一文件夹中，参考.docs/examples/DateRangePicker/type文件夹
-3. 描述应该放在.docs/components/Tabs.md中，不要放在.docs/examples/Tabs中
-4. 每个:::demo块应该有单独的描述而不是整体描述
+仔细阅读packages/components中的PopoverTableSelect源码，特别是props,slots,defineExpose,defineEmit，去更新.docs/examples/PopoverTableSelect中对应组件的示例，和.docs/components/基础组件/PopoverTableSelect.md中的文档，参考.docs/examples/DateRangePicker中示例，  
+1. 添加非常多的单个示例，直到能表达出每一个props的作用  
+2. 同一类型的示例应该放在同一文件夹中，参考.docs/examples/DateRangePicker/type文件夹  
+3. 描述应该放在.docs/components/基础组件/PopoverTableSelect.md中，不要放在.docs/examples/PopoverTableSelect中  
+4. 每个:::demo块应该有单独的描述而不是整体描述  
 5. examples中不应该有tailwind样式，仅采用原生css
 ```
 # 实用
@@ -117,7 +117,7 @@ el-row宽度默认100%，el-container宽高默认100%
 编辑器分为三个区域：左侧组件面板、中间编辑区域、右侧属性编辑面板。采用SchemaJSON驱动的渲染引擎设计，支持组件的拖拽、配置、预览和导出功能。
 
 ## 左侧组件面板
-- 使用el-tabs进行组件类型切换，默认展示"全部"
+- 使用el-PopoverTableSelect进行组件类型切换，默认展示"全部"
 - 分类标签包括：全部、基础组件、布局组件、容器组件、图表组件
 - 顶部提供搜索输入框，支持按组件名称搜索
 - 基础组件直接使用element-plus组件进行展示（实际组件）
