@@ -20,37 +20,8 @@
               "icon": "lucide-file",
               "title": "大纲"
             }
-          },
-          {
-            "id": "855f37f70f8f69dc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "业务与工作/计划.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "计划"
-            }
-          },
-          {
-            "id": "7604aec015107d58",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "其他/gpt模板.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "gpt模板"
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -211,11 +182,11 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "7604aec015107d58",
+  "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
+    "其他/gpt模板.md",
     "业务与工作/计划.md",
     "大纲/大纲.md",
-    "其他/gpt模板.md",
     "AI.md",
     "远程组件总结.md",
     "前端/ts与JsDoc.md",
