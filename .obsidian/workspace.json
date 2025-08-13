@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "大纲/大纲.md",
+                "file": "远程组件总结.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "大纲"
+              "title": "远程组件总结"
             }
           },
           {
@@ -50,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -211,13 +211,13 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "1c70ab321607ce0c",
+  "active": "09c5f04c44ea5f9c",
   "lastOpenFiles": [
-    "其他/gpt模板.md",
+    "远程组件总结.md",
     "大纲/大纲.md",
     "业务与工作/计划.md",
+    "其他/gpt模板.md",
     "AI.md",
-    "远程组件总结.md",
     "前端/ts与JsDoc.md",
     "excalidraw/住院护士.excalidraw.md",
     "excalidraw/门诊护士.excalidraw.md",
