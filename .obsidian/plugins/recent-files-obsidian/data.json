@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "大纲",
+      "path": "大纲/大纲.md"
+    },
+    {
       "basename": "gpt模板",
       "path": "其他/gpt模板.md"
     },
@@ -11,10 +15,6 @@
     {
       "basename": "远程组件总结",
       "path": "远程组件总结.md"
-    },
-    {
-      "basename": "大纲",
-      "path": "大纲/大纲.md"
     },
     {
       "basename": "AI",
