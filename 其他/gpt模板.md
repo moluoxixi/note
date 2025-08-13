@@ -17,6 +17,8 @@ tags:
 3. 描述应该放在.docs/components/基础组件/ExportExcel.md中，不要放在.docs/examples/ExportExcel中  
 4. 每个:::demo块应该有单独的描述而不是整体描述  
 5. examples中不应该有tailwind样式，仅采用原生css
+6. 遇到特殊字符如<,>,|需要转义
+7. 函数的类型声明需要用^[Function]`类型`
 ```
 # 实用
 ## el-table 转 vxe-grid
