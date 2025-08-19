@@ -64,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -225,12 +225,12 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "0bebd13e8e5c4227",
+  "active": "0c2d78eeb121ae52",
   "lastOpenFiles": [
+    "其他/gpt模板.md",
     "大纲/大纲.md",
     "其他/电子病历.md",
     "业务与工作/计划.md",
-    "其他/gpt模板.md",
     "远程组件总结.md",
     "AI.md",
     "前端/ts与JsDoc.md",
