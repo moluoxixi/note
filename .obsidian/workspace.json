@@ -35,8 +35,7 @@
               "title": "计划"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -198,11 +197,11 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "096f8bf62837ad33",
+  "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
+    "业务与工作/计划.md",
     "大纲/大纲.md",
     "前端/css.md",
-    "业务与工作/计划.md",
     "其他/gpt模板.md",
     "其他/电子病历.md",
     "远程组件总结.md",
