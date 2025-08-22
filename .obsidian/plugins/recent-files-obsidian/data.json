@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "计划",
+      "path": "业务与工作/计划.md"
+    },
+    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
     },
     {
-      "basename": "计划",
-      "path": "业务与工作/计划.md"
+      "basename": "css",
+      "path": "前端/css.md"
     },
     {
       "basename": "gpt模板",
@@ -87,10 +91,6 @@
     {
       "basename": "css框架",
       "path": "前端/css框架.md"
-    },
-    {
-      "basename": "css",
-      "path": "前端/css.md"
     },
     {
       "basename": "编辑器",
