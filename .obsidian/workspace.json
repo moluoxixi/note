@@ -22,19 +22,20 @@
             }
           },
           {
-            "id": "51a7139ddbb7a6f3",
+            "id": "7c1d95006b1a6faf",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.9.12"
+                "file": "业务与工作/计划.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "版本说明 1.9.12"
+              "icon": "lucide-file",
+              "title": "计划"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -196,10 +197,10 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "51a7139ddbb7a6f3",
+  "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
-    "大纲/大纲.md",
     "业务与工作/计划.md",
+    "大纲/大纲.md",
     "其他/gpt模板.md",
     "前端/css.md",
     "其他/电子病历.md",
