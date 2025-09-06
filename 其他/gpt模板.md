@@ -7,6 +7,13 @@ tags:
 ---
 
 # 实用
+
+
+```
+参照E:\project\companyProject\trasen\vue-component\docs\vitepress\components中的组件与工具包的.md说明文件，更新/新增各组件与工具包的README.md，
+统一添加基础示例，工具包提供api，组件添加props,events,Slots、Expose，
+已经存在的README也需要更新的一致
+```
 ## el-table 转 vxe-grid
 ```text
 根据注释生成vxe-grid的columns,没有field的需要补上field但是要写注释/**补充field*/区分
