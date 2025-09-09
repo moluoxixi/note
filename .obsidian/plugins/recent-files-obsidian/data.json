@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "[configForm",
+      "path": "[configForm.md"
+    },
+    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "HIS",
       "path": "业务与工作/HIS.md"
-    },
-    {
-      "basename": "nginx",
-      "path": "后端/nginx.md"
     }
   ],
   "omittedPaths": [],
