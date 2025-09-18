@@ -8,12 +8,83 @@ tags:
 
 # 实用
 
+```
+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
+LURLodECTqzkxN1fevjx
+生成一张高清印度人学生证件照
+4 布局组件  间距   待定
+1. 上传组件
+2. 配置化表单
+3. 剩余需要收集需求
+
+```
+## 虚拟模块
+```
+使用E:\project\companyProject\trasen\vue-component\packages\utils\ViteConfig\src\plugins\utils\virtual.ts抛出的工厂函数，在E:\project\companyProject\trasen\vue-component\packages\utils\ViteConfig\src\plugins\importComponentsOrUtils.ts中实现如虚拟模块插件，要求如下：  
+虚拟模块id默认为virtual:
+```
+## 函数
+### 注释
+```
+修改方法结构，要求如下：
+1. 统一采用jsDoc进行参数注释，要求描述到每一个参数
+2. 多参数，采用options对象作为入参，在函数体首行进行解构，
+3. 所有函数入参都应该有默认值，如果是函数体内对参数解构可忽略解构默认值
+4. 每个参数的类型都应该在当前文件所处目录的_types目录下有精准的定义
+5. 方法与类型的命名应该与接口强关联，例如/suno/cover/generate，方法名就应该是sunoCoverGenerate，它的入参类型就应该是sunoCoverGenerateParamsType
+```
+## AI 提示词
+
+```
+进行优化/处理，要求如下：  
+1.用```text markdown内容```输出markdown，标题采用 ## 标题，方便带格式的复制  
+2.只能采用有序列表，不允许无须列表  
+3.要求围绕 角色，技能，回复示例，限制 四块内容
+```
+## 文档
+```
+仔细阅读packages/components中的DraggableTable源码，特别是props,slots,defineExpose,defineEmit，去更新docs/examples中对应组件的示例，和docs/components/基础组件中对应的文档，参考docs/examples/DateRangePicker中示例，  
+1. 添加非常多的单个示例，直到能表达出每一个props的作用
+2. 示例中不要用单行语句，包含样式和js
+3. 不要使用alert
+4. 函数采用function
+5. 同一类型的示例应该放在同一文件夹中，参考docs/examples/DateRangePicker/type文件夹  
+6. 描述应该放在docs/components/基础组件对应的md中，不要放在docs/examples/Tree中  
+7. 每个:::demo块应该有单独的描述而不是整体描述  
+8. examples中不应该有tailwind样式，仅采用原生css
+9. 组件无须引入，已经被全局注册了
+10. 表格中的代码描述需要使用``包裹
+11. 遇到|字符需要转义
+12. 类型声明过长时需要用^[属于什么类型，例如Function]`具体的类型`
+13. 删除无用文件
+```
 
 ```
 参照E:\project\companyProject\trasen\vue-component\docs\vitepress\components中的组件与工具包的.md说明文件，更新/新增各组件与工具包的README.md，
 统一添加基础示例，工具包提供api，组件添加props,events,Slots、Expose，
 已经存在的README也需要更新的一致
 ```
+## 虚拟卡
+```
+5293664168902060
+有效期mmyy：06/2028
+安全码(CVC):   532
+姓名(Name): Nelson Ryan
+国家（country）:United States（美国）
+街道  2435 Polk St, Eugene
+城市  Eugene
+州  OR
+邮编  97405
+```
+
+## APIKeys
+```
+AIzaSyCr-6Pv5IuUdPaPJWU_z-J7V6hxSKTFN3I
+AIzaSyB1NNHxFV5e2mOrWn_NseY0O0BVxDvWfM0
+
+
+```
+
 ## el-table 转 vxe-grid
 ```text
 根据注释生成vxe-grid的columns,没有field的需要补上field但是要写注释/**补充field*/区分
