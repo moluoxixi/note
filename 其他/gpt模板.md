@@ -23,15 +23,15 @@ LURLodECTqzkxN1fevjx
 使用E:\project\companyProject\trasen\vue-component\packages\utils\ViteConfig\src\plugins\utils\virtual.ts抛出的工厂函数，在E:\project\companyProject\trasen\vue-component\packages\utils\ViteConfig\src\plugins\importComponentsOrUtils.ts中实现如虚拟模块插件，要求如下：  
 虚拟模块id默认为virtual:
 ```
-## 函数
-### 注释
+
+
 ```
-修改方法结构，要求如下：
-1. 统一采用jsDoc进行参数注释，要求描述到每一个参数
-2. 多参数，采用options对象作为入参，在函数体首行进行解构，
-3. 所有函数入参都应该有默认值，如果是函数体内对参数解构可忽略解构默认值
-4. 每个参数的类型都应该在当前文件所处目录的_types目录下有精准的定义
-5. 方法与类型的命名应该与接口强关联，例如/suno/cover/generate，方法名就应该是sunoCoverGenerate，它的入参类型就应该是sunoCoverGenerateParamsType
+## 函数或方法规范：
+1. 统一采用 jsDoc 进行参数注释，要求描述到每一个参数
+2. 多参数，采用 options 对象作为入参，在函数体首行进行解构，
+3. 所有函数入参都应该有默认值，如果是函数体内对参数解构，可忽略解构默认值
+4. 每个参数的类型都应该在当前文件所处目录的_types 目录下有精准的定义
+5. 方法与类型的命名应该与接口强关联，例如/suno/cover/generate，方法名就应该是 sunoCoverGenerate，它的入参类型就应该是 sunoCoverGenerateParamsType
 ```
 ## AI 提示词
 
