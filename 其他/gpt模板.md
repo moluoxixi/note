@@ -79,6 +79,9 @@ LURLodECTqzkxN1fevjx
 城市  Eugene
 州  OR
 邮编  97405
+
+
+添加imageUrl入参，支持传入一张图片的地址(传统url/base64),然后这里将这个图片转成base64,以{imageBytes:base64的值,mimeType: "image/png",}以image参数的形式传递给generateVideos
 ```
 
 ```
