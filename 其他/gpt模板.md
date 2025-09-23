@@ -9,6 +9,10 @@ tags:
 # 实用
 
 ```
+的参数，参数描述，类型与类型注释
+```
+
+```
 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
 LURLodECTqzkxN1fevjx
 生成一张高清印度人学生证件照
