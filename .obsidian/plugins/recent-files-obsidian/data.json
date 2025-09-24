@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "gpt模板",
+      "path": "其他/gpt模板.md"
+    },
+    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
     },
     {
-      "basename": "gpt模板",
-      "path": "其他/gpt模板.md"
+      "basename": "nest",
+      "path": "前端/nest.md"
     },
     {
       "basename": "计划",
@@ -79,10 +83,6 @@
     {
       "basename": "docker",
       "path": "后端/docker.md"
-    },
-    {
-      "basename": "nest",
-      "path": "前端/nest.md"
     },
     {
       "basename": "业务",
