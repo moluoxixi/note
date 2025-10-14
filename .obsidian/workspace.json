@@ -20,21 +20,8 @@
               "icon": "lucide-file",
               "title": "大纲"
             }
-          },
-          {
-            "id": "aee0500bc49425e1",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.9.14"
-              },
-              "icon": "lucide-book-up",
-              "title": "版本说明 1.9.14"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -196,7 +183,7 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "aee0500bc49425e1",
+  "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
     "大纲/大纲.md",
     "业务与工作/计划.md",
