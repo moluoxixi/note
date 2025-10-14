@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "大纲"
             }
+          },
+          {
+            "id": "aee0500bc49425e1",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.9.14"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.9.14"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -183,10 +196,10 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "e7a7b303c61786dc",
+  "active": "aee0500bc49425e1",
   "lastOpenFiles": [
-    "业务与工作/计划.md",
     "大纲/大纲.md",
+    "业务与工作/计划.md",
     "其他/gpt模板.md",
     "前端/nest.md",
     "[configForm.md",
