@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "计划",
-      "path": "业务与工作/计划.md"
+      "basename": "技术交底书-基于Vue3.0的微前端框架系统",
+      "path": "技术交底书-基于Vue3.0的微前端框架系统.md"
+    },
+    {
+      "basename": "技术方案详细说明",
+      "path": "技术方案详细说明.md"
     },
     {
       "basename": "大纲",
       "path": "大纲/大纲.md"
+    },
+    {
+      "basename": "计划",
+      "path": "业务与工作/计划.md"
     },
     {
       "basename": "gpt模板",
@@ -191,14 +199,6 @@
     {
       "basename": "每月任务",
       "path": "业务与工作/每月任务.md"
-    },
-    {
-      "basename": "门诊护士计划",
-      "path": "业务与工作/门诊护士计划.md"
-    },
-    {
-      "basename": "HIS",
-      "path": "业务与工作/HIS.md"
     }
   ],
   "omittedPaths": [],
