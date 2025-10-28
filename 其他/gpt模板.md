@@ -112,6 +112,7 @@ AIzaSyCDYiGqWECy6qf-pEHx8taJlDu5vPyMY8Y
 9. 不要删除原有注释
 
 ## 添加注释
+```
 检索并修改该文件下的所有组件，严格按照如下要求进行修复:
 1. 不要修改代码
 2. 遇到路径引入，改为@/components/组件名这种格式
@@ -125,6 +126,7 @@ AIzaSyCDYiGqWECy6qf-pEHx8taJlDu5vPyMY8Y
 10. js 或 ts 注释示例/**这是一个 sb 组件，功能是*/
 11. jsx 或 tsx 注释示例{/**这是一个 sb 组件，功能是*/}
 12. html 注释示例<!-- 日历组件 -->
+```
 ## storybook ai 参考文案
 ```
 基于该文件内容，重写.storiebook/.stories/DraggableTable.stories.tsx

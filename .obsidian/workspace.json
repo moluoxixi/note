@@ -63,7 +63,8 @@
               "title": "gpt模板"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -224,10 +225,10 @@
       "obsidian-shellcommands:Shell commands: Custom variables": false
     }
   },
-  "active": "e7a7b303c61786dc",
+  "active": "6dee628661b43b76",
   "lastOpenFiles": [
-    "业务与工作/计划.md",
     "大纲/大纲.md",
+    "业务与工作/计划.md",
     "其他/gpt模板.md",
     "技术交底书-基于Vue3.0的微前端框架系统.md",
     "技术方案详细说明.md",
