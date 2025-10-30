@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "gpt模板",
-      "path": "其他/gpt模板.md"
-    },
-    {
       "basename": "大纲",
       "path": "大纲/大纲.md"
     },
     {
+      "basename": "gpt模板",
+      "path": "其他/gpt模板.md"
+    },
+    {
       "basename": "计划",
       "path": "业务与工作/计划.md"
+    },
+    {
+      "basename": "plan",
+      "path": "大纲/plan.md"
+    },
+    {
+      "basename": "病历质控.excalidraw",
+      "path": "excalidraw/病历质控.excalidraw.md"
     },
     {
       "basename": "技术交底书-基于Vue3.0的微前端框架系统",
@@ -75,10 +83,6 @@
     {
       "basename": "药房管理.excalidraw",
       "path": "excalidraw/药房管理.excalidraw.md"
-    },
-    {
-      "basename": "病历质控.excalidraw",
-      "path": "excalidraw/病历质控.excalidraw.md"
     },
     {
       "basename": "git",
@@ -147,10 +151,6 @@
     {
       "basename": "vue",
       "path": "前端/vue.md"
-    },
-    {
-      "basename": "plan",
-      "path": "大纲/plan.md"
     },
     {
       "basename": "shadcn",
