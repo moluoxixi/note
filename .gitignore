@@ -1,3 +1,7 @@
+.obsidian
+.space
+.trash
+.makemd
 # 日志文件
 *.log
 *-debug.log*
