@@ -52,14 +52,15 @@ A captivating woman in elegant attire dances gracefully under dynamic spotlights
 ```
 ## 文档
 ```
-仔细阅读packages/components中的DraggableTable源码，特别是props,slots,defineExpose,defineEmit，去更新docs/examples中对应组件的示例，和docs/components/基础组件中对应的文档，参考docs/examples/DateRangePicker中示例，  
+我更新了TsSelect,TsCheckbox,TsRadio,Tabs，
+请仔细阅读packages/components中的对应组件的源码，特别是props,slots,defineExpose,defineEmit，去更新docs/examples中对应组件的示例，和docs/components/基础组件中对应的文档，参考docs/examples/DateRangePicker中示例，  
 1. 添加非常多的单个示例，直到能表达出每一个props的作用
 2. 示例中不要用单行语句，包含样式和js
 3. 不要使用alert
 4. 函数采用function
 5. 同一类型的示例应该放在同一文件夹中，参考docs/examples/DateRangePicker/type文件夹  
 6. 描述应该放在docs/components/基础组件对应的md中，不要放在docs/examples/Tree中  
-7. 每个:::demo块应该有单独的描述而不是整体描述  
+7. 每个:::demo :::块应该有单独的描述而不是整体描述  
 8. examples中不应该有tailwind样式，仅采用原生css
 9. 组件无须引入，已经被全局注册了
 10. 表格中的代码描述需要使用``包裹
