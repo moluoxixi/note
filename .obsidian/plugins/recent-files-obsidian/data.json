@@ -5,6 +5,10 @@
       "path": "大纲/大纲.md"
     },
     {
+      "basename": "组件同步",
+      "path": "组件同步.md"
+    },
+    {
       "basename": "计划",
       "path": "业务与工作/计划.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "门诊医生.excalidraw",
       "path": "excalidraw/门诊医生.excalidraw.md"
-    },
-    {
-      "basename": "每月任务",
-      "path": "业务与工作/每月任务.md"
     }
   ],
   "omittedPaths": [],
