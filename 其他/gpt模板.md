@@ -54,7 +54,7 @@ tags:
 ## 文档
 ```
 我更新了TsSelect,TsCheckbox,TsRadio,Tabs，
-请仔细阅读packages/components中的对应组件的源码，特别是props,slots,defineExpose,defineEmit，去更新docs/examples中对应组件的示例，和docs/components/基础组件中对应的文档，参考docs/examples/DateRangePicker中示例，  
+请仔细阅读packages/components中的对应组件的源码，特别是props,slots,defineExpose,defineEmit，去更新docs/examples中对应组件的示例，和docs/components/基础组件中对应的文档，以及它自己的README.md，参考docs/examples/DateRangePicker中示例，  
 1. 添加非常多的单个示例，直到能表达出每一个props的作用
 2. 示例中不要用单行语句，包含样式和js
 3. 不要使用alert
@@ -68,6 +68,33 @@ tags:
 11. 遇到|字符需要转义
 12. 类型声明过长时需要用^[属于什么类型，例如Function]`具体的类型`
 13. 删除无用文件
+14. README.md使用原生markdown语法提供示例
+```
+
+```
+我更新了AjaxPackage，
+请仔细阅读packages/utils中的对应的源码，去更新docs/examples中对应的示例，以及它自己的README.md，参考docs/examples/ViteConfig中示例，  
+1. 添加非常多的单个示例，直到能表达出每一个props的作用
+2. 示例中不要用单行语句，包含样式和js
+3. 不要使用alert
+4. 函数采用function
+5. 遇到|字符需要转义
+6. 类型声明过长时需要用^[属于什么类型，例如Function]`具体的类型`
+7. 删除无用文件
+8. README.md使用原生markdown语法提供示例
+```
+
+```
+我更新了AjaxPackage，
+请仔细阅读packages/utils中的对应的源码，去更新它自己的README.md，参考docs/examples/ViteConfig中示例，  
+1. 添加非常多的单个示例，直到能表达出每一个props的作用
+2. 示例中不要用单行语句，包含样式和js
+3. 不要使用alert
+4. 函数采用function
+5. 遇到|字符需要转义
+6. 类型声明过长时需要用^[属于什么类型，例如Function]`具体的类型`
+7. 删除无用文件
+8. README.md使用原生markdown语法提供示例
 ```
 
 ```
