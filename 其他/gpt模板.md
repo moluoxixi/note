@@ -7,32 +7,17 @@ tags:
 ---
 
 # 实用
-
-```
-的参数，参数描述，类型与类型注释
-```
-
-```
-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
-LURLodECTqzkxN1fevjx
-生成一张高清印度人学生证件照
-4 布局组件  间距   待定
-1. 上传组件
-2. 配置化表单
-3. 剩余需要收集需求
-
-```
-
-跳舞
-```
-A captivating woman in elegant attire dances gracefully under dynamic spotlights, with a blurred, energetic crowd in the background.
-```
 ## 虚拟模块
 ```
 使用E:\project\companyProject\trasen\vue-component\packages\utils\ViteConfig\src\plugins\utils\virtual.ts抛出的工厂函数，在E:\project\companyProject\trasen\vue-component\packages\utils\ViteConfig\src\plugins\importComponentsOrUtils.ts中实现如虚拟模块插件，要求如下：  
 虚拟模块id默认为virtual:
 ```
+## 封装 com
+```
+参考tsCheckbox的目录结构，封装一个xx组件，功能如下：
 
+```
+## 注释
 
 ```
 ## 函数或方法规范：
@@ -41,6 +26,22 @@ A captivating woman in elegant attire dances gracefully under dynamic spotlights
 3. 所有函数入参都应该有默认值，如果是函数体内对参数解构，可忽略解构默认值
 4. 每个参数的类型都应该在当前文件所处目录的_types 目录下有精准的定义
 5. 方法与类型的命名应该与接口强关联，例如/suno/cover/generate，方法名就应该是 sunoCoverGenerate，它的入参类型就应该是 sunoCoverGenerateParamsType
+```
+
+```
+检索并修改该文件下的所有组件，严格按照如下要求进行修复:
+1. 不要修改代码
+2. 遇到路径引入，改为@/components/组件名这种格式
+3. 以 jsdoc 的方式添加注释，如果是 jsx 部分则采用 html 注释
+4. 注释精确到每一行
+5. 如果这一行已经存在注释，则不要修改或删除已经存在的注释
+6. 如果遇到 jsx 组件默认导出，在组件的 jsdoc 注释中说明组件的用法
+7. 如果遇到 return (jsx), 则在 return 之前注释
+8. 如果遇到函数，说明函数的逻辑
+9. 如果遇到 vue 组件，setup script 则在 script 标签第一行说明组件用法，options api 则在默认导出的 jsdoc 中说明组件用法
+10. js 或 ts 注释示例/**这是一个 sb 组件，功能是*/
+11. jsx 或 tsx 注释示例{/**这是一个 sb 组件，功能是*/}
+12. html 注释示例<!-- 日历组件 -->
 ```
 ## AI 提示词
 
@@ -112,22 +113,7 @@ AIzaSyCDYiGqWECy6qf-pEHx8taJlDu5vPyMY8Y
 8. 需要使用 defineOptions
 9. 不要删除原有注释
 
-## 添加注释
-```
-检索并修改该文件下的所有组件，严格按照如下要求进行修复:
-1. 不要修改代码
-2. 遇到路径引入，改为@/components/组件名这种格式
-3. 以 jsdoc 的方式添加注释，如果是 jsx 部分则采用 html 注释
-4. 注释精确到每一行
-5. 如果这一行已经存在注释，则不要修改或删除已经存在的注释
-6. 如果遇到 jsx 组件默认导出，在组件的 jsdoc 注释中说明组件的用法
-7. 如果遇到 return (jsx), 则在 return 之前注释
-8. 如果遇到函数，说明函数的逻辑
-9. 如果遇到 vue 组件，setup script 则在 script 标签第一行说明组件用法，options api 则在默认导出的 jsdoc 中说明组件用法
-10. js 或 ts 注释示例/**这是一个 sb 组件，功能是*/
-11. jsx 或 tsx 注释示例{/**这是一个 sb 组件，功能是*/}
-12. html 注释示例<!-- 日历组件 -->
-```
+
 ## storybook ai 参考文案
 ```
 基于该文件内容，重写.storiebook/.stories/DraggableTable.stories.tsx
