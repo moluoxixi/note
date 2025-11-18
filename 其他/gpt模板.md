@@ -104,6 +104,21 @@ tags:
 ```
 ## 虚拟卡
 ```
+邮箱授权码：vvodtpkachpvijaa
+```
+
+```
+样板地址
+（First Name（名）：Edgar ;
+Last Name（姓）：Hettinger ;
+账单国家/地区：US（美国）  ;
+账单州省：CA（California加利福尼亚州）;
+账单城市：San Jose ;
+账单街道地址：2381 Zanker Rd Ste 110 ;
+账单邮编：95131）
+```
+
+```
 5293664168902060
 有效期mmyy：06/2028
 安全码(CVC):   532
